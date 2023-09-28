@@ -96,7 +96,7 @@ https://templatemo.com/tm-581-kind-heart-charity
 
 
                 <li class="nav-item ms-3">
-                        <a class="nav-link custom-btn custom-border-btn btn" href="mylogin.php">Login</a>
+                        <a class="nav-link custom-btn custom-border-btn btn" href="Login.php">Login</a>
                     </li>
 
 
@@ -207,12 +207,12 @@ https://templatemo.com/tm-581-kind-heart-charity
                 <div class="row">
 
                     <div class="col-lg-10 col-12 text-center mx-auto">
-                        <h2 class="mb-5">Welcome to Kind Heart Charity</h2>
+                        <h2 class="mb-5">Welcome to Infant Care Society </h2>
                     </div>
 
                     <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                         <div class="featured-block d-flex justify-content-center align-items-center">
-                            <a href="spon_reg.php" class="d-block">
+                            <a href="form.php" class="d-block">
                                 <img src="images/icons/hands.png" class="featured-block-image img-fluid" alt="">
 
                                 <p class="featured-block-text"><strong>Sponsor</strong></p>
@@ -222,7 +222,7 @@ https://templatemo.com/tm-581-kind-heart-charity
 
                     <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
                         <div class="featured-block d-flex justify-content-center align-items-center">
-                            <a href="spon_reg.php" class="d-block">
+                            <a href="orph_reg.php" class="d-block">
                                 <img src="images/icons/heart.png" class="featured-block-image img-fluid" alt="">
 
                                 <p class="featured-block-text"><strong>Orphanage</strong></p>

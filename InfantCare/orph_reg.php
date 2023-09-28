@@ -169,7 +169,7 @@ https://templatemo.com/tm-581-kind-heart-charity
             </div> -->
 
             <div class="form-group">
-                <label for="fullName">Full Name</label>
+                <label for="fullName">Orphanage Name</label>
                 <input type="text" class="form-control" id="fullName" name="fullName" required>
                 <div id="firstNameError"></div>
             </div>
@@ -184,8 +184,36 @@ https://templatemo.com/tm-581-kind-heart-charity
                 <input type="phone" class="form-control" id="phone" name="phone" required>
             </div>
 
+
+
+<br>
+
+
             <div class="form-group">
-                <label for="aadhar">Aadhar Number</label>
+            <label for="district">Select District :</label>
+<select id="district">
+    <option value="trivandrum">Thiruvananthapuram</option>
+    <option value="kollam">Kollam</option>
+    <option value="pathanamthitta">Pathanamthitta</option>
+    <option value="alappuzha">Alappuzha</option>
+    <option value="kottayam">Kottayam</option>
+    <option value="idukki">Idukki</option>
+    <option value="ernakulam">Ernakulam</option>
+    <option value="thrissur">Thrissur</option>
+    <option value="palakkad">Palakkad</option>
+    <option value="malappuram">Malappuram</option>
+    <option value="kozhikode">Kozhikode</option>
+    <option value="wayanad">Wayanad</option>
+    <option value="kannur">Kannur</option>
+    <option value="kasaragod">Kasaragod</option>
+</select>
+
+<br><br>
+
+
+
+            <div class="form-group">
+                <label for="aadhar">Adress</label>
                 <input type="aadhar" class="form-control" id="aadhar" name="aadhar" required>
             </div>
 
@@ -200,6 +228,12 @@ https://templatemo.com/tm-581-kind-heart-charity
                 <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
             </div>
             <button type="submit" id="updateForm" class="btn btn-primary">Register</button>
+
+
+
+
+
+            
         </form>
     </div>
 
