@@ -1,0 +1,106 @@
+
+<html><script>
+    
+    function validateFullName() {
+        var fullNameInput = document.getElementById("fullName");
+        var fullNameError = document.getElementById("fullNameError");
+    
+        var fullNameValue = fullNameInput.value.trim();
+    
+        if (fullNameValue === "") {
+            fullNameError.textContent = "Full Name is required";
+        } else if (/^\d+$/.test(fullNameValue)) {
+            fullNameError.textContent = "Full Name cannot contain numbers";
+        } else {
+            fullNameError.textContent = "";
+        }
+    }
+
+    function validateEmail() {
+        var emailInput = document.getElementById("email");
+        var emailError = document.getElementById("emailError");
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+        if (!emailPattern.test(emailInput.value)) {
+            emailError.textContent = "Invalid email format";
+        } else {
+            emailError.textContent = "";
+        }
+    }
+
+    function validatePhone() {
+        var phoneInput = document.getElementById("phone");
+        var phoneError = document.getElementById("phoneError");
+    
+        // Remove any non-numeric characters from the input
+        var phoneNumber = phoneInput.value.replace(/\D/g, '');
+    
+        if (phoneNumber.length !== 10 || !/^\d{10}$/.test(phoneNumber)) {
+            phoneError.textContent = "Phone Number must be exactly 10 digits long and contain only numbers";
+        } else {
+            phoneError.textContent = "";
+        }
+    }
+    
+
+    function validatePassword() {
+        var passwordInput = document.getElementById("password");
+        var passwordError = document.getElementById("passwordError");
+
+        if (passwordInput.value.length < 6) {
+            passwordError.textContent = "Password must be at least 6 characters long";
+        } else {
+            passwordError.textContent = "";
+        }
+    }
+
+    function validateConfirmPassword() {
+        var confirmPasswordInput = document.getElementById("confirmPassword");
+        var confirmPasswordError = document.getElementById("confirmPasswordError");
+        var passwordInput = document.getElementById("password");
+
+        if (confirmPasswordInput.value !== passwordInput.value) {
+            confirmPasswordError.textContent = "Passwords do not match";
+        } else {
+            confirmPasswordError.textContent = "";
+        }
+    }
+    </script>
+
+    <form method="POST" action="" onsubmit="return validateForm()">
+                                    
+                                    
+                                
+                                    <div class="form-outline form-white mb-4">
+                                        <label class="form-label" for="fullName">fullName</label>
+                                        <input type="text" id="fullName" name="fullName" class="form-control form-control-lg" required oninput="validateFullName()" />
+                                        <span id="fullNameError" class="error"></span>
+                                    </div>
+                                
+                                    <div class="form-outline form-white mb-4">
+                                        <label class="form-label" for="email">Email</label>
+                                        <input type="email" id="email" name="email" class="form-control form-control-lg" required oninput="validateEmail()" />
+                                        <span id="emailError" class="error"></span>
+                                    </div>
+                                
+                                    <div class="form-outline form-white mb-4">
+                                        <label class="form-label" for="phone">Phone Number</label>
+                                        <input type="tel" id="phone" name="phone" class="form-control form-control-lg" required oninput="validatePhone()" />
+                                        <span id="phoneError" class="error"></span>
+                                    </div>
+                                
+                                    <div class="form-outline form-white mb-4">
+                                        <label class="form-label" for="password">Password</label>
+                                        <input type="password" id="password" name="password" class="form-control form-control-lg" required oninput="validatePassword()" />
+                                        <span id="passwordError" class="error"></span>
+                                    </div>
+                                
+                                    <div class="form-outline form-white mb-4">
+                                        <label class="form-label" for="confirmPassword">Confirm Password</label>
+                                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control form-control-lg" required oninput="validateConfirmPassword()" />
+                                        <span id="confirmPasswordError" class="error"></span>
+                                    </div>
+                                
+                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Register</button>
+                                </form>
+                                </html>

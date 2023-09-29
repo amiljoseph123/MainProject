@@ -1,3 +1,30 @@
+<?php
+
+include "config.php";
+if (isset($_POST["submit"])) {
+    $fullName = $_POST["fullName"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $aadhar = $_POST["aadhar"];
+    $password = $_POST["password"];
+    $cpassword = $_POST["cpassword"];
+    
+    
+    
+    if ($password == $cpassword) {
+        $encryptedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO `sponsor_reg`(`s_name`, `s_email`, `s_phone`, `s_aadhar`, `s_password`, `s_cpassword`) VALUES ('$fullName','$email','$phone','$aadhar','$password','$cpassword')";
+        $result = mysqli_query($conn, $sql);
+        header("location:login.php");
+    } else {
+        echo "Password mismatch. Registration not successful.";
+    }
+}
+
+?>
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -162,7 +189,7 @@ https://templatemo.com/tm-581-kind-heart-charity
 <body>
     <div class="form-container">
         <h2 class="mb-4">Registration Form</h2>
-        <form id="registrationForm">
+        <form id="registrationForm" method="POST">
             <!-- <div class="form-group">
                 <label for="fullName">Full Name</label>
                 <input type="text" class="form-control" id="fullName" name="fullName" required>
@@ -196,16 +223,14 @@ https://templatemo.com/tm-581-kind-heart-charity
 
 
             <div class="form-group">
-                <label for="confirmPassword">Confirm Password</label>
-                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                <label for="cpassword">Confirm Password</label>
+                <input type="cpassword" class="form-control" id="cpassword" name="cpassword" required>
             </div>
-            <button type="submit" id="updateForm" class="btn btn-primary">Register</button>
+            <button type="submit" id="submit" name="submit" class="btn btn-primary">Register</button>
         </form>
     </div>
 
    
-
-
 
 
 
@@ -247,88 +272,60 @@ form.addEventListener('submit', function (event) {
   }
 });
 
-    </script>
+</script>
 
-<!-- 
-    <script>
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            var fullName = document.getElementById('fullName').value;
-            var email = document.getElementById('email').value;
-            var phone = document.getElementById('phone').value;
-            var aadhar = document.getElementById('aadhar').value;
-            var password = document.getElementById('password').value;
-            var confirmPassword = document.getElementById('confirmPassword').value;
-    
-            // Full Name validation
-            if (!fullName.match(/^[A-Za-z\s]+$/)) {
-                alert('Please enter a valid Full Name');
-                event.preventDefault();
-                return;
-            }
-    
+
+
+
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', function(event) {
+            let isValid = true;
+
             // Email validation
-            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!email.match(emailRegex)) {
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                isValid = false;
                 alert('Please enter a valid email address');
-                event.preventDefault();
-                return;
             }
-    
-            // Phone validation
-            var phoneRegex = /^[0-9]{10}$/;
-            if (!phone.match(phoneRegex)) {
+
+            // Phone number validation
+            const phone = document.getElementById('phone').value;
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phone)) {
+                isValid = false;
                 alert('Please enter a valid 10-digit phone number');
-                event.preventDefault();
-                return;
             }
-    
-            // Aadhar Number validation
-            var aadharRegex = /^[0-9]{12}$/;
-            if (!aadhar.match(aadharRegex)) {
-                alert('Please enter a valid 12-digit Aadhar Number');
-                event.preventDefault();
-                return;
+
+            // Aadhar number validation
+            const aadhar = document.getElementById('aadhar').value;
+            const aadharRegex = /^[0-9]{12}$/;
+            if (!aadharRegex.test(aadhar)) {
+                isValid = false;
+                alert('Please enter a valid 12-digit Aadhar number');
             }
-    
+
             // Password validation
-            if (password.length < 8) {
-                alert('Password must be at least 8 characters long');
-                event.preventDefault();
-                return;
-            }
-    
-            // Confirm Password validation
-            if (password !== confirmPassword) {
+            const password = document.getElementById('password').value;
+            const cpassword = document.getElementById('cpassword').value;
+            if (password !== cpassword) {
+                isValid = false;
                 alert('Passwords do not match');
+            }
+
+            if (!isValid) {
                 event.preventDefault();
-                return;
             }
         });
-    </script> -->
+    });
+</script>
 
-
-
-
-
-<!-- 
-     <script>
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            var fullName = document.getElementById('fullName').value;
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
-            var confirmPassword = document.getElementById('confirmPassword').value;
-    
-            // Full Name validation
-            if (!fullName.match(/^[A-Za-z\s]+$/)) {
-                alert('Please enter a valid Full Name');
-                event.preventDefault();
-                return;
-            } -->
-    
-       <!-- });
-   </script>  -->
-    
-    
+ 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

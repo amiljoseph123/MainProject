@@ -1,3 +1,97 @@
+<!-- <?php
+
+
+
+
+
+
+$db = new mysqli("localhost", "root", "", "infant_care");
+
+if (isset($_POST['logbutton'])) 
+{
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $query = "SELECT * FROM sponsor_reg WHERE email = '$email' AND password = '$password'";
+    $result = $db->query($query);
+    if ($result->num_rows > 0) {
+
+        session_start();
+        $email= $_SESSION['email'] ;
+        header('Location: Dindex.html');
+    } else {
+
+        echo "Incorrect email or password";
+    }
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// @include 'config.php';
+
+// session_start();
+
+// if(isset($_POST['submit'])){
+
+//    $name = mysqli_real_escape_string($conn, $_POST['name']);
+  
+//    $cpass = md5($_POST['cpassword']);
+//    $user_type = $_POST['user_type'];
+
+//    $select = " SELECT * FROM login_table WHERE email = '$email' && password = '$pass' ";
+
+//    $result = mysqli_query($conn, $select);
+
+//    if(mysqli_num_rows($result) > 0)
+//    {
+
+//       $row = mysqli_fetch_array($result);
+
+//       if($row['user_type'] == 'admin'){
+
+//          $_SESSION['admin_name'] = $row['name'];
+//          header('location:admin_page.php');
+
+//       }elseif($row['user_type'] == 'user'){
+
+//          $_SESSION['user_name'] = $row['name'];
+//          header('location:user_page.php');
+
+//       }
+     
+//    }else{
+//       $error[] = 'incorrect email or password!';
+//    }
+
+// }
+;
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -159,7 +253,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                 <div class="row">
 
                     <div class="col-lg-6 col-12 mx-auto">
-                        <form class="custom-form donate-form" action="#" method="post" role="form" onsubmit="return validateForm()">
+                        <form class="custom-form donate-form" action="Dindex.html" method="post" role="form" onsubmit="return validateForm()" >
                             <div class="form-group">
                                 <h2 class="mb-4">login Now</h2>
                                 <label for="email">Email</label>
@@ -170,10 +264,24 @@ https://templatemo.com/tm-581-kind-heart-charity
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
+                            <input 
+    type="submit" 
+    value="login" 
+    name="login" 
+    class="form-control mt-4" 
+    onclick="validateForm()"
+    onmouseover="this.style.backgroundColor='#ccc'; this.style.cursor='pointer'"
+    onmouseout="this.style.backgroundColor=''; this.style.cursor='auto'"
+>
 
-                                    <button type="submit" class="form-control mt-4" onclick="validateForm()">Login</button>
+                                    <!-- <button type="submit" class="form-control mt-4" onclick="validateForm()" ></button> -->
                                 </div>
                             </div>
+
+
+
+
+
                         </form>
                     </div>
 

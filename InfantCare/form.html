@@ -1,3 +1,53 @@
+
+
+<?php
+include "connect.php";
+if (isset($_POST["sub"])) {
+    $f = $_POST["fnam"];
+    $m = $_POST["mnam"];
+    $l = $_POST["lnam"];
+    $dob = $_POST["db"];
+    $g = $_POST["gender"];
+    $a = $_POST["aadhar"];
+    $ad = $_POST["add"];
+    $s = $_POST["state"];
+    $district = $_POST["district"];
+    $p = $_POST["pin"];
+    $b = $_POST["blood"];
+    $fn = $_POST["father"];
+    $mn = $_POST["mother"];
+    $fc = $_POST["foc"];
+    $mc = $_POST["moc"];
+    $e = $_POST["mail"];
+    $u = $_POST["us"];
+    $ps = $_POST["pass"];
+    $ps1 = $_POST["pas1"];
+    
+    if ($ps == $ps1) {
+        $encryptedPassword = password_hash($ps, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO `student` (`fname`, `middle`, `lname`, `dob`, `gender`, `aadhar`, `address`, `state`, `district`, `pincode`, `bloodgroup`, `father`, `mother`, `foccup`, `moccup`, `email`, `username`, `pass`, `conpass`) VALUES ('$f','$m','$l','$dob','$g','$a','$ad','$s','$district','$p','$b','$fn','$mn','$fc','$mc','$e','$u','$ps','$ps1')";
+        $result = mysqli_query($con, $sql);
+        header("location:login.php");
+    } else {
+        echo "Password mismatch. Registration not successful.";
+    }
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -247,88 +297,61 @@ form.addEventListener('submit', function (event) {
   }
 });
 
-    </script>
-
-
-    <!-- <script> 
-        // document.getElementById('registrationForm').addEventListener('submit', function(event) {
-        //     var fullName = document.getElementById('fullName').value;
-        //     var email = document.getElementById('email').value;
-        //     var phone = document.getElementById('phone').value;
-        //     var aadhar = document.getElementById('aadhar').value;
-        //     var password = document.getElementById('password').value;
-        //     var confirmPassword = document.getElementById('confirmPassword').value;
-    
-        //     // Full Name validation
-        //     if (!fullName.match(/^[A-Za-z\s]+$/)) {
-        //         alert('Please enter a valid Full Name');
-        //         event.preventDefault();
-        //         return;
-        //     }
-    
-        //    Email validation
-        //    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        //    if (!email.match(emailRegex)) {
-        //         alert('Please enter a valid email address');
-        //          event.preventDefault();
-        //          return;
-        //     }
-    
-        //     // Phone validation
-        //     var phoneRegex = /^[0-9]{10}$/;
-        //     if (!phone.match(phoneRegex)) {
-        //         alert('Please enter a valid 10-digit phone number');
-        //         event.preventDefault();
-        //         return;
-        //     }
-    
-        //     // Aadhar Number validation
-        //     var aadharRegex = /^[0-9]{12}$/;
-        //     if (!aadhar.match(aadharRegex)) {
-        //         alert('Please enter a valid 12-digit Aadhar Number');
-        //         event.preventDefault();
-        //         return;
-        //     }
-    
-        //     // Password validation
-        //     if (password.length < 8) {
-        //         alert('Password must be at least 8 characters long');
-        //         event.preventDefault();
-        //         return;
-        //     }
-    
-        //     // Confirm Password validation
-        //     if (password !== confirmPassword) {
-        //         alert('Passwords do not match');
-        //         event.preventDefault();
-        //         return;
-        //     }
-        // });
-    </script> -->
+</script>
 
 
 
 
+<script>
 
-<!-- 
-     <script>
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            var fullName = document.getElementById('fullName').value;
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
-            var confirmPassword = document.getElementById('confirmPassword').value;
-    
-            // Full Name validation
-            if (!fullName.match(/^[A-Za-z\s]+$/)) {
-                alert('Please enter a valid Full Name');
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', function(event) {
+            let isValid = true;
+
+            // Email validation
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                isValid = false;
+                alert('Please enter a valid email address');
+            }
+
+            // Phone number validation
+            const phone = document.getElementById('phone').value;
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phone)) {
+                isValid = false;
+                alert('Please enter a valid 10-digit phone number');
+            }
+
+            // Aadhar number validation
+            const aadhar = document.getElementById('aadhar').value;
+            const aadharRegex = /^[0-9]{12}$/;
+            if (!aadharRegex.test(aadhar)) {
+                isValid = false;
+                alert('Please enter a valid 12-digit Aadhar number');
+            }
+
+            // Password validation
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (password !== confirmPassword) {
+                isValid = false;
+                alert('Passwords do not match');
+            }
+
+            if (!isValid) {
                 event.preventDefault();
-                return;
-            } -->
-    
-       <!-- });
-   </script>  -->
-    
-    
+            }
+        });
+    });
+</script>
+
+ 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
