@@ -1,98 +1,4 @@
-<!-- <?php
-
-
-
-
-
-
-$db = new mysqli("localhost", "root", "", "infant_care");
-
-if (isset($_POST['logbutton'])) 
-{
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $query = "SELECT * FROM sponsor_reg WHERE email = '$email' AND password = '$password'";
-    $result = $db->query($query);
-    if ($result->num_rows > 0) {
-
-        session_start();
-        $email= $_SESSION['email'] ;
-        header('Location: Dindex.html');
-    } else {
-
-        echo "Incorrect email or password";
-    }
-}
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// @include 'config.php';
-
-// session_start();
-
-// if(isset($_POST['submit'])){
-
-//    $name = mysqli_real_escape_string($conn, $_POST['name']);
-  
-//    $cpass = md5($_POST['cpassword']);
-//    $user_type = $_POST['user_type'];
-
-//    $select = " SELECT * FROM login_table WHERE email = '$email' && password = '$pass' ";
-
-//    $result = mysqli_query($conn, $select);
-
-//    if(mysqli_num_rows($result) > 0)
-//    {
-
-//       $row = mysqli_fetch_array($result);
-
-//       if($row['user_type'] == 'admin'){
-
-//          $_SESSION['admin_name'] = $row['name'];
-//          header('location:admin_page.php');
-
-//       }elseif($row['user_type'] == 'user'){
-
-//          $_SESSION['user_name'] = $row['name'];
-//          header('location:user_page.php');
-
-//       }
-     
-//    }else{
-//       $error[] = 'incorrect email or password!';
-//    }
-
-// }
-;
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -190,7 +96,7 @@ https://templatemo.com/tm-581-kind-heart-charity
 
     <nav class="navbar navbar-expand-lg bg-light shadow-lg">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.php">
                 <img src="images/logo.png" class="logo img-fluid" alt="">
                 <span>
                     Kind Heart Charity
@@ -253,8 +159,8 @@ https://templatemo.com/tm-581-kind-heart-charity
                 <div class="row">
 
                     <div class="col-lg-6 col-12 mx-auto">
-                        <form class="custom-form donate-form" action="Dindex.html" method="post" role="form" onsubmit="return validateForm()" >
-                            <div class="form-group">
+                        <form class="custom-form donate-form" action="#"   method="post" role="form" onsubmit="return validateForm()" >
+                            <div class="form-group"> 
                                 <h2 class="mb-4">login Now</h2>
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" required>
@@ -264,15 +170,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
-                            <input 
-    type="submit" 
-    value="login" 
-    name="login" 
-    class="form-control mt-4" 
-    onclick="validateForm()"
-    onmouseover="this.style.backgroundColor='#ccc'; this.style.cursor='pointer'"
-    onmouseout="this.style.backgroundColor=''; this.style.cursor='auto'"
->
+                            <input type="submit" name="login" value="login">
 
                                     <!-- <button type="submit" class="form-control mt-4" onclick="validateForm()" ></button> -->
                                 </div>
@@ -392,3 +290,85 @@ https://templatemo.com/tm-581-kind-heart-charity
 </body>
 
 </html>
+<?php
+// session_start();
+// include "config.php"; // Include your database connection script
+
+//  if (isset($_POST["login"])) {
+//    $email = $_POST["email"];
+//    $password = $_POST["password"];
+
+    
+
+     // Retrieve user data from the database based on the entered username
+//     $query = mysqli_query($conn,"SELECT * FROM `sponsor_reg` WHERE `s_email` = '$email' OR `s_password`='$password'");
+//     $row = mysqli_fetch_assoc($query);
+//      if(mysqli_num_rows($query)>0){
+//         $_SESSION["login"]=true;
+//         $_SESSION["id"]=$row["id"];
+//         header("Location:index.php");
+//     }
+//  else
+//  {
+//      echo
+   
+//      "<script> alert('user not Registered'); </script>";
+//  } 
+// }/
+
+
+
+      
+    	$con=mysqli_connect("localhost","root","","infant_care")or die("error");   
+		if (isset($_POST["login"])) // log= Button name in Login FORM
+		{
+			$name=$_POST["email"];// Uname=Username
+			$password=$_POST["Password"]; // Password
+			$result=mysqli_query($con,"SELECT * FROM sponsor_reg WHERE s_email='$email' AND s_password='$password'") or die("error");
+			if(mysqli_num_rows($result)<=0)
+			{
+				echo "Login failure";
+			}
+			else
+			{
+				session_start();
+				$_SESSION['email']=$email;
+				header("location:index.php");
+				exit();
+			}
+			
+		}
+?>
+
+<?php        
+    	$con=mysqli_connect("localhost","root","","Database_name")or die("error");   
+		if (isset($_POST["log"])) // log= Button name in Login FORM
+		{
+			$name=$_POST["Uname"];// Uname=Username
+			$pswd=$_POST["Pass"]; // Password
+			$result=mysqli_query($con,"SELECT * FROM login WHERE username='$name' AND password='$pswd'") or die("error");
+			if(mysqli_num_rows($result)<=0)
+			{
+				echo "Login failure";
+			}
+			else
+			{
+				session_start();
+				$_SESSION['username']=$name;
+				header("location:index.php");
+				exit();
+			}
+			
+		}
+?>
+
+
+        
+
+
+
+
+
+
+
+

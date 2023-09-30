@@ -212,7 +212,7 @@ https://templatemo.com/tm-581-kind-heart-charity
 
                     <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                         <div class="featured-block d-flex justify-content-center align-items-center">
-                            <a href="demo2.html" class="d-block">
+                            <a href="sponsor_reg.php" class="d-block">
                                 <img src="images/icons/hands.png" class="featured-block-image img-fluid" alt="">
 
                                 <p class="featured-block-text"><strong>Sponsor</strong></p>
