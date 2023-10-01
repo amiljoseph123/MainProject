@@ -10,7 +10,7 @@ require 'header.php';
                 <div class="row">
 
                     <div class="col-lg-6 col-12 mx-auto">
-                        <form class="custom-form donate-form" action="#"   method="post" role="form" onsubmit="return validateForm()" >
+                        <form class="custom-form donate-form" action="Login.php"   method="post" role="form" onsubmit="return validateForm()" >
                             <div class="form-group"> 
                                 <h2 class="mb-4">login Now</h2>
                                 <label for="email">Email</label>
@@ -88,7 +88,8 @@ require 'footer.php';
 			{
 				session_start();
 				$_SESSION['email']=$email;
-				header("location:index.php");
+				$script = "<script> window.location = 'Dindex.html';</script>";
+                echo $script;
 				exit();
 			}
 			

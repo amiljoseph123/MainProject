@@ -3,37 +3,60 @@
 require 'header.php';
 ?> 
 
+<?php
+include "config.php";
+if (isset($_POST["submit"])) {
+    $name= $_POST["name"];
+    $orphanageId= $_POST["orphanageId"];
+    $email = $_POST["email"];
+    $mobile = $_POST["mobile"];
+
+    $establishedDate= $_POST["establishedDate"];
+    $district= $_POST["district"];
+    $city = $_POST["city"];
+    $pincode = $_POST["pincode"];
+
+    $password = $_POST["password"];
+    $confirmPassword = $_POST["confirmPassword"];
     
-<!-- <!doctype html>
-<html lang="en">
+    
+    
+    if ($password == $confirmPassword) {
+        $encryptedPassword = password_hash($password, PASSWORD_DEFAULT);
+        //$sql = "INSERT INTO `orphanage_reg`(`o_id`, `o_name`, `o_govtid`, `o_email`, `o_contact`, `o_date`, `o_district`, `o_city`, `o_pincode`, `o_password`, `o_confirmpassword`, `o_status`) VALUES ('$name','$orphanageId','$email','$mobile','$establishedDate','$district','$city','$pincode','$password','$confirmPassword')";
+        $sql="INSERT INTO `orphanage_reg` (`o_name`, `o_govtid`, `o_email`, `o_contact`, `o_date`, `o_district`, `o_city`, `o_pincode`, `o_password`, `o_confirmpassword`, `o_status`) VALUES ('$name','$orphanageId','$email','$mobile','$establishedDate','$district','$city','$pincode','$password','$confirmPassword')";
 
+        $result = mysqli_query($conn, $sql);
+        // header("location:Login.php");
+        $script = "<script> window.location = 'Login.php';</script>";
+        echo $script;
+    } else {
+        echo "Password mismatch. Registration not successful.";
+    }
+}
+
+?>
+<?
+$result = mysqli_query($conn, $sql);
+if (!$result) {
+    echo "Error: " . mysqli_error($conn);
+}
+?>
+
+
+
+    
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Kind Heart Charity - Donation</title>
-
-    CSS FILES -->
-    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> --> 
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head> 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-<!-- <title>Registration Page</title> -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Page</title>
 <style>
-    /* body {
+    body {
         font-family: Arial, sans-serif;
         background-color: #f4f4f4;
-    } */
+    }
     .container1 {
         max-width: 500px;
         margin: 0 auto;
@@ -50,7 +73,7 @@ require 'header.php';
         display: block;
         margin-bottom: 5px;
     }
-    .form-group input {
+    .form-group input, .form-group select {
         width: 100%;
         padding: 8px;
         border: 1px solid #ccc;
@@ -64,11 +87,15 @@ require 'header.php';
         border-radius: 4px;
         cursor: pointer;
     }
+    .error-message {
+        color: #ff0000;
+        font-size: 12px;
+    }
 </style>
 <!-- <script> -->
     <!-- function validateForm() { -->
         <!-- var orphanageId = document.getElementById("orphanageId").value; -->
-        <!-- var districtId = document.getElementById("districtId").value; -->
+        <!-- var district = document.getElementById("district").value; -->
         <!-- var email = document.getElementById("email").value; -->
         <!-- var name = document.getElementById("name").value; -->
         <!-- var mobile = document.getElementById("mobile").value; -->
@@ -76,18 +103,39 @@ require 'header.php';
         <!-- var pincode = document.getElementById("pincode").value; -->
         <!-- var establishedDate = document.getElementById("establishedDate").value; -->
 
-        <!-- // Simple validations (you can add more complex validations) -->
-        <!-- if (orphanageId == "" || districtId == "" || email == "" || name == "" || mobile == "" || city == "" || pincode == "" || establishedDate == "") { -->
-            <!-- alert("All fields are required."); -->
+        <!-- // Simple validations -->
+        <!-- if (orphanageId.trim() == "" || district == "" || email.trim() == "" || name.trim() == "" || mobile.trim() == "" || city.trim() == "" || pincode.trim() == "" || establishedDate.trim() == "") { -->
+            <!-- document.getElementById("errorMessage").innerHTML = "All fields are required."; -->
             <!-- return false; -->
         <!-- } -->
 
-        <!-- // Add more complex validations if needed -->
+        <!-- // Email validation -->
+        <!-- var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; -->
+        <!-- if (!emailRegex.test(email)) { -->
+            <!-- document.getElementById("errorMessage").innerHTML = "Please enter a valid email address."; -->
+            <!-- return false; -->
+        <!-- } -->
+
+        <!-- // Mobile number validation -->
+        <!-- var mobileRegex = /^[0-9]{10}$/; -->
+        <!-- if (!mobileRegex.test(mobile)) { -->
+            <!-- document.getElementById("errorMessage").innerHTML = "Please enter a 10-digit mobile number."; -->
+            <!-- return false; -->
+        <!-- } -->
+
+        <!-- // Pincode validation -->
+        <!-- var pincodeRegex = /^[0-9]{6}$/; -->
+        <!-- if (!pincodeRegex.test(pincode)) { -->
+            <!-- document.getElementById("errorMessage").innerHTML = "Please enter a 6-digit pincode."; -->
+            <!-- return false; -->
+        <!-- } -->
+
+        <!-- // Clear error message -->
+        <!-- document.getElementById("errorMessage").innerHTML = ""; -->
 
         <!-- return true; -->
     <!-- } -->
 <!-- </script> -->
-
 
 
 <script>
@@ -107,26 +155,30 @@ require 'header.php';
 </script>
 
 
-<!-- </head> -->
-<main>
+</head>
+<body>
     <div class="container1">
         <h2>Registration Form</h2>
-        <form onsubmit="return validateForm()">
+        <form method="POST" onsubmit="return validateForm()">
+
+
+        <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+            </div>
+
+
+
             <div class="form-group">
                 <label for="orphanageId">Orphanage ID</label>
                 <input type="text" id="orphanageId" name="orphanageId">
             </div>
-            <div class="form-group">
-                <label for="districtId">District ID</label>
-                <input type="text" id="districtId" name="districtId">
-            </div>
-			
+           
             <!-- <div class="form-group"> -->
                 <!-- <label for="email">Email</label> -->
                 <!-- <input type="email" id="email" name="email"> -->
             <!-- </div> -->
-			
-			            <div class="form-group">
+			        <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" onkeyup="validateEmail()">
                 <div id="emailError" class="error-message"></div>
@@ -134,14 +186,39 @@ require 'header.php';
 			
 			
 			
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name">
-            </div>
+			
             <div class="form-group">
                 <label for="mobile">Mobile</label>
                 <input type="text" id="mobile" name="mobile">
             </div>
+
+            <div class="form-group">
+                <label for="establishedDate">Established Date</label>
+                <input type="date" id="establishedDate" name="establishedDate">
+            </div>
+
+            <div class="form-group">
+                <label for="district">District</label>
+                <select id="district" name="district">
+                    <option value="">Select District</option>
+                    <option value="Trivandrum">Trivandrum</option>
+                    <option value="Kollam">Kollam</option>
+                    <option value="Pathanamthitta">Pathanamthitta</option>
+                    <option value="Alappuzha">Alappuzha</option>
+                    <option value="Kottayam">Kottayam</option>
+                    <option value="Idukki">Idukki</option>
+                    <option value="Ernakulam">Ernakulam</option>
+                    <option value="Thrissur">Thrissur</option>
+                    <option value="Palakkad">Palakkad</option>
+                    <option value="Malappuram">Malappuram</option>
+                    <option value="Kozhikode">Kozhikode</option>
+                    <option value="Wayanad">Wayanad</option>
+                    <option value="Kannur">Kannur</option>
+                    <option value="Kasaragod">Kasaragod</option>
+                </select>
+            </div>
+
+
             <div class="form-group">
                 <label for="city">City</label>
                 <input type="text" id="city" name="city">
@@ -150,17 +227,27 @@ require 'header.php';
                 <label for="pincode">Pincode</label>
                 <input type="text" id="pincode" name="pincode">
             </div>
+
             <div class="form-group">
-                <label for="establishedDate">Established Date</label>
-                <input type="date" id="establishedDate" name="establishedDate">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
             </div>
+
             <div class="form-group">
-                <button type="submit">Register</button>
+                <label for="cpassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPasssword">
             </div>
+          
+            <div class="form-group">
+                <!-- <button type="submit">Register</button> -->
+                <button type="submit" id="submit" name="submit" class="btn btn-primary">Register</button>
+            </div>
+            <div id="errorMessage" class="error-message"></div>
         </form>
     </div>
-</main>
+</body>
 </html>
+
 
 
 <?php
