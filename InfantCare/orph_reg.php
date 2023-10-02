@@ -4,37 +4,33 @@ require 'header.php';
 ?> 
 
 <?php
-include "config.php";
-if (isset($_POST["submit"])) {
-    $name= $_POST["name"];
-    $orphanageId= $_POST["orphanageId"];
-    $email = $_POST["email"];
-    $mobile = $_POST["mobile"];
+$con=mysqli_connect("localhost","root","","infant_care2") or die("error");
+if (isset($_POST['submit'])) {
+    $name = $_POST['orphanage_name'];
+    $id = $_POST['orphanage_govt_id'];
+    $date = $_POST['orphanage_established_date'];
+    $email = $_POST['orphanage_email'];
+    $phone = $_POST['orphanage_phone'];
+    $district = $_POST['orphanage_district'];
+    $city = $_POST['orphanage_city'];
+    $pincode = $_POST['orphanage_pincode'];
+    $password = $_POST['orphanage_password'];
+  
+    $user_type = "Orphanage";
+    $result = mysqli_query($con, "SELECT * FROM `login` WHERE `Email`='$email'") or die("error");
 
-    $establishedDate= $_POST["establishedDate"];
-    $district= $_POST["district"];
-    $city = $_POST["city"];
-    $pincode = $_POST["pincode"];
-
-    $password = $_POST["password"];
-    $confirmPassword = $_POST["confirmPassword"];
-    
-    
-    
-    if ($password == $confirmPassword) {
-        $encryptedPassword = password_hash($password, PASSWORD_DEFAULT);
-        //$sql = "INSERT INTO `orphanage_reg`(`o_id`, `o_name`, `o_govtid`, `o_email`, `o_contact`, `o_date`, `o_district`, `o_city`, `o_pincode`, `o_password`, `o_confirmpassword`, `o_status`) VALUES ('$name','$orphanageId','$email','$mobile','$establishedDate','$district','$city','$pincode','$password','$confirmPassword')";
-        $sql="INSERT INTO `orphanage_reg` (`o_name`, `o_govtid`, `o_email`, `o_contact`, `o_date`, `o_district`, `o_city`, `o_pincode`, `o_password`, `o_confirmpassword`, `o_status`) VALUES ('$name','$orphanageId','$email','$mobile','$establishedDate','$district','$city','$pincode','$password','$confirmPassword')";
-
-        $result = mysqli_query($conn, $sql);
-        // header("location:Login.php");
-        $script = "<script> window.location = 'Login.php';</script>";
-        echo $script;
-    } else {
-        echo "Password mismatch. Registration not successful.";
+    if(mysqli_num_rows($result) <= 0){
+        mysqli_query($con, "INSERT INTO `login` VALUES ('$email','$user_type','$password')") or die("Registration failed, Please Try Again");
+        mysqli_query($con, "INSERT INTO `orphanage`(`o_id`, `o_name`, `o_govtid`, `o_edate`, `o_email`, `o_phone`, `o_district`, `o_city`, `o_pincode`) VALUES (default,'$name','$id','$date','$email','$phone','$district','$city','$pincode')") or die(mysqli_error($con));
+        echo '<script>alert("Registration is successful");</script>';
+        echo "<script> window.location = 'New_Login.php';</script>";
     }
+    else {
+        echo '<script>alert("Email already registered. Please use a different email.")</script>';
+    }
+} else {
+    echo '<script>alert("Registration is failed")</script>';
 }
-
 ?>
 <?
 $result = mysqli_query($conn, $sql);
@@ -45,7 +41,6 @@ if (!$result) {
 
 
 
-    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,50 +87,6 @@ if (!$result) {
         font-size: 12px;
     }
 </style>
-<!-- <script> -->
-    <!-- function validateForm() { -->
-        <!-- var orphanageId = document.getElementById("orphanageId").value; -->
-        <!-- var district = document.getElementById("district").value; -->
-        <!-- var email = document.getElementById("email").value; -->
-        <!-- var name = document.getElementById("name").value; -->
-        <!-- var mobile = document.getElementById("mobile").value; -->
-        <!-- var city = document.getElementById("city").value; -->
-        <!-- var pincode = document.getElementById("pincode").value; -->
-        <!-- var establishedDate = document.getElementById("establishedDate").value; -->
-
-        <!-- // Simple validations -->
-        <!-- if (orphanageId.trim() == "" || district == "" || email.trim() == "" || name.trim() == "" || mobile.trim() == "" || city.trim() == "" || pincode.trim() == "" || establishedDate.trim() == "") { -->
-            <!-- document.getElementById("errorMessage").innerHTML = "All fields are required."; -->
-            <!-- return false; -->
-        <!-- } -->
-
-        <!-- // Email validation -->
-        <!-- var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; -->
-        <!-- if (!emailRegex.test(email)) { -->
-            <!-- document.getElementById("errorMessage").innerHTML = "Please enter a valid email address."; -->
-            <!-- return false; -->
-        <!-- } -->
-
-        <!-- // Mobile number validation -->
-        <!-- var mobileRegex = /^[0-9]{10}$/; -->
-        <!-- if (!mobileRegex.test(mobile)) { -->
-            <!-- document.getElementById("errorMessage").innerHTML = "Please enter a 10-digit mobile number."; -->
-            <!-- return false; -->
-        <!-- } -->
-
-        <!-- // Pincode validation -->
-        <!-- var pincodeRegex = /^[0-9]{6}$/; -->
-        <!-- if (!pincodeRegex.test(pincode)) { -->
-            <!-- document.getElementById("errorMessage").innerHTML = "Please enter a 6-digit pincode."; -->
-            <!-- return false; -->
-        <!-- } -->
-
-        <!-- // Clear error message -->
-        <!-- document.getElementById("errorMessage").innerHTML = ""; -->
-
-        <!-- return true; -->
-    <!-- } -->
-<!-- </script> -->
 
 
 <script>
@@ -159,47 +110,78 @@ if (!$result) {
 <body>
     <div class="container1">
         <h2>Registration Form</h2>
-        <form method="POST" onsubmit="return validateForm()">
+        <form onsubmit="return validateForm()" method="POST">
+		
+			<div class="form-group">
+    <label for="orphanage_name">Name</label>
+    <input type="text" id="orphanage_name" name="orphanage_name">
+    <div id="nameError" style="color: red;"></div>
+</div>
 
+<script>
+    document.getElementById('name').addEventListener('input', function() {
+        var nameInput = this.value;
+        var nameError = document.getElementById('nameError');
+        var regex = /^[A-Z][a-zA-Z\s]*$/;
 
-        <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name">
-            </div>
-
-
-
+        if (!regex.test(nameInput)) {
+            nameError.textContent = "Name must start with a capital letter and contain only letters and spaces.";
+        } else {
+            nameError.textContent = "";
+        }
+    });
+</script>
+		
+		
+		
+		
             <div class="form-group">
-                <label for="orphanageId">Orphanage ID</label>
-                <input type="text" id="orphanageId" name="orphanageId">
+                <label for="orphanage_govt_id">Orphanage ID</label>
+                <input type="text" id="orphanage_govt_id" name="orphanage_govt_id">
+            </div>
+            
+			
+            <div class="form-group">
+                <label for="orphanage_established_date">Established Date</label>
+                <input type="date" id="orphanage_established_date" name="orphanage_established_date">
             </div>
            
-            <!-- <div class="form-group"> -->
-                <!-- <label for="email">Email</label> -->
-                <!-- <input type="email" id="email" name="email"> -->
-            <!-- </div> -->
 			        <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" onkeyup="validateEmail()">
+                <label for="orphanage_email">Email</label>
+                <input type="email" id="orphanage_email" name="orphanage_email" onkeyup="validateEmail()">
                 <div id="emailError" class="error-message"></div>
             </div>
 			
 			
 			
 			
-            <div class="form-group">
-                <label for="mobile">Mobile</label>
-                <input type="text" id="mobile" name="mobile">
-            </div>
+			
+			<div class="form-group">
+    <label for="orphanage_phone">Mobile Number</label>
+    <input type="text" id="orphanage_phone" name="orphanage_phone" pattern="\d{10}" required>
+    <div id="mobileError" style="color: red;"></div>
+</div>
 
-            <div class="form-group">
-                <label for="establishedDate">Established Date</label>
-                <input type="date" id="establishedDate" name="establishedDate">
-            </div>
+<script>
+    document.getElementById('mobile').addEventListener('input', function() {
+        var mobileInput = this.value;
+        var mobileError = document.getElementById('mobileError');
+        var regex = /^\d{10}$/;
 
-            <div class="form-group">
-                <label for="district">District</label>
-                <select id="district" name="district">
+        if (!regex.test(mobileInput)) {
+            mobileError.textContent = "Please enter a valid 10-digit mobile number.";
+        } else {
+            mobileError.textContent = "";
+        }
+    });
+</script>
+
+
+			
+			
+			<div class="form-group">
+                <label for="orphanage_district">District</label>
+                <select id="orphanage_district" name="orphanage_district">
                     <option value="">Select District</option>
                     <option value="Trivandrum">Trivandrum</option>
                     <option value="Kollam">Kollam</option>
@@ -217,37 +199,107 @@ if (!$result) {
                     <option value="Kasaragod">Kasaragod</option>
                 </select>
             </div>
+			
+			
+           
+			
+			<div class="form-group">
+    <label for="orphanage_city">City</label>
+    <input type="text" id="orphanage_city" name="orphanage_city">
+    <div id="cityError" style="color: red;"></div>
+</div>
+
+<script>
+    document.getElementById('city').addEventListener('input', function() {
+        var cityInput = this.value;
+        var cityError = document.getElementById('cityError');
+        var regex = /^[a-zA-Z\s]+$/;
+
+        if (!regex.test(cityInput)) {
+            cityError.textContent = "Please enter a valid city name (alphabetic characters only).";
+        } else {
+            cityError.textContent = "";
+        }
+    });
+</script>
+
+			
+			
+           
+			
+			<div class="form-group">
+    <label for="orphanage_pincode">Pincode</label>
+    <input type="text" id="orphanage_pincode" name="orphanage_pincode">
+    <div id="pincodeError" style="color: red;"></div>
+</div>
+
+<script>
+    document.getElementById('pincode').addEventListener('input', function() {
+        var pincodeInput = this.value;
+        var pincodeError = document.getElementById('pincodeError');
+        var regex = /^[1-9][0-9]{5}$/;
+
+        if (!regex.test(pincodeInput)) {
+            pincodeError.textContent = "Please enter a valid 6-digit pincode.";
+        } else {
+            pincodeError.textContent = "";
+        }
+    });
+</script>
 
 
-            <div class="form-group">
-                <label for="city">City</label>
-                <input type="text" id="city" name="city">
-            </div>
-            <div class="form-group">
-                <label for="pincode">Pincode</label>
-                <input type="text" id="pincode" name="pincode">
-            </div>
+<div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password">
+    <div id="passwordError" style="color: red;"></div>
+</div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password">
-            </div>
+<div class="form-group">
+    <label for="orphanage_password">Confirm Password</label>
+    <input type="password" id="orphanage_password" name="orphanage_password">
+    <div id="confirmPasswordError" style="color: red;"></div>
+</div>
 
+<script>
+    document.getElementById('password').addEventListener('input', function() {
+        var passwordInput = this.value;
+        var passwordError = document.getElementById('passwordError');
+        var regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        if (!regex.test(passwordInput)) {
+            passwordError.textContent = "Password must contain at least one letter, one number, and one special character, and be at least 8 characters long.";
+        } else {
+            passwordError.textContent = "";
+        }
+    });
+
+    document.getElementById('confirmPassword').addEventListener('input', function() {
+        var confirmPasswordInput = this.value;
+        var confirmPasswordError = document.getElementById('confirmPasswordError');
+        var passwordInput = document.getElementById('password').value;
+
+        if (confirmPasswordInput !== passwordInput) {
+            confirmPasswordError.textContent = "Passwords do not match.";
+        } else {
+            confirmPasswordError.textContent = "";
+        }
+    });
+</script>
+
+			
+			
             <div class="form-group">
-                <label for="cpassword">Confirm Password</label>
-                <input type="password" id="confirmPassword" name="confirmPasssword">
-            </div>
-          
-            <div class="form-group">
-                <!-- <button type="submit">Register</button> -->
-                <button type="submit" id="submit" name="submit" class="btn btn-primary">Register</button>
+                <button type="submit" name="submit">Register</button>
             </div>
             <div id="errorMessage" class="error-message"></div>
+			
+					
         </form>
     </div>
+	
+	
 </body>
 </html>
-
 
 
 <?php

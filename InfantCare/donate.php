@@ -144,7 +144,7 @@ https://templatemo.com/tm-581-kind-heart-charity
 
                             <div class="row">
                                 <div class="col-lg-12 col-12">
-                                    <h5 class="mb-3">Donation Frequency</h5>
+                                    <!-- <h5 class="mb-3">Donation Frequency</h5> -->
                                 </div>
 
                                 <div class="col-lg-6 col-6 form-check-group form-check-group-donation-frequency">
@@ -248,12 +248,12 @@ https://templatemo.com/tm-581-kind-heart-charity
 
                                 <div class="col-lg-6 col-12 mt-2">
                                     <input type="text" name="donation-name" id="donation-name" class="form-control"
-                                        placeholder="Jack Doe" required>
+                                        placeholder="name" required>
                                 </div>
 
                                 <div class="col-lg-6 col-12 mt-2">
                                     <input type="email" name="donation-email" id="donation-email"
-                                        pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Jackdoe@gmail.com"
+                                        pattern="[^ @]*@[^ @]*" class="form-control" placeholder="email"
                                         required>
                                 </div>
 
