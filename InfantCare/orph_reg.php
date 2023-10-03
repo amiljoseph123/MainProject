@@ -91,7 +91,7 @@ if (!$result) {
 
 <script>
     function validateEmail() {
-        var email = document.getElementById("email").value;
+        var email = document.getElementById("orphanage_email").value;
         var emailError = document.getElementById("emailError");
 
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -119,7 +119,7 @@ if (!$result) {
 </div>
 
 <script>
-    document.getElementById('name').addEventListener('input', function() {
+    document.getElementById('orphanage_name').addEventListener('input', function() {
         var nameInput = this.value;
         var nameError = document.getElementById('nameError');
         var regex = /^[A-Z][a-zA-Z\s]*$/;
@@ -134,11 +134,34 @@ if (!$result) {
 		
 		
 		
+
+<div class="form-group">
+    <label for="orphanage_govt_id">Orphanage ID</label>
+    <input type="text" id="orphanage_govt_id" name="orphanage_govt_id" oninput="validateGovtID(this)">
+    <span id="govt_id_error" style="color: red;"></span>
+</div>
+
+<script>
+function validateGovtID(input) {
+    // Define your validation logic here
+    var govtID = input.value;
+    var govtIDPattern = /^[A-Z]{2}\d{4}$/; // Example: Two letters followed by four digits
+
+    if (govtIDPattern.test(govtID)) {
+        document.getElementById('govt_id_error').textContent = '';
+    } else {
+        document.getElementById('govt_id_error').textContent = 'Invalid government ID format.';
+    }
+}
+</script>
+
+
+
 		
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="orphanage_govt_id">Orphanage ID</label>
                 <input type="text" id="orphanage_govt_id" name="orphanage_govt_id">
-            </div>
+            </div> -->
             
 			
             <div class="form-group">
@@ -163,7 +186,7 @@ if (!$result) {
 </div>
 
 <script>
-    document.getElementById('mobile').addEventListener('input', function() {
+    document.getElementById('orphanage_phone').addEventListener('input', function() {
         var mobileInput = this.value;
         var mobileError = document.getElementById('mobileError');
         var regex = /^\d{10}$/;
@@ -210,7 +233,7 @@ if (!$result) {
 </div>
 
 <script>
-    document.getElementById('city').addEventListener('input', function() {
+    document.getElementById('orphanage_city').addEventListener('input', function() {
         var cityInput = this.value;
         var cityError = document.getElementById('cityError');
         var regex = /^[a-zA-Z\s]+$/;
@@ -234,7 +257,7 @@ if (!$result) {
 </div>
 
 <script>
-    document.getElementById('pincode').addEventListener('input', function() {
+    document.getElementById('orphanage_pincode').addEventListener('input', function() {
         var pincodeInput = this.value;
         var pincodeError = document.getElementById('pincodeError');
         var regex = /^[1-9][0-9]{5}$/;
@@ -273,7 +296,7 @@ if (!$result) {
         }
     });
 
-    document.getElementById('confirmPassword').addEventListener('input', function() {
+    document.getElementById('orphanage_password').addEventListener('input', function() {
         var confirmPasswordInput = this.value;
         var confirmPasswordError = document.getElementById('confirmPasswordError');
         var passwordInput = document.getElementById('password').value;

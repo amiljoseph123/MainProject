@@ -79,7 +79,7 @@ if (isset($_POST['submit'])) {
 
 <script>
     function validateEmail() {
-        var email = document.getElementById("email").value;
+        var email = document.getElementById("sponsor_email").value;
         var emailError = document.getElementById("emailError");
 
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

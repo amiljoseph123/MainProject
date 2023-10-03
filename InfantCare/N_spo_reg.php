@@ -214,6 +214,7 @@ include "config.php";
     });
 
     document.getElementById('confirmPassword').addEventListener('input', function() {
+        
         var confirmPasswordInput = this.value;
         var confirmPasswordError = document.getElementById('confirmPasswordError');
         var passwordInput = document.getElementById('password').value;
