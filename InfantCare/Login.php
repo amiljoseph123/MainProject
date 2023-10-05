@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <?php
 require_once 'config.php';
 require_once 'header.php';
@@ -11,7 +20,8 @@ if (isset($_POST["login"])) {
 		echo "Login failure";
 	} else {
 		$user=$result->fetch_assoc();
-		$_SESSION['username'] = $user;
+		session_start();
+		$_SESSION['username'] = $email;
 		print_r( $user['user_type']);
 		if($user["user_type"]=='Sponsor')
 		{
@@ -27,9 +37,11 @@ if (isset($_POST["login"])) {
 		}
 		echo "Login success";
 		// header("location:index.php");
+
 		
-		exit();
+        exit();
 	}
+	
 }
 ?>
 
@@ -50,10 +62,14 @@ if (isset($_POST["login"])) {
 						<div class="form-group">
 							<label for="password">Password</label>
 							<input type="password" class="form-control" id="password" name="password" required>
-						</div>
-						<input type="submit" name="login" value="login">
+						</div> 
+						<div class="mt-4">
+						<a href="forgot_password.php" >Forgot password ?</a></div>
+						<p style="font-size:15px;float:right;margin-bottom:-10px;" ><input type="submit" class="btn btn-success" name="login" value="login"></p>
+						
 				</div>
-			</div>
+        
+		
 
 
 

@@ -20,10 +20,10 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($con, "SELECT * FROM `login` WHERE `Email`='$email'") or die("error");
 
     if(mysqli_num_rows($result) <= 0){
-        mysqli_query($con, "INSERT INTO `login` VALUES ('$email','$user_type','$password')") or die("Registration failed, Please Try Again");
+        mysqli_query($con, "INSERT INTO `login` VALUES ('$email','$user_type','$password','')") or die("Registration failed, Please Try Again");
         mysqli_query($con, "INSERT INTO `orphanage`(`o_id`, `o_name`, `o_govtid`, `o_edate`, `o_email`, `o_phone`, `o_district`, `o_city`, `o_pincode`) VALUES (default,'$name','$id','$date','$email','$phone','$district','$city','$pincode')") or die(mysqli_error($con));
         echo '<script>alert("Registration is successful");</script>';
-        echo "<script> window.location = 'New_Login.php';</script>";
+        echo "<script> window.location = 'Login.php';</script>";
     }
     else {
         echo '<script>alert("Email already registered. Please use a different email.")</script>';

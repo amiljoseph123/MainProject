@@ -6,7 +6,8 @@ require 'header.php';
 
 
 <?php
-$con=mysqli_connect("localhost","root","","infant_care2")or die("error");
+
+include "config.php";
 if (isset($_POST['submit'])) {
     $name = $_POST['sponsor_name'];
     $email = $_POST['sponsor_email'];
@@ -16,10 +17,10 @@ if (isset($_POST['submit'])) {
     $user_type="Sponsor";
     $result=mysqli_query($con,"SELECT * FROM `login` WHERE `Email`='$email'") or die("error");
         if(mysqli_num_rows($result)<=0){
-            mysqli_query($con,"INSERT INTO `login` VALUES ('$email','$user_type','$password')")or die("Registration failed, Please Try Agin");
+            mysqli_query($con,"INSERT INTO `login` VALUES ('$email','$user_type','$password','')")or die("Registration failed, Please Try Agin");
             mysqli_query($con,"INSERT INTO `sponsor`(`s_sponsor_id`, `s_name`, `s_email`, `s_phone`, `s_aadhar`) VALUES (default,'$name','$email','$phone','$aadhar')")or die(mysqli_error($con));
             echo '<script>alert("Registration is successful");</script>';
-            echo "<script> window.location = 'New_Login.php';</script>";
+            echo "<script> window.location = 'Login.php';</script>";
         }
         
 } else {
