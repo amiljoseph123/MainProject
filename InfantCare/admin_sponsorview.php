@@ -1,3 +1,4 @@
+
 <?php 
 session_start();
  //echo $_SESSION["username"];
@@ -11,6 +12,10 @@ if (isset($_SESSION['username'])) {
     exit(); // Make sure to stop execution after the redirect
 }
 ?>
+
+
+
+
 
 
 
@@ -37,11 +42,11 @@ if (isset($_SESSION['username'])) {
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<i class='bx bxs-smile'></i>
-			<span class="text">WELCOME orphanage<?php echo $_SESSION['username']; ?></span>
+			<span class="text">WELCOME</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="#">
+				<a href="Dindex.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -64,12 +69,12 @@ if (isset($_SESSION['username'])) {
 					<span class="text">Message</span>
 				</a>
 			</li> -->
-			<!-- <li>
+			<li>
 				<a href="#">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Team</span>
 				</a>
-			</li> -->
+			</li>
 		</ul>
 		<ul class="side-menu">
 			<li>
@@ -117,15 +122,15 @@ if (isset($_SESSION['username'])) {
 		<!-- MAIN -->
 		<main>
 			<div class="head-title">
-				<div class="left">
+            <div class="left">
 					<h1>Dashboard</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="#">Dashboard</a>
+							<a href="Dindex.php">Home</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="#">Home</a>
+							<a class="active" href="#">Sponsor Details</a>
 						</li>
 					</ul>
 				</div>
@@ -135,7 +140,7 @@ if (isset($_SESSION['username'])) {
 				</a>
 			</div>
 
-			<!-- <ul class="box-info">
+			<ul class="box-info">
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
@@ -157,66 +162,49 @@ if (isset($_SESSION['username'])) {
 						<p></p>
 					</span>
 				</li>
-			</ul> -->
-
-
-			<!-- <div class="table-data">
+			</ul>
+            <?php
+                require_once 'config.php';
+                $result = mysqli_query($con, "SELECT * FROM `sponsor` ") or die("error");
+            ?> 
+			<div class="table-data">
 				<div class="order">
-					<div class="head"> -->
-						<!-- <h3>Recent</h3>
+					<div class="head">
+						<h3>Recent</h3>
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
 					<table>
 						<thead>
 							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
-							</tr> -->
-						<!-- </thead>
-						<tbody> -->
-							<!-- <tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
+                                <th>Sl.No</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Aadhar</th>
 							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-						</tbody>
+						</thead>
+						<tbody>
+                        <?php
+                            $c=0;
+                            while ($row = $result->fetch_assoc()) {
+                                $name=$row["s_name"];
+                                $email=$row["s_email"];
+                                $phone=$row["s_phone"];
+                                $aadhar=$row["s_aadhar"];
+                            $c++;
+                        ?>
+                <tr>
+                    <td><?php echo $c; ?></td>
+                    <td><?php echo $name; ?></td>
+                    <td><?php echo $email; ?></td>
+                    <td><?php echo  $phone; ?></td>
+                    <td><?php echo $aadhar; ?></td>
+                </tr>
+                <?php
+                }
+                ?>
+							 
 					</table> -->
 				<!-- </div>
 				<div class="todo">
@@ -244,11 +232,11 @@ if (isset($_SESSION['username'])) {
 						</li>
 						<li class="not-completed">
 							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+							<!-- <i class='bx bx-dots-vertical-rounded' ></i>
 						</li>
 					</ul> -->
-				<!-- </div>
-			</div> -->
+				</div> -->
+			</div>
 		</main>
 		<!-- MAIN -->
 	</section>
@@ -257,4 +245,4 @@ if (isset($_SESSION['username'])) {
 
 	<script src="Dscript.js"></script>
 </body>
-</html> --> 
+</html> --> -->

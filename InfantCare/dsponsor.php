@@ -30,18 +30,18 @@ if (isset($_SESSION['username'])) {
 	<!-- My CSS -->
 	<link rel="stylesheet" href="Dstyle.css">
 
-	<title>WELCOME sponsor</title>
+	<title>WELCOME </title>
 </head>
 <body>
 
 
-	<!-- SIDEBAR -->
-	<section id="sidebar">
-		<a href="#" class="brand">
+	 <center>
+	 <section id="sidebar">
+		 <a href="#" class="brand"> 
 			<i class='bx bxs-smile'></i>
-			<span class="text">WELCOME Sponsor<?php echo $_SESSION['username']; ?></span>
+			<span class="text">WELCOME <?php echo $_SESSION['username']; ?></span>
 		</a>
-		<ul class="side-menu top">
+		<!-- <ul class="side-menu top">
 			<li class="active">
 				<a href="#">
 					<i class='bx bxs-dashboard' ></i>
@@ -57,8 +57,8 @@ if (isset($_SESSION['username'])) {
 			<li>
 				<a href="#">
 					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">Analytics</span>
-				</a>
+					<span class="text">Analytics</span> -->
+				<!-- </a> --> -->
 			<!-- </li>
 			<li>
 				<a href="#">
@@ -66,7 +66,7 @@ if (isset($_SESSION['username'])) {
 					<span class="text">Message</span>
 				</a>
 			</li> -->
-			<li>
+			<!-- <li>
 				<a href="#">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Team</span>
@@ -80,10 +80,10 @@ if (isset($_SESSION['username'])) {
 					<span class="text">Settings</span>
 				</a>
 			</li>
-			<li>
+			<li> -->
 				<a href="logout.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
+					<button><span class="text">Logout</span><button>
 				</a>
 			</li>
 		</ul>
@@ -93,9 +93,9 @@ if (isset($_SESSION['username'])) {
 
 
 	<!-- CONTENT -->
-	<section id="content">
+	<!-- <section id="content">
 		<!-- NAVBAR -->
-		<nav>
+		<!-- <nav>
 			<i class='bx bx-menu' ></i>
 			<a href="#" class="nav-link">Categories</a>
 			<form action="#">
@@ -113,11 +113,11 @@ if (isset($_SESSION['username'])) {
 			<a href="#" class="profile">
 				<img src="img/people.png">
 			</a>
-		</nav>
+		</nav> --> -->
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->
-		<main>
+		<!-- <main>
 			<div class="head-title">
 				<div class="left">
 					<h1>Dashboard</h1>
@@ -159,7 +159,7 @@ if (isset($_SESSION['username'])) {
 						<p></p>
 					</span>
 				</li>
-			</ul>
+			</ul> -->
 
 
 			<!-- <div class="table-data">

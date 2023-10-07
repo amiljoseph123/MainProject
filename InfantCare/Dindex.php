@@ -1,22 +1,3 @@
-<?php 
-session_start();
- //echo $_SESSION["username"];
-if (isset($_SESSION['username'])) {
-    // User is logged in
-    echo "Welcome, " . $_SESSION['username'];
-    // You can display user-specific content here
-} else {
-    // User is not logged in, redirect to the login page
-    header("Location: login.php");
-    exit(); // Make sure to stop execution after the redirect
-}
-?>
-
-
-
-
-
-
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,11 +18,11 @@ if (isset($_SESSION['username'])) {
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<i class='bx bxs-smile'></i>
-			<span class="text">WELCOME orphanage<?php echo $_SESSION['username']; ?></span>
+			<span class="text">WELCOME</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="#">
+				<a href="Dindex.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -64,12 +45,12 @@ if (isset($_SESSION['username'])) {
 					<span class="text">Message</span>
 				</a>
 			</li> -->
-			<!-- <li>
+			<li>
 				<a href="#">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Team</span>
 				</a>
-			</li> -->
+			</li>
 		</ul>
 		<ul class="side-menu">
 			<li>
@@ -117,7 +98,7 @@ if (isset($_SESSION['username'])) {
 		<!-- MAIN -->
 		<main>
 			<div class="head-title">
-				<div class="left">
+			<div class="left">
 					<h1>Dashboard</h1>
 					<ul class="breadcrumb">
 						<li>
@@ -135,7 +116,7 @@ if (isset($_SESSION['username'])) {
 				</a>
 			</div>
 
-			<!-- <ul class="box-info">
+			<ul class="box-info">
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
@@ -146,7 +127,7 @@ if (isset($_SESSION['username'])) {
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-						<h3>Sponsors</h3>
+						<h3><a href="admin_sponsorview.php">Sponsors</a></h3>
 						<p></p>
 					</span>
 				</li>
@@ -157,7 +138,7 @@ if (isset($_SESSION['username'])) {
 						<p></p>
 					</span>
 				</li>
-			</ul> -->
+			</ul>
 
 
 			<!-- <div class="table-data">
@@ -244,11 +225,11 @@ if (isset($_SESSION['username'])) {
 						</li>
 						<li class="not-completed">
 							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+							<!-- <i class='bx bx-dots-vertical-rounded' ></i>
 						</li>
 					</ul> -->
-				<!-- </div>
-			</div> -->
+				</div> -->
+			</div>
 		</main>
 		<!-- MAIN -->
 	</section>
@@ -257,4 +238,4 @@ if (isset($_SESSION['username'])) {
 
 	<script src="Dscript.js"></script>
 </body>
-</html> --> 
+</html> --> -->

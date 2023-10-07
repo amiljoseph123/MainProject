@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Kind Heart Charity - Free Bootstrap 5.2.2 CSS Template</title>
+    <title>Infant Care Society </title>
 
     <!-- CSS FILES -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -80,7 +80,7 @@ https://templatemo.com/tm-581-kind-heart-charity
             <a class="navbar-brand" href="index.php">
                 <img src="images/logo.png" class="logo img-fluid" alt="Kind Heart Charity">
                 <span>
-                    Kind Heart Charity
+                    Infant Care
                     <small>Non-profit Organization</small>
                 </span>
             </a>
@@ -267,7 +267,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                         <div class="custom-text-box">
                             <h2 class="mb-2">Our Story</h2>
 
-                            <h5 class="mb-3">Kind Heart Charity, Non-Profit Organization</h5>
+                            <h5 class="mb-3">Kind Heart Charityi, Non-Profit Organization</h5>
 
                             <p class="mb-0">This is a Bootstrap 5.2.2 CSS template for charity organization websites.
                                 You can feel free to use it. Please tell your friends about TemplateMo website. Thank
@@ -1036,7 +1036,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                 <div class="row">
 
                     <div class="col-lg-6 col-md-7 col-12">
-                        <p class="copyright-text mb-0">Copyright © 2036 <a href="#">Kind Heart</a> Charity Org.
+                        <p class="copyright-text mb-0">Copyright © 2036 <a href="#">Infant Care</a> Charity Org.
                             Design: <a href="https://templatemo.com" target="_blank">TemplateMo</a><br>Distribution:
                             <a href="https://themewagon.com">ThemeWagon</a>
                         </p>

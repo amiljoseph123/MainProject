@@ -2,11 +2,6 @@
 
 
 
-
-
-
-
-
 <?php
 require_once 'config.php';
 require_once 'header.php';
@@ -33,6 +28,12 @@ if (isset($_POST["login"])) {
 		{
 			//header("location:dorphanage.php");
 			$script = "<script> window.location = 'dorphanage.php';</script>";
+            echo $script;
+		}
+		elseif($user["user_type"]=='admin')
+		{
+			//header("location:dorphanage.php");
+			$script = "<script> window.location = 'Dindex.php';</script>";
             echo $script;
 		}
 		echo "Login success";
@@ -67,15 +68,8 @@ if (isset($_POST["login"])) {
 						<a href="forgot_password.php" >Forgot password ?</a></div>
 						<p style="font-size:15px;float:right;margin-bottom:-10px;" ><input type="submit" class="btn btn-success" name="login" value="login"></p>
 						
-				</div>
-        
-		
-
-
-
-
-
-			</form>
+			</div>
+        </form>
 		</div>
 
 		</div>
