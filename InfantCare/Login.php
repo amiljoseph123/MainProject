@@ -21,13 +21,13 @@ if (isset($_POST["login"])) {
 		if($user["user_type"]=='Sponsor')
 		{
 			//header("location:dsponsor.php");
-			$script = "<script> window.location = 'dsponsor.php';</script>";
+			$script = "<script> window.location = 'spohome.php';</script>";
             echo $script;
 		}
 		elseif($user["user_type"]=='Orphanage')
 		{
 			//header("location:dorphanage.php");
-			$script = "<script> window.location = 'dorphanage.php';</script>";
+			$script = "<script> window.location = 'orphhome.php';</script>";
             echo $script;
 		}
 		elseif($user["user_type"]=='admin')

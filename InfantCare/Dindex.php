@@ -120,7 +120,7 @@
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
-						<h3>Orhanage</h3>
+						<h3><a href="admin_orphview.php">Orphanage</a></h3>
 						<p>details</p>
 					</span>
 				</li>

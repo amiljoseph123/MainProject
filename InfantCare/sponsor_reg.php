@@ -14,6 +14,7 @@ if (isset($_POST['submit'])) {
     $phone = $_POST['sponsor_phone'];
     $aadhar = $_POST['sponsor_aadhar'];
     $password=$_POST['password'];
+   // $hashed_password = password_hash($password,PASSWORD_DEFAULT);
     $user_type="Sponsor";
     $result=mysqli_query($con,"SELECT * FROM `login` WHERE `Email`='$email'") or die("error");
         if(mysqli_num_rows($result)<=0){

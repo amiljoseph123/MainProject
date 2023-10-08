@@ -10,7 +10,9 @@ require 'header.php';
   include 'config.php';
   if(isset($_POST['password_reset']))
   {
+    echo "password";
     $email=$_GET['email'];
+    
     $npass=md5($_POST['new_password']);
     
     $cnewpass=md5($_POST['cnew_password']);
@@ -92,7 +94,7 @@ require 'header.php';
           </form>
 
           <br>
-        <center><p style="font-size:15px">Already have an Account?<a href="user-login.php">Login</a> <p></center>
+        <center><p style="font-size:15px">Already have an Account?<a href="login.php">Login</a> <p></center>
    
       </div>
 </div>

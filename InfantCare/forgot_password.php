@@ -61,6 +61,7 @@ if(isset($_POST['submit']))
             echo "<script> alert('Link is sent to mail'); </script>";
         }
         else{
+          
             //echo "<script> alert('Wrong'); </script>";
             
                ?><script>Swal.fire({

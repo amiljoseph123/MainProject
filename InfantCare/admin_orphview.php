@@ -1,17 +1,20 @@
 
 <?php 
-// session_start();
-//  //echo $_SESSION["username"];
-// if (isset($_SESSION['username'])) {
-//     // User is logged in
-//     echo "Welcome, " . $_SESSION['username'];
-//     // You can display user-specific content here
-// } else {
-//     // User is not logged in, redirect to the login page
-//     header("Location: login.php");
-//     exit(); // Make sure to stop execution after the redirect
-// }
+session_start();
+ //echo $_SESSION["username"];
+if (isset($_SESSION['username'])) {
+    // User is logged in
+    echo "Welcome, " . $_SESSION['username'];
+    // You can display user-specific content here
+} else {
+    // User is not logged in, redirect to the login page
+    header("Location: login.php");
+    exit(); // Make sure to stop execution after the redirect
+}
 ?>
+
+
+
 
 
 
@@ -30,20 +33,20 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" href="Dstyle.css">
 
-	<title>WELCOME </title>
+	<title>WELCOME</title>
 </head>
 <body>
 
 
-	 <center>
-	 <section id="sidebar">
-		 <a href="#" class="brand"> 
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
 			<i class='bx bxs-smile'></i>
-			<span class="text">WELCOME <?php echo $_SESSION['username']; ?></span>
+			<span class="text">WELCOME </span>
 		</a>
-		<!-- <ul class="side-menu top">
+		<ul class="side-menu top">
 			<li class="active">
-				<a href="#">
+				<a href="Dindex.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -57,8 +60,8 @@
 			<li>
 				<a href="#">
 					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">Analytics</span> -->
-				<!-- </a> --> -->
+					<span class="text">Analytics</span>
+				</a>
 			<!-- </li>
 			<li>
 				<a href="#">
@@ -66,7 +69,7 @@
 					<span class="text">Message</span>
 				</a>
 			</li> -->
-			<!-- <li>
+			<li>
 				<a href="#">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Team</span>
@@ -80,10 +83,10 @@
 					<span class="text">Settings</span>
 				</a>
 			</li>
-			<li> -->
+			<li>
 				<a href="logout.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
-					<button><span class="text">Logout</span><button>
+					<span class="text">Logout</span>
 				</a>
 			</li>
 		</ul>
@@ -93,9 +96,9 @@
 
 
 	<!-- CONTENT -->
-	<!-- <section id="content">
+	<section id="content">
 		<!-- NAVBAR -->
-		<!-- <nav>
+		<nav>
 			<i class='bx bx-menu' ></i>
 			<a href="#" class="nav-link">Categories</a>
 			<form action="#">
@@ -113,21 +116,21 @@
 			<a href="#" class="profile">
 				<img src="img/people.png">
 			</a>
-		</nav> --> -->
+		</nav>
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->
-		<!-- <main>
+		<main>
 			<div class="head-title">
-				<div class="left">
+            <div class="left">
 					<h1>Dashboard</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="#">Dashboard</a>
+							<a href="Dindex.php">Home</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="#">Home</a>
+							<a class="active" href="#">O Details</a>
 						</li>
 					</ul>
 				</div>
@@ -159,66 +162,67 @@
 						<p></p>
 					</span>
 				</li>
-			</ul> -->
-
-
-			<!-- <div class="table-data">
+			</ul>
+            <?php
+                require_once 'config.php';
+                $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
+            ?> 
+			<div class="table-data">
 				<div class="order">
-					<div class="head"> -->
-						<!-- <h3>Recent</h3>
+					<div class="head">
+						<h3>Recent</h3>
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
 					<table>
 						<thead>
 							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
-							</tr> -->
-						<!-- </thead>
-						<tbody> -->
-							<!-- <tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
+                                <th>Sl.No</th>
+                                <th>Name</th>
+                                <th>government id</th>
+                                <th>Established date</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>District</th>
+                                <th>City</th>
+                                <th>Pincode</th>
+       
+
 							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-						</tbody>
+						</thead>
+						<tbody>
+                        <?php
+                            $c=0;
+                            while ($row = $result->fetch_assoc()) {
+                                $name=$row["o_name"];
+                                $id=$row["o_govtid"];
+                                $date=$row["o_edate"];
+                               
+                                $email=$row["o_email"];
+                                $phone=$row["o_phone"];
+
+                                $district=$row["o_district"];
+                                $city=$row["o_city"];
+                                $pincode=$row["o_pincode"];
+
+
+                            $c++;
+                        ?>
+                <tr>
+                    <td><?php echo $c; ?></td>
+                    <td><?php echo $name; ?></td>
+                    <td><?php echo $id; ?></td>
+                    <td><?php echo $date; ?></td>
+                    <td><?php echo $email; ?></td>
+                    <td><?php echo  $phone; ?></td>
+                    <td><?php echo $district; ?></td>
+                    <td><?php echo $city; ?></td>
+                    <td><?php echo $pincode; ?></td>
+                </tr>
+                <?php
+                }
+                ?>
+							 
 					</table> -->
 				<!-- </div>
 				<div class="todo">
