@@ -9,7 +9,8 @@ require_once 'header.php';
 if (isset($_POST["login"])) {
 	$email = $_POST["email"];
 	$password = $_POST["password"];
-	$result = mysqli_query($con, "SELECT * FROM login WHERE email='$email' AND password='$password'") or die("error");
+	$hashed_password=md5($password);
+	$result = mysqli_query($con, "SELECT * FROM login WHERE email='$email' AND password='$hashed_password'") or die("error");
 	
 	if (mysqli_num_rows($result) < 1) {
 		echo "Login failure";

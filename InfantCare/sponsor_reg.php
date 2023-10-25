@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 require 'header.php';
@@ -6,34 +5,40 @@ require 'header.php';
 
 
 <?php
+// session_start();
+// require 'header.php';
+// ?> 
 
-include "config.php";
-if (isset($_POST['submit'])) {
-    $name = $_POST['sponsor_name'];
-    $email = $_POST['sponsor_email'];
-    $phone = $_POST['sponsor_phone'];
-    $aadhar = $_POST['sponsor_aadhar'];
-    $password=$_POST['password'];
-   // $hashed_password = password_hash($password,PASSWORD_DEFAULT);
-    $user_type="Sponsor";
-    $result=mysqli_query($con,"SELECT * FROM `login` WHERE `Email`='$email'") or die("error");
-        if(mysqli_num_rows($result)<=0){
-            mysqli_query($con,"INSERT INTO `login` VALUES ('$email','$user_type','$password','')")or die("Registration failed, Please Try Agin");
-            mysqli_query($con,"INSERT INTO `sponsor`(`s_sponsor_id`, `s_name`, `s_email`, `s_phone`, `s_aadhar`) VALUES (default,'$name','$email','$phone','$aadhar')")or die(mysqli_error($con));
-            echo '<script>alert("Registration is successful");</script>';
-            echo "<script> window.location = 'Login.php';</script>";
-        }
+
+// <?php
+
+// include "config.php";
+// if (isset($_POST['submit'])) {
+//     $name = $_POST['sponsor_name'];
+//     $email = $_POST['sponsor_email'];
+//     $phone = $_POST['sponsor_phone'];
+//     $aadhar = $_POST['sponsor_aadhar'];
+//     $password=$_POST['password'];
+//    // $hashed_password = password_hash($password,PASSWORD_DEFAULT);
+//     $user_type="Sponsor";
+//     $result=mysqli_query($con,"SELECT * FROM `login` WHERE `Email`='$email'") or die("error");
+//         if(mysqli_num_rows($result)<=0){
+//             mysqli_query($con,"INSERT INTO `login` VALUES ('$email','$user_type','$password','')")or die("Registration failed, Please Try Agin");
+//             mysqli_query($con,"INSERT INTO `sponsor`(`s_sponsor_id`, `s_name`, `s_email`, `s_phone`, `s_aadhar`) VALUES (default,'$name','$email','$phone','$aadhar')")or die(mysqli_error($con));
+//             echo '<script>alert("Registration is successful");</script>';
+//             echo "<script> window.location = 'Login.php';</script>";
+//         }
         
-} else {
+// } else {
     
-    echo '<script>alert("Registration is failed")</script>';
-}
+//     echo '<script>alert("Registration is failed")</script>';
+// }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Registration Page</title>
@@ -84,7 +89,7 @@ if (isset($_POST['submit'])) {
         var email = document.getElementById("sponsor_email").value;
         var emailError = document.getElementById("emailError");
 
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var emailRegex = /^[a-zA-Z0-9._%+-]+@(ajce\.com|gmail\.com)$/;
         if (emailRegex.test(email)) {
             emailError.innerHTML = ""; // Clear error message
             return true; // Email is valid
@@ -93,6 +98,9 @@ if (isset($_POST['submit'])) {
             return false; // Email is not valid
         }
     }
+   
+
+
 </script>
 
 
@@ -221,6 +229,53 @@ if (isset($_POST['submit'])) {
 					
         </form>
     </div>
+
+
+
+
+    <?php
+//  session_start();
+//  require 'header.php';
+?> 
+
+
+<?php
+
+include "config.php";
+if (isset($_POST['submit'])) {
+    $name = $_POST['sponsor_name'];
+    $email = $_POST['sponsor_email'];
+    $phone = $_POST['sponsor_phone'];
+    $aadhar = $_POST['sponsor_aadhar'];
+    $password=md5($_POST['password']);
+
+   // $hashed_password = password_hash($password,PASSWORD_DEFAULT);
+    $user_type="Sponsor";
+    $result=mysqli_query($con,"SELECT * FROM `login` WHERE `Email`='$email'") or die("error");
+        if(mysqli_num_rows($result)<=0){
+            mysqli_query($con,"INSERT INTO `login` VALUES ('$email','$user_type','$password','')")or die("Registration failed, Please Try Agin");
+            mysqli_query($con,"INSERT INTO `sponsor`(`s_sponsor_id`, `s_name`, `s_email`, `s_phone`, `s_aadhar`) VALUES (default,'$name','$email','$phone','$aadhar')")or die(mysqli_error($con));
+            // echo '<script>alert("Registration is successful");</script>';
+            echo "<script>
+            Swal.fire('Registration Successful');
+          </script>";
+
+            echo "<script> window.location = 'Login.php';</script>";
+        }
+        
+} else {
+    
+    // echo '<script>alert("Registration is failed")</script>';
+     echo "<script>
+             // Swal.fire('Registration Faild');
+           </script>";
+ }
+?>
+
+
+
+
+
 	
 	
 </body>

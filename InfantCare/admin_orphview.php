@@ -145,7 +145,7 @@ if (isset($_SESSION['username'])) {
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
 						<h3>Orhanage</h3>
-						<p>details</p>
+						<!-- <p>details</p> -->
 					</span>
 				</li>
 				<li>
@@ -263,4 +263,4 @@ if (isset($_SESSION['username'])) {
 
 	<script src="Dscript.js"></script>
 </body>
-</html> --> -->
+</html> 

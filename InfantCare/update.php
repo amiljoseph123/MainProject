@@ -1,85 +1,249 @@
+
 <?php
+session_start(); // Start the session
 
 include "config.php";
+
+if (isset($_SESSION['username'])) {
+    $user = $_SESSION['username'];
+    // $sponsor_email = $user["email"];
+
+    // Fetch existing sponsor data
+    $sql = "SELECT * FROM sponsor WHERE s_email = '$user'";
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $name = $row['s_name'];
+        $email = $row['s_email'];
+        $phone = $row['s_phone'];
+        $aadhar = $row['s_aadhar'];
+    } else {
+        echo "Sponsor not found.";
+        $con->close();
+        exit();
+    }
+} else {
+    echo "Sponsor ID not provided.";
+    $con->close();
+    exit();
+}
 ?>
 
+<?php
+require 'header.php';
+?> 
+
+
+
+
+ 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Update Sponsor Details</title>
 </head>
-<body>
-    <h1>Update Sponsor Details</h1>
-    <form action="#" method="GET">
-        <input type="hidden" name="id" value="<?php echo $s_email; ?>">
-        <label for="name">Name:</label>
-        <input type="text" name="name" value="<?php echo $s_name; ?>" required><br>
-        <label for="phone">Phone Number:</label>
-        <input type="text" name="phone" value="<?php echo $s_phone; ?>" required><br>
-        <label for="aadhar">Aadhar Number:</label>
-        <input type="text" name="aadhar" value="<?php echo $s_aadhar; ?>" required><br>
-        <input type="submit"name="submit" id="submit" value="Update">
-    </form>
-</body>
-  <?php
-    if (isset($_SESSION["submit"])) {
+<body><br>
+    <h3 class="heading">Update your Details</h3>
+    <form action="update_process.php" method="POST">
+    <input type="hidden" name="id" value="<?php echo $email; ?>">
+    <label for="name">Name</label>
+    <input type="text" name="name" value="<?php echo $name; ?>" required>
 
-        $user=$_SESSION["username"];
-        $sponsor_email=$user["email"];
-        // Fetch existing sponsor data
-        $sql = "SELECT s_name, s_phone, s_aadhar FROM sponsor WHERE s_email = $sponsor_email";
-        $result = $con->query($sql);
+    <label for="email">Email</label>
+    <input type="text" name="email" value="<?php echo $email; ?>" required>
 
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $name = $row['name'];
-            $phone = $row['phone'];
-            $aadhar = $row['aadhar'];
-        } 
-        else {
-            echo "Sponsor not found.";
-            $conn->close();
-            exit();
-        }
-    } 
-    else {
-        echo "Sponsor ID not provided.";
-        $con->close();
-        exit();
+    <label for="phone">Phone Number</label>
+    <input type="text" name="phone" value="<?php echo $phone; ?>" required>
+
+    <label for="aadhar">Aadhar Number</label>
+    <input type="text" name="aadhar" value="<?php echo $aadhar; ?>" required><br>
+
+    <input type="submit" name="update" value="Update">
+
+</form>
+
+
+ <!-- <style>
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #f9f9f9;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    // Close the database connection
-    $con->close();
-    ?>
-<!--
-    <form action="#" method="POST">
-        <input type="hidden" name="id" value="<?php echo $sponsor_email; ?>">
-        <label for="name">Name:</label>
-        <input type="text" name="name" value="<?php echo $name; ?>" required><br>
-        <label for="phone">Phone Number:</label>
-        <input type="text" name="phone" value="<?php echo $phone; ?>" required><br>
-        <label for="aadhar">Aadhar Number:</label>
-        <input type="text" name="aadhar" value="<?php echo $aadhar; ?>" required><br>
-        <input type="submit"name="submit" id="submit" value="Update">
-    </form>
-</body>-->
-</html>
+    label,
+    input {
+        display: block;
+        margin-bottom: 10px;
+       
+    }
+
+    input[type="text"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+
+        
+    }
+
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style> 
 
 
 
-<!-- update_process.php -->
+
+</body>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container label,
+        .form-container input {
+            display: block;
+            width: 50%;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .form-container input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style> -->
+
+
+
+<!-- 
+    <style>
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label,
+    input {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    label {
+        width: 120px; /* Adjust the width as needed */
+    }
+
+    input[type="text"] {
+        width: calc(100% - 120px); /* Adjust the width as needed */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block; /* Make the submit button full width */
+        margin-top: 10px; /* Add some spacing between button and inputs */
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style> -->
+
+<style>
+    .heading{
+        text-align:center;
+        text-size-adjust: 10px;
+    }
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label,
+    input {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+<br><br><br><br><br><br><br><br><br>
+
+
+</html> 
+
+
 <?php
-$id=$_POST['id'];
-$name = $_POST['name'];
-$phone = $_POST['phone'];
-$aadhar = $_POST['aadhar'];
-
-// SQL query to update sponsor details
-$sql = "UPDATE sponsor SET s_name='$name', s_phone='$phone', s_aadhar='$aadhar' WHERE s_id=$id"; // You may need to adjust the WHERE clause based on your needs
-
-if ($con->query($sql) === TRUE) {
-    echo "Sponsor details updated successfully!";
-} else {
-    echo "Error updating sponsor details: " . $con->error;
-}
-?>
+ require 'footer.php';
+?> 
