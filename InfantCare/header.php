@@ -17,6 +17,12 @@
 
     <link href="css/templatemo-kind-heart-charity.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .site-header, .header-navbar{
+            z-index: 1000;
+            position: relative;
+        }
+    </style>
     <!--
 
 TemplateMo 581 Kind Heart Charity
@@ -81,7 +87,7 @@ https://templatemo.com/tm-581-kind-heart-charity
         </div>
     </header>
 
-    <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+    <nav class="navbar navbar-expand-lg bg-light shadow-lg header-navbar">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <img src="images/logo.png" class="logo img-fluid" alt="Kind Heart Charity">

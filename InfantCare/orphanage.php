@@ -1,12 +1,11 @@
 <?php
 require_once 'config.php';
 $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
-?> 
+?>
 
 <?php
-require 'header.php';
-?> 
-
+include('navbars/sponsor.php');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,105 +13,93 @@ require 'header.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orphanage Table</title>
+    <title>Orphanage Details</title>
 
     <style>
-        .table-data {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .order {
+        .card-container {
             display: flex;
-            justify-content: flex-end;
-            margin-bottom: 10px;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        .order i {
-            font-size: 24px;
-            margin-left: 10px;
-            cursor: pointer;
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: 20px;
+            text-align: center;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            border: 1px solid #ccc;
+        .title {
+            color: grey;
+            font-size: 18px;
         }
 
-        th, td {
-            border: 1px solid #ccc;
+        img {
+            max-width: 100%;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
             padding: 8px;
-            text-align: left;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
         }
 
-        th {
-            background-color: #f2f2f2;
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
         }
 
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
+        button:hover,
+        a:hover {
+            opacity: 0.7;
         }
     </style>
+
 </head>
 
 <body>
-    <div class="table-data">
-        <div class="order">
-            <div class="head">
-                <i class='bx bx-search'></i>
-                <i class='bx bx-filter'></i>
+
+    <div class="card-container">
+        <?php
+        while ($row = $result->fetch_assoc()) {
+            $name = $row["o_name"];
+            $email = $row["o_email"];
+            $phone = $row["o_phone"];
+            $district = $row["o_district"];
+            $city = $row["o_city"];
+            $pincode = $row["o_pincode"];
+        ?>
+
+            <div class="card">
+                <img src="img.jpg" alt="">
+                <h3><?php echo $name; ?></h3>
+                <p class="title"><?php echo $email; ?></p>
+                <P><?php echo $phone; ?></P>
+                <p><?php echo $district; ?></p>
+                <p><?php echo $city; ?></p>
+                <P><?php echo $pincode; ?></P>
             </div>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>No</th> 
-                    <th>Name</th>
-                    <!-- <th>Government ID</th> -->
-                    <!-- <th>Established date</th> -->
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>District</th>
-                    <th>City</th>
-                    <th>Pincode</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    $c=0;
-                    while ($row = $result->fetch_assoc()) {
-                        $name=$row["o_name"];
-                        // $id=$row["o_govtid"];
-                        // $date=$row["o_edate"];
-                        $email=$row["o_email"];
-                        $phone=$row["o_phone"];
-                        $district=$row["o_district"];
-                        $city=$row["o_city"];
-                        $pincode=$row["o_pincode"];
-                        $c++;
-                ?>
-                <tr>
-                    <td><?php echo $c; ?></td>
-                    <td><?php echo $name; ?></td>
-                    <!-- <td><?php echo $id; ?></td> -->
-                    <!-- <td><?php echo $date; ?></td> -->
-                    <td><?php echo $email; ?></td>
-                    <td><?php echo  $phone; ?></td>
-                    <td><?php echo $district; ?></td>
-                    <td><?php echo $city; ?></td>
-                    <td><?php echo $pincode; ?></td>
-                </tr>
-                <?php
-                    }
-                ?>
-            </tbody>
-        </table>
+
+        <?php
+        }
+        ?>
     </div>
-    <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
+
 </body>
 
 </html>
+
 <?php
- require 'footer.php';
-?> 
+require 'footer.php';
+?>

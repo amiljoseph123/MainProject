@@ -22,7 +22,7 @@ if (isset($_POST["login"])) {
 		if($user["user_type"]=='Sponsor')
 		{
 			//header("location:dsponsor.php");
-			$script = "<script> window.location = 'spohome.php';</script>";
+			$script = "<script> window.location = 'sponsor_dash.php';</script>";
             echo $script;
 		}
 		elseif($user["user_type"]=='Orphanage')
