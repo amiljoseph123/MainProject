@@ -1,13 +1,4 @@
-<?php
-require_once 'config.php';
-$result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
-?>
-
-
-
-
 <!DOCTYPE html>
-
 <?php
 session_start();
 if (isset($_SESSION['username'])) {
@@ -15,14 +6,12 @@ if (isset($_SESSION['username'])) {
    //echo "Welcome, " . $_SESSION['username'];
 }
 ?>
-
-
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>View Orphanage</title>
+    <title>Purple Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -35,118 +24,70 @@ if (isset($_SESSION['username'])) {
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.ico" />
-    <style>
-    .col-md-4 {
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
-    }
 
-    .card {
-        border: none;
-        border-radius: .50rem;
-        margin: 1px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
-    }
 
-    .card img {
-        max-width: 10%;
-        height: auto;
-    }
 
-    .card-body {
-        text-align: center;
-        color: #555;
-    }
-
-    .card h3 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        margin-top: 10px;
-        margin-bottom: 5px;
-    }
-
-    .card p {
-        font-size: 1rem;
-        color: #555;
-        margin-bottom: 5px;
-    }
-
-    /* .card.bg-gradient-secondary {
-        background: #f794a4;
-        background: -webkit-linear-gradient(to right, #f794a4, #fdd6bd);
-        background: linear-gradient(to right, #f794a4, #fdd6bd);
-        color: #fff;
-    } */
-  
-    #sidebar {
-   
+<style>
+   #sidebar {
+    /* background-color: #ff6600; This sets the background color to a shade of orange. Replace with your desired color. */
     background-color: #5bc1ac;
 }
 
 .navbar-menu-wrapper {
-    background-color: #5bc1ac; 
+    background-color: #5bc1ac; /* This sets the background color to a shade of blue. Replace with your desired color. */
+    /* Additional styles can be added as needed */
 }
 
 .container-fluid.page-body-wrapper {
-    background-color: #5bc1ac; 
+    background-color: #5bc1ac; /* This sets the background color to a shade of pink. Replace with your desired color. */
+    /* Additional styles can be added as needed */
 }
 
 .navbar.default-layout-navbar {
-    background-color: #5bc1ac; 
+    background-color: #5bc1ac; /* This sets the background color to a shade of blue. Replace with your desired color. */
+    /* Additional styles can be added as needed */
 }
 
 .text-center.navbar-brand-wrapper {
-    background-color:#5bc1ac ; 
+    background-color:#5bc1ac ; /* This sets the background color to a shade of pink. Replace with your desired color. */
+    /* Additional styles can be added as needed */
 }
 
 span.mdi.mdi-menu {
-    color: black; 
+    color: black; /* This sets the color to a shade of orange. Replace with your desired color. */
+    /* Additional styles can be added as needed */
 }
 
 i.input-group-text.border-0.mdi.mdi-magnify {
-    color: black; 
+    color: black; /* This sets the color to a shade of orange. Replace with your desired color. */
+    /* Additional styles can be added as needed */
 }
 li.nav-item.d-none.d-lg-block.full-screen-link {
-    color: black;
+    color: black; /* This sets the color to a shade of orange. Replace with your desired color. */
+    /* Additional styles can be added as needed */
 }
 i.mdi.mdi-email-outline {
-    color: black; 
+    color: black; /* This sets the color to a shade of orange. Replace with your desired color. */
+    /* Additional styles can be added as needed */
 }
 i.mdi.mdi-bell-outline {
-    color: black;
+    color: black; /* This sets the color to a shade of orange. Replace with your desired color. */
+    /* Additional styles can be added as needed */
 }
+
+
 a.navbar-brand.brand-logo img {
     filter: invert(1); /* This will invert the colors of the image. */
     /* Additional styles can be added as needed */
 }
 
-.form-control::placeholder {
-    color: black; 
-}
-
-.card.bg-gradient-secondary {
-    background: linear-gradient(to right, #6a11cb, #2575fc);
-}
-
-
-.card {
-            border: 1px solid #ccc;
-            padding: 20px;
-            max-width: 300px;
-            margin: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-
-
-    
 </style>
+
 
   </head>
   <body>
     <div class="container-scroller">
+      
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -163,7 +104,7 @@ a.navbar-brand.brand-logo img {
                 <div class="input-group-prepend bg-transparent">
                   <i class="input-group-text border-0 mdi mdi-magnify"></i>
                 </div>
-                <input type="text" class="form-control bg-transparent border-0" placeholder="Search Orphanage">
+                <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
               </div>
             </form>
           </div>
@@ -175,24 +116,17 @@ a.navbar-brand.brand-logo img {
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-
-
-                  <!-- <p class="mb-1 text-black">David Greymaax</p>
-                </div>
-              </a> -->
-              <p class="mb-1 text-black"><?php
+                  <p class="mb-1 text-black"><?php
                   if (isset($_SESSION['username'])) {
                   echo $_SESSION['username'];
                   }?></p>
                 </div>
               </a>
-
-
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="Login.php">
+                <a class="dropdown-item" href="logout.php">
                   <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
               </div>
             </li>
@@ -318,150 +252,162 @@ a.navbar-brand.brand-logo img {
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                  <!-- <span class="font-weight-bold mb-2">David Grey. H</span> -->
-
-
                   <span class="font-weight-bold mb-2"><?php
                   if (isset($_SESSION['username'])) {
                   echo $_SESSION['username'];
                   }?></span>
-
-
-                  <span class="text-secondary text-small">Sponsor</span>
+                  <span class="text-secondary text-small">Orphanage</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="sponsor_dash.php">
+              <a class="nav-link" href="orphanage_dashboard.php">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">
-                <span class="menu-title">View Orphanage</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+            <li class="nav-item">
+              <a class="nav-link" href="view_orphanage.php">
+                <span class="menu-title">View students</span>
+                <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="Login.php">
-                <span class="menu-title">Signout</span>
-                <i class="mdi mdi-logout menu-icon"></i>
-              </a>
-            </li>
+            
           </ul>
         </nav>
         <!-- partial -->
-        <!-- <div class="main-panel">
+        <div class="main-panel">
           <div class="content-wrapper">
             <div class="row">
-
-              <div class="col-12 grid-margin stretch-card">
-                <div class="card ">
+              <div class="col-6 grid-margin stretch-card">
+                <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Orphanage List</h4>
-                    <div class="row">
-           <div class="container-scroller">
-      <!-- Add your navbar and sidebar content here -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <?php
-            while ($row = $result->fetch_assoc()) {
-              $name = $row["o_name"];
-              $id = $row["o_id"];
-              $email = $row["o_email"];
-              // $phone = $row["o_phone"];
-              // $district = $row["o_district"];
-              // $city = $row["o_city"];
-              // $pincode = $row["o_pincode"];
-            ?>
-            <div class="col-md-4 stretch-card grid-margin">
-               <!-- <div class="card bg-gradient-secondary card-img-holder">  -->
-               <div class="card">
-                
-              
+                  
 
-                <div class="card-body">
-                    <!-- <img src="img.jpg" alt=""> -->
-                    <h3><?php echo $name; ?></h3>
-                    <p class="title"><?php echo $email; ?></p>
-                    <!-- <P><?php echo $phone; ?></P> -->
-                    <!-- <p><?php echo $district; ?></p> -->
-                    <!-- <p><?php echo $city; ?></p> -->
-                    <!-- <P><?php echo $pincode; ?></P> -->
-                    <!-- <button type="button" class="btn btn-success btn-sm" action="orphanage_views.php">View Orphanage</button> -->
+                    
+                  <h4>WELCOME
+                  <?php
+                    echo $_SESSION['username']; 
+                    include "config.php";
+
+                    if (isset($_SESSION['username'])) {
+                    $user = $_SESSION['username'];
+    // $sponsor_email = $user["email"];
+
+    // Fetch existing sponsor data
+                    $sql = "SELECT * FROM orphanage WHERE o_email = '$user'";
+                    $result = $con->query($sql);
+
+                  if ($result->num_rows > 0) {
+                  $row = $result->fetch_assoc();
+                //   $name = $row['s_name'];
+                //   $email = $row['s_email'];
+                //   $phone = $row['s_phone'];
+                //   $aadhar = $row['s_aadhar'];
 
 
-                    <form method="post"   action="orphanage_views.php">
-                            <input type="hidden" name="id" value="<?php echo $id; ?>"> 
-                             <!-- Replace 123 with your desired ID -->
-                            
-                            <input type="submit" class="btn btn-success btn-sm"name="submit" value="View Orphanage "> 
-                            
-                            </form> 
+                $name = $row['orphanage_name'];
+                $id = $row['orphanage_govt_id'];
+                $date = $row['orphanage_established_date'];
+                $email = $rowT['orphanage_email'];
+                $phone = $row['orphanage_phone'];
+                $district = $rowT['orphanage_district'];
+                $city = $row['orphanage_city'];
+                $pincode = $row['orphanage_pincode'];
+                $password = $row['orphanage_password'];
 
-
-
-
-                </div>
-              </div>
-            </div>
-            <?php
-            }
-            ?>
-          </div>
-        </div>
-                      
-                      <!-- While start-->
-                      <!-- <div class="col-md-4 stretch-card grid-margin">
-                        <div class="card bg-gradient-secondary card-img-holder">
-                          <div class="card-body">
- -->
-
-
-<!--                           
-                            <h2 class="mb-5">Orphanage Name</h2>
-                            <h4 class="font-weight-normal mb-3">Weekly Sales </h4>
-                            
-                            <h6 class="card-text"> <i class="mdi mdi-map-marker"></i>Place</h6>
-                            <h6 class="card-text"> <i class="mdi mdi-phone-classic"></i> </i>Phone</h6>
-                            <h6 class="card-text"> <i class="mdi mdi-email"></i>Email</h6>
-                            <button type="button" class="btn btn-success btn-sm"><a href="orphanage_views.php">View Orphanage</a></button> -->
-
-
-<!-- 
-                            <form method="post" action="orphanage_views.php">
-                            <input type="hidden" name="id" value="<?php echo $id; ?>"> 
-                              Replace 123 with your desired ID -->
-                            
-                            <!-- <input type="submit" name="submit" value="View "> 
-                            
-                            </form>  -->
-                          
-                          
-        
-
-
-                          </div>
-                        </div>
-                      </div>
-                      <!--while end -->
-                      <!-- Add Php code here -->
-      
-             
+                } else {
+                echo "Sponsor not found.";
+                $con->close();
+                exit();
+                }
+                } else {
+                echo "Sponsor ID not provided.";
+                $con->close();
+                exit();
+              }
+?>
+           <form action="#" method="POST" class="forms-sample">
+                    <input type="hidden" name="id" value="<?php echo $email; ?>">
+                    <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="orphanage_name" class="form-control" value="<?php echo $name; ?>" required>
                     </div>
+
+                    <div class="form-group">
+                    <label for="name">ID</label>
+                    <input type="text" name="id" class="form-control" value="<?php echo $id; ?>" required>
+                    </div>
+
+                    <div class="form-group">
+                    <label for="name">date</label>
+                    <input type="text" name="date" class="form-control" value="<?php echo $date; ?>" required>
+                    </div>
+
+
+
+                    <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" class="form-control" value="<?php echo $email; ?>" required>
+                    </div>
+                    <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text"  class="form-control" name="phone" value="<?php echo $phone; ?>" required>
+                    </div>
+
+                    <div class="form-group">
+                    <label for="name">District</label>
+                    <input type="text" name="district" class="form-control" value="<?php echo $district ?>" required>
+                    </div>
+
+
+                    <div class="form-group">
+                    <label for="city">city</label>
+                    <input type="text" name="aadhar" class="form-control" value="<?php echo $city; ?>" required><br>
+                    </div>
+
+                    <div class="form-group">
+                    <label for="pincode">Name</label>
+                    <input type="text" name="name" class="form-control" value="<?php echo $pincode; ?>" required>
+                    </div>
+
+                    <div class="form-group">
+                    <label for="password">password</label>
+                    <input type="text" name="password" class="form-control" value="<?php echo $password; ?>" required>
+                    </div>
+
+
+                    <input type="submit" name="update" value="Update" class="btn btn-success btn-sm">
+
+                    
+                </form>    
+
+
+
+                
+                
+
+
                   </div>
-                </div>
               </div>
             </div>
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <!-- <div class="card-body">
+                    <h4 class="card-title">Horizontal Form</h4>
+                    <p class="card-description"> Horizontal form layout </p>
+                  </div> -->
+                </div>
+            </div>
+
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
             <div class="container-fluid d-flex justify-content-between">
-              <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © Infantcare.com 2023</span>
+              <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">infantcare@gmail.com</span>
+              <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin template</a> from Bootstrapdash.com</span>
             </div>
           </footer>
           <!-- partial -->
@@ -475,6 +421,8 @@ a.navbar-brand.brand-logo img {
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
+    <script src="assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="assets/js/off-canvas.js"></script>
@@ -482,9 +430,8 @@ a.navbar-brand.brand-logo img {
     <script src="assets/js/misc.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/todolist.js"></script>
     <!-- End custom js for this page -->
   </body>
 </html>
-
-
-
