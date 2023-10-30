@@ -24,6 +24,66 @@ if (isset($_SESSION['username'])) {
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.ico" />
+
+
+
+<style>
+   #sidebar {
+    /* background-color: #ff6600; This sets the background color to a shade of orange. Replace with your desired color. */
+    background-color: #5bc1ac;
+}
+
+.navbar-menu-wrapper {
+    background-color: #5bc1ac; /* This sets the background color to a shade of blue. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+
+.container-fluid.page-body-wrapper {
+    background-color: #5bc1ac; /* This sets the background color to a shade of pink. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+
+.navbar.default-layout-navbar {
+    background-color: #5bc1ac; /* This sets the background color to a shade of blue. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+
+.text-center.navbar-brand-wrapper {
+    background-color:#5bc1ac ; /* This sets the background color to a shade of pink. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+
+span.mdi.mdi-menu {
+    color: black; /* This sets the color to a shade of orange. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+
+i.input-group-text.border-0.mdi.mdi-magnify {
+    color: black; /* This sets the color to a shade of orange. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+li.nav-item.d-none.d-lg-block.full-screen-link {
+    color: black; /* This sets the color to a shade of orange. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+i.mdi.mdi-email-outline {
+    color: black; /* This sets the color to a shade of orange. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+i.mdi.mdi-bell-outline {
+    color: black; /* This sets the color to a shade of orange. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+
+
+a.navbar-brand.brand-logo img {
+    filter: invert(1); /* This will invert the colors of the image. */
+    /* Additional styles can be added as needed */
+}
+
+</style>
+
+
   </head>
   <body>
     <div class="container-scroller">
@@ -274,17 +334,19 @@ if (isset($_SESSION['username'])) {
                     <label for="aadhar">Aadhar Number</label>
                     <input type="text" name="aadhar" class="form-control" value="<?php echo $aadhar; ?>" required><br>
                     </div>
-                    <input type="submit" name="update" value="Update" class="btn btn-gradient-dark btn-icon-text">
+                    <input type="submit" name="update" value="Update" class="btn btn-success btn-sm">
+
+                    
                 </form>    
                   </div>
               </div>
             </div>
             <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
-                  <div class="card-body">
+                  <!-- <div class="card-body">
                     <h4 class="card-title">Horizontal Form</h4>
                     <p class="card-description"> Horizontal form layout </p>
-                  </div>
+                  </div> -->
                 </div>
             </div>
 

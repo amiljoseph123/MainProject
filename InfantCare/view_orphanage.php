@@ -71,12 +71,66 @@ if (isset($_SESSION['username'])) {
         margin-bottom: 5px;
     }
 
-    .card.bg-gradient-secondary {
+    /* .card.bg-gradient-secondary {
         background: #f794a4;
         background: -webkit-linear-gradient(to right, #f794a4, #fdd6bd);
         background: linear-gradient(to right, #f794a4, #fdd6bd);
         color: #fff;
-    }
+    } */
+  
+    #sidebar {
+   
+    background-color: #5bc1ac;
+}
+
+.navbar-menu-wrapper {
+    background-color: #5bc1ac; 
+}
+
+.container-fluid.page-body-wrapper {
+    background-color: #5bc1ac; 
+}
+
+.navbar.default-layout-navbar {
+    background-color: #5bc1ac; 
+}
+
+.text-center.navbar-brand-wrapper {
+    background-color:#5bc1ac ; 
+}
+
+span.mdi.mdi-menu {
+    color: black; 
+}
+
+i.input-group-text.border-0.mdi.mdi-magnify {
+    color: black; 
+}
+li.nav-item.d-none.d-lg-block.full-screen-link {
+    color: black;
+}
+i.mdi.mdi-email-outline {
+    color: black; 
+}
+i.mdi.mdi-bell-outline {
+    color: black;
+}
+a.navbar-brand.brand-logo img {
+    filter: invert(1); /* This will invert the colors of the image. */
+    /* Additional styles can be added as needed */
+}
+
+.form-control::placeholder {
+    color: black; 
+}
+
+
+
+
+
+
+
+    
 </style>
 
   </head>
@@ -313,9 +367,11 @@ if (isset($_SESSION['username'])) {
               $pincode = $row["o_pincode"];
             ?>
             <div class="col-md-4 stretch-card grid-margin">
-              <div class="card bg-gradient-secondary card-img-holder">
+               <div class="card bg-gradient-secondary card-img-holder"> 
+                
+              
+
                 <div class="card-body">
-                  <div class="card">
                     <!-- <img src="img.jpg" alt=""> -->
                     <h3><?php echo $name; ?></h3>
 <p class="title"><?php echo $email; ?></p>
@@ -324,7 +380,6 @@ if (isset($_SESSION['username'])) {
                     <p><?php echo $city; ?></p>
                     <P><?php echo $pincode; ?></P>
                     <button type="button" class="btn btn-success btn-sm">View Orphanage</button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -335,29 +390,29 @@ if (isset($_SESSION['username'])) {
         </div>
                       
                       <!-- While start-->
-                      <div class="col-md-4 stretch-card grid-margin">
+                      <!-- <div class="col-md-4 stretch-card grid-margin">
                         <div class="card bg-gradient-secondary card-img-holder">
                           <div class="card-body">
+ -->
 
 
-
-                          
+<!--                           
                             <h2 class="mb-5">Orphanage Name</h2>
                             <h4 class="font-weight-normal mb-3">Weekly Sales </h4>
                             
                             <h6 class="card-text"> <i class="mdi mdi-map-marker"></i>Place</h6>
                             <h6 class="card-text"> <i class="mdi mdi-phone-classic"></i> </i>Phone</h6>
                             <h6 class="card-text"> <i class="mdi mdi-email"></i>Email</h6>
-                            <button type="button" class="btn btn-success btn-sm"><a href="orphanage_views.php">View Orphanage</a></button>
+                            <button type="button" class="btn btn-success btn-sm"><a href="orphanage_views.php">View Orphanage</a></button> -->
 
 
-
+<!-- 
                             <form method="post" action="orphanage_views.php">
-                            <input type="hidden" name="id" value="<?php echo $id; ?>"> <!-- Replace 123 with your desired ID -->
+                            <input type="hidden" name="id" value="<?php echo $id; ?>">  Replace 123 with your desired ID -->
                             
-                            <input type="submit" name="submit" value="View ">
+                            <!-- <input type="submit" name="submit" value="View "> -->
                             
-                            </form>
+                            <!-- </form> --> 
                           
                           
         
