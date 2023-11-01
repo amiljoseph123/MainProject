@@ -286,13 +286,14 @@ a.navbar-brand.brand-logo img {
                   
 
                     
-                  <h4>WELCOME
+                  <h4>WELCOME</h4>
                   <?php
-                    echo $_SESSION['username']; 
+                    
                     include "config.php";
 
                     if (isset($_SESSION['username'])) {
                     $user = $_SESSION['username'];
+                    echo $user;
     // $sponsor_email = $user["email"];
 
     // Fetch existing sponsor data
@@ -300,22 +301,22 @@ a.navbar-brand.brand-logo img {
                     $result = $con->query($sql);
 
                   if ($result->num_rows > 0) {
-                  $row = $result->fetch_assoc();
+                    $row = $result->fetch_assoc();
                 //   $name = $row['s_name'];
                 //   $email = $row['s_email'];
                 //   $phone = $row['s_phone'];
                 //   $aadhar = $row['s_aadhar'];
 
 
-                $name = $row['orphanage_name'];
-                $id = $row['orphanage_govt_id'];
-                $date = $row['orphanage_established_date'];
-                $email = $rowT['orphanage_email'];
-                $phone = $row['orphanage_phone'];
-                $district = $rowT['orphanage_district'];
-                $city = $row['orphanage_city'];
-                $pincode = $row['orphanage_pincode'];
-                $password = $row['orphanage_password'];
+                    $name = $row['o_name'];
+                     $id = $row['o_govtid'];
+                    $date = $row['o_edate'];
+                     $email = $row['o_email'];
+                    $phone = $row['o_phone'];
+                    $district = $row['o_district'];
+                    $city = $row['o_city'];
+                    $pincode = $row['o_pincode'];
+                    // $password = $row['o_password'];
 
                 } else {
                 echo "Sponsor not found.";
@@ -332,10 +333,10 @@ a.navbar-brand.brand-logo img {
                     <input type="hidden" name="id" value="<?php echo $email; ?>">
                     <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" name="orphanage_name" class="form-control" value="<?php echo $name; ?>" required>
+                    <input type="text" name="orphanage_name" id="orphanage_name" class="form-control" value="<?php echo $name; ?>" required>
                     </div>
 
-                    <div class="form-group">
+                     <div class="form-group">
                     <label for="name">ID</label>
                     <input type="text" name="id" class="form-control" value="<?php echo $id; ?>" required>
                     </div>
@@ -368,14 +369,14 @@ a.navbar-brand.brand-logo img {
                     </div>
 
                     <div class="form-group">
-                    <label for="pincode">Name</label>
+                    <label for="pincode">Pincode</label>
                     <input type="text" name="name" class="form-control" value="<?php echo $pincode; ?>" required>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                     <label for="password">password</label>
                     <input type="text" name="password" class="form-control" value="<?php echo $password; ?>" required>
-                    </div>
+                    </div> -->
 
 
                     <input type="submit" name="update" value="Update" class="btn btn-success btn-sm">
@@ -383,7 +384,7 @@ a.navbar-brand.brand-logo img {
                     
                 </form>    
 
-
+ 
 
                 
                 

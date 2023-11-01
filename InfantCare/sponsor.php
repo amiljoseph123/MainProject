@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION['username'])) {
+    // User is logged in
+   //echo "Welcome, " . $_SESSION['username'];
+}
+?>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -17,10 +24,69 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<style>
+   #sidebar {
+    /* background-color: #ff6600; This sets the background color to a shade of orange. Replace with your desired color. */
+    background-color: #5bc1ac;
+}
+
+.navbar-menu-wrapper {
+    background-color: #5bc1ac; /* This sets the background color to a shade of blue. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+
+.container-fluid.page-body-wrapper {
+    background-color: #5bc1ac; /* This sets the background color to a shade of pink. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+
+.navbar.default-layout-navbar {
+    background-color: #5bc1ac; /* This sets the background color to a shade of blue. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+
+.text-center.navbar-brand-wrapper {
+    background-color:#5bc1ac ; /* This sets the background color to a shade of pink. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+
+span.mdi.mdi-menu {
+    color: black; /* This sets the color to a shade of orange. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+
+i.input-group-text.border-0.mdi.mdi-magnify {
+    color: black; /* This sets the color to a shade of orange. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+li.nav-item.d-none.d-lg-block.full-screen-link {
+    color: black; /* This sets the color to a shade of orange. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+i.mdi.mdi-email-outline {
+    color: black; /* This sets the color to a shade of orange. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+i.mdi.mdi-bell-outline {
+    color: black; /* This sets the color to a shade of orange. Replace with your desired color. */
+    /* Additional styles can be added as needed */
+}
+
+
+a.navbar-brand.brand-logo img {
+    filter: invert(1); /* This will invert the colors of the image. */
+    /* Additional styles can be added as needed */
+}
+
+</style>
+
+
   </head>
   <body>
     <div class="container-scroller">
-
       
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -28,13 +94,10 @@
           <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
         </div>
-
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
           </button>
-
-          
           <div class="search-field d-none d-md-block">
             <form class="d-flex align-items-center h-100" action="#">
               <div class="input-group">
@@ -45,7 +108,6 @@
               </div>
             </form>
           </div>
-
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -53,27 +115,26 @@
                   <img src="assets/images/faces/face1.jpg" alt="image">
                   <span class="availability-status online"></span>
                 </div>
-
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">Admin</p>
+                  <p class="mb-1 text-black"><?php
+                  if (isset($_SESSION['username'])) {
+                  echo $_SESSION['username'];
+                  }?></p>
                 </div>
               </a>
-
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="logout.php">
                   <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
               </div>
             </li>
-
             <li class="nav-item d-none d-lg-block full-screen-link">
               <a class="nav-link">
                 <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
               </a>
             </li>
-
             <li class="nav-item dropdown">
               <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="mdi mdi-email-outline"></i>
@@ -91,7 +152,6 @@
                     <p class="text-gray mb-0"> 1 Minutes ago </p>
                   </div>
                 </a>
-
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
@@ -192,118 +252,104 @@
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">Admin</span>
-                  <span class="text-secondary text-small">Project Manager</span>
+                  <span class="font-weight-bold mb-2"><?php
+                  if (isset($_SESSION['username'])) {
+                  echo $_SESSION['username'];
+                  }?></span>
+                  <span class="text-secondary text-small">Sponsor</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="sponsor.php">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
+
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Basic UI Elements</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+              <a class="nav-link" href="sponsor_dash.php">
+                <span class="menu-title">Profile</span>
+                <i class="mdi mdi-home menu-icon"></i>
               </a>
-
-
-              <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
-                </ul>
-              </div>
-            </li>
+              </li>
 
 
             <li class="nav-item">
-              <a class="nav-link" href="pages/icons/mdi.html">
-                <span class="menu-title">Icons</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
+              <a class="nav-link" href="view_orphanage.php">
+                <span class="menu-title">View Orphanage</span>
+                <i class="mdi mdi-home menu-icon"></i>
               </a>
-
-
             </li>
+
             <li class="nav-item">
-              <a class="nav-link" href="pages/forms/basic_elements.html">
-                <span class="menu-title">Forms</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+              <a class="nav-link" href="#">
+                <span class="menu-title">Sponsor a student</span>
+                <i class="mdi mdi-home menu-icon"></i>
               </a>
-
 
             </li>
 
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="menu-title">History</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+              </li>
 
 
+              <li class="nav-item">
+              <a class="nav-link" href="Login.php">
+                <span class="menu-title">Signout</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+              </li>
+
+              </li>
             
-            <li class="nav-item">
-              <a class="nav-link" href="pages/charts/chartjs.html">
-                <span class="menu-title">Charts</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
-              </a>
-
-               </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pages/tables/basic-table.html">
-                <span class="menu-title">Tables</span>
-                <i class="mdi mdi-table-large menu-icon"></i>
-              </a>
-
-
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
-                <span class="menu-title">Sample Pages</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-medical-bag menu-icon"></i>
-              </a>
-
-
-              <div class="collapse" id="general-pages">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-                </ul>
-              </div>
-
-            </li>
-            <li class="nav-item sidebar-actions">
-              <span class="nav-link">
-                <div class="border-bottom">
-                  <h6 class="font-weight-normal mb-3">Projects</h6>
-                </div>
-
-
-                <button class="btn btn-block btn-lg btn-gradient-primary mt-4">+ Add a project</button>
-                <div class="mt-4">
-                  <div class="border-bottom">
-                    <p class="text-secondary">Categories</p>
-                  </div>
-
-
-                  <ul class="gradient-bullet-list mt-4">
-                    <li>Free</li>
-                    <li>Pro</li>
-                  </ul>
-                </div>
-                
-              </span>
-            </li>
           </ul>
         </nav>
         <!-- partial -->
-
         <div class="main-panel">
           <div class="content-wrapper">
+            <div class="row">
+              <div class="col-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                  
+
+                    
+                  <h4>WELCOME
+                  <?php
+                    echo $_SESSION['username']; 
+                    include "config.php";
+
+                    if (isset($_SESSION['username'])) {
+                    $user = $_SESSION['username'];
+                    }
+    // $sponsor_email = $user["email"];
+
+    // Fetch existing sponsor data
+                    
+?>
+</h4>
+<canvas id="lineChart" height="300" ></canvas>
+
+<div class="sponsor-message">
+    <p>Thank you for your generous support! Your contributions make a real difference.</p>
+</div>
+                  </div>
+              </div>
+            </div>
+            
+            </div>
+
           </div>
+
+
+
+        
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
@@ -312,7 +358,6 @@
               <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin template</a> from Bootstrapdash.com</span>
             </div>
           </footer>
-
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
@@ -338,3 +383,30 @@
     <!-- End custom js for this page -->
   </body>
 </html>
+<script>
+$(document).ready(function () {
+    var ctx = document.getElementById('lineChart').getContext('2d');
+    var chartData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        datasets: [{
+            label: 'Some Data',
+            data: [12, 19, 3, 5, 2, 3, 10],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: chartData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+});
+</script>

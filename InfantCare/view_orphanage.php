@@ -143,7 +143,25 @@ a.navbar-brand.brand-logo img {
 
     
 </style>
+<script>
+        function searchOrphanages() {
+            var input, filter, cards, card, i, txtValue;
+            input = document.getElementById('searchInput');
+            filter = input.value.toUpperCase();
+            cards = document.getElementsByClassName('card');
 
+            for (i = 0; i < cards.length; i++) {
+                card = cards[i];
+                txtValue = card.textContent || card.innerText;
+
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        }
+    </script>
   </head>
   <body>
     <div class="container-scroller">
@@ -158,15 +176,15 @@ a.navbar-brand.brand-logo img {
             <span class="mdi mdi-menu"></span>
           </button>
           <div class="search-field d-none d-md-block">
-            <form class="d-flex align-items-center h-100" action="#">
-              <div class="input-group">
+        <form class="d-flex align-items-center h-100" action="#">
+            <div class="input-group">
                 <div class="input-group-prepend bg-transparent">
-                  <i class="input-group-text border-0 mdi mdi-magnify"></i>
+                    <i class="input-group-text border-0 mdi mdi-magnify"></i>
                 </div>
-                <input type="text" class="form-control bg-transparent border-0" placeholder="Search Orphanage">
-              </div>
-            </form>
-          </div>
+                <input type="text" id="searchInput" class="form-control bg-transparent border-0" placeholder="Search Orphanage" onkeyup="searchOrphanages()">
+            </div>
+        </form>
+    </div>
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -333,17 +351,45 @@ a.navbar-brand.brand-logo img {
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="sponsor_dash.php">
+              <a class="nav-link" href="sponsor.php">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link" href="sponsor_dash.php">
+                <span class="menu-title">Profile</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+              </li>
+
+
             <li class="nav-item active">
               <a class="nav-link" href="#">
                 <span class="menu-title">View Orphanage</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
             </li>
+
+          
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="menu-title">Sponsor a student</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="menu-title">History</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+              </li>
+
+
             <li class="nav-item ">
               <a class="nav-link" href="Login.php">
                 <span class="menu-title">Signout</span>

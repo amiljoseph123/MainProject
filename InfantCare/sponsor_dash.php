@@ -262,17 +262,52 @@ a.navbar-brand.brand-logo img {
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="sponsor_dash.php">
+              <a class="nav-link" href="sponsor.php">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="sponsor_dash.php">
+                <span class="menu-title">Profile</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+              </li>
+
+
+
             <li class="nav-item">
               <a class="nav-link" href="view_orphanage.php">
                 <span class="menu-title">View Orphanage</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="menu-title">Sponsor a student</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="menu-title">History</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+              </li>
+
+
+              <li class="nav-item">
+              <a class="nav-link" href="Login.php">
+                <span class="menu-title">Signout</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+              </li>
+
+              </li>
             
           </ul>
         </nav>
