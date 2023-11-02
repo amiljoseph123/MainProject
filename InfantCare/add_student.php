@@ -278,7 +278,7 @@ a.navbar-brand.brand-logo img {
 
 
             <li class="nav-item active">
-              <a class="nav-link" href="add_student.php">
+              <a class="nav-link" href="#">
                 <span class="menu-title">Add Students</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
@@ -287,7 +287,7 @@ a.navbar-brand.brand-logo img {
 
 
             <li class="nav-item">
-              <a class="nav-link" href="view_student.php">
+              <a class="nav-link" href="view_student2.php">
                 <span class="menu-title">View students</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -304,134 +304,96 @@ a.navbar-brand.brand-logo img {
           </ul>
         </nav>
         <!-- partial -->
+        
+
+
+
+
         <div class="main-panel">
           <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Form elements </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+              </nav>
+            </div>
             <div class="row">
-              <div class="col-6 grid-margin stretch-card">
+              <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                  
+                    <h4 class="card-title">Default form</h4>
+                    <p class="card-description"> Basic form layout </p>
+                    <!-- <form class="forms-sample"> -->
+                      <!-- <div class="form-group">
+                        
+                        <label for="exampleInputUsername1">firstname</label>
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username">
+                      </div>
+                      <div class="form-group">
+                         
+                        <label for="exampleInputEmail1">lastname</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="lastname">
+                      </div>
 
-                    
-                  <h4>WELCOME</h4>
-                  <?php
-                    
-                    include "config.php";
-
-                    if (isset($_SESSION['username'])) {
-                    $user = $_SESSION['username'];
-                    echo $user;
-    // $sponsor_email = $user["email"];
-
-    // Fetch existing sponsor data
-                    $sql = "SELECT * FROM orphanage WHERE o_email = '$user'";
-                    $result = $con->query($sql);
-
-                  if ($result->num_rows > 0) {
-                    $row = $result->fetch_assoc();
-                //   $name = $row['s_name'];
-                //   $email = $row['s_email'];
-                //   $phone = $row['s_phone'];
-                //   $aadhar = $row['s_aadhar'];
-
-
-                    $name = $row['o_name'];
-                     $id = $row['o_govtid'];
-                    $date = $row['o_edate'];
-                     $email = $row['o_email'];
-                    $phone = $row['o_phone'];
-                    $district = $row['o_district'];
-                    $city = $row['o_city'];
-                    $pincode = $row['o_pincode'];
-                    // $password = $row['o_password'];
-
-                } else {
-                echo "Sponsor not found.";
-                $con->close();
-                exit();
-                }
-                } else {
-                echo "Sponsor ID not provided.";
-                $con->close();
-                exit();
-              }
-?>
-           <form action="#" method="POST" class="forms-sample">
-                    <input type="hidden" name="id" value="<?php echo $email; ?>">
-                    <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="orphanage_name" id="orphanage_name" class="form-control" value="<?php echo $name; ?>" required>
-                    </div>
-
-                     <div class="form-group">
-                    <label for="name">ID</label>
-                    <input type="text" name="id" class="form-control" value="<?php echo $id; ?>" required>
-                    </div>
-
-                    <div class="form-group">
-                    <label for="name">date</label>
-                    <input type="text" name="date" class="form-control" value="<?php echo $date; ?>" required>
-                    </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">age</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputConfirmPassword1">gender</label>
+                        <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password">
+                      </div>
+                      <!-- <div class="form-check form-check-flat form-check-primary">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input"> Remember me </label>
+                      </div> -->
+                      <!-- <button type="submit" class="btn btn-gradient-primary me-2">add</button>
+                      <button class="btn btn-light">Cancel</button>  -->
+                    -->
 
 
 
-                    <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" class="form-control" value="<?php echo $email; ?>" required>
-                    </div>
-                    <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="text"  class="form-control" name="phone" value="<?php echo $phone; ?>" required>
-                    </div>
-
-                    <div class="form-group">
-                    <label for="name">District</label>
-                    <input type="text" name="district" class="form-control" value="<?php echo $district ?>" required>
-                    </div>
-
-
-                    <div class="form-group">
-                    <label for="city">city</label>
-                    <input type="text" name="aadhar" class="form-control" value="<?php echo $city; ?>" required><br>
-                    </div>
-
-                    <div class="form-group">
-                    <label for="pincode">Pincode</label>
-                    <input type="text" name="name" class="form-control" value="<?php echo $pincode; ?>" required>
-                    </div>
-
-                    <!-- <div class="form-group">
-                    <label for="password">password</label>
-                    <input type="text" name="password" class="form-control" value="<?php echo $password; ?>" required>
-                    </div> -->
+                    <form action="add_student.php" method="post">
+  <div class="form-group">
+    <label for="exampleInputUsername1">First Name</label>
+    <input type="text" class="form-control" id="exampleInputUsername1" name="firstname" placeholder="Username">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Last Name</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="lastname" placeholder="Last Name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Age</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" name="age" placeholder="Age">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputConfirmPassword1">Gender</label>
+    <input type="text" class="form-control" id="exampleInputConfirmPassword1" name="gender" placeholder="Gender">
+  </div>
+  <button type="submit" class="btn btn-gradient-primary me-2" name="submit"><a href="view_student2.php">Add</a></button>
+  <button class="btn btn-light">Cancel</button>
+</form>
 
 
-                    <input type="submit" name="update" value="Update" class="btn btn-success btn-sm">
 
-                    
-                </form>    
-
- 
-
-                
-                
-
-
+                    <!-- </form> -->
                   </div>
-              </div>
-            </div>
-            <div class="col-md-6 grid-margin stretch-card">
-                <div class="card">
-                  <!-- <div class="card-body">
-                    <h4 class="card-title">Horizontal Form</h4>
-                    <p class="card-description"> Horizontal form layout </p>
-                  </div> -->
                 </div>
-            </div>
+              </div>                        
 
-          </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
+
+
+
+
+
+
+
+
+
+        
           <footer class="footer">
             <div class="container-fluid d-flex justify-content-between">
               <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">infantcare@gmail.com</span>
@@ -461,5 +423,74 @@ a.navbar-brand.brand-logo img {
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/todolist.js"></script>
     <!-- End custom js for this page -->
+
+
+
+
+    <?php
+
+// include "config.php";
+// if (isset($_POST['submit'])) {
+//     $first = $_POST['firstname'];
+//     $lastnam = $_POST['lastname'];
+//     $age = $_POST['age'];
+//     $gender = $_POST['gender'];
+    
+
+//    // $hashed_password = password_hash($password,PASSWORD_DEFAULT);
+//     $user_type="Sponsor";
+//     $result=mysqli_query($con,"SELECT * FROM `student` WHERE `Email`='$email'") or die("error");
+//         if(mysqli_num_rows($result)<=0){
+            
+//             mysqli_query($con,"INSERT INTO `student`(`id`, `firstname`, `lastname`, `age`, `gender`) VALUES (default,'$id','$firstname','$lastname','$age','$gender')")or die(mysqli_error($con));
+//             // echo '<script>alert("Registration is successful");</script>';
+//             echo "<script>
+//             Swal.fire('Registration Successful');
+//           </script>";
+
+//             echo "<script> window.location = 'view_student.php';</script>";
+//         }
+        
+// } else {
+    
+//     // echo '<script>alert("Registration is failed")</script>';
+//      echo "<script>
+//              // Swal.fire('Registration Faild');
+//            </script>";
+//  }
+?>
+
+
+
+<?php
+include "config.php";
+
+if (isset($_POST['submit'])) {
+    $first = $_POST['firstname'];
+    $lastnam = $_POST['lastname'];
+    $age = $_POST['age'];
+    $gender = $_POST['gender'];
+
+    // Insert data into the database
+    $result = mysqli_query($con, "INSERT INTO `student`(`firstname`, `lastname`, `age`, `gender`) VALUES ('$first', '$lastnam', '$age', '$gender')") or die(mysqli_error($con));
+
+    if ($result) {
+        echo "<script>
+            Swal.fire('Registration Successful');
+          </script>";
+        echo "<script> window.location = 'view_student2.php';</script>";
+    } else {
+        echo "<script>
+             Swal.fire('Registration Failed');
+           </script>";
+    }
+}
+?>
+
+
+
+
+
+
   </body>
 </html>

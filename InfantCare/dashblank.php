@@ -278,7 +278,7 @@ a.navbar-brand.brand-logo img {
 
 
             <li class="nav-item active">
-              <a class="nav-link" href="add_student.php">
+              <a class="nav-link" href="#">
                 <span class="menu-title">Add Students</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
@@ -292,146 +292,54 @@ a.navbar-brand.brand-logo img {
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
-
-
-            <li class="nav-item">
-              <a class="nav-link" href="Login.php">
-                <span class="menu-title">Signout</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
-              </li>
             
           </ul>
         </nav>
         <!-- partial -->
+        
+
+
+
+
         <div class="main-panel">
           <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Form elements </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+              </nav>
+            </div>
             <div class="row">
-              <div class="col-6 grid-margin stretch-card">
+              <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                  
-
-                    
-                  <h4>WELCOME</h4>
-                  <?php
-                    
-                    include "config.php";
-
-                    if (isset($_SESSION['username'])) {
-                    $user = $_SESSION['username'];
-                    echo $user;
-    // $sponsor_email = $user["email"];
-
-    // Fetch existing sponsor data
-                    $sql = "SELECT * FROM orphanage WHERE o_email = '$user'";
-                    $result = $con->query($sql);
-
-                  if ($result->num_rows > 0) {
-                    $row = $result->fetch_assoc();
-                //   $name = $row['s_name'];
-                //   $email = $row['s_email'];
-                //   $phone = $row['s_phone'];
-                //   $aadhar = $row['s_aadhar'];
+                    <h4 class="card-title">Default form</h4>
+                    <p class="card-description"> Basic form layout </p>
+                    <!-- <form 
 
 
-                    $name = $row['o_name'];
-                     $id = $row['o_govtid'];
-                    $date = $row['o_edate'];
-                     $email = $row['o_email'];
-                    $phone = $row['o_phone'];
-                    $district = $row['o_district'];
-                    $city = $row['o_city'];
-                    $pincode = $row['o_pincode'];
-                    // $password = $row['o_password'];
-
-                } else {
-                echo "Sponsor not found.";
-                $con->close();
-                exit();
-                }
-                } else {
-                echo "Sponsor ID not provided.";
-                $con->close();
-                exit();
-              }
-?>
-           <form action="#" method="POST" class="forms-sample">
-                    <input type="hidden" name="id" value="<?php echo $email; ?>">
-                    <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="orphanage_name" id="orphanage_name" class="form-control" value="<?php echo $name; ?>" required>
-                    </div>
-
-                     <div class="form-group">
-                    <label for="name">ID</label>
-                    <input type="text" name="id" class="form-control" value="<?php echo $id; ?>" required>
-                    </div>
-
-                    <div class="form-group">
-                    <label for="name">date</label>
-                    <input type="text" name="date" class="form-control" value="<?php echo $date; ?>" required>
-                    </div>
-
-
-
-                    <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" class="form-control" value="<?php echo $email; ?>" required>
-                    </div>
-                    <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="text"  class="form-control" name="phone" value="<?php echo $phone; ?>" required>
-                    </div>
-
-                    <div class="form-group">
-                    <label for="name">District</label>
-                    <input type="text" name="district" class="form-control" value="<?php echo $district ?>" required>
-                    </div>
-
-
-                    <div class="form-group">
-                    <label for="city">city</label>
-                    <input type="text" name="aadhar" class="form-control" value="<?php echo $city; ?>" required><br>
-                    </div>
-
-                    <div class="form-group">
-                    <label for="pincode">Pincode</label>
-                    <input type="text" name="name" class="form-control" value="<?php echo $pincode; ?>" required>
-                    </div>
-
-                    <!-- <div class="form-group">
-                    <label for="password">password</label>
-                    <input type="text" name="password" class="form-control" value="<?php echo $password; ?>" required>
-                    </div> -->
-
-
-                    <input type="submit" name="update" value="Update" class="btn btn-success btn-sm">
-
-                    
-                </form>    
 
  
 
-                
-                
 
-
+                    <!-- </form> -->
                   </div>
-              </div>
-            </div>
-            <div class="col-md-6 grid-margin stretch-card">
-                <div class="card">
-                  <!-- <div class="card-body">
-                    <h4 class="card-title">Horizontal Form</h4>
-                    <p class="card-description"> Horizontal form layout </p>
-                  </div> -->
                 </div>
-            </div>
+              </div>                        
 
-          </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
+
+
+
+
+
+
+
+
+
+        
           <footer class="footer">
             <div class="container-fluid d-flex justify-content-between">
               <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">infantcare@gmail.com</span>
@@ -461,5 +369,15 @@ a.navbar-brand.brand-logo img {
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/todolist.js"></script>
     <!-- End custom js for this page -->
+
+
+
+
+ 
+
+
+
+
+
   </body>
 </html>
