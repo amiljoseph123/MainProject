@@ -295,7 +295,7 @@ a.navbar-brand.brand-logo img {
 
 
             <li class="nav-item">
-              <a class="nav-link" href="Login.php">
+              <a class="nav-link" href="Logout.php">
                 <span class="menu-title">Signout</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>

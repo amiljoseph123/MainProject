@@ -1,12 +1,21 @@
 
+<?php
+// Start or resume the session
+session_start();
+include('config.php');
 
+if (!isset($_SESSION['username'])) {
+    header('Location: index.php'); // Redirect to index.php
+    exit(); // Stop further execution of the current script
+}
+?>
 <?php 
- session_start();
+//  session_start();
 //  //echo $_SESSION["username"];
- if (isset($_SESSION['username'])) {
+//  if (isset($_SESSION['username'])) {
      // User is logged in
     //  echo "Welcome, " . $_SESSION['username'];
- }
+//  }
      // You can display user-specific content here
 //  } else {
 //      // User is not logged in, redirect to the login page
@@ -14,6 +23,26 @@
 //      exit(); // Make sure to stop execution after the redirect
 //  }
 ?>  
+
+
+<?php 
+// session_start();
+//  //echo $_SESSION["username"];
+// if (isset($_SESSION['username'])) {
+//     // User is logged in
+//     echo "Welcome, " . $_SESSION['username'];
+//     // You can display user-specific content here
+// } else {
+//     // User is not logged in, redirect to the login page
+//     header("Location: login.php");
+//     exit(); // Make sure to stop execution after the redirect
+// }
+?>
+
+
+
+
+
 <?php
 require 'header.php';
 ?> 

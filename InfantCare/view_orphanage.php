@@ -4,12 +4,15 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 ?>
 
 
+<?php
 
+require 'header.php';
+?> 
 
 <!DOCTYPE html>
 
 <?php
-session_start();
+// session_start();
 if (isset($_SESSION['username'])) {
     // User is logged in
    //echo "Welcome, " . $_SESSION['username'];
@@ -144,29 +147,33 @@ a.navbar-brand.brand-logo img {
     
 </style>
 <script>
-        function searchOrphanages() {
-            var input, filter, cards, card, i, txtValue;
-            input = document.getElementById('searchInput');
-            filter = input.value.toUpperCase();
-            cards = document.getElementsByClassName('card');
+function searchOrphanages() {
+    var input, filter, cards, card, i, txtValue;
+    input = document.getElementById('searchInput');
+    filter = input.value.toUpperCase();
+    cards = document.getElementsByClassName('card');
 
-            for (i = 0; i < cards.length; i++) {
-                card = cards[i];
-                txtValue = card.textContent || card.innerText;
+    for (i = 0; i < cards.length; i++) {
+        card = cards[i];
+        txtValue = card.textContent || card.innerText;
 
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
-            }
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
         }
-    </script>
+    }
+}
+</script>
+
   </head>
   <body>
     <div class="container-scroller">
+
+
+    
       <!-- partial:partials/_navbar.html -->
-      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <!-- <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
           <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
@@ -193,20 +200,20 @@ a.navbar-brand.brand-logo img {
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-
+ -->
 
                   <!-- <p class="mb-1 text-black">David Greymaax</p>
                 </div>
               </a> -->
-              <p class="mb-1 text-black"><?php
-                  if (isset($_SESSION['username'])) {
-                  echo $_SESSION['username'];
-                  }?></p>
+              <!-- <p class="mb-1 text-black"><?php
+                  // if (isset($_SESSION['username'])) {
+                  // echo $_SESSION['username'];
+                  // }?></p>
                 </div>
-              </a>
+              </a> -->
 
 
-              <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+              <!-- <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
                 <div class="dropdown-divider"></div>
@@ -335,14 +342,14 @@ a.navbar-brand.brand-logo img {
                   <span class="login-status online"></span>
                   <!--change to offline or busy as needed-->
                 </div>
-                <div class="nav-profile-text d-flex flex-column">
+                <div class="nav-profile-text d-flex flex-column"> 
                   <!-- <span class="font-weight-bold mb-2">David Grey. H</span> -->
 
 
                   <span class="font-weight-bold mb-2"><?php
                   if (isset($_SESSION['username'])) {
-                  echo $_SESSION['username'];
-                  }?></span>
+                   echo $_SESSION['username'];
+                  }?></span> 
 
 
                   <span class="text-secondary text-small">Sponsor</span>
@@ -367,7 +374,7 @@ a.navbar-brand.brand-logo img {
 
 
             <li class="nav-item active">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="view_orphanage.php">
                 <span class="menu-title">View Orphanage</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
@@ -389,9 +396,11 @@ a.navbar-brand.brand-logo img {
               </a>
               </li>
 
+             
+
 
             <li class="nav-item ">
-              <a class="nav-link" href="Login.php">
+              <a class="nav-link" href="Logout.php">
                 <span class="menu-title">Signout</span>
                 <i class="mdi mdi-logout menu-icon"></i>
               </a>
@@ -411,8 +420,23 @@ a.navbar-brand.brand-logo img {
            <div class="container-scroller">
       <!-- Add your navbar and sidebar content here -->
       <div class="main-panel">
+
+
+      <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="input-group">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search Orphanage" onkeyup="searchOrphanages()">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
         <div class="content-wrapper">
-          <div class="row">
+
+<div class="row">
             <?php
             while ($row = $result->fetch_assoc()) {
               $name = $row["o_name"];

@@ -1,12 +1,28 @@
-<!DOCTYPE html>
-<?php
+
+
+<?php 
 session_start();
+
+ //echo $_SESSION["username"];
 if (isset($_SESSION['username'])) {
     // User is logged in
-   //echo "Welcome, " . $_SESSION['username'];
+    // echo "Welcome, " . $_SESSION['username'];
+    // You can display user-specific content here
+} else {
+    // User is not logged in, redirect to the login page
+    header("Location: login.php");
+    exit(); // Make sure to stop execution after the redirect
 }
+require 'config.php';
+require 'header.php';
 ?>
-<html lang="en">
+
+
+<!DOCTYPE html>
+
+
+
+<!-- <html lang="en"> -->
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -89,7 +105,7 @@ a.navbar-brand.brand-logo img {
     <div class="container-scroller">
       
       <!-- partial:partials/_navbar.html -->
-      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <!-- <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
           <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
@@ -116,10 +132,9 @@ a.navbar-brand.brand-logo img {
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black"><?php
-                  if (isset($_SESSION['username'])) {
-                  echo $_SESSION['username'];
-                  }?></p>
+                  <p class="mb-1 text-black">
+                   
+                  </p>
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
@@ -239,7 +254,7 @@ a.navbar-brand.brand-logo img {
           </button>
         </div>
       </nav>
-      <!-- partial -->
+       partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -252,10 +267,12 @@ a.navbar-brand.brand-logo img {
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2"><?php
-                  if (isset($_SESSION['username'])) {
+                  <span class="font-weight-bold mb-2">
+                    <?php
+                  // if (isset($_SESSION['username'])) {
                   echo $_SESSION['username'];
-                  }?></span>
+                //  }
+                  ?></span>
                   <span class="text-secondary text-small">Sponsor</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
@@ -300,7 +317,7 @@ a.navbar-brand.brand-logo img {
 
 
               <li class="nav-item">
-              <a class="nav-link" href="Login.php">
+              <a class="nav-link" href="logout.php">
                 <span class="menu-title">Signout</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -323,11 +340,11 @@ a.navbar-brand.brand-logo img {
                   <h4>WELCOME
                   <?php
                     echo $_SESSION['username']; 
-                    include "config.php";
+                    // include "config.php";
 
-                    if (isset($_SESSION['username'])) {
+                    // if (isset($_SESSION['username'])) {
                     $user = $_SESSION['username'];
-                    }
+                    // }
     // $sponsor_email = $user["email"];
 
     // Fetch existing sponsor data

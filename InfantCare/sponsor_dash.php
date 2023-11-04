@@ -6,6 +6,14 @@ if (isset($_SESSION['username'])) {
    //echo "Welcome, " . $_SESSION['username'];
 }
 ?>
+
+
+<?php
+
+require 'header.php';
+?> 
+
+
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -30,7 +38,8 @@ if (isset($_SESSION['username'])) {
 <style>
    #sidebar {
     /* background-color: #ff6600; This sets the background color to a shade of orange. Replace with your desired color. */
-    background-color: #5bc1ac;
+       background-color: #5bc1ac; 
+      /* background-color: white; */
 }
 
 .navbar-menu-wrapper {
@@ -81,7 +90,15 @@ a.navbar-brand.brand-logo img {
     /* Additional styles can be added as needed */
 }
 
+.active {
+  /* Add your desired styles for when the element is in view */
+  color: red; /* Change this to the desired color */
+}
+
+
 </style>
+
+
 
 
   </head>
@@ -89,7 +106,7 @@ a.navbar-brand.brand-logo img {
     <div class="container-scroller">
       
       <!-- partial:partials/_navbar.html -->
-      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <!-- <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
           <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
@@ -114,14 +131,19 @@ a.navbar-brand.brand-logo img {
                 <div class="nav-profile-img">
                   <img src="assets/images/faces/face1.jpg" alt="image">
                   <span class="availability-status online"></span>
-                </div>
-                <div class="nav-profile-text">
+                </div> -->
+
+
+                
+                <!-- <div class="nav-profile-text">
                   <p class="mb-1 text-black"><?php
                   if (isset($_SESSION['username'])) {
                   echo $_SESSION['username'];
                   }?></p>
                 </div>
-              </a>
+              </a> -->
+
+<!--               
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
@@ -200,8 +222,8 @@ a.navbar-brand.brand-logo img {
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-warning">
                       <i class="mdi mdi-settings"></i>
-                    </div>
-                  </div>
+                    </div> -->
+                  <!-- </div>
                   <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                     <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
                     <p class="text-gray ellipsis mb-0"> Update dashboard </p>
@@ -233,12 +255,12 @@ a.navbar-brand.brand-logo img {
                 <i class="mdi mdi-format-line-spacing"></i>
               </a>
             </li>
-          </ul>
+          </ul>-->
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
           </button>
         </div>
-      </nav>
+      </nav> 
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
@@ -301,7 +323,7 @@ a.navbar-brand.brand-logo img {
 
 
               <li class="nav-item">
-              <a class="nav-link" href="Login.php">
+              <a class="nav-link" href="logout.php">
                 <span class="menu-title">Signout</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -401,7 +423,7 @@ a.navbar-brand.brand-logo img {
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-    <!-- plugins:js -->
+    <!-- plugins:js
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
@@ -417,5 +439,35 @@ a.navbar-brand.brand-logo img {
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/todolist.js"></script>
     <!-- End custom js for this page -->
+
+    <!-- <script>
+  // Add an event listener for the scroll event
+window.addEventListener('scroll', function() {
+  // Get the element you want to change color
+  var navItem = document.querySelector('.nav-item');
+
+  // Get the position of the element relative to the viewport
+  var rect = navItem.getBoundingClientRect();
+
+  // Check if the element is in view
+  if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+    // Add a class to change the color
+    navItem.classList.add('active');
+  } else {
+    // Remove the class if the element is not in view
+    navItem.classList.remove('active');
+  }
+});
+
+</script> -->
+
+
+
+
+<?php
+
+// require 'footer.php';
+?> 
+
   </body>
 </html>

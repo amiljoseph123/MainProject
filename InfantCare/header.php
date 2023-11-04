@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Kind Heart Charity - Free Bootstrap 5.2.2 CSS Template</title>
+    <title>InfantCare Charity - Free Bootstrap 5.2.2 CSS Template</title>
 
     <!-- CSS FILES -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -22,6 +22,12 @@
             z-index: 1000;
             position: relative;
         }
+
+
+        .hidden {
+    display: none;
+}
+
     </style>
     <!--
 
@@ -92,7 +98,7 @@ https://templatemo.com/tm-581-kind-heart-charity
             <a class="navbar-brand" href="index.html">
                 <img src="images/logo.png" class="logo img-fluid" alt="Kind Heart Charity">
                 <span>
-                    Kind Heart Charity
+                    InfantCare
                     <small>Non-profit Organization</small>
                 </span>
             </a>
@@ -104,9 +110,19 @@ https://templatemo.com/tm-581-kind-heart-charity
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#top">Home</a>
-                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link click-scroll" href="index.php">Home</a>
+                    </li> -->
+
+                    <li class="nav-item hidden">
+    <a class="nav-link click-scroll" href="index.php">Home</a>
+</li>
+
+
+
+                     <li class="nav-item">
+                        <a class="nav-link click-scroll" href="index.php">Home</a>
+                    </li> 
 
                     <li class="nav-item">
                         <a class="nav-link click-scroll" href="#section_2">About</a>

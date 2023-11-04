@@ -295,7 +295,7 @@ a.navbar-brand.brand-logo img {
 
 
             <li class="nav-item">
-              <a class="nav-link" href="Login.php">
+              <a class="nav-link" href="Logout.php">
                 <span class="menu-title">Signout</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -346,13 +346,13 @@ a.navbar-brand.brand-logo img {
                         <label for="exampleInputConfirmPassword1">gender</label>
                         <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password">
                       </div>
-                      <!-- <div class="form-check form-check-flat form-check-primary">
+                       <div class="form-check form-check-flat form-check-primary">
                         <label class="form-check-label">
                           <input type="checkbox" class="form-check-input"> Remember me </label>
                       </div> -->
                       <!-- <button type="submit" class="btn btn-gradient-primary me-2">add</button>
                       <button class="btn btn-light">Cancel</button>  -->
-                    -->
+                    
 
 
 

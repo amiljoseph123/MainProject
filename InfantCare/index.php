@@ -100,9 +100,13 @@ https://templatemo.com/tm-581-kind-heart-charity
                     </li>
 
 
+                    
+
+
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#top">Home</a>
+                        <a class="nav-link click-scroll" href="index.php">Home</a>
                     </li>
+
 
                     <li class="nav-item">
                         <a class="nav-link click-scroll" href="#section_2">About</a>

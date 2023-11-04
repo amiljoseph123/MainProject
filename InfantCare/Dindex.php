@@ -25,7 +25,7 @@ if (isset($_SESSION['username'])) {
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- Boxicons -->
+	 Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="Dstyle.css">
@@ -246,10 +246,10 @@ if (isset($_SESSION['username'])) {
 						</li>
 						<li class="not-completed">
 							<p>Todo List</p>
-							<!-- <i class='bx bx-dots-vertical-rounded' ></i>
+							 <i class='bx bx-dots-vertical-rounded' ></i>
 						</li>
 					</ul> -->
-				</div> -->
+				</div> 
 			</div>
 		</main>
 		<!-- MAIN -->
@@ -259,4 +259,4 @@ if (isset($_SESSION['username'])) {
 
 	<script src="Dscript.js"></script>
 </body>
-</html> --> -->
+</html>

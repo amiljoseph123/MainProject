@@ -2,6 +2,11 @@
 include "config.php";
 ?>
 
+<?php
+
+require 'header.php';
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,6 +73,11 @@ if ($result->num_rows > 0) {
 
 $con->close();
 ?>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
 
+<?php
+
+require 'footer.php';
+?> 
 </body>
 </html>

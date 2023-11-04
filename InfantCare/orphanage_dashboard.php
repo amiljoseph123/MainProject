@@ -287,7 +287,7 @@ a.navbar-brand.brand-logo img {
 
 
             <li class="nav-item">
-              <a class="nav-link" href="view_student.php">
+              <a class="nav-link" href="view_student2.php">
                 <span class="menu-title">View students</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
