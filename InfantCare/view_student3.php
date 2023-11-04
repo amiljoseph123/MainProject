@@ -81,11 +81,78 @@ a.navbar-brand.brand-logo img {
     /* Additional styles can be added as needed */
 }
 
+
+
+/* Change the background color of the "View" button */
+.btn-primary {
+    background-color: #5bc1ac; /* Change to your desired color */
+}
+
+/* Change the background color of the "Delete" button */
+.btn-danger {
+    background-color: #5bc1ac; /* Change to your desired color */
+}
+ 
+
 </style>
+
+
+
+<script>
+function searchstudent() {
+    var input, filter, cards, card, i, txtValue;
+    input = document.getElementById('searchInput');
+    filter = input.value.toUpperCase();
+    cards = document.getElementsByClassName('card');
+
+    var found = false; // Add this variable to track if any results were found
+
+    for (i = 0; i < cards.length; i++) {
+        card = cards[i];
+        txtValue = card.textContent || card.innerText;
+
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            card.style.display = '';
+            found = true; // Set found to true if a result is found
+        } else {
+            card.style.display = 'none';
+        }
+    }
+
+    // Display "not found" message if no results were found
+    var notFoundMessage = document.getElementById('notFoundMessage');
+    if (!found) {
+        notFoundMessage.style.display = 'block';
+    } else {
+        notFoundMessage.style.display = 'none';
+    }
+}
+
+</script>
+<style>
+    /* Add this CSS to prevent background color change */
+    .not-found-message {
+        display: none;
+        color: red; /* Set the color of the "not found" message */
+    }
+
+    .card {
+        display: block;
+        margin-bottom: 15px; /* Add a margin between cards */
+    }
+
+    .card.not-found {
+        display: none;
+    }
+</style>
+
 
 
   </head>
   <body>
+
+ 
+
     <div class="container-scroller">
       
       <!-- partial:partials/_navbar.html -->
@@ -278,7 +345,7 @@ a.navbar-brand.brand-logo img {
 
 
             <li class="nav-item active">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="add_student.php">
                 <span class="menu-title">Add Students</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
@@ -309,77 +376,28 @@ a.navbar-brand.brand-logo img {
 
 
 
-        <div class="main-panel">
-          <div class="content-wrapper">
+        <div class="main-panel"> 
+          <!-- <div class="content-wrapper"> -->
             <div class="page-header">
-              <h3 class="page-title"> Form elements </h3>
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+              <!-- <h3 class="page-title"> Form elements </h3> -->
+              <!-- <nav aria-label="breadcrumb"> -->
+                <!-- <ol class="breadcrumb"> -->
+                  <!-- <li class="breadcrumb-item"><a href="#">Forms</a></li> -->
+                  <!-- <li class="breadcrumb-item active" aria-current="page">Form elements</li> -->
                 </ol>
               </nav>
             </div>
-            <div class="row">
+            <!-- <div class="row"> -->
               <div class="col-md-6 grid-margin stretch-card">
-                <div class="card">
+                <!-- <div class="card"> -->
                   <div class="card-body">
-                    <h4 class="card-title">Default form</h4>
-                    <p class="card-description"> Basic form layout </p>
-                    <!-- <form class="forms-sample"> -->
-                      <!-- <div class="form-group">
-                        
-                        <label for="exampleInputUsername1">firstname</label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username">
-                      </div>
-                      <div class="form-group">
-                         
-                        <label for="exampleInputEmail1">lastname</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="lastname">
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">age</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputConfirmPassword1">gender</label>
-                        <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password">
-                      </div>
-                       <div class="form-check form-check-flat form-check-primary">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input"> Remember me </label>
-                      </div> -->
-                      <!-- <button type="submit" class="btn btn-gradient-primary me-2">add</button>
-                      <button class="btn btn-light">Cancel</button>  -->
-                    
+                    <!-- <h4 class="card-title">Default form</h4> -->
+                    <!-- <p class="card-description"> Basic form layout </p> --> 
+                    <!-- <form 
 
 
 
-                    <form action="add_student.php" method="post">
-  <div class="form-group">
-    <label for="exampleInputUsername1">First Name</label>
-    <input type="text" class="form-control" id="exampleInputUsername1" name="firstname" placeholder="Username">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Last Name</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="lastname" placeholder="Last Name">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Age</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" name="age" placeholder="Age">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputConfirmPassword1">Gender</label>
-    <input type="text" class="form-control" id="exampleInputConfirmPassword1" name="gender" placeholder="Gender">
-  </div>
-
-
-
-  <button type="submit" class="btn btn-gradient-primary me-2" name="submit"><a href="view_student3.php">Add</a></button>
-  <button class="btn btn-light">Cancel</button>
-</form>
-
+ 
 
 
                     <!-- </form> -->
@@ -391,12 +409,117 @@ a.navbar-brand.brand-logo img {
 
 
 
+              <!-- <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Striped Table</h4>
+                    <p class="card-description"> Add class <code>.table-striped</code>
+                    </p>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                        <th>Sl.No</th>
+                                <th>firstname</th>
+                                <th>lastname</th>
+                                <th>age</th>
+                                <th>gender</th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="py-1">
+                            <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
+                          </td>
+                </table> -->
+
+
+
+                <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+
+
+                  <div id="notFoundMessage" style="display:none;">Not Found</div>
+
+                  <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="input-group">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search student" onkeyup="searchstudent()">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+                    <h4 class="card-title">Striped Table</h4>
+                    <p class="card-description"> Add class <code>.table-striped</code>
+                    </p>
+
+
+
+                <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Sl.No</th>
+      <th>firstname</th>
+     
+  </thead>
+  <tbody>
+
+
+
+  <?php
+                require_once 'config.php';
+                $result = mysqli_query($con, "SELECT * FROM `student` ") or die("error");
+            ?> 
+   
+
+
+
+
+    <?php
+require_once 'config.php';
+$result = mysqli_query($con, "SELECT * FROM `student` ") or die("error");
+
+$c = 0;
+while ($row = $result->fetch_assoc()) {
+    $firstname = $row["firstname"];
+    $lastname = $row["lastname"];
+    $age = $row["age"];
+    $gender = $row["gender"];
+
+    $student_id = $row["id"]; // Assuming you have a field named 'id' in your database for each student
+    $c++;
+?>
+    <tr>
+        <td><?php echo $c; ?></td>
+        <td><?php echo $firstname; ?></td>
+        <td>
+            <a href="student_view.php?id=<?php echo $student_id; ?>" class="btn btn-primary">View</a>
+
+            <!-- <button type="button" class="btn btn-danger">Delete</button> -->
+            <form action="delete_student.php" method="post" style="display:inline;">
+        <input type="hidden" name="id" value="<?php echo $student_id; ?>">
+        <button type="submit" class="btn btn-danger">Delete</button>
+        </td>
+    </tr>
+<?php
+}
+?>
 
 
 
 
 
-        
+  </tbody>
+</table>
+
+
+
+
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br>
+        <br><br>
           <footer class="footer">
             <div class="container-fluid d-flex justify-content-between">
               <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">infantcare@gmail.com</span>
@@ -429,70 +552,45 @@ a.navbar-brand.brand-logo img {
 
 
 
-
-    <?php
-
-// include "config.php";
-// if (isset($_POST['submit'])) {
-//     $first = $_POST['firstname'];
-//     $lastnam = $_POST['lastname'];
-//     $age = $_POST['age'];
-//     $gender = $_POST['gender'];
-    
-
-//    // $hashed_password = password_hash($password,PASSWORD_DEFAULT);
-//     $user_type="Sponsor";
-//     $result=mysqli_query($con,"SELECT * FROM `student` WHERE `Email`='$email'") or die("error");
-//         if(mysqli_num_rows($result)<=0){
-            
-//             mysqli_query($con,"INSERT INTO `student`(`id`, `firstname`, `lastname`, `age`, `gender`) VALUES (default,'$id','$firstname','$lastname','$age','$gender')")or die(mysqli_error($con));
-//             // echo '<script>alert("Registration is successful");</script>';
-//             echo "<script>
-//             Swal.fire('Registration Successful');
-//           </script>";
-
-//             echo "<script> window.location = 'view_student.php';</script>";
-//         }
-        
-// } else {
-    
-//     // echo '<script>alert("Registration is failed")</script>';
-//      echo "<script>
-//              // Swal.fire('Registration Faild');
-//            </script>";
-//  }
-?>
-
-
+    <!--
 
 <?php
-include "config.php";
+                            // $c=0;
+                            // while ($row = $result->fetch_assoc()) {
+                            //     $firstname=$row["firstname"];
+                            //     $lastname=$row["lastname"];
+                            //     $age=$row["age"];
+                               
+                            //     $gender=$row["gender"];
+                            //     // $dob=$row["dob"];
 
-if (isset($_POST['submit'])) {
-    $first = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
-    $age = $_POST['age'];
-    $gender = $_POST['gender'];
-   
-
-
-    // Insert data into the database
-    $result = mysqli_query($con, "INSERT INTO `student`(`firstname`, `lastname`, `age`, `gender`, `orpanage_id`) VALUES ('$first', '$lastname', '$age', '$gender', '".$_SESSION['username']."')") or die(mysqli_error($con));
+                                
 
 
-    if ($result) {
-        echo "<script>
-            Swal.fire('Registration Successful');
-          </script>";
-        echo "<script> window.location = 'view_student3.php';</script>";
-    } else {
-        echo "<script>
-             Swal.fire('Registration Failed');
-           </script>";
-    }
-}
-?>
+                            // $c++;
+                        ?>
+                <tr>
+                    <td><?php echo $c; ?></td>
+                    <td><?php echo $firstname; ?></td>
+                    
+                    
+                </tr>
+                <?php
+                // }
+                ?>
+					
+ -->
+
+ <!-- <form method="post"   action="student_view.php">
+                            <input type="hidden" name="orpanage_id" value="<?php echo $_SESSION['username']; ?>"> 
+                              Replace 123 with your desired ID -->
+                            
+                            <!-- <input type="submit" class="btn btn-success btn-sm"name="submit" value="View">  -->
+                            
+                            <!-- </form>  -->
 
 
+ 
   </body>
 </html>
+

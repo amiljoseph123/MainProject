@@ -373,6 +373,7 @@ a.navbar-brand.brand-logo img {
                 exit();
               }
 ?>
+
           <form action="update_process.php" method="POST" class="forms-sample">
                     <input type="hidden" name="id" value="<?php echo $email; ?>">
                     <div class="form-group">
@@ -394,7 +395,8 @@ a.navbar-brand.brand-logo img {
                     <input type="submit" name="update" value="Update" class="btn btn-success btn-sm">
 
                     
-                </form>    
+                </form>  
+                  
                   </div>
               </div>
             </div>
