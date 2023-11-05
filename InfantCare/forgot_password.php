@@ -93,7 +93,7 @@ function  send_password_reset($get_email)
         $mail->isHTML(true);
         $mail->Subject = 'Reset password notification';
         $email_template = "
-            <h2>Forgot ypur password?</h2>
+            <h2>Forgot your password? click below to reset your password</h2>
             
             <h5>You are receiving this email because we received a password reset request for your account</h5>
             <br><br>

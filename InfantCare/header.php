@@ -99,6 +99,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                 <img src="images/logo.png" class="logo img-fluid" alt="Kind Heart Charity">
                 <span>
                     InfantCare
+
                     <small>Non-profit Organization</small>
                 </span>
             </a>
@@ -153,7 +154,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                     </li>
 
                     <li class="nav-item ms-3">
-                        <a class="nav-link custom-btn custom-border-btn btn" href="donate.html">Donate</a>
+                        <a class="nav-link custom-btn custom-border-btn btn" href="donate.php">Donate</a>
                     </li>
                 </ul>
             </div>

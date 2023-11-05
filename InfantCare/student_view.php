@@ -74,6 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
         $lastname = $row["lastname"];
         $age = $row["age"];
         $gender = $row["gender"];
+        $photo = $row["photo"];
 ?>
        
 <?php
@@ -90,17 +91,13 @@ $con->close();
 
 
 
-
-
-
-
-
     <div class="card">
         <h6>Firstname : <?php echo $first; ?></h6>
         <!-- <p class="title"><?php echo $email; ?></p> -->
         <h6> <p>Last Name : <?php echo $lastname; ?></p></h6>
         <h2> <p>Age : <?php echo $age; ?></p></h2>
         <h2> <p>Gender : <?php echo $gender; ?></p></h2>
+        <h2> <p>photo : <?php echo $photo; ?></p></h2>
 </div>
     
     <?php

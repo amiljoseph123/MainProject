@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <?php
 session_start();
@@ -8,8 +6,8 @@ if (isset($_SESSION['username'])) {
    //echo "Welcome, " . $_SESSION['username'];
 }
 ?>
-<?php
-  include "header.php";?>
+
+
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -93,7 +91,7 @@ a.navbar-brand.brand-logo img {
     <div class="container-scroller">
       
       <!-- partial:partials/_navbar.html -->
-      <!-- <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
           <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
@@ -240,7 +238,7 @@ a.navbar-brand.brand-logo img {
           </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
-          </button> -->
+          </button>
         </div>
       </nav>
       <!-- partial -->
@@ -274,7 +272,7 @@ a.navbar-brand.brand-logo img {
 
 
             <li class="nav-item active">
-              <a class="nav-link" href="orphanage_dashboard.php">
+              <a class="nav-link" href="#">
                 <span class="menu-title">Profile</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
@@ -282,7 +280,7 @@ a.navbar-brand.brand-logo img {
 
 
             <li class="nav-item active">
-              <a class="nav-link" href="add_student2.php">
+              <a class="nav-link" href="#">
                 <span class="menu-title">Add Students</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
@@ -291,7 +289,7 @@ a.navbar-brand.brand-logo img {
 
 
             <li class="nav-item">
-              <a class="nav-link" href="view_student3.php">
+              <a class="nav-link" href="view_student2.php">
                 <span class="menu-title">View students</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -308,10 +306,243 @@ a.navbar-brand.brand-logo img {
           </ul>
         </nav>
         <!-- partial -->
+        
+
+
+
+
         <div class="main-panel">
           <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Form elements </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+              </nav>
+            </div>
             <div class="row">
-              <div class="col-6 grid-margin stretch-card">
+              <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                  
+                    <h4 class="card-title">Default form</h4>
+                    <p class="card-description"> Basic form layout </p>
+                    <!-- <form class="forms-sample"> -->
+                      <!-- <div class="form-group">
+                        
+                        <label for="exampleInputUsername1">firstname</label>
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username">
+                      </div>
+                      <div class="form-group">
+                         
+                        <label for="exampleInputEmail1">lastname</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="lastname">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">age</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputConfirmPassword1">gender</label>
+                        <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password">
+                      </div>
+                       <div class="form-check form-check-flat form-check-primary">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input"> Remember me </label>
+                      </div> -->
+                      <!-- <button type="submit" class="btn btn-gradient-primary me-2">add</button>
+                      <button class="btn btn-light">Cancel</button>  -->
+                    
+
+
+
+                    <form action="add_student.php" method="post">
+  <div class="form-group">
+    <label for="exampleInputUsername1">First Name</label>
+    <!-- <input type="text" class="form-control" id="exampleInputUsername1" name="firstname" placeholder="Username"> -->
+    <input type="text" id="firstname" name="firstname" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Last Name</label>
+    <!-- <input type="text" class="form-control" id="exampleInputEmail1" name="lastname" placeholder="Last Name"> -->
+    <input type="text" id="lastname" name="lastname" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Age</label>
+    <!-- <input type="text" class="form-control" id="exampleInputPassword1" name="age" placeholder="Age"> -->
+    <input type="text" id="age" name="age" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputConfirmPassword1">Gender</label>
+    <!-- <input type="text" class="form-control" id="exampleInputConfirmPassword1" name="gender" placeholder="Gender"> -->
+    <input type="text" id="gender" name="gender" required>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputConfirmPassword1">upload photo</label>
+    <!-- <input type="text" class="form-control" id="exampleInputConfirmPassword1" name="gender" placeholder="Gender"> -->
+    <input type="file" id="photo" name="photo" accept="image/*" required>
+  </div>
+
+
+
+  <!-- <button type="submit" class="btn btn-gradient-primary me-2" name="submit"><a href="view_student3.php">Add</a></button> -->
+  <button type="submit" class="btn btn-gradient-primary me-2" name="submit">Submit</button>
+  <button class="btn btn-light">Cancel</button>
+</form>
+
+
+
+                    <!-- </form> -->
+                  </div>
+                </div>
+              </div>                        
+
+
+
+
+
+
+
+
+
+
+        
+          <footer class="footer">
+            <div class="container-fluid d-flex justify-content-between">
+              <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">infantcare@gmail.com</span>
+              <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin template</a> from Bootstrapdash.com</span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/todolist.js"></script>
+    <!-- End custom js for this page -->
+
+
+
+
+    <?php
+
+// include "config.php";
+// if (isset($_POST['submit'])) {
+//     $first = $_POST['firstname'];
+//     $lastnam = $_POST['lastname'];
+//     $age = $_POST['age'];
+//     $gender = $_POST['gender'];
+    
+
+//    // $hashed_password = password_hash($password,PASSWORD_DEFAULT);
+//     $user_type="Sponsor";
+//     $result=mysqli_query($con,"SELECT * FROM `student` WHERE `Email`='$email'") or die("error");
+//         if(mysqli_num_rows($result)<=0){
+            
+//             mysqli_query($con,"INSERT INTO `student`(`id`, `firstname`, `lastname`, `age`, `gender`) VALUES (default,'$id','$firstname','$lastname','$age','$gender')")or die(mysqli_error($con));
+//             // echo '<script>alert("Registration is successful");</script>';
+//             echo "<script>
+//             Swal.fire('Registration Successful');
+//           </script>";
+
+//             echo "<script> window.location = 'view_student.php';</script>";
+//         }
+        
+// } else {
+    
+//     // echo '<script>alert("Registration is failed")</script>';
+//      echo "<script>
+//              // Swal.fire('Registration Faild');
+//            </script>";
+//  }
+?>
+
+
+
+<?php
+include "config.php";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $first = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $age = $_POST['age'];
+    $gender = $_POST['gender'];
+    $photoPath = "."; 
+
+
+    // Handle file upload
+    $targetDirectory = "imageupload/";
+    $targetFile = $targetDirectory . basename($_FILES["photo"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+    // Check if image file is a actual image or fake image
+    if(isset($_POST["submit"])) {
+        $check = getimagesize($_FILES["photo"]["tmp_name"]);
+        if($check !== false) {
+            $uploadOk = 1;
+        } else {
+            $uploadOk = 0;
+        }
+    }
+
+    // Check if file already exists
+    if (file_exists($targetFile)) {
+        $uploadOk = 0;
+    }
+
+    // Check file size
+    if ($_FILES["photo"]["size"] > 500000) {
+        $uploadOk = 0;
+    }
+
+    // Allow certain file formats
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+    && $imageFileType != "gif" ) {
+        $uploadOk = 0;
+    }
+
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+    // if everything is ok, try to upload file
+    } else {
+        if (move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFile)) {
+            $photoPath = $targetFile;
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+            exit; // Exit the script if there's an error
+        }
+    }$user=$_SESSION["username"];
+
+    // Insert data into the database
+    $result = mysqli_query($con, "INSERT INTO `student`(`firstname`, `lastname`, `age`, `gender`,`orpanage_id`, `photo`) VALUES ('$first', '$lastname', '$age', '$gender','$user', '$photoPath')") or die(mysqli_error($con));
+
+    if ($result) {
+        echo "Data inserted successfully";
+        //location
+        $script = "<script> window.location = 'student_view`.php';</script>";
+    } else {
+        echo "Error inserting data";
+    }
+}
+?>
