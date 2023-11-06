@@ -34,7 +34,9 @@ if (isset($_SESSION['username'])) {
 <style>
    #sidebar {
     /* background-color: #ff6600; This sets the background color to a shade of orange. Replace with your desired color. */
-    background-color: #5bc1ac;
+    /* background-color: #5bc1ac;  */
+     background-color: whitesmoke; 
+
 }
 
 .navbar-menu-wrapper {
@@ -84,6 +86,10 @@ a.navbar-brand.brand-logo img {
     filter: invert(1); /* This will invert the colors of the image. */
     /* Additional styles can be added as needed */
 }
+
+.nav-item.active .nav-link .menu-title {
+        color: red; /* Change to the color you want */
+    }
 
 </style>
 

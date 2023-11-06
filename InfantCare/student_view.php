@@ -36,29 +36,7 @@ require 'header.php';
 </head>
 <body>
 
-<?php
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $id = $_POST["id"]; // Get the ID from the form
-// }
 
-// $sql = "SELECT * FROM student WHERE orpnanage_id = ".$_SESSION['username'];
-// $result = $con->query($sql);
-
-// $sql = "SELECT * FROM student WHERE orpanage_id = '".$_SESSION['username']."'";
-// $result = $con->query($sql);
-
-
-
-// if ($result->num_rows > 0) {
-//     // Display user details
-//     $row = $result->fetch_assoc();
-    
-//     $first = $row["firstname"];
-//     $lastname = $row["lastname"];
-//     $age = $row["age"];
-//     $gender = $row["gender"];
-   
-    ?>
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
@@ -98,6 +76,7 @@ $con->close();
         <h2> <p>Age : <?php echo $age; ?></p></h2>
         <h2> <p>Gender : <?php echo $gender; ?></p></h2>
         <h2> <p>photo : <?php echo $photo; ?></p></h2>
+        <img src="<?php echo $photo; ?>">
 </div>
     
     <?php

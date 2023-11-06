@@ -132,6 +132,8 @@ a.navbar-brand.brand-logo img {
 }
 
 
+
+
 .card {
             border: 1px solid #ccc;
             padding: 20px;
@@ -146,6 +148,20 @@ a.navbar-brand.brand-logo img {
 
     
 </style>
+
+<style>
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+</style>
+
+
 <script>
 function searchOrphanages() {
     var input, filter, cards, card, i, txtValue;

@@ -155,7 +155,7 @@ if (isset($_SESSION['username'])) {
 				<li>
 					<i class='bx bxs-dollar-circle' ></i>
 					<span class="text">
-						<h3>Donation</h3>
+						<h3><a href="admin_donation_view.php">Donation</h3>
 						<p></p>
 					</span>
 				</li>

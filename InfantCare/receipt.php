@@ -63,6 +63,18 @@ if (isset($_GET['email'])) {
         font-size: 16px;
         margin-top: 20px;
     }
+
+
+    .receipt-section {
+        background-color: #f9f9f9; /* Background color for the receipt section */
+        border: 1px solid #ccc; /* Border around the receipt section */
+        padding: 20px; /* Padding inside the receipt section */
+        max-width: 600px; /* Set a maximum width for the receipt section */
+        margin: 0 auto; /* Center the receipt section */
+        text-align: center; /* Center the content inside the receipt section */
+    }
+
+
 </style>
 
 
@@ -71,14 +83,21 @@ if (isset($_GET['email'])) {
     </header>
 
     <main>
+    <br><br><br>
         <section class="receipt-section">
+
+        
             <div class="container">
-                <h1>Donation Receipt</h1>
+            
+                <h3>Donation Receipt</h3>
+                <!-- <h6>Thank you for your help..</h6> -->
                 <p>Name: <?php echo $name; ?></p>
                 <p>Email: <?php echo $email; ?></p>
                 <p>Donation Amount: <?php echo $donationAmount; ?></p>
 
                 <a href="download_receipt.php?email=<?php echo $email; ?>" class="download-button">Download Receipt</a>
+                <!-- <a href="generate_receipt.php?name=<?php echo $name; ?>&email=<?php echo $email; ?>&donationAmount=<?php echo $donationAmount; ?>" class="download-button">Download Receipt</a> -->
+
 
             </div>
         </section>

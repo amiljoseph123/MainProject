@@ -130,7 +130,7 @@ if (isset($_SESSION['username'])) {
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a class="active" href="#">Orphanage Details</a>
+							<a class="active" href="#">Donation Details</a>
 						</li>
 					</ul>
 				</div>
@@ -165,7 +165,7 @@ if (isset($_SESSION['username'])) {
 			</ul>
             <?php
                 require_once 'config.php';
-                $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
+                $result = mysqli_query($con, "SELECT * FROM `donation` ") or die("error");
             ?> 
 			<div class="table-data">
 				<div class="order">
@@ -179,13 +179,9 @@ if (isset($_SESSION['username'])) {
 							<tr>
                                 <th>Sl.No</th>
                                 <th>Name</th>
-                                <th>government id</th>
-                                <th>Established date</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>District</th>
-                                <th>City</th>
-                                <th>Pincode</th>
+                                <th>email</th>
+                                <th>amount</th>
+                                
        
 
 							</tr>
@@ -194,16 +190,11 @@ if (isset($_SESSION['username'])) {
                         <?php
                             $c=0;
                             while ($row = $result->fetch_assoc()) {
-                                $name=$row["o_name"];
-                                $id=$row["o_govtid"];
-                                $date=$row["o_edate"];
+                                $name=$row["name"];
+                                $email=$row["email"];
+                                $amount=$row["amount"];
                                
-                                $email=$row["o_email"];
-                                $phone=$row["o_phone"];
-
-                                $district=$row["o_district"];
-                                $city=$row["o_city"];
-                                $pincode=$row["o_pincode"];
+                               
 
 
                             $c++;
@@ -211,13 +202,10 @@ if (isset($_SESSION['username'])) {
                 <tr>
                     <td><?php echo $c; ?></td>
                     <td><?php echo $name; ?></td>
-                    <td><?php echo $id; ?></td>
-                    <td><?php echo $date; ?></td>
+                    
                     <td><?php echo $email; ?></td>
-                    <td><?php echo  $phone; ?></td>
-                    <td><?php echo $district; ?></td>
-                    <td><?php echo $city; ?></td>
-                    <td><?php echo $pincode; ?></td>
+                    <td><?php echo  $amount; ?></td>
+                    
                 </tr>
                 <?php
                 }
