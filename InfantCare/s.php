@@ -1,15 +1,11 @@
 
 
-<!DOCTYPE html>
+
 <?php
-session_start();
-if (isset($_SESSION['username'])) {
-    // User is logged in
-   //echo "Welcome, " . $_SESSION['username'];
-}
-?>
-<?php
-  include "header.php";?>
+require 'header.php';
+?> 
+
+
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -34,9 +30,8 @@ if (isset($_SESSION['username'])) {
 <style>
    #sidebar {
     /* background-color: #ff6600; This sets the background color to a shade of orange. Replace with your desired color. */
-      background-color: #5bc1ac;  
-      /* background-color: whitesmoke;   */
-
+       background-color: #5bc1ac; 
+      /* background-color: white; */
 }
 
 .navbar-menu-wrapper {
@@ -87,11 +82,15 @@ a.navbar-brand.brand-logo img {
     /* Additional styles can be added as needed */
 }
 
-.nav-item.active .nav-link .menu-title {
-        color: red; /* Change to the color you want */
-    }
+.active {
+  /* Add your desired styles for when the element is in view */
+  color: red; /* Change this to the desired color */
+}
+
 
 </style>
+
+
 
 
   </head>
@@ -124,14 +123,19 @@ a.navbar-brand.brand-logo img {
                 <div class="nav-profile-img">
                   <img src="assets/images/faces/face1.jpg" alt="image">
                   <span class="availability-status online"></span>
-                </div>
-                <div class="nav-profile-text">
+                </div> -->
+
+
+                
+                <!-- <div class="nav-profile-text">
                   <p class="mb-1 text-black"><?php
-                  if (isset($_SESSION['username'])) {
-                  echo $_SESSION['username'];
-                  }?></p>
+                  // if (isset($_SESSION['username'])) {
+                  // echo $_SESSION['username'];
+                  // }?></p>
                 </div>
-              </a>
+              </a> -->
+
+<!--               
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
@@ -210,8 +214,8 @@ a.navbar-brand.brand-logo img {
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-warning">
                       <i class="mdi mdi-settings"></i>
-                    </div>
-                  </div>
+                    </div> -->
+                  <!-- </div>
                   <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                     <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
                     <p class="text-gray ellipsis mb-0"> Update dashboard </p>
@@ -243,12 +247,12 @@ a.navbar-brand.brand-logo img {
                 <i class="mdi mdi-format-line-spacing"></i>
               </a>
             </li>
-          </ul>
+          </ul>-->
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
-          </button> -->
+          </button>
         </div>
-      </nav>
+      </nav> 
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
@@ -262,63 +266,72 @@ a.navbar-brand.brand-logo img {
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2"><?php
+                  <span class="font-weight-bold mb-2">
+                    <?php
                   if (isset($_SESSION['username'])) {
                   echo $_SESSION['username'];
-                  }?></span>
-                  <span class="text-secondary text-small">Orphanage</span>
+                  }?>
+                  </span>
+                  <span class="text-secondary text-small">Sponsor</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="orphanage_dashboard.php">
+              <a class="nav-link" href="sponsor.php">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
 
-
-            <li class="nav-item ">
-              <a class="nav-link" href="orphanage_dashboard.php">
+            <li class="nav-item">
+              <a class="nav-link" href="sponsor_dash.php">
                 <span class="menu-title">Profile</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i> 
-                
+                <i class="mdi mdi-home menu-icon"></i>
               </a>
-            </li>
-
-
-            <li class="nav-item ">
-              <a class="nav-link" href="add_student3.php">
-                <span class="menu-title">Add Students</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-              </a>
-            </li>
+              </li>
 
 
 
             <li class="nav-item">
-              <a class="nav-link" href="view_student3.php">
-                <span class="menu-title">View students</span>
+              <a class="nav-link" href="view_orphanage.php">
+                <span class="menu-title">View Orphanage</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
 
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="menu-title">Sponsor a student</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+
+            </li>
 
             <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="menu-title">History</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+              </li>
+
+
+              <li class="nav-item">
               <a class="nav-link" href="Logout.php">
                 <span class="menu-title">Signout</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
               </li>
+
+              </li>
             
           </ul>
         </nav>
         <!-- partial -->
-        <div class="main-panel">
-          <div class="content-wrapper">
-             <div class="row"> 
-               <div class="col-6 grid-margin stretch-card"> 
-                 <div class="card"> 
-                  <div class="card-body"> 
+         <div class="main-panel"> 
+           <div class="content-wrapper"> 
+            <!-- <div class="row"> -->
+              <!-- <div class="col-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body"> -->
                   

@@ -39,7 +39,9 @@ if (isset($_SESSION['username'])) {
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<i class='bx bxs-smile'></i>
-			<span class="text">WELCOME</span>
+			<span class="text">Welcome</span>
+			<br>
+			<span class="text">Admin</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">

@@ -7,6 +7,7 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 <?php
 
 require 'header.php';
+
 ?> 
 
 <!DOCTYPE html>

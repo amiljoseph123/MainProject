@@ -34,8 +34,8 @@ if (isset($_SESSION['username'])) {
 <style>
    #sidebar {
     /* background-color: #ff6600; This sets the background color to a shade of orange. Replace with your desired color. */
-    /* background-color: #5bc1ac; */
-    background-color: whitesmoke;
+     background-color: #5bc1ac; 
+    /* background-color: whitesmoke; */
 }
 
 .navbar-menu-wrapper {

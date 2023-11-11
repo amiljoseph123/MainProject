@@ -1,16 +1,29 @@
 
 
-<!DOCTYPE html>
-<?php
+<?php 
 session_start();
+
+ //echo $_SESSION["username"];
 if (isset($_SESSION['username'])) {
     // User is logged in
-   //echo "Welcome, " . $_SESSION['username'];
+    // echo "Welcome, " . $_SESSION['username'];
+    // You can display user-specific content here
+} else {
+    // User is not logged in, redirect to the login page
+    header("Location: login.php");
+    exit(); // Make sure to stop execution after the redirect
 }
+require 'config.php';
+require 'header.php';
+
 ?>
-<?php
-  include "header.php";?>
-<html lang="en">
+
+
+<!DOCTYPE html>
+
+
+
+<!-- <html lang="en"> -->
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -28,15 +41,13 @@ if (isset($_SESSION['username'])) {
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.ico" />
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 <style>
    #sidebar {
     /* background-color: #ff6600; This sets the background color to a shade of orange. Replace with your desired color. */
-      background-color: #5bc1ac;  
-      /* background-color: whitesmoke;   */
-
+    background-color: #5bc1ac;
 }
 
 .navbar-menu-wrapper {
@@ -87,10 +98,6 @@ a.navbar-brand.brand-logo img {
     /* Additional styles can be added as needed */
 }
 
-.nav-item.active .nav-link .menu-title {
-        color: red; /* Change to the color you want */
-    }
-
 </style>
 
 
@@ -126,10 +133,9 @@ a.navbar-brand.brand-logo img {
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black"><?php
-                  if (isset($_SESSION['username'])) {
-                  echo $_SESSION['username'];
-                  }?></p>
+                  <p class="mb-1 text-black">
+                   
+                  </p>
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
@@ -246,10 +252,10 @@ a.navbar-brand.brand-logo img {
           </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
-          </button> -->
+          </button>
         </div>
       </nav>
-      <!-- partial -->
+       partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -262,54 +268,56 @@ a.navbar-brand.brand-logo img {
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2"><?php
-                  if (isset($_SESSION['username'])) {
+                  <span class="font-weight-bold mb-2">
+                    <?php
+                  // if (isset($_SESSION['username'])) {
                   echo $_SESSION['username'];
-                  }?></span>
+                //  }
+                  ?></span>
                   <span class="text-secondary text-small">Orphanage</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="orphanage_dashboard.php">
+              <a class="nav-link" href="orphanagedash.php">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
 
-
-            <li class="nav-item ">
-              <a class="nav-link" href="orphanage_dashboard.php">
+            <li class="nav-item">
+              <a class="nav-link" href="sponsor_dash.php">
                 <span class="menu-title">Profile</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i> 
-                
+                <i class="mdi mdi-home menu-icon"></i>
               </a>
-            </li>
-
-
-            <li class="nav-item ">
-              <a class="nav-link" href="add_student3.php">
-                <span class="menu-title">Add Students</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-              </a>
-            </li>
-
+              </li>
 
 
             <li class="nav-item">
-              <a class="nav-link" href="view_student3.php">
-                <span class="menu-title">View students</span>
+              <a class="nav-link" href="view_orphanage.php">
+                <span class="menu-title">View Orphanage</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
 
+           
 
             <li class="nav-item">
-              <a class="nav-link" href="Logout.php">
+              <a class="nav-link" href="#">
+                <span class="menu-title">History</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+              </li>
+
+
+              <li class="nav-item">
+              <a class="nav-link" href="logout.php">
                 <span class="menu-title">Signout</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
+              </li>
+
               </li>
             
           </ul>
@@ -317,8 +325,100 @@ a.navbar-brand.brand-logo img {
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-             <div class="row"> 
-               <div class="col-6 grid-margin stretch-card"> 
-                 <div class="card"> 
-                  <div class="card-body"> 
+            <div class="row">
+              <div class="col-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
                   
+
+                    
+                  <h4>WELCOME
+                  <?php
+                    echo $_SESSION['username']; 
+                    // include "config.php";
+
+                    // if (isset($_SESSION['username'])) {
+                    $user = $_SESSION['username'];
+                    // }
+    // $sponsor_email = $user["email"];
+
+    // Fetch existing sponsor data
+                    
+?>
+</h4>
+<canvas id="lineChart" height="300" ></canvas>
+
+<div class="sponsor-message">
+    <p>Thank you for your generous support! Your contributions make a real difference.</p>
+</div>
+                  </div>
+              </div>
+            </div>
+            
+            </div>
+
+          </div>
+
+
+
+        
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div class="container-fluid d-flex justify-content-between">
+              <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © bootstrapdash.com 2021</span>
+              <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin template</a> from Bootstrapdash.com</span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/todolist.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>
+<script>
+$(document).ready(function () {
+    var ctx = document.getElementById('lineChart').getContext('2d');
+    var chartData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        datasets: [{
+            label: 'Some Data',
+            data: [12, 19, 3, 5, 2, 3, 10],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: chartData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+});
+</script>
