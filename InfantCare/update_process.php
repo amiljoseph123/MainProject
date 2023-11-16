@@ -99,28 +99,28 @@ $con->close();
                 }
             }
 
-            function validateAadhar() {
-                var aadharInput = document.getElementById('aadhar');
-                var aadharError = document.getElementById('aadharError');
+        //     function validateAadhar() {
+        //         var aadharInput = document.getElementById('aadhar');
+        //         var aadharError = document.getElementById('aadharError');
 
-                // Regular expression to validate a 12-digit Aadhar number
-                var aadharRegex = /^\d{12}$/;
+        //         // Regular expression to validate a 12-digit Aadhar number
+        //         var aadharRegex = /^\d{12}$/;
 
-                if (!aadharRegex.test(aadharInput.value)) {
-                    aadharError.textContent = 'Please enter a valid 12-digit Aadhar number.';
-                } else {
-                    // Additional checks for the year and month of birth
-                    var yearOfBirth = parseInt(aadharInput.value.substr(0, 4));
-                    var monthOfBirth = parseInt(aadharInput.value.substr(4, 2));
+        //         if (!aadharRegex.test(aadharInput.value)) {
+        //             aadharError.textContent = 'Please enter a valid 12-digit Aadhar number.';
+        //         } else {
+        //             // Additional checks for the year and month of birth
+        //             var yearOfBirth = parseInt(aadharInput.value.substr(0, 4));
+        //             var monthOfBirth = parseInt(aadharInput.value.substr(4, 2));
 
-                    if (yearOfBirth < 1900 || yearOfBirth > 2099 || monthOfBirth < 1 || monthOfBirth > 12) {
-                        aadharError.textContent = 'Invalid year or month of birth in Aadhar number.';
-                    } else {
-                        // Reset error message if everything is valid
-                        aadharError.textContent = '';
-                    }
-                }
-            }
+        //             if (yearOfBirth < 1900 || yearOfBirth > 2099 || monthOfBirth < 1 || monthOfBirth > 12) {
+        //                 aadharError.textContent = 'Invalid year or month of birth in Aadhar number.';
+        //             } else {
+        //                 // Reset error message if everything is valid
+        //                 aadharError.textContent = '';
+        //             }
+        //         }
+        //     }
         };
     </script>
 

@@ -76,34 +76,68 @@
         </div>
 
         <div class="form-group">
-            <label for="date">Date</label>
-            <input type="text" name="date" class="form-control" value="<?php echo $date; ?>" required>
-        </div>
+    <label for="date">Date</label>
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" name="email" class="form-control" value="<?php echo $email; ?>" required>
-        </div>
+    <input type="date" id="date" name="date" class="form-control" value="<?php echo $date; ?>" max="<?php echo $maxDate; ?>" required>
+    <div id="dateError" class="error-message"></div>
+</div>
+<!-- </div> -->
+
+
+
 
         <div class="form-group">
             <label for="phone">Phone Number</label>
             <input type="text" class="form-control" name="phone" value="<?php echo $phone; ?>" required>
         </div>
-
+<!-- 
         <div class="form-group">
             <label for="district">District</label>
             <input type="text" name="district" class="form-control" value="<?php echo $district; ?>" required>
-        </div>
+        </div> -->
 
         <div class="form-group">
+    <label for="district">District</label>
+    <select name="district" class="form-control" required>
+        <option value="" disabled selected>Select District</option>
+        <option value="Alappuzha" <?php echo ($district == 'Alappuzha') ? 'selected' : ''; ?>>Alappuzha</option>
+        <option value="Ernakulam" <?php echo ($district == 'Ernakulam') ? 'selected' : ''; ?>>Ernakulam</option>
+        <option value="Idukki" <?php echo ($district == 'Idukki') ? 'selected' : ''; ?>>Idukki</option>
+        <option value="Kannur" <?php echo ($district == 'Kannur') ? 'selected' : ''; ?>>Kannur</option>
+        <option value="Kasaragod" <?php echo ($district == 'Kasaragod') ? 'selected' : ''; ?>>Kasaragod</option>
+        <option value="Kollam" <?php echo ($district == 'Kollam') ? 'selected' : ''; ?>>Kollam</option>
+        <option value="Kottayam" <?php echo ($district == 'Kottayam') ? 'selected' : ''; ?>>Kottayam</option>
+        <option value="Kozhikode" <?php echo ($district == 'Kozhikode') ? 'selected' : ''; ?>>Kozhikode</option>
+        <option value="Malappuram" <?php echo ($district == 'Malappuram') ? 'selected' : ''; ?>>Malappuram</option>
+        <option value="Palakkad" <?php echo ($district == 'Palakkad') ? 'selected' : ''; ?>>Palakkad</option>
+        <option value="Pathanamthitta" <?php echo ($district == 'Pathanamthitta') ? 'selected' : ''; ?>>Pathanamthitta</option>
+        <option value="Thiruvananthapuram" <?php echo ($district == 'Thiruvananthapuram') ? 'selected' : ''; ?>>Thiruvananthapuram</option>
+        <option value="Thrissur" <?php echo ($district == 'Thrissur') ? 'selected' : ''; ?>>Thrissur</option>
+        <option value="Wayanad" <?php echo ($district == 'Wayanad') ? 'selected' : ''; ?>>Wayanad</option>
+    </select>
+</div>
+
+
+
+        <!-- <div class="form-group">
             <label for="city">City</label>
             <input type="text" name="city" class="form-control" value="<?php echo $city; ?>" required>
+        </div> -->
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" name="city" id="city" class="form-control" value="<?php echo htmlspecialchars($city); ?>" required>
+            <small id="cityError" style="color: red;"></small>
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="pincode">Pincode</label>
             <input type="text" name="pincode" class="form-control" value="<?php echo $pincode; ?>" required>
-        </div>
+        </div> -->
+<div class="form-group">
+    <label for="pincode">Pincode</label>
+    <input type="text" name="pincode" id="pincode" class="form-control" value="<?php echo $pincode; ?>" required>
+    <small id="pincodeError" style="color: red;"></small>
+</div>
 
         <input type="submit" name="update" value="Update" class="btn btn-success btn-sm">
     </form>
@@ -144,6 +178,134 @@
             }
         }
     </script>
+
+<script>
+    window.onload = function () {
+        var dateInput = document.getElementById('date');
+        var dateError = document.getElementById('dateError');
+
+        dateInput.addEventListener('input', validateDate);
+
+        function validateDate() {
+            var selectedDate = dateInput.value;
+
+            // Validate date format
+            var dateFormatRegex = /^\d{4}-\d{2}-\d{2}$/;
+            if (!dateFormatRegex.test(selectedDate)) {
+                dateError.textContent = 'Please enter a valid date in the format YYYY-MM-DD.';
+                return;
+            }
+
+            // Check if the selected date is not greater than today's date
+            var selectedTimestamp = new Date(selectedDate).getTime();
+            var todayTimestamp = new Date().setHours(0, 0, 0, 0);
+
+            if (selectedTimestamp > todayTimestamp) {
+                dateError.textContent = 'The selected date must not be greater than today\'s date.';
+            } else {
+                dateError.textContent = '';
+            }
+        }
+    };
+</script>
+
+<script>
+    window.onload = function () {
+        var emailInput = document.getElementById('email');
+        var emailError = document.getElementById('emailError');
+
+        emailInput.addEventListener('input', validateEmail);
+
+        function validateEmail() {
+            var email = emailInput.value;
+
+            // Validate email format
+            var emailFormatRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailFormatRegex.test(email)) {
+                emailError.textContent = 'Please enter a valid email address.';
+                return;
+            }
+
+            // Additional email validation conditions (optional)
+            var allowedDomains = ['gmail.com', 'example.in']; // Add more allowed domains as needed
+
+            // Extract the domain from the email address
+            var domain = email.split('@')[1];
+
+            // Check if the domain is in the allowed list
+            if (allowedDomains.length > 0 && allowedDomains.indexOf(domain) === -1) {
+                emailError.textContent = 'Only email addresses with domains ' + allowedDomains.join(', ') + ' are allowed.';
+                return;
+            }
+
+            emailError.textContent = '';
+        }
+    };
+</script>
+
+
+<script>
+    document.getElementById('city').addEventListener('input', function () {
+        validateCity();
+    });
+
+    function validateCity() {
+        var cityInput = document.getElementById('city');
+        var cityError = document.getElementById('cityError');
+
+        var cityRegex = /^[A-Za-z]+$/;
+
+        if (!cityRegex.test(cityInput.value)) {
+            cityError.textContent = "City should contain only letters.";
+        } else if (isAllSameLetters(cityInput.value)) {
+            cityError.textContent = "City should not have all the same letters.";
+        } else {
+            cityError.textContent = "";
+        }
+    }
+
+    function isAllSameLetters(city) {
+        // Check if all letters in the city are the same
+        return /^([A-Za-z])\1+$/.test(city);
+    }
+
+    function validateForm() {
+        validateCity(); // Run city validation when submitting the form
+
+        // Additional form validation logic goes here
+
+        // Return true to allow form submission, false to prevent it
+        return document.getElementById('cityError').textContent === "";
+    }
+</script>
+<script>
+    document.getElementById('pincode').addEventListener('input', function () {
+        validatePincode();
+    });
+
+    function validatePincode() {
+        var pincodeInput = document.getElementById('pincode');
+        var pincodeError = document.getElementById('pincodeError');
+
+        // Regular expression for a valid Kerala pincode (6 digits starting with 6)
+        var pincodeRegex = /^6\d{5}$/;
+
+        if (!pincodeRegex.test(pincodeInput.value)) {
+            pincodeError.textContent = "Please enter a valid Kerala pincode starting with 6 and having 6 digits.";
+        } else {
+            pincodeError.textContent = "";
+        }
+    }
+
+    function validateForm() {
+        validatePincode(); // Run pincode validation when submitting the form
+
+        // Additional form validation logic goes here
+
+        // Return true to allow form submission, false to prevent it
+        return document.getElementById('pincodeError').textContent === "";
+    }
+</script>
 </body>
 
 </html>

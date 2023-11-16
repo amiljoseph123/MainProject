@@ -44,7 +44,7 @@
                 exit();
               }
 ?>
-           <form action="#" method="POST" class="forms-sample">
+           <form action="update_o.php" method="POST" class="forms-sample">
                     <input type="hidden" name="id" value="<?php echo $email; ?>">
                     <div class="form-group">
                     <label for="name">Name</label>

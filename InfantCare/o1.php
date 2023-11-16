@@ -1,13 +1,51 @@
-
-
-
 <?php
-require 'header.php';
-?> 
+session_start();
+if (isset($_SESSION['username'])) {
+    // User is logged in
+   //echo "Welcome, " . $_SESSION['username'];
+}
+?>
 
-
+<!doctype html>
 <html lang="en">
-  <head>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>InfantCare Charity - Free Bootstrap 5.2.2 CSS Template</title>
+
+    <!-- CSS FILES -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="css/templatemo-kind-heart-charity.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .site-header, .header-navbar{
+            z-index: 1000;
+            position: relative;
+        }
+
+
+        .hidden {
+    display: none;
+}
+
+    </style>
+    <!--
+
+TemplateMo 581 Kind Heart Charity
+
+https://templatemo.com/tm-581-kind-heart-charity
+
+-->
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,8 +68,9 @@ require 'header.php';
 <style>
    #sidebar {
     /* background-color: #ff6600; This sets the background color to a shade of orange. Replace with your desired color. */
-       background-color: #5bc1ac; 
-      /* background-color: white; */
+      background-color: #5bc1ac;  
+      /* background-color: whitesmoke;   */
+
 }
 
 .navbar-menu-wrapper {
@@ -82,15 +121,11 @@ a.navbar-brand.brand-logo img {
     /* Additional styles can be added as needed */
 }
 
-.active {
-  /* Add your desired styles for when the element is in view */
-  color: red; /* Change this to the desired color */
-}
-
+.nav-item.active .nav-link .menu-title {
+        color: red; /* Change to the color you want */
+    }
 
 </style>
-
-
 
 
   </head>
@@ -123,19 +158,14 @@ a.navbar-brand.brand-logo img {
                 <div class="nav-profile-img">
                   <img src="assets/images/faces/face1.jpg" alt="image">
                   <span class="availability-status online"></span>
-                </div> -->
-
-
-                
-                <!-- <div class="nav-profile-text">
-                  <p class="mb-1 text-black"><?php
-                  // if (isset($_SESSION['username'])) {
-                  // echo $_SESSION['username'];
-                  // }?></p>
                 </div>
-              </a> -->
-
-<!--               
+                <div class="nav-profile-text">
+                  <p class="mb-1 text-black"><?php
+                  if (isset($_SESSION['username'])) {
+                  echo $_SESSION['username'];
+                  }?></p>
+                </div>
+              </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
@@ -214,8 +244,8 @@ a.navbar-brand.brand-logo img {
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-warning">
                       <i class="mdi mdi-settings"></i>
-                    </div> -->
-                  <!-- </div>
+                    </div>
+                  </div>
                   <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                     <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
                     <p class="text-gray ellipsis mb-0"> Update dashboard </p>
@@ -247,12 +277,12 @@ a.navbar-brand.brand-logo img {
                 <i class="mdi mdi-format-line-spacing"></i>
               </a>
             </li>
-          </ul>-->
+          </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
-          </button>
+          </button> -->
         </div>
-      </nav> 
+      </nav>
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
@@ -266,72 +296,188 @@ a.navbar-brand.brand-logo img {
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">
-                    <?php
+                  <span class="font-weight-bold mb-2"><?php
                   if (isset($_SESSION['username'])) {
                   echo $_SESSION['username'];
-                  }?>
-                  </span>
-                  <span class="text-secondary text-small">Sponsor</span>
+                  }?></span>
+                  <span class="text-secondary text-small">Orphanage</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="sponsor.php">
+              <a class="nav-link" href="orphanage_dashboard.php">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="sponsor_dash.php">
+
+            <li class="nav-item ">
+              <a class="nav-link" href="orphanage_dashboard.php">
                 <span class="menu-title">Profile</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i> 
+                
               </a>
-              </li>
+            </li>
+
+
+            <li class="nav-item ">
+              <a class="nav-link" href="add_student3.php">
+                <span class="menu-title">Add Students</span>
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+              </a>
+            </li>
 
 
 
             <li class="nav-item">
-              <a class="nav-link" href="view_orphanage.php">
-                <span class="menu-title">View Orphanage</span>
+              <a class="nav-link" href="view_student3.php">
+                <span class="menu-title">View students</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="sponsor_child.php">
-                <span class="menu-title">Sponsor a student</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
-
-            </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span class="menu-title">History</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
-              </li>
-
-
-              <li class="nav-item">
               <a class="nav-link" href="Logout.php">
                 <span class="menu-title">Signout</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
               </li>
-
-              </li>
             
           </ul>
         </nav>
         <!-- partial -->
-         <div class="main-panel"> 
-           <div class="content-wrapper"> 
-            <!-- <div class="row"> -->
-              <!-- <div class="col-6 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body"> -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+             <div class="row"> 
+               <div class="col-6 grid-margin stretch-card"> 
+                 <div class="card"> 
+                  <div class="card-body"> 
                   
+
+</head>
+
+
+
+
+
+
+<body id="section_1">
+
+    <header class="site-header">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-8 col-12 d-flex flex-wrap">
+                    <p class="d-flex me-4 mb-0">
+                        <i class="bi-geo-alt me-2"></i>
+                        <!-- Akershusstranda 20, 0150 Oslo, Norway -->
+                    </p>
+
+                    <p class="d-flex mb-0">
+                        <i class="bi-envelope me-2"></i>
+
+                        <a href="mailto:info@company.com">
+                            infantcare@gmail.com
+                        </a>
+                    </p>
+                </div>
+
+                <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
+                    <ul class="social-icon">
+                        <li class="social-icon-item">
+                            <a href="#" class="social-icon-link bi-twitter"></a>
+                        </li>
+
+                        <li class="social-icon-item">
+                            <a href="#" class="social-icon-link bi-facebook"></a>
+                        </li>
+
+                        <li class="social-icon-item">
+                            <a href="#" class="social-icon-link bi-instagram"></a>
+                        </li>
+
+                        <li class="social-icon-item">
+                            <a href="#" class="social-icon-link bi-youtube"></a>
+                        </li>
+
+                        <li class="social-icon-item">
+                            <a href="#" class="social-icon-link bi-whatsapp"></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg bg-light shadow-lg header-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/logo.png" class="logo img-fluid" alt="Kind Heart Charity">
+                <span>
+                    InfantCare
+
+                    <small>Non-profit Organization</small>
+                </span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link click-scroll" href="index.php">Home</a>
+                    </li> -->
+
+                    <li class="nav-item hidden">
+    <a class="nav-link click-scroll" href="#">Home</a>
+</li>
+
+
+
+                     <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#">Home</a>
+                    </li> 
+
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#section_2">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#section_3">Causes</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#section_4">Volunteer</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link click-scroll dropdown-toggle" href="#section_5"
+                            id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">News</a>
+
+                        <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                            <li><a class="dropdown-item" href="news.html">News Listing</a></li>
+
+                            <li><a class="dropdown-item" href="news-detail.html">News Detail</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#section_6">Contact</a>
+                    </li>
+
+                    <li class="nav-item ms-3">
+                        <a class="nav-link custom-btn custom-border-btn btn" href="#">Donate</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </html>
