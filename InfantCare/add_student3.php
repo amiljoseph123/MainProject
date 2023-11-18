@@ -1,13 +1,9 @@
 <!DOCTYPE html>
+
 <?php
-// session_start();
-if (isset($_SESSION['username'])) {
-    // User is logged in
-   //echo "Welcome, " . $_SESSION['username'];
-}
-?>
-<?php
-  include "o.php";?>
+include "config.php";
+  include "o.php";
+  ?>
 
 
 <html lang="en">
@@ -131,7 +127,7 @@ if (isset($_SESSION['username'])) {
 
 
 <?php
-include "config.php";
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $first = $_POST['firstname'];

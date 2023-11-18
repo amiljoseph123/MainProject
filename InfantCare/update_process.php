@@ -15,9 +15,10 @@ $id = $_POST['id'];
 $name = $_POST['name'];
 $phone = $_POST['phone'];
 $aadhar = $_POST['aadhar'];
+$photo = $_POST['photo'];
 
 // SQL query to update sponsor details
-$sql = "UPDATE sponsor SET s_name='$name', s_phone='$phone', s_aadhar='$aadhar' WHERE s_email='$id'"; // Assuming 's_email' is the unique identifier
+$sql = "UPDATE sponsor SET s_name='$name', s_phone='$phone', s_aadhar='$aadhar',photo='$photo' WHERE s_email='$id'"; // Assuming 's_email' is the unique identifier
 
 if ($con->query($sql) === TRUE) {
     echo "Sponsor details updated successfully!";
@@ -63,6 +64,14 @@ $con->close();
             <input type="text" id="aadhar" name="aadhar" class="form-control" value="<?php echo $aadhar; ?>" required>
             <div id="aadharError" class="error-message"></div>
         </div>
+
+
+        <div class="form-group">
+        <label for="profilePhoto">Profile Photo</label>
+        <input type="file" id="photo" name="photo" accept="image/*">
+    </div>
+
+
         <input type="submit" name="update" value="Update" class="btn btn-success btn-sm">
     </form>
 

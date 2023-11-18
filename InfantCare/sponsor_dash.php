@@ -73,7 +73,7 @@ require 's.php';
                     <label for="aadhar">Aadhar Number</label>
                     <input type="text" name="aadhar" class="form-control" value="<?php echo $aadhar; ?>" required><br>
                     </div>
-                    <input type="submit" name="update" value="Click here to Update" class="btn btn-success btn-sm">
+                    <input type="submit" name="update" value="Update profile" class="btn btn-success btn-sm">
 
                     
                 </form>  

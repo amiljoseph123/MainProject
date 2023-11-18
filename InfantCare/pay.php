@@ -1,5 +1,27 @@
 <?php 
-include "Razorpay.php"; // Include Razorpay PHP SDK file
+// include "Razorpay.php"; // Include Razorpay PHP SDK file
+
+// $orderData = [
+//     'receipt'   => 'rcptid_11',
+//     'amount'    => 39900, // 39900 rupees in paise
+//     'currency'  => 'INR'
+// ];
+
+// $api = new Api("rzp_test_lE5KPjjzg7OJlO", "wNWFXqa5b1vIzRTW8TsK5RF8");
+
+
+// $api->utility->verifyPaymentSignature(array('razorpay_order_id' => $razorpayOrderId, 'razorpay_payment_id' => $razorpayPaymentId, 'razorpay_signature' => $razorpaySignature));
+
+?>
+<?php
+require 'Razorpay.php'; // Include Razorpay PHP SDK file
+
+use Razorpay\Api\Api;
+
+$keyId = 'rzp_test_lE5KPjjzg7OJlO';
+$keySecret = 'wNWFXqa5b1vIzRTW8TsK5RF8';
+
+$api = new Api($keyId, $keySecret);
 
 $orderData = [
     'receipt'   => 'rcptid_11',
@@ -7,14 +29,15 @@ $orderData = [
     'currency'  => 'INR'
 ];
 
-$api = new Api("rzp_test_lE5KPjjzg7OJlO", "wNWFXqa5b1vIzRTW8TsK5RF8");
+$order = $api->order->create($orderData);
+$order_id = $order->id;
 
-$api->utility->verifyPaymentSignature(array('razorpay_order_id' => $razorpayOrderId, 'razorpay_payment_id' => $razorpayPaymentId, 'razorpay_signature' => $razorpaySignature));
-
+echo json_encode(['orderId' => $order_id]);
 ?>
 
 
 
+<html>
 <button id="rzp-button1">Pay</button>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
@@ -58,3 +81,4 @@ document.getElementById('rzp-button1').onclick = function(e){
     e.preventDefault();
 }
 </script>
+</html>

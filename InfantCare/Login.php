@@ -31,6 +31,15 @@ if (isset($_POST["login"])) {
 			$script = "<script> window.location = 'orphanage_dashboard.php';</script>";
             echo $script;
 		}
+
+        elseif($user["user_type"]=='volunteer')
+		{
+			//header("location:dorphanage.php");
+			$script = "<script> window.location = 'volunteer.php';</script>";
+            echo $script;
+		}
+
+
 		elseif($user["user_type"]=='admin')
 		{
 			//header("location:dorphanage.php");

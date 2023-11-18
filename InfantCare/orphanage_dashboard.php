@@ -1,10 +1,11 @@
 <?php
+include "config.php";
   include "o.php";?>
                     
                   <h4>WELCOME</h4>
                   <?php
                     
-                    include "config.php";
+                    
 
                     if (isset($_SESSION['username'])) {
                     $user = $_SESSION['username'];

@@ -1,12 +1,6 @@
 <?php
 include "config.php";
 ?>
-
-<?php
-
-require 'header.php';
-?> 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,19 +23,41 @@ require 'header.php';
             margin-bottom: 5px;
         }
 
-        p {
-            /* margin-bottom: 5px; */
+        
+    </style>
+
+    <style>
+        button {
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        /* Education button style */
+        button.education {
+            background-color: #4CAF50; /* Green */
+        }
+
+        /* Health button style */
+        button.health {
+            background-color: #f44336; /* Red */
         }
     </style>
 </head>
 <body>
 
-
-
 <?php
+include "o.php";
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $id = $_GET["id"];
-
+    echo $id;
     $sql = "SELECT * FROM student WHERE id = '$id' AND orpanage_id = '".$_SESSION['username']."'";
     $result = $con->query($sql);
 
@@ -77,6 +93,39 @@ $con->close();
         <h2> <p>Gender : <?php echo $gender; ?></p></h2>
         <h2> <p>photo : <?php echo $photo; ?></p></h2>
         <img src="<?php echo $photo; ?>">
+        <br><br>
+
+        <!-- <button >Education </button><br> -->
+        <!-- <button>Health </button> -->
+
+        <div class="card">
+    <!-- Your existing code here -->
+
+    <button style="background-color: skyblue; 
+                    border: none;
+                    color: white;
+                    padding: 10px 20px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    margin: 4px 2px;
+                    transition-duration: 0.4s;
+                    cursor: pointer;">Education</button><br>
+
+    <button style="background-color: green;
+                    border: none;
+                    color: white;
+                    padding: 10px 20px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    margin: 4px 2px;
+                    transition-duration: 0.4s;
+                    cursor: pointer;">Health</button>
+</div>
+
 </div>
     
     <?php

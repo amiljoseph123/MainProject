@@ -3,11 +3,13 @@
 // session_start();
 if (isset($_SESSION['username'])) {
     // User is logged in
-   //echo "Welcome, " . $_SESSION['username'];
+   echo "Welcome, " . $_SESSION['username'];
 }
 ?>
 
+
 <?php
+require_once 'config.php';
   include "o.php";?>
 
 <html lang="en">
@@ -227,17 +229,14 @@ function searchstudent() {
 
 
 
-  <?php
-                require_once 'config.php';
-                $result = mysqli_query($con, "SELECT * FROM `student` ") or die("error");
-            ?> 
+
    
 
 
 
 
     <?php
-require_once 'config.php';
+
 $result = mysqli_query($con, "SELECT * FROM `student` ") or die("error");
 
 $c = 0;
@@ -255,11 +254,12 @@ while ($row = $result->fetch_assoc()) {
         <td><?php echo $firstname; ?></td>
         <td>
             <a href="student_view.php?id=<?php echo $student_id; ?>" class="btn btn-primary">View</a>
+            <a href="delete_student.php?id=<?php echo $student_id; ?>" class="btn btn-primary">Delete</a>
 
             <!-- <button type="button" class="btn btn-danger">Delete</button> -->
-            <form action="delete_student.php" method="post" style="display:inline;">
-        <input type="hidden" name="id" value="<?php echo $student_id; ?>">
-        <button type="submit" class="btn btn-danger">Delete</button>
+            <!-- <form action="" method="post" style="display:inline;">
+        <input type="hidden" name="id" value="<?php echo $student_id; ?>"> -->
+        <!-- <button type="submit" class="btn btn-danger">Delete</button> -->
         </td>
     </tr>
 <?php

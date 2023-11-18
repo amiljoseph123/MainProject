@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <?php
-session_start();
+// session_start();
 if (isset($_SESSION['username'])) {
     // User is logged in
    //echo "Welcome, " . $_SESSION['username'];
@@ -272,7 +272,7 @@ a.navbar-brand.brand-logo img {
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="orphanage_dashboard.php">
+              <a class="nav-link" href="orphanage.php">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
