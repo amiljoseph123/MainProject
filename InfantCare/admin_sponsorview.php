@@ -34,6 +34,25 @@ if (isset($_SESSION['username'])) {
 	<link rel="stylesheet" href="Dstyle.css">
 
 	<title>WELCOME</title>
+
+
+	<style>
+        /* CSS code to change the color */
+        .text {
+            color: blue; /* Change 'red' to the desired color */
+        }
+        #sidebar {
+            background-color: #5bc1ac; /* Change '#f0f0f0' to the desired color */
+            /* You can also use color names like 'red', HEX values, or RGB values */
+        }
+		.brand {
+             color: red; /* Change this color to your desired color */
+		}
+	
+
+    </style>
+
+
 </head>
 <body>
 

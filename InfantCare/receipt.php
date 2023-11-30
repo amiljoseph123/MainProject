@@ -13,7 +13,7 @@ if (isset($_GET['email'])) {
 
     $result = $con->query("SELECT * FROM donation WHERE email='$email'");
     if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
+        $row = $result->fetch_assoc(); 
         $name = $row['name'];
         $donationAmount = $row['amount'];
     } else {

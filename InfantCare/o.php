@@ -305,6 +305,15 @@ a.navbar-brand.brand-logo img {
             </li>
 
 
+            
+            <li class="nav-item">
+              <a class="nav-link" href="view_application.php">
+                <span class="menu-title">Volunteers</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+
+
             <li class="nav-item">
               <a class="nav-link" href="Logout.php">
                 <span class="menu-title">Signout</span>

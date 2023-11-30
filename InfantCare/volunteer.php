@@ -32,6 +32,10 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
             background-color: #5bc1ac; /* Change '#f0f0f0' to the desired color */
             /* You can also use color names like 'red', HEX values, or RGB values */
         }
+		.brand {
+             color: red; /* Change this color to your desired color */
+		}
+	
 
         .apply-button {
             padding: 8px 12px;
@@ -46,6 +50,11 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
         .apply-button:hover {
             background-color: #2980b9;
         }
+	
+		/* #content {
+    background-color:  #5bc1ac; 
+} */
+
     </style>
 
 </head>
@@ -113,6 +122,7 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
+			
 			<i class='bx bx-menu' ></i>
 			<a href="#" class="nav-link">Categories</a>
 			<form action="#">
@@ -131,6 +141,7 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 				<img src="img/people.png">
 			</a>
 		</nav>
+
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->
@@ -229,7 +240,13 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
                     <td><?php echo $district; ?></td>
                     <td><?php echo $city; ?></td>
                     <td><?php echo $pincode; ?></td>
-                    <td><button class="apply-button">Apply</button></td>
+                    <!-- <td><button class="apply-button">Apply</button></td> -->
+					<td><button class="apply-button" onclick="sendApplication()">Apply</button></td>
+
+					<!-- <td><a href="volunteer_details.php?id=<?php echo $volunteer_id; ?>" class="apply-button">Apply</a></td> -->
+					<!-- <td><a href="volunteer_details.php?id=<?php echo $row['orphanage_id']; ?>" class="apply-button">Apply</a></td> -->
+
+					<!-- <td><button class="apply-button">Cancel</button></td> -->
                 </tr>
                 <?php
                 }
@@ -272,6 +289,37 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 	</section>
 	<!-- CONTENT -->
 	
+<!-- <script>function sendApplication() {
+  // Create an XMLHttpRequest object
+  var xhr = new XMLHttpRequest();
+
+  // Specify the request details (method, URL, asynchronous)
+  xhr.open("GET", "orphanage.php", true);
+
+  // Set up a callback function to handle the response
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        // Request was successful, you can perform actions upon success here
+        console.log("Application sent successfully!");
+      } else {
+        // Request failed
+        console.error("Failed to send application. Status code: " + xhr.status);
+      }
+    }
+  };
+
+  // Send the request
+  xhr.send();
+}
+</script> -->
+
+<script>
+        function sendApplication() {
+            // Redirect to vol_apply.php
+            window.location.href = 'vol_apply.php';
+        }
+    </script>
 
 	<script src="Dscript.js"></script>
 </body>

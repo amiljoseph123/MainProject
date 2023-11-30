@@ -31,6 +31,22 @@ if (isset($_SESSION['username'])) {
 	<link rel="stylesheet" href="Dstyle.css">
 
 	<title>WELCOME</title>
+
+	<style>
+        /* CSS code to change the color */
+        .text {
+            color: blue; /* Change 'red' to the desired color */
+        }
+        #sidebar {
+            background-color: #5bc1ac; /* Change '#f0f0f0' to the desired color */
+            /* You can also use color names like 'red', HEX values, or RGB values */
+        }
+		.brand {
+             color: red; /* Change this color to your desired color */
+		}
+	
+
+    </style>
 </head>
 <body>
 
@@ -158,6 +174,14 @@ if (isset($_SESSION['username'])) {
 					<i class='bx bxs-dollar-circle' ></i>
 					<span class="text">
 						<h3><a href="admin_donation_view.php">Donation</h3>
+						<p></p>
+					</span>
+				</li>
+			
+			<li>
+					<i class='bx bxs-dollar-circle' ></i>
+					<span class="text">
+						<h3><a href="admin_volview.php">Volunteer</h3>
 						<p></p>
 					</span>
 				</li>

@@ -78,6 +78,7 @@ body {
 	align-items: center;
 	color: var(--blue);
 	position: sticky;
+	background-color: #5bc1ac;
 	top: 0;
 	left: 0;
 	background: var(--light);

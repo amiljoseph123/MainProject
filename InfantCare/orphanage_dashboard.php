@@ -35,7 +35,7 @@ include "config.php";
                     // $password = $row['o_password'];
 
                 } else {
-                echo "Sponsor not found.";
+                echo "Sponsor  not found.";
                 $con->close();
                 exit();
                 }

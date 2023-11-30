@@ -18,7 +18,13 @@ $aadhar = $_POST['aadhar'];
 $photo = $_POST['photo'];
 
 // SQL query to update sponsor details
-$sql = "UPDATE sponsor SET s_name='$name', s_phone='$phone', s_aadhar='$aadhar',photo='$photo' WHERE s_email='$id'"; // Assuming 's_email' is the unique identifier
+$sql = "UPDATE sponsor SET s_name='$name', s_phone='$phone', s_aadhar='$aadhar' WHERE s_email='$id'"; // Assuming 's_email' is the unique identifier
+
+
+
+
+
+
 
 if ($con->query($sql) === TRUE) {
     echo "Sponsor details updated successfully!";

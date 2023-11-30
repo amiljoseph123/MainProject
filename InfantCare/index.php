@@ -137,7 +137,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                     </li>
 
                     <li class="nav-item ms-3">
-                        <a class="nav-link custom-btn custom-border-btn btn" href="donate.php">Donate</a>
+                        <a class="nav-link custom-btn custom-border-btn btn" href="pay.php">Donate</a>
                     </li>
                 </ul>
             </div>
