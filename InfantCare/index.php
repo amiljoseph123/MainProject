@@ -35,19 +35,19 @@ https://templatemo.com/tm-581-kind-heart-charity
                 <div class="col-lg-8 col-12 d-flex flex-wrap">
                     <p class="d-flex me-4 mb-0">
                         <i class="bi-geo-alt me-2"></i>
-                        Akershusstranda 20, 0150 Oslo, Norway
+                        Kottayam, Kerala
                     </p>
 
                     <p class="d-flex mb-0">
                         <i class="bi-envelope me-2"></i>
 
                         <a href="mailto:info@company.com">
-                            info@company.com
+                            infsntcare2023@gmail.com
                         </a>
                     </p>
                 </div>
 
-                <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
+                <!-- <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
                     <ul class="social-icon">
                         <li class="social-icon-item">
                             <a href="#" class="social-icon-link bi-twitter"></a>
@@ -71,7 +71,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                     </ul>
                 </div>
 
-            </div>
+            </div> -->
         </div>
     </header>
 
@@ -112,15 +112,15 @@ https://templatemo.com/tm-581-kind-heart-charity
                         <a class="nav-link click-scroll" href="#section_2">About</a>
                     </li>
 
-                    <li class="nav-item">
+                     <li class="nav-item">
                         <a class="nav-link click-scroll" href="#section_3">Causes</a>
                     </li>
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link click-scroll" href="#section_4">Volunteer</a>
-                    </li>
+                    </li>  -->
 
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link click-scroll dropdown-toggle" href="#section_5"
                             id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">News</a>
@@ -130,14 +130,14 @@ https://templatemo.com/tm-581-kind-heart-charity
 
                             <li><a class="dropdown-item" href="news-detail.php">News Detail</a></li>
                         </ul>
-                    </li>
+                    </li> -->
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link click-scroll" href="#section_6">Contact</a>
-                    </li>
+                    </li> -->
 
                     <li class="nav-item ms-3">
-                        <a class="nav-link custom-btn custom-border-btn btn" href="pay.php">Donate</a>
+                        <a class="nav-link custom-btn custom-border-btn btn" href="pay3.php">Donate</a>
                     </li>
                 </ul>
             </div>
@@ -219,7 +219,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                             <a href="sponsor_reg.php" class="d-block">
                                 <img src="images/icons/hands.png" class="featured-block-image img-fluid" alt="">
 
-                                <p class="featured-block-text"><strong>Sponsor</strong></p>
+                                <p class="featured-block-text"><strong>Sponsor Sign up</strong></p>
                             </a>
                         </div>
                     </div>
@@ -229,7 +229,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                             <a href="orph_reg.php" class="d-block">
                                 <img src="images/icons/heart.png" class="featured-block-image img-fluid" alt="">
 
-                                <p class="featured-block-text"><strong>Orphanage</strong></p>
+                                <p class="featured-block-text"><strong>Orphanage Sign up</strong></p>
                             </a>
                         </div>
                     </div>
@@ -239,7 +239,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                             <a href="reg_volunteer.php" class="d-block">
                                 <img src="images/icons/receive.png" class="featured-block-image img-fluid" alt="">
 
-                                <p class="featured-block-text"><strong>Volunteer</strong></p>
+                                <p class="featured-block-text"><strong>Volunteer Sign up</strong></p>
                             </a>
                         </div>
                     </div>
@@ -271,11 +271,10 @@ https://templatemo.com/tm-581-kind-heart-charity
                         <div class="custom-text-box">
                             <h2 class="mb-2">Our Story</h2>
 
-                            <h5 class="mb-3">Kind Heart Charityi, Non-Profit Organization</h5>
+                            <h5 class="mb-3">Infantcare, Non-Profit Organization</h5>
 
-                            <p class="mb-0">This is a Bootstrap 5.2.2 CSS template for charity organization websites.
-                                You can feel free to use it. Please tell your friends about TemplateMo website. Thank
-                                you.</p>
+                            <p class="mb-0">Where Hope Blooms. We're a haven for orphaned children, offering love, education, and support. Join us in crafting brighter futures. Your donations and involvement make miracles happen. Together, let's nurture dreams and transform lives. Welcome to a world where every child finds love and belonging."
+                               .</p>
                         </div>
 
                         <div class="row">
@@ -283,9 +282,9 @@ https://templatemo.com/tm-581-kind-heart-charity
                                 <div class="custom-text-box mb-lg-0">
                                     <h5 class="mb-3">Our Mission</h5>
 
-                                    <p>Sed leo nisl, posuere at molestie ac, suscipit auctor quis metus</p>
+                                    <p>To provide a loving home for orphaned children, nurturing their well-being through education, care, and support. We strive to create a safe haven where every child finds love, learns, and grows. Join us in fostering hope and empowering these resilient young souls for a brighter future."</p>
 
-                                    <ul class="custom-list mt-2">
+                                    <!-- <ul class="custom-list mt-2">
                                         <li class="custom-list-item d-flex">
                                             <i class="bi-check custom-text-box-icon me-2"></i>
                                             Charity Theme
@@ -295,7 +294,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                             <i class="bi-check custom-text-box-icon me-2"></i>
                                             Semantic HTML
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                 </div>
                             </div>
 
@@ -345,10 +344,10 @@ https://templatemo.com/tm-581-kind-heart-charity
 
                             <p class="text-muted mb-lg-4 mb-md-4">Founding Partner</p>
 
-                            <p></p>
+                            <!-- <p></p>
 
-                            <p>Sed leo nisl, posuere at molestie ac, suscipit auctor mauris. Etiam quis metus</p>
-
+                            <p>Sed leo nisl, posuere at molestie ac, suscipit auctor mauris. Etiam quis metus</p> -->
+<!-- 
                             <ul class="social-icon mt-4">
                                 <li class="social-icon-item">
                                     <a href="#" class="social-icon-link bi-twitter"></a>
@@ -360,7 +359,7 @@ https://templatemo.com/tm-581-kind-heart-charity
 
                                 <li class="social-icon-item">
                                     <a href="#" class="social-icon-link bi-instagram"></a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
@@ -425,7 +424,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                     </div>
                                 </div>
 
-                                <a href="donate.php" class="custom-btn btn">Donate now</a>
+                                <a href="pay3.php" class="custom-btn btn">Donate now</a>
                             </div>
                         </div>
                     </div>
@@ -460,7 +459,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                     </div>
                                 </div>
 
-                                <a href="donate.php" class="custom-btn btn">Donate now</a>
+                                <a href="pay3.php" class="custom-btn btn">Donate now</a>
                             </div>
                         </div>
                     </div>
@@ -495,7 +494,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                     </div>
                                 </div>
 
-                                <a href="donate.php" class="custom-btn btn">Donate now</a>
+                                <a href="pay3.php" class="custom-btn btn">Donate now</a>
                             </div>
                         </div>
                     </div>
@@ -514,7 +513,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                         <form class="custom-form volunteer-form mb-5 mb-lg-0" action="#" method="post" role="form">
                             <h3 class="mb-4">Become a volunteer today</h3>
 
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-lg-6 col-12">
                                     <input type="text" name="volunteer-name" id="volunteer-name" class="form-control"
                                         placeholder="Jack Doe" required>
@@ -540,14 +539,14 @@ https://templatemo.com/tm-581-kind-heart-charity
                                         <i class="bi-cloud-arrow-up ms-auto"></i>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <textarea name="volunteer-message" rows="3" class="form-control" id="volunteer-message"
+                            <!-- <textarea name="volunteer-message" rows="3" class="form-control" id="volunteer-message"
                                 placeholder="Comment (Optional)"></textarea>
 
                             <button type="submit" class="form-control">Submit</button>
                         </form>
-                    </div>
+                    </div> -->
 
                     <div class="col-lg-6 col-12">
                         <img src="images/smiling-casual-woman-dressed-volunteer-t-shirt-with-badge.jpg"
@@ -556,8 +555,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                         <div class="custom-block-body text-center">
                             <h4 class="text-white mt-lg-3 mb-lg-3">About Volunteering</h4>
 
-                            <p class="text-white">Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm
-                                tokito Professional charity theme based</p>
+                            <p class="text-black">"Volunteer at Little Angels' Haven and become a pillar of hope! Join our compassionate team, offering your time and skills to make a difference in these children's lives. From mentoring to organizing activities, your dedication shapes their future. Be the guiding light in their journey towards happiness and fulfillment."</p>
                         </div>
                     </div>
 
@@ -649,7 +647,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                                 </div>
                             </div>
 
-                            <div class="news-block-info">
+                            <!-- <div class="news-block-info">
                                 <div class="d-flex mt-2">
                                     <div class="news-block-date">
                                         <p>
@@ -818,10 +816,10 @@ https://templatemo.com/tm-581-kind-heart-charity
 
                 </div>
             </div>
-        </section>
+        </section> -->
 
 
-        <section class="testimonial-section section-padding section-bg">
+        <!-- <section class="testimonial-section section-padding section-bg">
             <div class="container">
                 <div class="row">
 
@@ -839,9 +837,9 @@ https://templatemo.com/tm-581-kind-heart-charity
                                         <small class="carousel-name"><span class="carousel-name-title">Maria</span>,
                                             Boss</small>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="carousel-item">
+                                <!-- <div class="carousel-item">
                                     <div class="carousel-caption">
                                         <h4 class="carousel-title">Sed leo nisl, posuere at molestie ac, suscipit auctor
                                             mauris quis metus tempor orci</h4>
@@ -1004,7 +1002,7 @@ https://templatemo.com/tm-581-kind-heart-charity
 
                         <li class="footer-menu-item"><a href="#" class="footer-menu-link">Partner with us</a></li>
                     </ul>
-                </div>
+                </div> -->
 
                 <div class="col-lg-4 col-md-6 col-12 mx-auto">
                     <h5 class="site-footer-title mb-3">Contact Infomation</h5>

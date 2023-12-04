@@ -15,7 +15,7 @@ $id = $_POST['id'];
 $name = $_POST['name'];
 $phone = $_POST['phone'];
 $aadhar = $_POST['aadhar'];
-$photo = $_POST['photo'];
+// $photo = $_POST['photo'];
 
 // SQL query to update sponsor details
 $sql = "UPDATE sponsor SET s_name='$name', s_phone='$phone', s_aadhar='$aadhar' WHERE s_email='$id'"; // Assuming 's_email' is the unique identifier
@@ -27,7 +27,7 @@ $sql = "UPDATE sponsor SET s_name='$name', s_phone='$phone', s_aadhar='$aadhar' 
 
 
 if ($con->query($sql) === TRUE) {
-    echo "Sponsor details updated successfully!";
+    // echo "Sponsor details updated successfully!";
 } else {
     echo "Error updating sponsor details: " . $con->error;
 }
@@ -114,19 +114,19 @@ $con->close();
                 }
             }
 
-        //     function validateAadhar() {
-        //         var aadharInput = document.getElementById('aadhar');
-        //         var aadharError = document.getElementById('aadharError');
+            function validateAadhar() {
+                var aadharInput = document.getElementById('aadhar');
+                var aadharError = document.getElementById('aadharError');
 
-        //         // Regular expression to validate a 12-digit Aadhar number
-        //         var aadharRegex = /^\d{12}$/;
+                // Regular expression to validate a 12-digit Aadhar number
+                var aadharRegex = /^\d{12}$/;
 
-        //         if (!aadharRegex.test(aadharInput.value)) {
-        //             aadharError.textContent = 'Please enter a valid 12-digit Aadhar number.';
-        //         } else {
-        //             // Additional checks for the year and month of birth
-        //             var yearOfBirth = parseInt(aadharInput.value.substr(0, 4));
-        //             var monthOfBirth = parseInt(aadharInput.value.substr(4, 2));
+                if (!aadharRegex.test(aadharInput.value)) {
+                    aadharError.textContent = 'Please enter a valid 12-digit Aadhar number.';
+                } else {
+                    // Additional checks for the year and month of birth
+                    var yearOfBirth = parseInt(aadharInput.value.substr(0, 4));
+                    var monthOfBirth = parseInt(aadharInput.value.substr(4, 2));
 
         //             if (yearOfBirth < 1900 || yearOfBirth > 2099 || monthOfBirth < 1 || monthOfBirth > 12) {
         //                 aadharError.textContent = 'Invalid year or month of birth in Aadhar number.';
@@ -134,8 +134,8 @@ $con->close();
         //                 // Reset error message if everything is valid
         //                 aadharError.textContent = '';
         //             }
-        //         }
-        //     }
+             }
+          }
         };
     </script>
 

@@ -330,9 +330,9 @@ if (isset($_POST['submit'])) {
     }
 } else {
     //echo '<script>alert("Registration is failed")</script>';
-    echo "<script>
-                Swal.fire('Registration faild');
-              </script>";
+    // echo "<script>
+    //             Swal.fire('Registration faild');
+    //           </script>";
 }
 ?>
 <?

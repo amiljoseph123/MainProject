@@ -1,68 +1,63 @@
-<?php 
-// include "Razorpay.php"; // Include Razorpay PHP SDK file
-
-// $orderData = [
-//     'receipt'   => 'rcptid_11',
-//     'amount'    => 39900, // 39900 rupees in paise
-//     'currency'  => 'INR'
-// ];           
-
-// $api = new Api("rzp_test_lE5KPjjzg7OJlO", "wNWFXqa5b1vIzRTW8TsK5RF8");
-
-
-// $api->utility->verifyPaymentSignature(array('razorpay_order_id' => $razorpayOrderId, 'razorpay_payment_id' => $razorpayPaymentId, 'razorpay_signature' => $razorpaySignature));
-?>
-
 <?php
+include "config.php";
+require './razorpay/Razorpay.php'; // Include Razorpay PHP SDK file outside the conditional block
 
-require './razorpay/Razorpay.php'; // Include Razorpay PHP SDK file
+use Razorpay\Api\Api; // Import the namespace outside the conditional block
 
-use Razorpay\Api\Api;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get the form data
+    $amount = $_POST['amount'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    echo $amount;
 
-$keyId = 'rzp_test_rV45cYN1u5Evk7';
-$keySecret = 'E6cBLbYiL9WaG4jKy8jyWcqI';
+    // Check if all data is available before proceeding
+    if (!empty($amount) && !empty($name) && !empty($email)) {
+        // Prepare and execute SQL query to insert data into the database
+        $sql = "INSERT INTO donation3 (amount, name, email) VALUES ('$amount', '$name', '$email')";
 
-$api = new Api($keyId, $keySecret);
+        if ($con->query($sql) === TRUE) {
+            // Initialize Razorpay
+            $keyId = 'rzp_test_rV45cYN1u5Evk7';
+            $keySecret = 'E6cBLbYiL9WaG4jKy8jyWcqI';
+            $api = new Api($keyId, $keySecret);
 
-$orderData = [
-    'receipt'   => 'rcptid_11',
-    'amount'    => 50000, // 39900 rupees in paise
-    'currency'  => 'INR'
-];
+            // Create order in Razorpay
+            $orderData = [
+                'receipt'   => 'rcptid_11',
+                'amount'    => 200* 100, // Convert to paise
+                'currency'  => 'INR'
+            ];
 
-$order = $api->order->create($orderData);
-$order_id = $order->id;
+            $order = $api->order->create($orderData);
+            $order_id = $order->id;
 
-echo json_encode(['orderId' => $order_id]);
+            echo json_encode(['orderId' => $order_id]);
+        } else {
+            echo "Error: " . $sql . "<br>" . $con->error;
+        }
+
+        $con->close();
+    } else {
+        echo "Please fill in all the fields.";
+    }
+}
 ?>
 
-
-
+<!-- HTML code -->
+<!DOCTYPE html>
 <html>
-
-<meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta name="description" content="">
-    <meta name="author" content="">
-
     <title>Kind Heart Charity-Donation</title>
-
-    <!-- CSS FILES -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="css/bootstrap-icons.css" rel="stylesheet">
+<link href="css/bootstrap-icons.css" rel="stylesheet">
 
-    <link href="css/templatemo-kind-heart-charity.css" rel="stylesheet">
-    <!--
-
-TemplateMo 581 Kind Heart Charity
-
-https://templatemo.com/tm-581-kind-heart-charity
-
--->
+<link href="css/templatemo-kind-heart-charity.css" rel="stylesheet">
+    <!-- ... -->
 </head>
-
 <body>
 
 <style>#rzp-button1 {
@@ -79,14 +74,14 @@ https://templatemo.com/tm-581-kind-heart-charity
                 <div class="col-lg-8 col-12 d-flex flex-wrap">
                     <p class="d-flex me-4 mb-0">
                         <i class="bi-geo-alt me-2"></i>
-                        Akershusstranda 20, 0150 Oslo, Norway
+                        infantcare management system
                     </p>
 
                     <p class="d-flex mb-0">
                         <i class="bi-envelope me-2"></i>
 
                         <a href="mailto:info@company.com">
-                            info@company.com
+                            infantcare@gmail.com
                         </a>
                     </p>
                 </div>
@@ -126,7 +121,7 @@ https://templatemo.com/tm-581-kind-heart-charity
             <a class="navbar-brand" href="receipt.php">
                 <img src="images/logo.png" class="logo img-fluid" alt="">
                 <span>
-                    Kind Heart Charity
+                    Infantcare Charity
                     <small>Non-profit Organization</small>
                 </span>
             </a>
@@ -186,56 +181,14 @@ https://templatemo.com/tm-581-kind-heart-charity
                 <div class="row">
 
                     <div class="col-lg-6 col-12 mx-auto">
+   
+                    <form class="custom-form donate-form" method="POST" role="form">
+                        <!-- Form Fields -->
+                        <!-- ... -->
 
 
-                         <form class="custom-form donate-form" action="donation_process2.php" method="POST" role="form">
-                            <h3 class="mb-4">Make a donation</h3>
 
-                            <div class="row">
-                                <div class="col-lg-12 col-12">
-                                     <h5 class="mb-3">Donation Frequency</h5> 
-                                </div>
-
-                                <div class="col-lg-6 col-6 form-check-group form-check-group-donation-frequency">
-                                    <div class="form-check form-check-radio">
-                                        <input class="form-check-input" type="radio" name="DonationFrequency"
-                                            id="DonationFrequencyOne" checked>
-
-                                        <label class="form-check-label" for="DonationFrequencyOne">
-                                            One Time
-                                        </label>
-                                    </div>
-                                </div> 
-
-                                 <div class="col-lg-6 col-6 form-check-group form-check-group-donation-frequency">
-                                    <div class="form-check form-check-radio">
-                                        <input class="form-check-input" type="radio" name="DonationFrequency"
-                                            id="DonationFrequencyMonthly">
-
-                                        <label class="form-check-label" for="DonationFrequencyMonthly">
-                                            Monthly
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12 col-12">
-                                    <h5 class="mt-2 mb-3">Select an amount</h5>
-                                </div>
-
-                            
-
-                                <div class="col-lg-6 col-12 mt-2">
-                                    <input type="int" name="amount" id="amount" class="form-control"
-                                        placeholder="custom amount" required>
-                                </div>
-
-                        
-
-                                 <div class="col-lg-12 col-12">
-                                    <h5 class="mt-1">Personal Info</h5>
-                                </div>
-
-                                <div class="col-lg-6 col-12 mt-2">
+                        <div class="col-lg-6 col-12 mt-2">
                                     <input type="text" name="name" id="name" class="form-control"
                                         placeholder="name" required>
                                 </div>
@@ -245,60 +198,47 @@ https://templatemo.com/tm-581-kind-heart-charity
                                         pattern="[^ @]*@[^ @]*" class="form-control" placeholder="email"
                                         required>
                                 </div>
-                                <br><br><br>
-                                <button id="rzp-button1"class="form-control mt-4">Pay</button>
 
-                         
-                                </div>
-                            </div>
-                        </form>  
+                        <div class="col-lg-6 col-12 mt-2">
+                            <input type="text" name="amount" id="amount" class="form-control" placeholder="Enter amount" required>
+                        </div>
+                        <!-- ... -->
+                        <button id="rzp-button1" class="form-control mt-4">Pay</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-
-
-
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script>
-var options = {
-    "key": "rzp_test_rV45cYN1u5Evk7", // Enter the Key ID generated from the Dashboard
-    "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-    "currency": "INR",
-    "name": "Infantcare",
-    "description": "Test Transaction",
-    "image": "https://example.com/your_logo",
-    // "order_id": "order_IluGWxBm9U8zJ8", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-    "order_id": "<?php echo $order_id; ?>",
-
-    
-    "handler": function (response){
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature)
-    },
-    "prefill": {
-        "name": "Gaurav Kumar",
-         "email": "gaurav.kumar@example.com",
-        "contact": "9000"
-    },
-    "notes": {
-        "address": "Razorpay Corporate Office"
-    },
-    "theme": {
-        "color": "#3399cc"
-    }
-};
-var rzp1 = new Razorpay(options);
-rzp1.on('payment.failed', function (response){
-        alert(response.error.code);
-        alert(response.error.description);
-        alert(response.error.source);
-        alert(response.error.step);
-        alert(response.error.reason);
-        alert(response.error.metadata.order_id);
-        alert(response.error.metadata.payment_id);
-});
-document.getElementById('rzp-button1').onclick = function(e){
-    rzp1.open();
-    e.preventDefault();
-}
-</script>
+    <!-- Razorpay Script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        // PHP variable to JavaScript variable conversion
+        var amount = <?php echo isset($amount) ? $amount : 0; ?>;
+        
+        // Rest of your Razorpay configuration
+        var options = {
+            "key": "rzp_test_rV45cYN1u5Evk7",
+            "amount": 200, // Convert amount to paise
+            "currency": "INR",
+            // ... (other options) ...
+        };
+        
+        var rzp1 = new Razorpay(options);
+        rzp1.on('payment.success', function(response) {
+            // Handle success
+            alert("Payment successful. Payment ID: " + response.razorpay_payment_id);
+        });
+        rzp1.on('payment.error', function(response) {
+            // Handle error
+            alert("Payment failed. Error: " + response.error.description);
+        });
+        
+        // Open Razorpay payment modal on button click
+        document.getElementById('rzp-button1').addEventListener('click', function(e) {
+            rzp1.open();
+            e.preventDefault();
+        });
+    </script>
+</body>
 </html>

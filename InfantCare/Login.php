@@ -1,7 +1,4 @@
 
-
-
-
 <?php
 require_once 'config.php';
 require_once 'header.php';
@@ -35,7 +32,7 @@ if (isset($_POST["login"])) {
         elseif($user["user_type"]=='volunteer')
 		{
 			//header("location:dorphanage.php");
-			$script = "<script> window.location = 'volunteer.php';</script>";
+			$script = "<script> window.location = 'vol_dashboard.php';</script>";
             echo $script;
 		}
 
@@ -76,7 +73,7 @@ if (isset($_POST["login"])) {
 						</div> 
 						<div class="mt-4">
 						<a href="forgot_password.php" >Forgot password ?</a></div>
-						<p style="font-size:15px;float:right;margin-bottom:-10px;" ><input type="submit" class="btn btn-success" name="login" value="login"></p>
+						<p style="font-size:15px;float:right;margin-bottom:-10px;" ><input type="submit" id="login" class="btn btn-success" name="login" value="login"></p>
 						
 			</div>
         </form>

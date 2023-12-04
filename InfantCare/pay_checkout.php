@@ -11,7 +11,7 @@ if(!empty($_POST['amount']))
     $name=$_POST['name'];
     $name=$_POST['email'];
     $name=$_POST['amount'];
-    $api=new Api(Api_KEY, API_SECRET);
+    $api=new Api(rzp_test_rV45cYN1u5Evk7,E6cBLbYiL9WaG4jKy8jyWcqI );
     $api=$api->order->create(
         array(
             'receipt' => '123',
@@ -21,7 +21,7 @@ if(!empty($_POST['amount']))
 
         )
         );
-           if(!empty($res['id'];))
+           if(!empty($res['id']))
         {
             $_SESSION['order_id']=$res['id'];
         }

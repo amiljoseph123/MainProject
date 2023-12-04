@@ -1,3 +1,5 @@
+
+<?php
 // Include Razorpay PHP SDK
 require 'path/to/razorpay-php/Razorpay.php';
 

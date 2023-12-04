@@ -35,12 +35,12 @@ include "config.php";
                     // $password = $row['o_password'];
 
                 } else {
-                echo "Sponsor  not found.";
+                echo "orphanage  not found.";
                 $con->close();
                 exit();
                 }
                 } else {
-                echo "Sponsor ID not provided.";
+                echo "orphanage ID not provided.";
                 $con->close();
                 exit();
               }
