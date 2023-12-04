@@ -1,6 +1,6 @@
 <?php
 require_once 'config.php';
-$result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
+// $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 ?> 
 <?php
 // require 'header.php'
@@ -192,141 +192,13 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>Recent</h3>
+						<!-- <h3>Recent</h3> -->
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
-					<table>
-						<thead>
-							<tr>
-                                <th>Sl.No</th>
-                                <th>Name</th>
-                                <!-- <th>government id</th>
-                                <th>Established date</th> -->
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>District</th>
-                                <th>City</th>
-                                <th>Pincode</th>
-                                <th>Application</th>
-       
-
-							</tr>
-						</thead>
-						<tbody>
-                        <?php
-                            $c=0;
-                            while ($row = $result->fetch_assoc()) {
-                                $name=$row["o_name"];
-                                // $id=$row["o_govtid"];
-                                // $date=$row["o_edate"];
-                               
-                                $email=$row["o_email"];
-                                $phone=$row["o_phone"];
-
-                                $district=$row["o_district"];
-                                $city=$row["o_city"];
-                                $pincode=$row["o_pincode"];
 
 
-                            $c++;
-                        ?>
-                <tr>
-                    <td><?php echo $c; ?></td>
-                    <td><?php echo $name; ?></td>
-                    
-                    <td><?php echo $email; ?></td>
-                    <td><?php echo  $phone; ?></td>
-                    <td><?php echo $district; ?></td>
-                    <td><?php echo $city; ?></td>
-                    <td><?php echo $pincode; ?></td>
-                    <td>
-					<form method="post" action="">
-						<input type="submit" class="apply-button" value="Apply" name="apply">
-					</form>
-					<?php
-						if(isset($_POST["apply"])){
-							$o_id=$email;
-							$u_id=$_SESSION['username'];
-							$status="pending";
-							mysqli_query($con, "INSERT INTO `vapplication`(`id`, `vol_id`, `orph_id`, `status`) VALUES (default,'$o_id','$u_id','$status')");
-						}
-					?>
-					</td>
-                </tr>
-                <?php
-                }
-                ?>
-							 
-					</table> 
-				<!-- </div>
-				<div class="todo">
-					<div class="head">
-						<h3>Todos</h3>
-						<i class='bx bx-plus' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<ul class="todo-list">
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-					</ul> -->
-				</div>
-			</div>
-		</main>
-		<!-- MAIN -->
-	</section>
-	<!-- CONTENT -->
-	
-<!-- <script>function sendApplication() {
-  // Create an XMLHttpRequest object
-  var xhr = new XMLHttpRequest();
 
-  // Specify the request details (method, URL, asynchronous)
-  xhr.open("GET", "orphanage.php", true);
-
-  // Set up a callback function to handle the response
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200) {
-        // Request was successful, you can perform actions upon success here
-        console.log("Application sent successfully!");
-      } else {
-        // Request failed
-        console.error("Failed to send application. Status code: " + xhr.status);
-      }
-    }
-  };
-
-  // Send the request
-  xhr.send();
-}
-</script> -->
-
-<!-- <script>
-        function sendApplication() {
-            // Redirect to vol_apply.php
-            window.location.href = 'vol_apply.php';
-        }
-    </script> -->
-
-	<script src="Dscript.js"></script>
+                    <script src="Dscript.js"></script>
 </body>
 </html> 

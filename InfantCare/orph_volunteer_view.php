@@ -1,10 +1,24 @@
-<?php
-require_once 'config.php';
-$result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
-?> 
-<?php
-// require 'header.php'
+
+<?php 
+session_start();
+ //echo $_SESSION["username"];
+if (isset($_SESSION['username'])) {
+    // User is logged in
+    echo "Welcome, " . $_SESSION['username'];
+    // You can display user-specific content here
+} else {
+    // User is not logged in, redirect to the login page
+    header("Location: login.php");
+    exit(); // Make sure to stop execution after the redirect
+}
 ?>
+
+<?php
+// include 'Dindex.php'
+?>
+
+
+
 
 
 
@@ -23,7 +37,8 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 
 	<title>WELCOME</title>
 
-    <style>
+
+	<style>
         /* CSS code to change the color */
         .text {
             color: blue; /* Change 'red' to the desired color */
@@ -37,24 +52,7 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 		}
 	
 
-        .apply-button {
-            padding: 8px 12px;
-            background-color: #5bc1ac;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        /* Optional hover effect */
-        .apply-button:hover {
-            background-color: #2980b9;
-        }
-	
-		/* #content {
-    background-color:  #5bc1ac; 
-} */
-
+        
     </style>
 
 </head>
@@ -69,7 +67,7 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="">
+				<a href="Dindex.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -84,7 +82,7 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 				<a href="#">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Analytics</span>
-				</a> <br>
+				</a>
 			<!-- </li>
 			<li>
 				<a href="#">
@@ -92,7 +90,7 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 					<span class="text">Message</span>
 				</a>
 			</li> -->
-			<!-- <li>
+			<li>
 				<a href="#">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Team</span>
@@ -106,7 +104,7 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 					<span class="text">Settings</span>
 				</a>
 			</li>
-			<li> -->
+			<li>
 				<a href="logout.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
@@ -122,7 +120,6 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			
 			<i class='bx bx-menu' ></i>
 			<a href="#" class="nav-link">Categories</a>
 			<form action="#">
@@ -141,12 +138,11 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 				<img src="img/people.png">
 			</a>
 		</nav>
-
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->
 		<main>
-			<!-- <div class="head-title">
+			<div class="head-title">
             <div class="left">
 					<h1>Dashboard</h1>
 					<ul class="breadcrumb">
@@ -158,7 +154,7 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 							<a class="active" href="#">Orphanage Details</a>
 						</li>
 					</ul>
-				</div> -->
+				</div>
 				<a href="#" class="btn-download">
 					<i class='bx bxs-cloud-download' ></i>
 					<span class="text">Download PDF</span>
@@ -173,8 +169,8 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 						<!-- <p>details</p> -->
 					</span>
 				</li>
-				<!-- <li> -->
-					<!-- <i class='bx bxs-group' ></i>
+				<li>
+					<i class='bx bxs-group' ></i>
 					<span class="text">
 						<h3>Sponsors</h3>
 						<p></p>
@@ -186,9 +182,12 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 						<h3>Donation</h3>
 						<p></p>
 					</span>
-				</li> -->
+				</li>
 			</ul>
-            <?php echo $_SESSION['username']?>
+            <?php
+                require_once 'config.php';
+                $result = mysqli_query($con, "SELECT * FROM `volunteer` ") or die("error");
+            ?> 
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
@@ -201,14 +200,13 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 							<tr>
                                 <th>Sl.No</th>
                                 <th>Name</th>
-                                <!-- <th>government id</th>
-                                <th>Established date</th> -->
+                            
                                 <th>Email</th>
-                                <th>Phone</th>
+                                <th>phone</th>
+                                <th>aadhar</th>
                                 <th>District</th>
-                                <th>City</th>
-                                <th>Pincode</th>
-                                <th>Application</th>
+                                
+                            
        
 
 							</tr>
@@ -217,42 +215,24 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
                         <?php
                             $c=0;
                             while ($row = $result->fetch_assoc()) {
-                                $name=$row["o_name"];
-                                // $id=$row["o_govtid"];
-                                // $date=$row["o_edate"];
-                               
-                                $email=$row["o_email"];
-                                $phone=$row["o_phone"];
-
-                                $district=$row["o_district"];
-                                $city=$row["o_city"];
-                                $pincode=$row["o_pincode"];
-
-
+                                $name=$row["name"];
+                                $email=$row["email"];
+                                $phone=$row["phone"];
+                                $city=$row["aadhar"];
+                                $district=$row["district"];
+                            
                             $c++;
                         ?>
                 <tr>
                     <td><?php echo $c; ?></td>
                     <td><?php echo $name; ?></td>
-                    
+                    <td><?php echo $id; ?></td>
+                    <td><?php echo $date; ?></td>
                     <td><?php echo $email; ?></td>
                     <td><?php echo  $phone; ?></td>
                     <td><?php echo $district; ?></td>
                     <td><?php echo $city; ?></td>
                     <td><?php echo $pincode; ?></td>
-                    <td>
-					<form method="post" action="">
-						<input type="submit" class="apply-button" value="Apply" name="apply">
-					</form>
-					<?php
-						if(isset($_POST["apply"])){
-							$o_id=$email;
-							$u_id=$_SESSION['username'];
-							$status="pending";
-							mysqli_query($con, "INSERT INTO `vapplication`(`id`, `vol_id`, `orph_id`, `status`) VALUES (default,'$o_id','$u_id','$status')");
-						}
-					?>
-					</td>
                 </tr>
                 <?php
                 }
@@ -285,47 +265,16 @@ $result = mysqli_query($con, "SELECT * FROM `orphanage` ") or die("error");
 						</li>
 						<li class="not-completed">
 							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+							<!-- <i class='bx bx-dots-vertical-rounded' ></i>
 						</li>
 					</ul> -->
-				</div>
+				</div> -->
 			</div>
 		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
 	
-<!-- <script>function sendApplication() {
-  // Create an XMLHttpRequest object
-  var xhr = new XMLHttpRequest();
-
-  // Specify the request details (method, URL, asynchronous)
-  xhr.open("GET", "orphanage.php", true);
-
-  // Set up a callback function to handle the response
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200) {
-        // Request was successful, you can perform actions upon success here
-        console.log("Application sent successfully!");
-      } else {
-        // Request failed
-        console.error("Failed to send application. Status code: " + xhr.status);
-      }
-    }
-  };
-
-  // Send the request
-  xhr.send();
-}
-</script> -->
-
-<!-- <script>
-        function sendApplication() {
-            // Redirect to vol_apply.php
-            window.location.href = 'vol_apply.php';
-        }
-    </script> -->
 
 	<script src="Dscript.js"></script>
 </body>
