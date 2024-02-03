@@ -1,0 +1,80 @@
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require './vendor/autoload.php';
+function  send_password_reset($get_email)
+{
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->SMTPAuth = true;
+        $mail->Host = 'smtp.gmail.com';
+        $mail->Username = 'infantcare123@gmail.com'; // Your Gmail email address
+        $mail->Password = 'ydee fjiu zver fsng'; // Your Gmail password or App Password
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+
+        $mail->setFrom('infantcare123@gmail.com', 'In');
+        $mail->addAddress($get_email);
+
+        $mail->isHTML(true);
+        $mail->Subject = 'Reset password notification';
+        $email_template = "
+            <h2>Forgot your password? click below to reset your password</h2>
+            
+            <h5>You are receiving this email because we received a password reset request for your account</h5>
+            <br><br>
+            <a href='http://localhost/Infantcare_main/password-reset.php?email=$get_email'>Click me</a>";
+        $mail->Body = $email_template;
+        $mail->send();
+     
+        return true;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+
+if(isset($_POST['password_reset_link']))
+{
+    
+    $email = mysqli_real_escape_string($con,$_POST['email']);
+  //  $token = md5(rand());
+    $check_email = "SELECT email FROM Login WHERE email='$email' LIMIT 1";
+    $check_email_run = mysqli_query($con,$check_email);
+    if(mysqli_num_rows($check_email_run) > 0)
+    {
+       
+        $row = mysqli_fetch_array($check_email_run);
+       // $get_name = $row['name'];
+        $get_email = $row['email'];
+        //$update_token = "UPDATE login SET verify_token = '$token' WHERE email='$get_email' LIMIT 1";
+        //$update_token_run =  mysqli_query($con,$update_token);
+        //if($update_token_run)
+        //{
+            $reset_link = "http://localhost/In/password-reset.php?email=$get_email&timestamp=" . time();
+            send_password_reset($get_email,$reset_link);
+            echo "<script>alert('Password reset link is mailed');
+            window.location = 'password-reset.php';</script>";
+
+       // }
+       /* else
+        {
+            echo "<script>alert('No email found');
+            window.location = 'forgot_password.php';</script>";
+        }*/
+    }
+    else
+    {
+        echo "<script>alert('Error');
+        window.location = 'forgot_password.php';</script>";
+    }
+
+
+    
+
+}
+
+
+?>
