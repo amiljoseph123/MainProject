@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <?php
 // session_start();
-if (isset($_SESSION['username'])) {
+// if (isset($_SESSION['username'])) {
     // User is logged in
-   echo "Welcome, " . $_SESSION['username'];
-}
-?>
+  //  echo "Welcome, " . $_SESSION['username'];
+// }
+// ?>
 
 
 <?php
 require_once 'config.php';
-  include "o.php";?>
+  // include "o.php";
+  include "orphanage_sidebar.php";?>
+
+
+
+
 
 <html lang="en">
   <head>
@@ -104,7 +109,7 @@ a.navbar-brand.brand-logo img {
 </style>
 
 
-
+<!-- 
 <script>
 function searchstudent() {
     var input, filter, cards, card, i, txtValue;
@@ -135,7 +140,8 @@ function searchstudent() {
     }
 }
 
-</script>
+</script> -->
+
 <style>
     /* Add this CSS to prevent background color change */
     .not-found-message {
@@ -153,12 +159,35 @@ function searchstudent() {
     }
 </style>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
   </head>
   <body>
 
  
+
+  <body>
+
+<!-- <button type="submit" class="btn btn-gradient-primary me-2" name="submit" id="submitButton">Submit</button> -->
+
+<script>
+// Function to handle the click event of the submit button
+document.getElementById('submitButton').addEventListener('click', function() {
+  // Trigger SweetAlert2 alert
+  Swal.fire({
+    position: 'centre',
+    icon: 'success',
+    title: 'Student added successfully',
+    showConfirmButton: false,
+    timer: 1500
+  });
+});
+</script>
+
+</body>
+</html>
+
 
     <div class="container-scroller">
       
@@ -197,19 +226,23 @@ function searchstudent() {
 
 
                 <!-- <div class="col-lg-12 grid-margin stretch-card"> -->
-                 <div class="card"> 
+                 <!-- <div class="card">  -->
                   <div class="card-body">
 
 
                   <div id="notFoundMessage" style="display:none;">Not Found</div>
 
                   <!-- <div class="row mb-4"> -->
-        <!-- <div class="col-md-12"> -->
-            <div class="input-group">
-                <input type="text" id="searchInput" class="form-control" placeholder="Search student" onkeyup="searchstudent()">
+         <div class="col-md-12"> 
+            <!-- <div class="input-group"> -->
+                <!-- <input type="text" id="searchInput" class="form-control" placeholder="Search student" onkeyup="searchstudent()"> -->
+                <!-- <div class="input-group-append"> -->
+                    <!-- <button class="btn btn-primary" type="button">Search</button> -->
+                    <div class="input-group">
+                <input type="text" id="searchInput" name="searchInput" class="form-control" placeholder="Search Orphanage" onkeyup="searchOrphanages()">
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="button">Search</button>
-               
+                </div>
 
 
                     <h4 class="card-title">Striped Table</h4>
@@ -218,20 +251,14 @@ function searchstudent() {
 
 
 
-                <table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Sl.No</th>
-      <th>firstname</th>
-     
-  </thead>
-  <tbody>
-
-
-
-
-   
-
+                                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Sl.No</th>
+                          <th>firstname</th>
+                        
+                      </thead>
+                      <tbody>
 
 
 
@@ -254,7 +281,24 @@ while ($row = $result->fetch_assoc()) {
         <td><?php echo $firstname; ?></td>
         <td>
             <a href="student_view.php?id=<?php echo $student_id; ?>" class="btn btn-primary">View</a>
-            <a href="delete_student.php?id=<?php echo $student_id; ?>" class="btn btn-primary">Delete</a>
+            <!-- <a href="delete_student.php?id=<?php echo $student_id; ?>" class="btn btn-primary" id="submitButton">Delete</a> -->
+       
+                  
+            <a href="delete_student.php?id=<?php echo $student_id; ?>" class="btn btn-primary" id="deleteButton">Delete</a>
+
+            <script>
+            // Function to handle the click event of the delete button
+            document.getElementById('deleteButton').addEventListener('click', function(event) {
+              // Trigger SweetAlert2 alert
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'deleted successfully',
+                showConfirmButton: false,
+                timer: 3000
+              });
+            });
+</script>
         </td>
     </tr>
 <?php
@@ -268,7 +312,35 @@ while ($row = $result->fetch_assoc()) {
   </tbody>
 </table>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Page Title</title>
+  <!-- Include the SweetAlert2 library -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
 
+<!-- <a href="delete_student.php?id=<?php echo $student_id; ?>" class="btn btn-primary" id="deleteButton">Delete</a> -->
+
+<script>
+// Function to handle the click event of the delete button
+document.getElementById('deleteButton').addEventListener('click', function(event) {
+  // Trigger SweetAlert2 alert
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Your work has been saved',
+    showConfirmButton: false,
+    timer: 1500
+  });
+});
+</script>
+
+</body>
+</html>
 
 
 

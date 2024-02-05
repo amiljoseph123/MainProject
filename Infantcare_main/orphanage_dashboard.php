@@ -1,6 +1,13 @@
 <?php
 include "config.php";
-  include "o.php";?>
+  //  include "o.php";
+     include "orphanage_sidebar.php";
+  ?>
+
+
+                  
+
+                  
                     
                   <h4>WELCOME</h4>
                   <?php
@@ -45,6 +52,127 @@ include "config.php";
                 exit();
               }
 ?>
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Purple Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  
+ 
+</head>
+
+    <!-- <div class="main-panel"> -->
+          <!-- <div class="content-wrapper">  -->
+             <!-- <div class="row">  -->
+               <!-- <div class="col-6 grid-margin stretch-card">  -->
+                 <div class="card"> 
+                  <!-- <div class="card-body">  -->
+                  
+
+                  <!-- <div class="container-scroller"> -->
+
+                  <body style="font-family: Arial, sans-serif; background-color: #f4f4f4;">
+
+<div style="max-width: 1500px; margin: 90px auto; background-color: #fff; padding: 20px; border-radius: 1px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+
+    <h2 style="text-align: center; color: #333;">Update Orphanage data</h2>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .main-panel {
+            /* Add your styles for the main-panel class here */
+            width: 300px;
+            height: 200px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+
+
            <form action="update_o.php" method="POST" class="forms-sample">
                     <input type="hidden" name="id" value="<?php echo $email; ?>">
                     <div class="form-group">
@@ -59,7 +187,7 @@ include "config.php";
 
                     <div class="form-group">
                     <label for="name">date</label>
-                    <input type="text" name="date" class="form-control" value="<?php echo $date; ?>" required>
+                    <input type="date" name="date" class="form-control" value="<?php echo $date; ?>" required>
                     </div>
 
 
@@ -150,5 +278,11 @@ include "config.php";
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/todolist.js"></script>
     <!-- End custom js for this page -->
+
+    
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
   </body>
 </html>

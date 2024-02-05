@@ -76,7 +76,7 @@ if (isset($_SESSION['username'])) {
 				</a>
 			
 			<li>
-				<a href="#">
+				<a href="view_student3.php">
 					<i class='bx bxs-group' ></i>
 					<span class="text">View Student</span>
 				</a>
@@ -198,11 +198,16 @@ if (isset($_SESSION['username'])) {
 						$result1=mysqli_query($con, "SELECT `email` FROM `volunteer` WHERE `id` = $id");
 						$row = $result1->fetch_assoc();
 						// $get_email = 'aninaelizebeth@gmail.com';
-						$get_email = $email;
+						$get_email = $row['email'];
+						$pswde="hello12345";
+						// $password=md5($_POST['password']);
+						$pswd=md5("hello12345");
 
-						// $row['email'];
-						$pswd="hello1234";
-						send_password_reset($get_email,$pswd);
+						send_password_reset($get_email,$pswde);
+						$result2=mysqli_query($con,"SELECT * FROM `login` WHERE `Email`='$get_email'");
+						if(mysqli_num_rows($result2)<=0){
+							mysqli_query($con,"INSERT INTO `login`(`email`, `user_type`, `password`) VALUES ('$get_email','volunteer','$pswd')");
+						}
 						mysqli_query($con, "UPDATE `volunteer` SET `status`='approved' WHERE `id`=$id") or die("error");
 
 

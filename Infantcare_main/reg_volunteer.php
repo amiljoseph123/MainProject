@@ -108,7 +108,7 @@ require 'header.php';
 <body>
     <div class="container1">
         <h2>Application Form</h2>
-        <form onsubmit="return validateForm()" method="POST">
+        <form action="profile_view.php" onsubmit="return validateForm()" method="POST">
 		
 			<div class="form-group">
     <label for="sponsor_name">Name</label>
@@ -242,6 +242,7 @@ require 'header.php';
 			
 					
         </form>
+
     </div>
 
 

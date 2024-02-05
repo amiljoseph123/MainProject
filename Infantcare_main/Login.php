@@ -35,7 +35,7 @@ if (isset($_POST["login"])) {
         elseif($user["user_type"]=='volunteer')
 		{
 			//header("location:dorphanage.php");
-			$script = "<script> window.location = 'volunteer.php';</script>";
+			$script = "<script> window.location = 'volunteer_homepage.php';</script>";
             echo $script;
 		}
 

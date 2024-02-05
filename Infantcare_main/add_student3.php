@@ -2,7 +2,8 @@
 
 <?php
 include "config.php";
-  include "o.php";
+  //  include "o.php";
+   include "orphanage_sidebar.php";
   ?>
 
 
@@ -27,10 +28,21 @@ include "config.php";
 
 
 
-                    
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  
+ 
+</head>
 
+    <div class="main-panel">
+          <div class="content-wrapper">
+             <div class="row"> 
+               <div class="col-6 grid-margin stretch-card"> 
+                 <div class="card"> 
+                  <div class="card-body"> 
+                  
 
+    <div class="container-scroller">
                     <!-- <form action="add_student.php" method="post"> -->
                     <form action="add_student3.php" method="post" enctype="multipart/form-data">
   <div class="form-group">
@@ -66,10 +78,9 @@ include "config.php";
 
   </div>
 
-
-
   <!-- <button type="submit" class="btn btn-gradient-primary me-2" name="submit"><a href="view_student3.php">Add</a></button> -->
-  <button type="submit" class="btn btn-gradient-primary me-2" name="submit">Submit</button>
+  <!-- <button type="submit" class="btn btn-gradient-primary me-2" name="submit">Submit</button> -->
+  <button type="submit" class="btn btn-gradient-primary me-2" name="submit" id="submitButton">Submit</button>
   <button class="btn btn-light">Cancel</button>
 </form>
 
@@ -79,12 +90,32 @@ include "config.php";
                   </div>
                 </div>
               </div>                        
+              </div>                        
 
 
 
 
 
+<body>
 
+<!-- <button type="submit" class="btn btn-gradient-primary me-2" name="submit" id="submitButton">Submit</button> -->
+
+<script>
+// Function to handle the click event of the submit button
+document.getElementById('submitButton').addEventListener('click', function() {
+  // Trigger SweetAlert2 alert
+  Swal.fire({
+    position: 'centre',
+    icon: 'success',
+    title: 'Student added successfully',
+    showConfirmButton: false,
+    timer: 1500
+  });
+});
+</script>
+
+</body>
+</html>
 
 
 
@@ -120,10 +151,6 @@ include "config.php";
     <script src="assets/js/todolist.js"></script>
     <!-- End custom js for this page -->
 
-
-
-
-   
 
 
 <?php
