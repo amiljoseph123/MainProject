@@ -1,18 +1,31 @@
-
-
-<?php 
-// session_start();
- //echo $_SESSION["username"];
+<?php
+// Check if the user is logged in
 if (isset($_SESSION['username'])) {
-    // User is logged in
-    // You can display user-specific content here
+    // Include your database connection file
+    include "config.php";
+
+    // Retrieve the volunteer ID from the database
+    $username = $_SESSION['username'];
+
+    $sql = "SELECT id FROM volunteer WHERE email = '$username'";
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $volunteer_id = $row['id'];
+    } else {
+        // Handle the case where the volunteer is not found
+        echo "Volunteer not found.";
+        $con->close();
+        exit();
+    }
 } else {
     // User is not logged in, redirect to the login page
     header("Location: login.php");
     exit(); // Make sure to stop execution after the redirect
 }
-
 ?>
+
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,13 +68,13 @@ if (isset($_SESSION['username'])) {
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="orphanage_homepage.php">
+				<a href="volunteer_homepage.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li>
-				<a href="view_vol_profile.php">
+			<a href="volunteer_profile.php?id=<?php echo $volunteer_id; ?>">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Profile</span>
 				</a>

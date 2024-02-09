@@ -309,7 +309,7 @@ a.navbar-brand.brand-logo img {
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="home.php">
                 <span class="menu-title">History</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>

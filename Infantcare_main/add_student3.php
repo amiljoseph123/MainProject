@@ -42,7 +42,7 @@ include "config.php";
                   <div class="card-body"> 
                   
 
-    <div class="container-scroller">
+                  <div class="container-scroller">
                     <!-- <form action="add_student.php" method="post"> -->
                     <form action="add_student3.php" method="post" enctype="multipart/form-data">
   <div class="form-group">

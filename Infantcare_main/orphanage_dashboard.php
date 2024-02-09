@@ -3,55 +3,103 @@ include "config.php";
   //  include "o.php";
      include "orphanage_sidebar.php";
   ?>
-
-
-                  
-
-                  
-                    
+  
                   <h4>WELCOME</h4>
                   <?php
-                    
-                    
+include "config.php";
 
-                    if (isset($_SESSION['username'])) {
-                    $user = $_SESSION['username'];
-                    echo $user;
-    // $sponsor_email = $user["email"];
+// Start the session
+// session_start();
+
+// Fetch existing sponsor data
+if (isset($_SESSION['username'])) {
+    $user = $_SESSION['username'];
+    echo $user;
 
     // Fetch existing sponsor data
-                    $sql = "SELECT * FROM orphanage WHERE o_email = '$user'";
-                    $result = $con->query($sql);
+    $sql = "SELECT * FROM orphanage WHERE o_email = '$user'";
+    $result = $con->query($sql);
 
-                  if ($result->num_rows > 0) {
-                    $row = $result->fetch_assoc();
-                //   $name = $row['s_name'];
-                //   $email = $row['s_email'];
-                //   $phone = $row['s_phone'];
-                //   $aadhar = $row['s_aadhar'];
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
 
+        $id = $row['o_govtid'];
+        $name = $row['o_name'];
+        $date = $row['o_edate'];
+        $email = $row['o_email'];
+        $phone = $row['o_phone'];
+        $district = $row['o_district'];
+        $city = $row['o_city'];
+        $pincode = $row['o_pincode'];
+    } else {
+        echo "Orphanage not found.";
+        $con->close();
+        exit();
+    }
+} else {
+    echo "Orphanage ID not provided.";
+    $con->close();
+    exit();
+}
 
-                    $name = $row['o_name'];
-                     $id = $row['o_govtid'];
-                    $date = $row['o_edate'];
-                     $email = $row['o_email'];
-                    $phone = $row['o_phone'];
-                    $district = $row['o_district'];
-                    $city = $row['o_city'];
-                    $pincode = $row['o_pincode'];
-                    // $password = $row['o_password'];
+// Update the data if the form is submitted
+if (isset($_POST['update'])) {
+    $orphanage_name = $_POST["orphanage_name"];
+    $date = $_POST["date"];
+    $phone = $_POST["phone"];
+    $district = $_POST["district"];
+    $city = $_POST["city"];
+    $pincode = $_POST["pincode"];
 
-                } else {
-                echo "Sponsor  not found.";
-                $con->close();
-                exit();
-                }
-                } else {
-                echo "Sponsor ID not provided.";
-                $con->close();
-                exit();
-              }
+    // Update the data in the database
+    $update_query = "UPDATE orphanage SET
+                        o_name = '$orphanage_name',
+                        o_edate = '$date',
+                        o_phone = '$phone',
+                        o_district = '$district',
+                        o_city = '$city',
+                        o_pincode = '$pincode'
+                    WHERE o_email = '$email'";
+
+    $result = $con->query($update_query);
+
+    if ($result) {
+        // Data updated successfully
+        echo "Data updated successfully!";
+        // Optionally, you can redirect to another page after updating
+        // header("Location: success_page.php");
+    } else {
+        // Error updating data
+        echo "Error updating data: " . $con->error;
+    }
+}
 ?>
+
+<!-- HTML Form -->
+<!-- <form action="" method="post"> -->
+    <!-- Input fields for updating data -->
+    <!-- <label for="orphanage_name">Orphanage Name:</label>
+    <input type="text" name="orphanage_name" value="<?php echo $name; ?>"><br>
+
+    <label for="date">Establishment Date:</label>
+    <input type="date" name="date" value="<?php echo $date; ?>"><br>
+
+    <label for="phone">Phone:</label>
+    <input type="text" name="phone" value="<?php echo $phone; ?>"><br>
+
+    <label for="district">District:</label>
+    <input type="text" name="district" value="<?php echo $district; ?>"><br>
+
+    <label for="city">City:</label>
+    <input type="text" name="city" value="<?php echo $city; ?>"><br>
+
+    <label for="pincode">Pincode:</label>
+    <input type="text" name="pincode" value="<?php echo $pincode; ?>"><br>
+
+    <button type="submit" name="update">Update Data</button> -->
+<!-- </form> -->
+
+
 
 <html lang="en">
   <head>
@@ -173,7 +221,7 @@ include "config.php";
     </style>
 
 
-           <form action="update_o.php" method="POST" class="forms-sample">
+           <form action="" method="POST" class="forms-sample">
                     <input type="hidden" name="id" value="<?php echo $email; ?>">
                     <div class="form-group">
                     <label for="name">Name</label>

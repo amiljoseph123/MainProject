@@ -19,8 +19,6 @@ include "orphanage_sidebar.php";
 
 
 
-
-
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,29 +82,153 @@ include "orphanage_sidebar.php";
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
-						<h3><a href="admin_orphview.php">Total students</a></h3>
-						<!-- <p>details</p> -->
+						<h3><a href="">Total students</a></h3>
+						<!-- <p>details</p> -->	
 					</span>
+					<?php
+include('config.php');
+
+function getCount($tableName) {
+    global $con;
+
+    // Check if the connection is still open
+    if ($con && $con->ping()) {
+        $tableName = mysqli_real_escape_string($con, $tableName);
+
+        $sql = "SELECT COUNT(*) as count FROM $tableName";
+        $result = $con->query($sql);
+
+        if ($result) {
+            $row = $result->fetch_assoc();
+            return $row['count'];
+        } else {
+            return false;
+        }
+    } else {
+        return false; // Connection is closed or not established
+    }
+}
+
+// Example usage
+if ($con && !$con->connect_error) {
+    $studentCount = getCount('student');
+
+    if ($studentCount !== false) {
+        echo " $studentCount";
+    } else {
+        echo "Error retrieving student count.";
+    }
+
+    $con->close();
+} else {
+    die("Connection failed: " . $con->connect_error);
+}
+?>
+
+
+
+
 				</li>
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-						<h3><a href="admin_sponsorview.php">Volunteer Applications</a></h3>
+						<h3><a href="">Volunteer Applications</a></h3>
 						<p></p>
 					</span>
+					<?php
+include('config.php');
+
+function getCountt($tableName) {
+    global $con;
+
+    // Check if the connection is still open
+    if ($con && $con->ping()) {
+        $tableName = mysqli_real_escape_string($con, $tableName);
+
+        $sql = "SELECT COUNT(*) as count FROM $tableName";
+        $result = $con->query($sql);
+
+        if ($result) {
+            $row = $result->fetch_assoc();
+            return $row['count'];
+        } else {
+            return false;
+        }
+    } else {
+        return false; // Connection is closed or not established
+    }
+}
+
+// Example usage
+if ($con && !$con->connect_error) {
+    $studentCount = getCountt('volunteer');
+
+    if ($studentCount !== false) {
+        echo " $studentCount";
+    } else {
+        echo "Error retrieving student count.";
+    }
+
+    $con->close();
+} else {
+    die("Connection failed: " . $con->connect_error);
+}
+?>
+
 				</li>
 
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
-						<h3><a href="admin_orphview.php">Sponsors</a></h3>
+						<h3><a href="">Sponsors</a></h3>
 						<!-- <p>details</p> -->
 					</span>
+
+					<?php
+include('config.php');
+
+function getCounttt($tableName) {
+    global $con;
+
+    // Check if the connection is still open
+    if ($con && $con->ping()) {
+        $tableName = mysqli_real_escape_string($con, $tableName);
+
+        $sql = "SELECT COUNT(*) as count FROM $tableName";
+        $result = $con->query($sql);
+
+        if ($result) {
+            $row = $result->fetch_assoc();
+            return $row['count'];
+        } else {
+            return false;
+        }
+    } else {
+        return false; // Connection is closed or not established
+    }
+}
+
+// Example usage
+if ($con && !$con->connect_error) {
+    $studentCount = getCounttt('sponsor');
+
+    if ($studentCount !== false) {
+        echo " $studentCount";
+    } else {
+        echo "Error retrieving student count.";
+    }
+
+    $con->close();
+} else {
+    die("Connection failed: " . $con->connect_error);
+}
+?>
+
 				</li>
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-						<h3><a href="admin_sponsorview.php">Donation</a></h3>
+						<h3><a href="">Donation</a></h3>
 						<p></p>
 					</span>
 				</li>
@@ -127,19 +249,6 @@ include "orphanage_sidebar.php";
 			
 				
 
-
-
-
-
-
-
-
-
-
-
-
-
-				
 				
 				<!-- <tr>
 								<td>
@@ -218,6 +327,10 @@ include "orphanage_sidebar.php";
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
+
+	<!-- Include this script on the page where you want to display the total count -->
+
+
 	
 
 	<script src="Dscript.js"></script>

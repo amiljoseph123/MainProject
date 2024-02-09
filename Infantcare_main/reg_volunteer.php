@@ -108,16 +108,16 @@ require 'header.php';
 <body>
     <div class="container1">
         <h2>Application Form</h2>
-        <form action="profile_view.php" onsubmit="return validateForm()" method="POST">
+        <form onsubmit="return validateForm()" method="POST">
 		
 			<div class="form-group">
-    <label for="sponsor_name">Name</label>
-    <input type="text" id="sponsor_name" name="sponsor_name">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name">
     <div id="fullNameError" style="color: red;"></div>
 </div>
 
 <script>
-    document.getElementById('sponsor_name').addEventListener('input', function() {
+    document.getElementById('name').addEventListener('input', function() {
         var fullNameInput = this.value;
         var fullNameError = document.getElementById('fullNameError');
         var regex = /^[A-Z][a-zA-Z\s]*$/;
@@ -132,20 +132,20 @@ require 'header.php';
 		
 		
 			        <div class="form-group">
-                <label for="sponsor_email">Email</label>
-                <input type="sponsor_email" id="sponsor_email" name="sponsor_email" onkeyup="validateEmail()">
+                <label for="email">Email</label>
+                <input type="email" id="sponsor_email" name="email" onkeyup="validateEmail()">
                 <div id="emailError" class="error-message"></div>
             </div>
 			
 			
 			<div class="form-group">
-    <label for="sponsor_phone">Mobile Number</label>
-    <input type="text" id="sponsor_phone" name="sponsor_phone" pattern="\d{10}" required>
+    <label for="phone">Mobile Number</label>
+    <input type="text" id="phone" name="phone" pattern="\d{10}" required>
     <div id="phoneError" style="color: red;"></div>
 </div>
 
 <script>
-    document.getElementById('sponsor_phone').addEventListener('input', function() {
+    document.getElementById('phone').addEventListener('input', function() {
         var phoneInput = this.value;
         var phoneError = document.getElementById('phoneError');
         var regex = /^\d{10}$/;
@@ -159,14 +159,14 @@ require 'header.php';
 </script>
 
 <div class="form-group">
-    <label for="sponsor_aadhar">Aadhar Number</label>
-    <input type="text" id="sponsor_aadhar" name="sponsor_aadhar">
+    <label for="aadhar">Aadhar Number</label>
+    <input type="text" id="aadhar" name="aadhar">
     <div id="aadharError" style="color: red;"></div>
 </div>
 
 
 <div class="form-group">
-    <label for="sponsor_aadhar">Choose District</label>
+    <label for="aadhar">Choose District</label>
     <select id="district" name="district">
         <option value="Thiruvananthapuram">Thiruvananthapuram</option>
         <option value="Kollam">Kollam</option>
@@ -190,7 +190,7 @@ require 'header.php';
 
 
 <script>
-    document.getElementById('sponsor_aadhar').addEventListener('input', function() {
+    document.getElementById('aadhar').addEventListener('input', function() {
         var aadharInput = this.value;
         var aadharError = document.getElementById('aadharError');
         var regex = /^[0-9]{12}$/;
@@ -242,7 +242,6 @@ require 'header.php';
 			
 					
         </form>
-
     </div>
 
 
@@ -258,10 +257,10 @@ require 'header.php';
 
 include "config.php";
 if (isset($_POST['submit'])) {
-    $name = $_POST['sponsor_name'];
-    $email = $_POST['sponsor_email'];
-    $phone = $_POST['sponsor_phone'];
-    $aadhar = $_POST['sponsor_aadhar'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $aadhar = $_POST['aadhar'];
     $district = $_POST['district'];
     // $password=md5($_POST['password']);
 

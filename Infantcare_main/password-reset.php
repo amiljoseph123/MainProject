@@ -14,6 +14,8 @@ include('config.php');
         <div class = "row justify-content-center">
             <div class ="col-md-6">
 
+            <br><br><br><br>
+
 
             <div class="card">
                 <div class="card-header">
@@ -37,6 +39,14 @@ include('config.php');
                         </div>
                         <div class="form-group mb-3">
                             <button type="submit" name="password_update" class="btn btn-success w-100">Update Password</button>
+                        </div>
+                        <div class="form-group mb-3">
+                        <!-- <button type="submit" name="password_update" class="btn btn-success w-100" onclick="window.location.href='volunteer_homepage.php'">Back</button> -->
+         
+
+                                   <button class="btn btn-outline-primary"><a href="volunteer_homepage.php">Back</a></button>
+                          
+                        <!-- <button type="submit" name="password_update" class="btn btn-success w-100">Back</button> -->
                         </div>
                     </form>
                 </div>

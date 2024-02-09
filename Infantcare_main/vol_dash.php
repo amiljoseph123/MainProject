@@ -44,6 +44,34 @@ if (isset($_SESSION['username'])) {
 	
 
     </style>
+	<style>
+				.apply-button {
+					width: 150px;
+            padding: 12px;
+            background-color: #5bc1ac;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+		.reject-button {
+					width: 150px;
+            padding: 12px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        /* Optional hover effect */
+        .apply-button:hover {
+            background-color: #2980b9;
+        }
+		.reject-button:hover {
+            background-color: #2980b9;
+        }
+	
+    </style>
 </head>
 <body>
 
@@ -58,13 +86,13 @@ if (isset($_SESSION['username'])) {
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="Dindex.php">
+				<a href="orphanage_homepage.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="view_profile.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Profile</span>
 				</a>
@@ -207,8 +235,10 @@ if (isset($_SESSION['username'])) {
 						$result2=mysqli_query($con,"SELECT * FROM `login` WHERE `Email`='$get_email'");
 						if(mysqli_num_rows($result2)<=0){
 							mysqli_query($con,"INSERT INTO `login`(`email`, `user_type`, `password`) VALUES ('$get_email','volunteer','$pswd')");
+							
 						}
 						mysqli_query($con, "UPDATE `volunteer` SET `status`='approved' WHERE `id`=$id") or die("error");
+						
 
 
 
@@ -236,7 +266,7 @@ if (isset($_SESSION['username'])) {
                                 <th>aadhar</th>
                                 <th>District</th>
 								 <th>Status</th>
-                               </tr>
+								</tr>
 						</thead>
 						<tbody>
                         <?php
@@ -259,32 +289,27 @@ if (isset($_SESSION['username'])) {
 					<td><?php echo  $phone; ?></td>
 					<td><?php echo $aadhar; ?></td>
 					<td><?php echo $district; ?></td>
-					<!-- <td><?php echo $status; ?></td> -->
-					<td style="color: <?php echo $statusColor; ?>"><?php echo $status; ?></td>
-					<td><form method="post"><input type="hidden" name="app_id"  value="<?php echo $id; ?>"><input name="add"  class="apply-button" type="submit" value="Approve"></button></td></form>
-					<!-- <td> <button type="submit">Reject</button></td> -->
-					<!-- <td><form method="post"><input type="hidden" name="app_id"  value="<?php echo $id; ?>"><input name="add" type="submit" value="reject"></button></td></form> -->
-					<td><form action="" method="post">
+					<!-- <td style="color: <?php echo $statusColor; ?>"><?php echo $status; ?></td> -->
+				   <td style="color: <?php echo $statusColor; ?>">
+    <?php if ($status == 'approved'): ?>
+        <span class="text-danger">Accepted</span>
+    <?php elseif ($status == 'rejected'): ?>
+        <span class="text-primary">Rejected</span>
+    <?php else: ?>
+        <form method="post">
+			<input type="hidden" name="app_id"  value="<?php echo $id; ?>">
+			<input name="add"  class="apply-button" type="submit" value="Approve">
+		</form>
+        <form action="" method="post">
                    <input type="hidden" name="app_id" value="<?php echo $id; ?>">
-                   <button class="apply-button" type="submit" name="reject" >Reject</button>
-            </form>
-			</td></tr>
-			<style>
-				.apply-button {
-            padding: 8px 12px;
-            background-color: #5bc1ac;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        /* Optional hover effect */
-        .apply-button:hover {
-            background-color: #2980b9;
-        }
-	
-    </style>
+				   <br>
+                   <button class="reject-button" type="submit" name="reject" >Reject</button>
+		</form>
+    <?php endif; ?>
+</td>   
+            
+			</tr>
+		
 
 
                 <?php
@@ -295,7 +320,7 @@ if (isset($_SESSION['username'])) {
 			
 
 
-
+					
 
 
 
@@ -384,8 +409,15 @@ if (isset($_SESSION['username'])) {
 	</section>
 	<!-- CONTENT -->
 	
-
+	<style>
+        .status.not-accepted {
+            color: #ff0000; /* Red color for rejected status */
+            font-weight: bold; /* Make the text bold, if desired */
+            /* Add any additional styles you want */
+        }
+    </style>
 	<script src="Dscript.js"></script>
 </body>
+
 </html>
 

@@ -1,16 +1,16 @@
 <?php
-include "config.php";
+include('config.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>volunteer Details</title>
+    <title>Volunteer Details</title>
     <style>
         .card {
             border: 1px solid #ccc;
-            padding: 90px;
+            padding: 30px;
             max-width: 600px;
             margin: 60px auto;
             background-color: #fff;
@@ -23,7 +23,6 @@ include "config.php";
             margin-bottom: 5px;
         }
 
-        
     </style>
 
     <style>
@@ -55,10 +54,13 @@ include "config.php";
 
 <?php
 
+$name = $row["name"];
+$email = $row["email"];
+
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $id = $_GET["id"];
     echo $id;
-    $sql = "SELECT * FROM volunteer WHERE id = '$email'";
+    $sql = "SELECT * FROM volunteer WHERE id = '$id'";
     $result = $con->query($sql);
 
     if ($result->num_rows > 0) {
@@ -66,10 +68,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
 
         $name = $row["name"];
         $email = $row["email"];
-        
-?>
-       
-<?php
+        ?>
+        <div class="card">
+            <div class="title">Name:</div>
+            <?php echo $name; ?>
+
+            <div class="title">Email:</div>
+            <?php echo $email; ?>
+        </div>
+    <?php
     } else {
         echo "User not found";
     }
@@ -79,6 +86,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
 
 $con->close();
 ?>
+</body>
+</html>
+
+
 
 
 
@@ -89,14 +100,8 @@ $con->close();
         <h3> <p>email : <?php echo $email; ?></p></h3>
         
 
-        <!-- <button >Education </button><br> -->
-        <!-- <button>Health </button> -->
-
         
-    
-
-    
-</div>
+    </div>
 
 </div>
     
@@ -113,5 +118,61 @@ $con->close();
 
 // require 'footer.php';
 ?> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Data</title>
+    <!-- Add any additional styles or meta tags as needed -->
+</head>
+<body>
+<?php
+
+if (isset($_GET['id'])) {
+    
+    $volunteer_id = mysqli_real_escape_string($con, $_GET['id']);
+
+    $result = mysqli_query($con, "SELECT * FROM `volunteer` WHERE id = '$volunteer_id'") or die("Error in query");
+
+    if ($result->num_rows > 0) {
+        echo "<table border='1'>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Aadhar</th>
+                <th>District</th>
+                <th>Status</th>
+            </tr>";
+
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>
+                <td>{$row['id']}</td>
+                <td>{$row['name']}</td>
+                <td>{$row['email']}</td>
+                <td>{$row['phone']}</td>
+                <td>{$row['aadhar']}</td>
+                <td>{$row['district']}</td>
+                <td>{$row['status']}</td>
+            </tr>";
+        }
+
+        echo "</table>";
+    } else {
+        echo "No records found for ID: $volunteer_id";
+    }
+
+    if ($con) {
+        $con->close();
+    }
+} else {
+    echo "No ID parameter provided.";
+}
+
+?>
+
 </body>
 </html>
