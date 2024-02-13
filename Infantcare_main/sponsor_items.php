@@ -38,6 +38,140 @@
 }
 
 </style>
+<style>
+.btn2 {
+    /* width: 220px;
+    height: 50px; */
+    border: none;
+    outline: none;
+    color: #fff;
+    background:#5bc1ac;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    text-decoration: none;
+    /* border-radius: 10px; */
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn2:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.btn2:active {
+    color: #000
+}
+
+.btn2:active:after {
+    background: transparent;
+}
+
+.btn2:hover:before {
+    opacity: 1;
+}
+
+.btn2r:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+</style>
+<style>
+       
+       
+
+        /* Style for the modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center; /* Center the content within the modal */
+        }
+
+        /* Close button style */
+        .close {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 <body>
     <!-- <div class="fixed-top"> -->
 
@@ -129,17 +263,21 @@
             <div class="don-box">
                 <img src="donation_img/don/clothing.png" alt="Clothes">
                 <h3>Clothes</h3>
-                <p>Lorem ipsum dolor sit amet consectetur.</p>
-                <a href="#contact" class="btn1">Sponsor Now</a>
+                <p>"Wear kindness, sponsor bright tomorrows,help to create better future"</p>
+                <!-- <a href="#contact" class="btn1">Sponsor Now</a> -->
+                <a href="#" class="btn2" onclick="openModal1()">Sponsor Now..</a>
             </div>
         </div>
+
+
 
         <div class="col-lg-4">
             <div class="don-box">
                 <img src="donation_img/don/gadgets.png" alt="Gadgets">
                 <h3>Gadgets</h3>
-                <p>Lorem ipsum dolor sit amet consectetur.</p>
-                <a href="#contact" class="btn1">Sponsor Now</a>
+                <p>"Gift gadgets, empower young souls,help to create better future"</p>
+                <!-- <a href="#contact" class="btn1">Sponsor Now</a> -->
+                <a href="#" class="btn2" onclick="openModal2()">Sponsor Now</a>
             </div>
         </div>
 
@@ -147,164 +285,255 @@
             <div class="don-box">
                 <img src="donation_img/don/book.png" alt="Stationary">
                 <h3>Stationary</h3>
-                <p>Lorem ipsum dolor sit amet consectetur.</p>
-                <a href="#contact" class="btn1">Sponsor Now</a>
+                <p>"Sponsor hope, gift the magic of stationery,help to create better future"</p>
+                <!-- <a href="#contact" class="btn1">Sponsor Now</a> -->
+                <a href="#" class="btn2" onclick="openModal3()">Sponsor Now</a>
+                
+
             </div>
         </div>
     </div>
 </div>
         </div>
 </section>
-    <!-- <section class="mission" id="mission-id">
-        <div class="container">
-            <div class="heading">
-                <h2>Our Missions</h2>
-                <p>We have delivered <span>Wastage</span> or <span>Donations</span> to needy Peoples</p>
-            </div>
-            <div class="gallery-sec">
-                <div class="container">
-                    <div class="image-container">
-                        <div class="image"><img src="img/miss/1.jpg" alt="img"></div>
-                        <div class="image"><img src="img/miss/2.jpg" alt="img"></div>
-                        <div class="image"><img src="img/miss/3.jpg" alt="img"></div>
-                        <div class="image"><img src="img/miss/4.jpg" alt="img"></div>
-                        <div class="image"><img src="img/miss/5.jpg" alt="img"></div>
-                        <div class="image"><img src="img/miss/6.jpg" alt="img"></div>
-                    </div>
-                </div>
-                <div class="pop-image">
-                    <span>&times;</span>
-                    <img src="img/gallery/1.jpg" alt="gallery-img">
-                </div>
-                </di v>
-            </div>
-    </section> -->
+  
+    
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal1()">&times;</span>
+        <h2>Let's Sponsor</h2>
+        <form id="sponsorForm">
+            <label for="gender">Choose Gender:</label>
+            <select id="gender" name="gender">
+                <option value="gents">Boys</option>
+                <option value="ladies">Girls</option>
+            </select>
 
-    <!-- <section class="about-sec" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 about-img">
-                    <img src="img/img-2.jpeg" alt="about">
-                </div>
-                <div class="col-lg-8 order-first order-lg-last">
-                    <div class="heading">
-                        <h2>What We Do & Why We Do</h2>
-                    </div>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur voluptatibus voluptatem
-                        neque, dicta architecto minima amet suscipit deserunt delectus cumque ea excepturi fuga alias,
-                        labore eaque placeat facere impedit quia? </p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae aspernatur totam, perferendis
-                        deleniti natus voluptatum. Distinctio consequuntur eum facilis et? Amet vero soluta distinctio
-                        veniam eveniet? Corrupti laborum ex nobis.</p>
-                </div>
-            </div>
-        </div>
-    </section> -->
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="1" max="100" required>
 
-        <!-- Contact Section -->
-        <!-- <section class="contact-section" id="contact"> -->
-            <!-- <div class="container">
-                <div class="heading">
-                    <h2>Connect With Us</h2>
-                    <p>Fill this form, our team will collect your <span>Donation</span> or <span>Wastage</span> from your place.</p>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 mt-5">
-                        <form class="contact-form">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="col-lg-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Your Name">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Mobile No.">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-group">
-                                                    <select name="donation" id="donation">
-                                                        <option value="">Choose Donation or Wastage</option>
-                                                        <option value="food">Food</option>
-                                                        <option value="clothes">Clothes</option>
-                                                        <option value="footware">Footware</option>
-                                                        <option value="books">Books</option>
-                                                        <option value="fund">Fund</option>
-                                                        <option value="gadget">Ele. Gadgets</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Address">
-                                            </div>
-                                            <div class="form-group">
-                                                <textarea class="form-control" name="text" id="" cols="90" rows="1" placeholder="Message"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 mt-3">
-                                            <a href="#" class="btn1 mt-5">Submit Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section> -->
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" required>
 
-    <!-- <footer>
-        <div class="container">
-            <div class="row">
+            <input type="submit" class="btn2"id="btn2" value="Submit">
+        </form>
+    </div>
+</div>
 
-                <div class="col-lg-4">
-                    <div class="col-one"> -->
-                        <!-- <h4>Code Convent foundation</h4>
-                        <p>Address : 3, Near IT Park, Mahatma Gandhi Road, Mumbai 440000 </p>
-                        <p>Contact No : <a href="tel: +91 98659****59">+91 98659****59</a></p>
-                        <p>Email : <a href="mailto:foundation@code.com">foundation@code.com</a></p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="col-two">
-                        <h4>Important Links</h4>
-                        <ul>
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#donation">Donations</a></li>
-                            <li><a href="#mission-id">Missions</a></li>
-                            <li><a href="#about">About us</a></li>
-                            <li><a href="#contact">Contact us</a></li>
-                        </ul>
-                    </div>
-                </div> -->
-                <!-- <div class="col-lg-4">
-                    <div class="col-one">
-                        <h4>Social Media</h4>
-                        <div class="social">
-                            <a href="#"><img src="img/icons/facebook.png" alt="facebook"></a>
-                            <a href="#"><img src="img/icons/instagram.png" alt="inatagram"></a>
-                            <a href="#"><img src="img/icons/youtube.png" alt="youtube"></a>
-                            <a href="#"><img src="img/icons/linkedin.png" alt="linkedin"></a>
-                            <a href="#"><img src="img/icons/gmail.png" alt="gnail"></a>
-                        </div>
-                        <p>Copyright &copy; 2022 | All Right Reserved</p>
-                    </div> -->
-                <!-- </div> -->
-            <!-- </div>
-        </div>
-    </footer> -->
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+<script>
+    // Open the modal
+    function openModal1() {
+        document.getElementById('myModal').style.display = 'flex';
+    }
+
+    // Close the modal
+    function closeModal1() {
+        document.getElementById('myModal').style.display = 'none';
+    }
+
+    // Close the modal if the user clicks outside the modal content
+    window.onclick = function(event) {
+        var modal = document.getElementById('myModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    // Form submission handling (you can customize this part)
+    document.getElementById('sponsorForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // You can access form values using the following:
+        var gender = document.getElementById('gender').value;
+        var age = document.getElementById('age').value;
+        var quantity = document.getElementById('quantity').value;
+
+        // Add your logic here to handle the form data (e.g., submit it via AJAX)
+        // For this example, we'll just log the values to the console
+        console.log("Gender: " + gender);
+        console.log("Age: " + age);
+        console.log("Quantity: " + quantity);
+
+        // Close the modal after form submission
+        closeModal1();
+    });
+</script>
+
+
+<!-- The Modal -->
+<div id="myModal2" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal2()">&times;</span>
+        <h2>Let's Sponsor</h2>
+        <!-- <form id="sponsorForm">
+            <label for="item">Item Name:</label>
+            <input type="text" id="item" name="item" required> -->
+            <form id="sponsorForm">
+    <label for="item">Choose Gadget Item:</label>
+    <select id="item" name="item" required>
+        <option value="smartphone">Smartphone</option>
+        <option value="laptop">Laptop</option>
+        <option value="smartwatch">Smartwatch</option>
+        <option value="headphones">Headphones</option>
+        <!-- Add more gadget items as needed -->
+    </select>
+
+    
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" required>
+
+            <!-- <input type="submit" class="btn3" id = "btn3"value="Submit"> -->
+            <!-- <input type="submit" class="btn3"id="btn3" value="Submit"> -->
+            <input type="submit" class="btn3" id="btn3" value="Submit">
+        </form>
+    </div>
+</div>
+
+
+
+
+<script>
+    // Open the modal
+    function openModal2() {
+        document.getElementById('myModal2').style.display = 'flex';
+    }
+
+    // Close the modal
+    function closeModal2() {
+        document.getElementById('myModal2').style.display = 'none';
+    }
+
+    // Close the modal if the user clicks outside the modal content
+    window.onclick = function (event) {
+        var modal = document.getElementById('myModal2');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    // Form submission handling (you can customize this part)
+    document.getElementById('sponsorForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // You can access form values using the following:
+        var itemName = document.getElementById('item').value;
+        var quantity = document.getElementById('quantity').value;
+
+        // Add your logic here to handle the form data (e.g., submit it via AJAX)
+        // For this example, we'll just log the values to the console
+        console.log("Item Name: " + itemName);
+        console.log("Quantity: " + quantity);
+
+        // Close the modal after form submission
+        closeModal2();
+    });
+</script>
+
+
+
+
+
+<!-- The Modal -->
+<div id="myModal3" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal3()">&times;</span>
+        <h2>Let's Sponsor</h2>
+        <form id="sponsorForm">
+            <!-- <label for="item">Choose Item:</label> -->
+
+            <form id="sponsorForm">
+            <!-- <label for="item">Item:</label>
+            <input type="text" id="item" name="item" required>  -->
+
+            <select id="item" name="item">
+                <option value="stationary">Bag</option>
+                <option value="clothing">Book</option>
+                <option value="toys">Toys</option>
+            </select>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" required>
+
+            <input type="submit" id="btn3" class= "btn3" value="Submit">
+        </form>
+    </div>
+</div>
+
+<script>
+    // Open the modal
+    function openModal3() {
+        document.getElementById('myModal3').style.display = 'flex';
+    }
+
+    // Close the modal
+    function closeModal3() {
+        document.getElementById('myModal3').style.display = 'none';
+    }
+
+    // Close the modal if the user clicks outside the modal content
+    window.onclick = function(event) {
+        var modal = document.getElementById('myModal1');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    // Form submission handling (you can customize this part)
+    document.getElementById('sponsorForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // You can access form values using the following:
+        var item = document.getElementById('item').value;
+        var quantity = document.getElementById('quantity').value;
+
+        // Add your logic here to handle the form data (e.g., submit it via AJAX)
+        // For this example, we'll just log the values to the console
+        console.log("Item: " + item);
+        console.log("Quantity: " + quantity);
+
+        // Close the modal after form submission
+        closeModal3();
+    });
+</script>
+
+<script>
+document.getElementById("sponsorForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevents the default form submission
+
+    // Add your form processing logic here if needed
+    
+    // Show SweetAlert on form submission
+    Swal.fire({
+        title: "Good job!",
+        text: "You clicked the button!",
+        icon: "success"
+    });
+});
+</script>
+
+<script>
+document.getElementById("btn3").addEventListener("click", function() {
+    // Show SweetAlert on button click
+    Swal.fire({
+        title: "Good job!",
+        text: "You clicked the button!",
+        icon: "success"
+    });
+});
+</script>
+
+
+</body>
     <script src="js/script.js"></script>
 </body>
 
-</html>
+
 
 <?php
 // include "footer.php";?>

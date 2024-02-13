@@ -114,7 +114,7 @@ if ($con && !$con->connect_error) {
     $studentCount = getCount('student');
 
     if ($studentCount !== false) {
-        echo " $studentCount";
+        // echo " $studentCount";
     } else {
         echo "Error retrieving student count.";
     }
@@ -124,6 +124,14 @@ if ($con && !$con->connect_error) {
     die("Connection failed: " . $con->connect_error);
 }
 ?>
+<!-- <h2 style="font-size: 24px;"><?php echo $studentCount; ?></h2> -->
+<h2 style="font-size: 24px; color: #3498db; text-align: center; font-family: 'Arial', sans-serif; font-weight: bold;"><?php echo $studentCount; ?></h2>
+
+
+
+
+<!-- ... -->
+
 
 
 
@@ -164,7 +172,8 @@ if ($con && !$con->connect_error) {
     $studentCount = getCountt('volunteer');
 
     if ($studentCount !== false) {
-        echo " $studentCount";
+        // echo " $studentCount";
+		
     } else {
         echo "Error retrieving student count.";
     }
@@ -174,6 +183,8 @@ if ($con && !$con->connect_error) {
     die("Connection failed: " . $con->connect_error);
 }
 ?>
+<!-- <h2 style="font-size: 24px;"><?php echo $studentCount; ?></h2> -->
+<h2 style="font-size: 24px; color: blue; text-align: center; font-family: 'Arial', sans-serif; font-weight: bold;"><?php echo $studentCount; ?></h2>
 
 				</li>
 
@@ -213,7 +224,7 @@ if ($con && !$con->connect_error) {
     $studentCount = getCounttt('sponsor');
 
     if ($studentCount !== false) {
-        echo " $studentCount";
+        // echo " $studentCount";
     } else {
         echo "Error retrieving student count.";
     }
@@ -223,6 +234,9 @@ if ($con && !$con->connect_error) {
     die("Connection failed: " . $con->connect_error);
 }
 ?>
+<!-- <h2 style="font-size: 24px;"><?php echo $studentCount; ?></h2> -->
+<h2 style="font-size: 24px; color: green; text-align: center; font-family: 'Arial', sans-serif; font-weight: bold;"><?php echo $studentCount; ?></h2>
+
 
 				</li>
 				<li>

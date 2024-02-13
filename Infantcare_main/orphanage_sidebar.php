@@ -87,6 +87,12 @@ if (isset($_SESSION['username'])) {
 				</a>
 			</li> 
 			<li>
+				<a href="orph_view_child_application.php">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">sponsor application</span>
+				</a>
+			</li> 
+			<li>
 				<a href="logout.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>

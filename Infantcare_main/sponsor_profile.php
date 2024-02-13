@@ -3,6 +3,8 @@ include "config.php";
 // include "header.php"
 ?>
 <?php
+ include "sponsor_sidebar2.php";?>
+<?php
 
 // Check if the user is logged in
 if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL

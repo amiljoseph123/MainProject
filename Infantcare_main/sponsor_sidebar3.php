@@ -305,6 +305,7 @@ if (isset($_SESSION['username'])) {
               <div class="col-md-4 stretch-card grid-margin">
                 <div class="card bg-gradient-success card-img-holder text-white">
                   <div class="card-body">
+                  <h2 class="mb-5"><a href="chat/chat.php" style="text-decoration: none; color: #333;">Chat</a></h2>
                     <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
                     <h4 class="font-weight-normal mb-3">Chat Room<i class="mdi mdi-diamond mdi-24px float-right"></i>
                     </h4>

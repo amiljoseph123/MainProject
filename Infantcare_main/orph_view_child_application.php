@@ -112,17 +112,18 @@ if (isset($_SESSION['username'])) {
 		<!-- </ul> -->
 		 <!-- <ul class="side-menu">  -->
 			 <li>
-				<a href="#">
+				<a href="vol_dash.php">
 					<i class='bx bxs-cog' ></i>
 					<span class="text">volunteer application</span>
 				</a>
 			</li> 
+
 			<li>
-			<a href="orph_view_child_application.php">
+				<a href="orph_view_child_application.php">
 					<i class='bx bxs-cog' ></i>
 					<span class="text">sponsor application</span>
 				</a>
-			</li> 
+			</li>
 			<li>
 				<a href="logout.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
@@ -175,9 +176,7 @@ if (isset($_SESSION['username'])) {
 					</ul>
 				</div>
 				<?php
-
-
-					require './vendor/autoload.php';
+                    require './vendor/autoload.php';
 					use PHPMailer\PHPMailer\PHPMailer;
 					use PHPMailer\PHPMailer\SMTP;
 					use PHPMailer\PHPMailer\Exception;
@@ -218,40 +217,45 @@ if (isset($_SESSION['username'])) {
 					?>
 				<?php
                 require_once 'config.php';
+				$result = mysqli_query($con, "SELECT * FROM `sponsor_child` ") or die("error");
                 // $result = mysqli_query($con, "SELECT * FROM `volunteer`") or die("error");
-				// if (isset($_POST["add"])){
-				// 	$id= $_POST["app_id"];
-				// 	echo $id;
-				// 	mysqli_query($con, "UPDATE `volunteer` SET `status`='approved' WHERE `id`=$id") or die("error");
+				 if (isset($_POST["add"])){
+				$id= $_POST["app_id"];
+				 	echo $id;
+				 	mysqli_query($con, "UPDATE `sponsor_child` SET `status`='approved' WHERE `id`=$id") or die("error");
 				// }
 
 
-				$result = mysqli_query($con, "SELECT * FROM `volunteer`") or die("error");
-					if (isset($_POST['add'])) {
-						$id = $_POST['app_id'];
-						$result1=mysqli_query($con, "SELECT `email` FROM `volunteer` WHERE `id` = $id");
-						$row = $result1->fetch_assoc();
-						// $get_email = 'aninaelizebeth@gmail.com';
-						$get_email = $row['email'];
-						$pswde="hello12345";
-						// $password=md5($_POST['password']);
-						$pswd=md5("hello12345");
+				// $result = mysqli_query($con, "SELECT * FROM `volunteer`") or die("error");
+				// 	 if (isset($_POST['add'])) {
+				// 	 	$id = $_POST['app_id'];
+				//  		$result1=mysqli_query($con, "SELECT `email` FROM `sponsor` WHERE `id` = $id");
+				// 		$row = $result1->fetch_assoc();
+				// // 		// 
+				//  		$get_email = $row['email'];
+			   	// // 	    // Send the approval email
+				// 	$subject = "Your application has been approved";
+				// 	$message = "Dear applicant,\n\nYour application has been approved. Thank you for your interest in our program.";
 
-						send_password_reset($get_email,$pswde);
-						$result2=mysqli_query($con,"SELECT * FROM `login` WHERE `Email`='$get_email'");
-						if(mysqli_num_rows($result2)<=0){
-							mysqli_query($con,"INSERT INTO `login`(`email`, `user_type`, `password`) VALUES ('$get_email','volunteer','$pswd')");
-							
-						}
-						mysqli_query($con, "UPDATE `volunteer` SET `status`='approved' WHERE `id`=$id") or die("error");
-						
+				// 	// Additional headers
+				// 	$headers = "From: infantcare123@gmail.com";
+
+				// 	// Send the email
+				// 	$success = mail($get_email, $subject, $message, $headers);
+
+				// 	if ($success) {
+				// 		echo "Email sent successfully.";
+				// 	} else {
+				// 		echo "Error sending email.";
+				// 	}
+				// }
 
 
 
-					} elseif (isset($_POST['reject'])) {
-						$id = $_POST['app_id'];
-						echo $id;
-						mysqli_query($con, "UPDATE `volunteer` SET `status`='rejected' WHERE `id`=$id") or die("error");
+					 } elseif (isset($_POST['reject'])) {
+					 	$id = $_POST['app_id'];
+					 	echo $id;
+						mysqli_query($con, "UPDATE `sponsor_child` SET `status`='rejected' WHERE `id`=$id") or die("error");
 					}
 				?> 
 
@@ -266,23 +270,27 @@ if (isset($_SESSION['username'])) {
 						<thead>
 							<tr>
                                 <th>Sl.No</th>
-                                <th>Name</th>
+                                <th>FirstName</th>
+								<th>LastName</th>
                                 <th>Email</th>
                                 <th> Phone</th>
                                 <th>aadhar</th>
                                 <th>District</th>
+								<th>Address</th>
 								 <th>Status</th>
 								</tr>
 						</thead>
 						<tbody>
                         <?php
-						    $c=0;
+						     $c=0;
                             while ($row = $result->fetch_assoc()) {
-                                $name=$row["name"];
+                                $fname=$row["fname"];
+								$lname=$row["lname"];
                                 $email=$row["email"];
-                                $phone=$row["phone"];
-                                $aadhar=$row["aadhar"];
+                                $pphone=$row["pphone"];
+                                $aaadhar=$row["aaadhar"];
                                 $district=$row["district"];
+								$address=$row["address"];
 								$status=$row["status"];
                                	$id=$row["id"];
 								   $statusColor = ($status == 'approved') ? 'green' : 'red';
@@ -290,23 +298,25 @@ if (isset($_SESSION['username'])) {
                         ?>
                 <tr>
                     <td><?php echo $c; ?></td>
-                    <td><?php echo $name; ?></td>
+                    <td><?php echo $fname; ?></td>
+					<td><?php echo $lname; ?></td>
 					<td><?php echo $email; ?></td>
-					<td><?php echo  $phone; ?></td>
-					<td><?php echo $aadhar; ?></td>
+					<td><?php echo  $pphone; ?></td>
+					<td><?php echo $aaadhar; ?></td>
 					<td><?php echo $district; ?></td>
+					<td><?php echo $address; ?></td>
 					<!-- <td style="color: <?php echo $statusColor; ?>"><?php echo $status; ?></td> -->
 				   <td style="color: <?php echo $statusColor; ?>">
-    <?php if ($status == 'approved'): ?>
-        <span class="text-danger">Accepted</span>
-    <?php elseif ($status == 'rejected'): ?>
-        <span class="text-primary">Rejected</span>
-    <?php else: ?>
-        <form method="post">
-			<input type="hidden" name="app_id"  value="<?php echo $id; ?>">
-			<input name="add"  class="apply-button" type="submit" value="Approve">
-		</form>
-        <form action="" method="post">
+					<?php if ($status == 'approved'): ?>
+						<span class="text-danger">Accepted</span>
+					<?php elseif ($status == 'rejected'): ?>
+						<span class="text-primary">Rejected</span>
+					<?php else: ?>
+						<form method="post">
+							<input type="hidden" name="app_id"  value="<?php echo $id; ?>">
+							<input name="add"  class="apply-button" type="submit" value="Approve">
+						</form>
+						<form action="" method="post">
                    <input type="hidden" name="app_id" value="<?php echo $id; ?>">
 				   <br>
                    <button class="reject-button" type="submit" name="reject" >Reject</button>
@@ -314,101 +324,11 @@ if (isset($_SESSION['username'])) {
     <?php endif; ?>
 </td>   
             
-			</tr>
-		
-
-
-                <?php
+			</tr><?php
                 }
                 ?>
-							 
-					</table> 
-			
-
-
-					
-
-
-
-
-
-
-
-
-				
-				
-				<!-- <tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-						</tbody>
-					</table> -->
-				<!-- </div>
-				<div class="todo">
-					<div class="head">
-						<h3>Todos</h3>
-						<i class='bx bx-plus' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<ul class="todo-list">
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							 <i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-					</ul> -->
-				</div> 
+				</table> 
+			</div> 
 			</div>
 		</main>
 		<!-- MAIN -->
