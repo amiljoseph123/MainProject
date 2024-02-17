@@ -1,11 +1,38 @@
 <?php include "sponsor_sidebar2.php";?>
+<?php
+
+$email = '$id'; // Initialize the variable
+
+if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL
+    $id = $_GET['s_sponsor_id'];
+
+    if ($result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+  
+      $name = $row['s_name'];
+      $email = $row['s_email'];
+      $phone = $row['s_phone'];
+      $aadhar = $row['s_aadhar'];
+      $district = $row['s_district'];
+      // Add other fields as needed
+  }
+  // After executing the query
+if (!$result) {
+  die("Query failed: " . $con->error);
+}
+
+}
+?>  
+
+
+
 
 !DOCTYPE html>
 <!-- Designined by CodingLab - youtube.com/codinglabyt -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title> Responsive Registration Form | CodingLab </title>
+    <title>Registration Form </title>
     <link rel="stylesheet" href="child_apln_style.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -25,7 +52,9 @@
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" id="email" name="email" placeholder="Enter your email" required>
+            <!-- <input type="text" id="email" name="email" placeholder="Enter your email" <?php echo $email; ?>required> -->
+            <input type="text" id="email" name="email" placeholder="Enter your email" value="" required>
+
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
@@ -168,3 +197,5 @@ if (isset($_POST['submit'])) {
 
 
 ?>
+
+

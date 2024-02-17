@@ -62,7 +62,7 @@ if (isset($_SESSION['username'])) {
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<i class='bx bxs-smile'></i>
-			<span class="text">Welcome</span>
+			<span class="text">Welcome  <?php echo "Welcome, " . $_SESSION['username'];?></span>
 			<br>
 			<span class="text"></span>
 		</a>

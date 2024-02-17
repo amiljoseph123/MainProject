@@ -100,7 +100,7 @@ include "config.php";
 
 <!-- <button type="submit" class="btn btn-gradient-primary me-2" name="submit" id="submitButton">Submit</button> -->
 
-<script>
+<!-- <script>
 // Function to handle the click event of the submit button
 document.getElementById('submitButton').addEventListener('click', function() {
   // Trigger SweetAlert2 alert
@@ -112,7 +112,53 @@ document.getElementById('submitButton').addEventListener('click', function() {
     timer: 1500
   });
 });
+</script> -->
+<script>
+document.getElementById('submitButton').addEventListener('click', function() {
+  // Check if all form fields are filled
+  var isFormValid = validateForm();
+
+  // If the form is valid, show SweetAlert
+  if (isFormValid) {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Student added successfully',
+      showConfirmButton: false,
+      timer: 1500
+    });
+  }
+});
+
+// Function to validate the form
+function validateForm() {
+  // You should customize this validation based on your form fields
+  var inputs = document.querySelectorAll('form input[type="text"], form textarea');
+  var isValid = true;
+
+  inputs.forEach(function(input) {
+    if (input.value.trim() === '') {
+      isValid = false;
+
+      // Add a message next to the empty field
+      var errorMessage = document.createElement('span');
+      errorMessage.textContent = 'Please fill this';
+      errorMessage.style.color = 'red';
+      errorMessage.style.marginLeft = '10px';
+
+      // Append the error message to the parent element of the input
+      input.parentNode.appendChild(errorMessage);
+
+      // You can customize this part to show a different error message or style
+      input.style.border = '1px solid red';
+    }
+  });
+
+  return isValid;
+} 
 </script>
+
+
 
 </body>
 </html>

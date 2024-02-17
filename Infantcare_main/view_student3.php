@@ -239,7 +239,7 @@ document.getElementById('submitButton').addEventListener('click', function() {
                 <!-- <div class="input-group-append"> -->
                     <!-- <button class="btn btn-primary" type="button">Search</button> -->
                     <div class="input-group">
-                <input type="text" id="searchInput" name="searchInput" class="form-control" placeholder="Search Orphanage" onkeyup="searchOrphanages()">
+                <input type="text" id="searchInput" name="searchInput" class="form-control" placeholder="Search student" onkeyup="searchOrphanages()">
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="button">Search</button>
                 </div>

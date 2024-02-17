@@ -72,6 +72,17 @@ if (isset($_SESSION['username'])) {
         }
 	
     </style>
+<style>
+        
+
+        .left {
+            text-align: center;
+			}
+
+        h2 {
+            color: green;
+        }
+    </style>
 </head>
 <body>
 
@@ -140,12 +151,15 @@ if (isset($_SESSION['username'])) {
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
+			<!-- <i class='bx bx-menu' ></i>
+			<a href="#" class="nav-link">Categories</a> -->
 			<form action="#">
 				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+					<!-- <input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button> -->
+					
+				<input type="text" id="searchInput" oninput="searchTable()" placeholder="Search by Name">
+          <button onclick="searchTable()"><i class='bx bx-search' ></i></button>
 				</div>
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
@@ -164,15 +178,15 @@ if (isset($_SESSION['username'])) {
 		<main>
 			<div class="head-title">
 			<div class="left">
-					<h1>Dashboard</h1>
+					<h2>List of sponsors applied for sponsor a student</h2>
 					<ul class="breadcrumb">
-						<li>
+						<!-- <li>
 							<a href="#">Dashboard</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
 							<a class="active" href="#">Home</a>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 				<?php
@@ -266,7 +280,7 @@ if (isset($_SESSION['username'])) {
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
-					<table>
+					<table id="myTable">
 						<thead>
 							<tr>
                                 <th>Sl.No</th>
@@ -343,6 +357,27 @@ if (isset($_SESSION['username'])) {
         }
     </style>
 	<script src="Dscript.js"></script>
+	<script>
+        function searchTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                // Skip the header row
+                if (i !== 0) {
+                    td = tr[i].getElementsByTagName("td")[1]; // Assuming the name is in the second cell
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        var containsLetter = txtValue.toUpperCase().includes(filter);
+                        tr[i].style.display = containsLetter ? "" : "none";
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -373,7 +373,7 @@
         <!-- <form id="sponsorForm">
             <label for="item">Item Name:</label>
             <input type="text" id="item" name="item" required> -->
-            <form id="sponsorForm">
+            <form id="sponsorForm1">
     <label for="item">Choose Gadget Item:</label>
     <select id="item" name="item" required>
         <option value="smartphone">Smartphone</option>
@@ -395,6 +395,22 @@
     </div>
 </div>
 
+
+<script>
+document.getElementById("sponsorForm1").addEventListener("submit", function(event) {
+    // Prevent the default form submission
+    event.preventDefault();
+
+    // Show SweetAlert on form submission
+    Swal.fire({
+        title: "Thank you!",
+        text: "we are greatful to receive this !",
+        icon: "success",
+        timer: 10000, // Set the timer to 10 seconds (in milliseconds)
+        showConfirmButton: false // Hide the "OK" button
+    });
+});
+</script>
 
 
 
@@ -444,10 +460,9 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal3()">&times;</span>
         <h2>Let's Sponsor</h2>
-        <form id="sponsorForm">
-            <!-- <label for="item">Choose Item:</label> -->
+        
 
-            <form id="sponsorForm">
+            <form id="sponsorForm2">
             <!-- <label for="item">Item:</label>
             <input type="text" id="item" name="item" required>  -->
 
@@ -464,6 +479,24 @@
         </form>
     </div>
 </div>
+
+
+<script>
+document.getElementById("sponsorForm2").addEventListener("submit", function(event) {
+    // Prevent the default form submission
+    event.preventDefault();
+
+    // Show SweetAlert on form submission
+    Swal.fire({
+        title: "Thank you!",
+        text: "we are greatful to receive this !",
+        icon: "success",
+        timer: 10000, // Set the timer to 10 seconds (in milliseconds)
+        showConfirmButton: false // Hide the "OK" button
+    });
+});
+</script>
+
 
 <script>
     // Open the modal
@@ -517,17 +550,6 @@ document.getElementById("sponsorForm").addEventListener("submit", function(event
 });
 </script>
 
-<script>
-document.getElementById("btn3").addEventListener("click", function() {
-    // Show SweetAlert on button click
-    Swal.fire({
-        title: "Good job!",
-        text: "You clicked the button!",
-        icon: "success"
-    });
-});
-</script>
-
 
 </body>
     <script src="js/script.js"></script>
@@ -537,3 +559,25 @@ document.getElementById("btn3").addEventListener("click", function() {
 
 <?php
 // include "footer.php";?>
+
+<?php
+
+include "config.php";
+
+if (isset($_POST['btn2'])) {
+    $gender = mysqli_real_escape_string($con, $_POST['gender']);
+    $age = mysqli_real_escape_string($con, $_POST['age']);
+    $quantity = mysqli_real_escape_string($con, $_POST['quantity']);
+    
+
+    $query = "INSERT INTO `cloth` (`id`, `gender`, `age`, `quantity`) 
+              VALUES (default, '$gender', '$age', '$quantity')";
+
+    mysqli_query($con, $query) or die(mysqli_error($con));
+    echo "Record inserted successfully!";
+}
+
+
+?>
+
+
