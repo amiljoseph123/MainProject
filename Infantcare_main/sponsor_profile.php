@@ -21,6 +21,9 @@ if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL
     $email = $row['s_email'];
     $phone = $row['s_phone'];
     $aadhar = $row['s_aadhar'];
+	$district = $row['district'];
+	$gender = $row['gender'];
+	$marital = $row['marital'];
 	// $dis = $row['s_district'];
     } else {
         echo "sponsornot found.";
@@ -115,7 +118,24 @@ if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL
 									<h6 class="mb-0">District</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="idukki">
+									<input type="text" class="form-control" value="<?php echo $district; ?>">
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Gender</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control" value="<?php echo $gender; ?>">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Marital</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control" value="<?php echo $marital; ?>">
 								</div>
 							</div>
 							<div class="row">

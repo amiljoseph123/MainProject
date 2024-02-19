@@ -1,5 +1,31 @@
 <?php
  include "sponsor_sidebar2.php";?>
+ 
+<?php
+include "config.php";
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+if (isset($_POST['btn2'])) {
+    $gender = mysqli_real_escape_string($con, $_POST['gender']);
+    $age = mysqli_real_escape_string($con, $_POST['age']);
+    $quantity = mysqli_real_escape_string($con, $_POST['quantity']);
+
+    $query = "INSERT INTO `cloth` (`id`, `gender`, `age`, `quantity`) VALUES (default, '$gender', '$age', '$quantity')";
+
+    if (mysqli_query($con, $query)) {
+        echo '<script>alert("Registration is successful");</script>';
+    } else {
+        echo '<script>alert("Registration failed: ' . mysqli_error($con) . '");</script>';
+    }
+} else {
+    // echo '<script>alert("Form not submitted");</script>';
+}
+?>
+
+
+
 
 
 <!DOCTYPE html>
@@ -303,7 +329,7 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal1()">&times;</span>
         <h2>Let's Sponsor</h2>
-        <form id="sponsorForm">
+        <form id="sponsorForm" method="post">
             <label for="gender">Choose Gender:</label>
             <select id="gender" name="gender">
                 <option value="gents">Boys</option>
@@ -316,7 +342,9 @@
             <label for="quantity">Quantity:</label>
             <input type="number" id="quantity" name="quantity" min="1" required>
 
-            <input type="submit" class="btn2"id="btn2" value="Submit">
+            <!-- <input type="submit" class="btn2"id="btn2" value="Submit"> -->
+            <input type="submit" class="btn2" name="btn2" id="btn2" value="Submit">
+
         </form>
     </div>
 </div>
@@ -543,8 +571,8 @@ document.getElementById("sponsorForm").addEventListener("submit", function(event
     
     // Show SweetAlert on form submission
     Swal.fire({
-        title: "Good job!",
-        text: "You clicked the button!",
+        title: "Great job!",
+        text: "Thanks for your contribution!",
         icon: "success"
     });
 });
@@ -562,22 +590,29 @@ document.getElementById("sponsorForm").addEventListener("submit", function(event
 
 <?php
 
-include "config.php";
+// include "config.php";
 
-if (isset($_POST['btn2'])) {
-    $gender = mysqli_real_escape_string($con, $_POST['gender']);
-    $age = mysqli_real_escape_string($con, $_POST['age']);
-    $quantity = mysqli_real_escape_string($con, $_POST['quantity']);
+
+//     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//         $gender = $_POST['gender'];
+//         $age = $_POST['age'];
+//         $quantity = $_POST['quantity'];
+       
     
 
-    $query = "INSERT INTO `cloth` (`id`, `gender`, `age`, `quantity`) 
-              VALUES (default, '$gender', '$age', '$quantity')";
+//     $query = "INSERT INTO `cloth` (`id`, `gender`, `age`, `quantity`) 
+//               VALUES (default, '$gender', '$age', '$quantity')";
 
-    mysqli_query($con, $query) or die(mysqli_error($con));
-    echo "Record inserted successfully!";
-}
+//     mysqli_query($con, $query) or die(mysqli_error($con));
+//     echo "Record inserted successfully!";
+//     // echo "Query: $query";
+
+// }
+// else {
+//     die("Error: " . mysqli_error($con));
+// }
+
 
 
 ?>
-
 

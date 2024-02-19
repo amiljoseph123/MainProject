@@ -139,13 +139,13 @@ require 'header.php';
 			
 			
 			<div class="form-group">
-    <label for="sponsor_phone">Mobile Number</label>
-    <input type="text" id="sponsor_phone" name="sponsor_phone" pattern="\d{10}" required>
+    <label for="phone">Mobile Number</label>
+    <input type="text" id="phone" name="sphone" pattern="\d{10}" required>
     <div id="phoneError" style="color: red;"></div>
 </div>
 
 <script>
-    document.getElementById('sponsor_phone').addEventListener('input', function() {
+    document.getElementById('phone').addEventListener('input', function() {
         var phoneInput = this.value;
         var phoneError = document.getElementById('phoneError');
         var regex = /^\d{10}$/;
@@ -177,6 +177,51 @@ require 'header.php';
         }
     });
 </script>
+
+<div class="form-group">
+    <label for="district">District</label>
+    <select id="district" name="district">
+        <option value="thiruvananthapuram">Thiruvananthapuram</option>
+        <option value="kollam">Kollam</option>
+        <option value="pathanamthitta">Pathanamthitta</option>
+        <option value="alappuzha">Alappuzha</option>
+        <option value="kottayam">Kottayam</option>
+        <option value="idukki">Idukki</option>
+        <option value="ernakulam">Ernakulam</option>
+        <option value="thrissur">Thrissur</option>
+        <option value="palakkad">Palakkad</option>
+        <option value="malappuram">Malappuram</option>
+        <option value="kozhikode">Kozhikode</option>
+        <option value="wayanad">Wayanad</option>
+        <option value="kannur">Kannur</option>
+        <option value="kasaragod">Kasaragod</option>
+    </select>
+    <div id="districtError" style="color: red;"></div>
+</div>
+
+
+
+<div class="form-group">
+    <label for="sponsor_aadhar">Gender</label>
+    <select id="gender" name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+    </select>
+    <div id="genderError" style="color: red;"></div>
+</div>
+
+<div class="form-group">
+    <label for="marital">Marital Status</label>
+    <select id="marital" name="marital">
+        <option value="single">Single</option>
+        <option value="married">Married</option>
+        <option value="divorced">Divorced</option>
+        <option value="widowed">Widowed</option>
+    </select>
+    <div id="maritalStatusError" style="color: red;"></div>
+</div>
+
 
 
 
@@ -245,8 +290,12 @@ include "config.php";
 if (isset($_POST['submit'])) {
     $name = $_POST['sponsor_name'];
     $email = $_POST['sponsor_email'];
-    $phone = $_POST['sponsor_phone'];
+    $sphone = $_POST['sphone'];
     $aadhar = $_POST['sponsor_aadhar'];
+    $district = $_POST['district'];
+    $gender = $_POST['gender'];
+    $marital = $_POST['marital'];
+
     $password=md5($_POST['password']);
 
    // $hashed_password = password_hash($password,PASSWORD_DEFAULT);
@@ -254,7 +303,7 @@ if (isset($_POST['submit'])) {
     $result=mysqli_query($con,"SELECT * FROM `login` WHERE `Email`='$email'") or die("error");
         if(mysqli_num_rows($result)<=0){
             mysqli_query($con,"INSERT INTO `login` VALUES ('$email','$user_type','$password','')")or die("Registration failed, Please Try Agin");
-            mysqli_query($con,"INSERT INTO `sponsor`(`s_sponsor_id`, `s_name`, `s_email`, `s_phone`, `s_aadhar`) VALUES (default,'$name','$email','$phone','$aadhar')")or die(mysqli_error($con));
+            mysqli_query($con,"INSERT INTO `sponsor`(`s_sponsor_id`, `s_name`, `s_email`, `s_phone`, `s_aadhar`, `district`, `gender`, `marital`) VALUES (default,'$name','$email',$sphone,'$aadhar','$district','$gender','$marital')")or die(mysqli_error($con));
             // echo '<script>alert("Registration is successful");</script>';
             echo "<script>
             Swal.fire('Registration Successful');

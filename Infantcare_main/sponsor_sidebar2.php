@@ -132,7 +132,7 @@ if (isset($_SESSION['username'])) {
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="sponsor_sidebar3.php">
+				<a href="sponsor_sidebar.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>

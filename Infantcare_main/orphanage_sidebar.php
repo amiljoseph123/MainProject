@@ -87,7 +87,7 @@ if (isset($_SESSION['username'])) {
 				</a>
 			</li> 
 			<li>
-				<a href="orph_view_child_application.php">
+				<a href="o_view_child_application2.php">
 					<i class='bx bxs-cog' ></i>
 					<span class="text">sponsor application</span>
 				</a>

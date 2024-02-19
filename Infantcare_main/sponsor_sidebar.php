@@ -282,8 +282,8 @@ if (isset($_SESSION['username'])) {
                     <!-- <h4 class="font-weight-normal mb-3">Weekly Sales <i class="mdi mdi-chart-line mdi-24px float-right"></i> -->
                     </h4>
                     <!-- <h2 class="mb-5">Sponsor a cild</h2> -->
-					<h2 class="mb-5"><a href="sponsor_child_form.php" style="text-decoration: none; color: #333;">Sponsor a Child</a></h2>
-
+					<h2 class="mb-5"><a href="sponsor_child2.php?s_sponsor_id=<?php echo $sponsor_id ; ?>" style="text-decoration: none; color: #333;">Sponsor a Child</a></h2>
+          <!-- <a href="sponsor_profile.php?s_sponsor_id=<?php echo $sponsor_id ; ?>"> -->
                     <!-- <h6 class="card-text">Increased by 60%</h6> -->
                   </div>
                 </div>
