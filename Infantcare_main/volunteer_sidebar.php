@@ -80,7 +80,7 @@ if (isset($_SESSION['username'])) {
 				</a>
 			</li>
 			<li>
-				<a href="password-reset.php">
+				<a href="vol_password_reset.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">change password</span>
 				</a>

@@ -49,12 +49,15 @@ if (isset($_SESSION['username'])) {
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<i class='bx bxs-smile'></i>
-			<span class="text">Welcome</span>
+			<span class="text">Welcome <?php echo $_SESSION["username"];?></span>
+			<br><br>
+			
 			<br>
 			<span class="text"></span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
+				
 				<a href="orphanage_homepage.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>

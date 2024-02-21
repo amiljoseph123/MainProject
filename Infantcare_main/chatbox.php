@@ -13,28 +13,31 @@
         }
 
         .chatbox {
-            max-width: 400px;
+            max-width: 600px;
             margin: 50px auto;
             border: 1px solid #ccc;
             border-radius: 8px;
             overflow: hidden;
+
         }
 
         .chat-header {
-            background-color: #4CAF50;
+            background-color: #5ac1bc;
             color: white;
             padding: 10px;
             text-align: center;
+            font-size: 20px;
         }
 
         .chat-body {
             padding: 10px;
-            height: 300px;
+            height: 500px;
             overflow-y: auto;
         }
 
         .message {
             margin-bottom: 15px;
+            font-size: 20px;
         }
 
         .message .sender {
@@ -47,6 +50,7 @@
             border-radius: 5px;
             padding: 8px;
             display: inline-block;
+            font-size: 20px;
         }
 
         .user-input {
@@ -56,6 +60,7 @@
             padding: 10px;
             background-color: #fff;
             border-top: 1px solid #ccc;
+            font-size: 20px;
         }
 
         .user-input input {
@@ -64,22 +69,24 @@
             margin-right: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 20px;
         }
 
         .user-input button {
-            background-color: #4CAF50;
+            background-color: #5ac1bc;
             color: white;
             padding: 8px 15px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
 
     <div class="chatbox">
-        <div class="chat-header">Messenger</div>
+        <div class="chat-header">Chat with infantcare</div>
         <div class="chat-body" id="chatBody">
             <!-- Messages will be displayed here -->
         </div>

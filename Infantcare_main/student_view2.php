@@ -316,6 +316,7 @@ $con->close();
                     margin: 4px 2px;
                     transition-duration: 0.4s;
                     cursor: pointer;">Health</button>
+                    <center>  <button class="btn btn-outline-primary"><a href="view_student3.php">Back</a></button></center>
 </div>
 
 </div>

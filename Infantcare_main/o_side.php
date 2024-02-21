@@ -246,7 +246,7 @@ require_once 'config.php';
 		<!-- </ul> -->
 		 <!-- <ul class="side-menu">  -->
 			 <li>
-				<a href="#">
+				<a href="vol_dash.php">
 					<i class='bx bxs-cog' ></i>
 					<span class="text">volunteer application</span>
 				</a>

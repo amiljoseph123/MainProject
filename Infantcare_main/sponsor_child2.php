@@ -178,9 +178,9 @@ if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL
                 <br><br>
 
 
-                <div class="view-button">
+                <!-- <div class="view-button">
                 <button onclick="viewApplication()">View status</button>
-                <br><br>
+                <br><br> -->
            
             <form action="sponsor_sidebar.php" method="post">
                                    <button class="btn btn-outline-primary" type="submit">Back</button>

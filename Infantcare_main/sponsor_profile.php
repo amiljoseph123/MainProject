@@ -164,7 +164,7 @@ if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
-									<input type="button" class="btn btn-primary px-4" style="background-color: #5ac1bc;" value="Save Changes">
+									<!-- <input type="button" class="btn btn-primary px-4" style="background-color: #5ac1bc;" value="Save Changes"> -->
 								</div>
 							</div>
 						</div>

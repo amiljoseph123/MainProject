@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('config.php');
-include('orphanage_sidebar.php')
+include('volunteer_sidebar.php')
 ?>
 <html lang="en">
 <head>
@@ -64,7 +64,7 @@ include('orphanage_sidebar.php')
                         <!-- <button type="submit" name="password_update" class="btn btn-success w-100" onclick="window.location.href='volunteer_homepage.php'">Back</button> -->
          
 
-                                 <center>  <button class="btn btn-outline-primary"><a href="orphanage_homepage.php">Back</a></button></center>
+                                 <center>  <button class="btn btn-outline-primary"><a href="volunteer_homepage.php">Back</a></button></center>
                           
                         <!-- <button type="submit" name="password_update" class="btn btn-success w-100">Back</button> -->
                         </div>

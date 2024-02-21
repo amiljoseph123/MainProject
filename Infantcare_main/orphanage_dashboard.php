@@ -4,7 +4,7 @@ include "config.php";
      include "orphanage_sidebar.php";
   ?>
   
-                  <h4>WELCOME</h4>
+                  <!-- <h4>WELCOME</h4> -->
                   <?php
 include "config.php";
 
@@ -14,7 +14,7 @@ include "config.php";
 // Fetch existing sponsor data
 if (isset($_SESSION['username'])) {
     $user = $_SESSION['username'];
-    echo $user;
+     echo $user;
 
     // Fetch existing sponsor data
     $sql = "SELECT * FROM orphanage WHERE o_email = '$user'";
@@ -140,9 +140,9 @@ if (isset($_POST['update'])) {
 
                   <body style="font-family: Arial, sans-serif; background-color: #f4f4f4;">
 
-<div style="max-width: 1500px; margin: 90px auto; background-color: #fff; padding: 20px; border-radius: 1px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+<div style="max-width: 2500px; margin: 90px auto; background-color: #fff; padding: 20px; border-radius: 1px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
 
-    <h2 style="text-align: center; color: #333;">Update Orphanage data</h2>
+    <h2 style="text-align: center; color: #333;">.................Orphanage profile...............</h2>
 
 
     <style>
