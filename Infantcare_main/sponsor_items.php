@@ -1,28 +1,7 @@
 <?php
  include "sponsor_sidebar2.php";?>
  
-<?php
-include "config.php";
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-if (isset($_POST['btn2'])) {
-    $gender = mysqli_real_escape_string($con, $_POST['gender']);
-    $age = mysqli_real_escape_string($con, $_POST['age']);
-    $quantity = mysqli_real_escape_string($con, $_POST['quantity']);
-
-    $query = "INSERT INTO `cloth` (`id`, `gender`, `age`, `quantity`) VALUES (default, '$gender', '$age', '$quantity')";
-
-    if (mysqli_query($con, $query)) {
-        echo '<script>alert("Registration is successful");</script>';
-    } else {
-        echo '<script>alert("Registration failed: ' . mysqli_error($con) . '");</script>';
-    }
-} else {
-    // echo '<script>alert("Form not submitted");</script>';
-}
-?>
 
 
 
@@ -391,6 +370,30 @@ if (isset($_POST['btn2'])) {
         closeModal1();
     });
 </script>
+
+
+<?php
+include "config.php";
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+if (isset($_POST['btn2'])) {
+    $gender = mysqli_real_escape_string($con, $_POST['gender']);
+    $age = mysqli_real_escape_string($con, $_POST['age']);
+    $quantity = mysqli_real_escape_string($con, $_POST['quantity']);
+
+    $query = "INSERT INTO `cloth` (`id`, `gender`, `age`, `quantity`) VALUES (default, '$gender', '$age', '$quantity')";
+
+    if (mysqli_query($con, $query)) {
+        echo '<script>alert("Registration is successful");</script>';
+    } else {
+        echo '<script>alert("Registration failed: ' . mysqli_error($con) . '");</script>';
+    }
+} else {
+    // echo '<script>alert("Form not submitted");</script>';
+}
+?>
 
 
 <!-- The Modal -->

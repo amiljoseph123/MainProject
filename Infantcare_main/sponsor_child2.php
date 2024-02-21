@@ -176,6 +176,11 @@ if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL
             <div class="confirm-button">
                 <button onclick="confirmApplication()">Confirm Application</button>
                 <br><br>
+
+
+                <div class="view-button">
+                <button onclick="viewApplication()">View status</button>
+                <br><br>
            
             <form action="sponsor_sidebar.php" method="post">
                                    <button class="btn btn-outline-primary" type="submit">Back</button>
@@ -202,6 +207,7 @@ if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL
         document.getElementById('confirmForm').submit();
     }
 </script>
+
 
 <!-- <form id="confirmForm" action="confirm_application.php" method="POST" style="display: none;"> -->
 <form id="confirmForm" action="" method="POST" style="display: none;">

@@ -11,9 +11,12 @@
 <?php
 require_once 'config.php';
   // include "o.php";
-  include "orphanage_sidebar.php";?>
+  // include "orphanage_sidebar.php";
+  include "o_side.php"?>
 
 
+<!-- CONTENT -->
+<
 
 
 
@@ -109,38 +112,6 @@ a.navbar-brand.brand-logo img {
 </style>
 
 
-<!-- 
-<script>
-function searchstudent() {
-    var input, filter, cards, card, i, txtValue;
-    input = document.getElementById('searchInput');
-    filter = input.value.toUpperCase();
-    cards = document.getElementsByClassName('card');
-
-    var found = false; // Add this variable to track if any results were found
-
-    for (i = 0; i < cards.length; i++) {
-        card = cards[i];
-        txtValue = card.textContent || card.innerText;
-
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            card.style.display = '';
-            found = true; // Set found to true if a result is found
-        } else {
-            card.style.display = 'none';
-        }
-    }
-
-    // Display "not found" message if no results were found
-    var notFoundMessage = document.getElementById('notFoundMessage');
-    if (!found) {
-        notFoundMessage.style.display = 'block';
-    } else {
-        notFoundMessage.style.display = 'none';
-    }
-}
-
-</script> -->
 
 <style>
     /* Add this CSS to prevent background color change */
@@ -185,132 +156,6 @@ document.getElementById('submitButton').addEventListener('click', function() {
 });
 </script>
 
-</body>
-</html>
-
-
-    <div class="container-scroller">
-      
-
-
-                    <!-- </form> -->
-                  <!-- </div> -->
-                </div>
-              </div>                        
-
-
-
-
-
-              <!-- <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Striped Table</h4>
-                    <p class="card-description"> Add class <code>.table-striped</code>
-                    </p>
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                        <th>Sl.No</th>
-                                <th>firstname</th>
-                                <th>lastname</th>
-                                <th>age</th>
-                                <th>gender</th>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
-                          </td>
-                </table> -->
-
-
-
-                <!-- <div class="col-lg-12 grid-margin stretch-card"> -->
-                 <!-- <div class="card">  -->
-                  <div class="card-body">
-
-
-                  <div id="notFoundMessage" style="display:none;">Not Found</div>
-
-                  <!-- <div class="row mb-4"> -->
-         <div class="col-md-12"> 
-            <!-- <div class="input-group"> -->
-                <!-- <input type="text" id="searchInput" class="form-control" placeholder="Search student" onkeyup="searchstudent()"> -->
-                <!-- <div class="input-group-append"> -->
-                    <!-- <button class="btn btn-primary" type="button">Search</button> -->
-                    <div class="input-group">
-                <input type="text" id="searchInput" name="searchInput" class="form-control" placeholder="Search student" onkeyup="searchOrphanages()">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">Search</button>
-                </div>
-
-
-                    <h4 class="card-title">Striped Table</h4>
-                    <p class="card-description"> Add class <code>.table-striped</code>
-                    </p>
-
-
-
-                                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>Sl.No</th>
-                          <th>firstname</th>
-                        
-                      </thead>
-                      <tbody>
-
-
-
-    <?php
-
-$result = mysqli_query($con, "SELECT * FROM `student` ") or die("error");
-
-$c = 0;
-while ($row = $result->fetch_assoc()) {
-    $firstname = $row["firstname"];
-    $lastname = $row["lastname"];
-    $age = $row["age"];
-    $gender = $row["gender"];
-
-    $student_id = $row["id"]; // Assuming you have a field named 'id' in your database for each student
-    $c++;
-?>
-    <tr>
-        <td><?php echo $c; ?></td>
-        <td><?php echo $firstname; ?></td>
-        <td>
-            <a href="student_view.php?id=<?php echo $student_id; ?>" class="btn btn-primary">View</a>
-            <!-- <a href="delete_student.php?id=<?php echo $student_id; ?>" class="btn btn-primary" id="submitButton">Delete</a> -->
-       
-                  
-            <a href="delete_student.php?id=<?php echo $student_id; ?>" class="btn btn-primary" id="deleteButton">Delete</a>
-
-            <script>
-            // Function to handle the click event of the delete button
-            document.getElementById('deleteButton').addEventListener('click', function(event) {
-              // Trigger SweetAlert2 alert
-              Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'deleted successfully',
-                showConfirmButton: false,
-                timer: 3000
-              });
-            });
-</script>
-        </td>
-    </tr>
-<?php
-}
-?>
-
-
-
-
-
-  </tbody>
-</table>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -320,69 +165,105 @@ while ($row = $result->fetch_assoc()) {
   <title>Your Page Title</title>
   <!-- Include the SweetAlert2 library -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+  function applyFilter() {
+    var genderFilter = document.getElementById('genderFilter').value;
+    var ageFilter = document.getElementById('ageFilter').value;
+    window.location.href = 'view_student3.php?genderFilter=' + genderFilter + '&ageFilter=' + ageFilter;
+  }
+
+  // Function to handle the click event of the submit button
+  document.getElementById('submitButton').addEventListener('click', function() {
+    // Trigger SweetAlert2 alert
+    Swal.fire({
+      position: 'centre',
+      icon: 'success',
+      title: 'Student added successfully',
+      showConfirmButton: false,
+      timer: 1500
+    });
+  });
+</script>
 </head>
 <body>
+<div class="filter-section">
+  <label for="genderFilter">Filter by Gender:</label>
+  <select id="genderFilter" onchange="applyFilter()">
+    <option value="">All</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+  </select>
 
-<!-- <a href="delete_student.php?id=<?php echo $student_id; ?>" class="btn btn-primary" id="deleteButton">Delete</a> -->
+  <label for="ageFilter">Filter by Age:</label>
+  <select id="ageFilter" onchange="applyFilter()">
+    <option value="">All</option>
+    <option value="lessThan5">Less than 5</option>
+    <option value="between5And10">5 to 10</option>
+    <option value="above10">Above 10</option>
+  </select>
+</div>
 
-<script>
-// Function to handle the click event of the delete button
-document.getElementById('deleteButton').addEventListener('click', function(event) {
-  // Trigger SweetAlert2 alert
-  Swal.fire({
-    position: 'top-end',
-    icon: 'success',
-    title: 'Your work has been saved',
-    showConfirmButton: false,
-    timer: 1500
-  });
-});
-</script>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Sl.No</th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php
+    require_once 'config.php';
+
+    $genderFilter = isset($_GET['genderFilter']) ? $_GET['genderFilter'] : '';
+    $ageFilter = isset($_GET['ageFilter']) ? $_GET['ageFilter'] : '';
+
+    // Modify the SQL query based on the gender and age filters
+    $sql = "SELECT * FROM `student` WHERE 1";
+    if ($genderFilter && $genderFilter !== 'All') {
+        $sql .= " AND `gender` = '$genderFilter'";
+    }
+    if ($ageFilter && $ageFilter !== 'All') {
+        switch ($ageFilter) {
+            case 'lessThan5':
+                $sql .= " AND `age` < 5";
+                break;
+            case 'between5And10':
+                $sql .= " AND `age` BETWEEN 5 AND 10";
+                break;
+            case 'above10':
+                $sql .= " AND `age` > 10";
+                break;
+        }
+    }
+
+    $result = mysqli_query($con, $sql) or die("error");
+
+    $c = 0;
+    while ($row = $result->fetch_assoc()) {
+        $firstname = $row["firstname"];
+        $gender = $row["gender"];
+        $age = $row["age"];
+        $student_id = $row["id"];
+        $c++;
+    ?>
+      <tr>
+        <td><?php echo $c; ?></td>
+        <td><?php echo $firstname; ?></td>
+        <td><?php echo $gender; ?></td>
+        <td><?php echo $age; ?></td>
+        <td>
+          <a href="student_view2.php?id=<?php echo $student_id; ?>" class="btn btn-primary">View</a>
+          <a href="delete_student.php?id=<?php echo $student_id; ?>" class="btn btn-primary" id="deleteButton">Delete</a>
+        </td>
+      </tr>
+    <?php
+    }
+    ?>
+  </tbody>
+</table>
 
 </body>
 </html>
-
-
-
-        <br><br><br><br><br><br><br><br><br><br><br><br>
-        <br><br>
-        <br><br>
-          <footer class="footer">
-            <div class="container-fluid d-flex justify-content-between">
-              <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">infantcare@gmail.com</span>
-              <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin template</a> from Bootstrapdash.com</span>
-            </div>
-          </footer>
-          <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="assets/vendors/chart.js/Chart.min.js"></script>
-    <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="assets/js/off-canvas.js"></script>
-    <script src="assets/js/hoverable-collapse.js"></script>
-    <script src="assets/js/misc.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/todolist.js"></script>
-    <!-- End custom js for this page -->
-
-
-
-
-
-
- 
-  </body>
-</html>
-

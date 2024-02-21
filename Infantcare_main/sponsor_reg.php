@@ -108,7 +108,7 @@ require 'header.php';
 <body>
     <div class="container1">
         <h2>Registration Form</h2>
-        <form onsubmit="return validateForm()" method="POST">
+        <form onsubmit="return validateForm()" method="POST" enctype="multipart/form-data">
 		
 			<div class="form-group">
     <label for="sponsor_name">Name</label>
@@ -263,6 +263,17 @@ require 'header.php';
     });
 </script>
 
+
+
+
+
+<div class="form-group">
+    <label for="exampleInputConfirmPassword1">upload photo</label>
+    <!-- <input type="text" class="form-control" id="exampleInputConfirmPassword1" name="gender" placeholder="Gender"> -->
+    <input type="file" class="form-control" id="photo" name="photo" accept="image/*" required>
+
+  </div>
+
 			
 			
             <div class="form-group">
@@ -297,13 +308,64 @@ if (isset($_POST['submit'])) {
     $marital = $_POST['marital'];
 
     $password=md5($_POST['password']);
+    
+    $photoPath = "."; 
+    $targetDirectory = "imageupload/";
+    $targetFile = $targetDirectory . basename($_FILES["photo"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+    // Check if image file is a actual image or fake image
+    if(isset($_POST["submit"])) {
+        $check = getimagesize($_FILES["photo"]["tmp_name"]);
+        if($check !== false) {
+            $uploadOk = 1;
+        } else {
+            $uploadOk = 0;
+        }
+    }
+
+    // Check if file already exists
+    // if (file_exists($targetFile)) {
+    //     $uploadOk = 0;
+    // }
+
+    // // Check file size
+    // if ($_FILES["photo"]["size"] > 500000) {
+    //     $uploadOk = 0;
+    // }
+
+    // Allow certain file formats
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+    && $imageFileType != "gif" ) {
+        $uploadOk = 0;
+    }
+
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+    // if everything is ok, try to upload file
+    } else {
+        if (move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFile)) {
+            $photoPath = $targetFile;
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+            exit; // Exit the script if there's an error
+        }
+    }$user=$_SESSION["username"];
+    
+
 
    // $hashed_password = password_hash($password,PASSWORD_DEFAULT);
     $user_type="Sponsor";
     $result=mysqli_query($con,"SELECT * FROM `login` WHERE `Email`='$email'") or die("error");
         if(mysqli_num_rows($result)<=0){
             mysqli_query($con,"INSERT INTO `login` VALUES ('$email','$user_type','$password','')")or die("Registration failed, Please Try Agin");
-            mysqli_query($con,"INSERT INTO `sponsor`(`s_sponsor_id`, `s_name`, `s_email`, `s_phone`, `s_aadhar`, `district`, `gender`, `marital`) VALUES (default,'$name','$email',$sphone,'$aadhar','$district','$gender','$marital')")or die(mysqli_error($con));
+            
+            // mysqli_query($con,"INSERT INTO `sponsor`(`s_sponsor_id`, `s_name`, `s_email`, `s_phone`, `s_aadhar`, `district`, `gender`, `marital`, `photo`) VALUES (default,'$name','$email',$sphone,'$aadhar','$district','$gender','$marital','$photopath')")or die(mysqli_error($con));
+            
+            mysqli_query($con,"INSERT INTO `sponsor`(`s_sponsor_id`, `s_name`, `s_email`, `s_phone`, `s_aadhar`, `district`, `gender`, `marital`, `photo`) VALUES (default,'$name','$email',$sphone,'$aadhar','$district','$gender','$marital','$photoPath')")or die(mysqli_error($con));
+
             // echo '<script>alert("Registration is successful");</script>';
             echo "<script>
             Swal.fire('Registration Successful');

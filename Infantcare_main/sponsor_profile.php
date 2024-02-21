@@ -4,6 +4,7 @@ include "config.php";
 ?>
 <?php
  include "sponsor_sidebar2.php";?>
+
 <?php
 
 // Check if the user is logged in
@@ -25,6 +26,7 @@ if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL
 	$gender = $row['gender'];
 	$marital = $row['marital'];
 	// $dis = $row['s_district'];
+	$photo = $row["photo"];
     } else {
         echo "sponsornot found.";
         $con->close();
@@ -50,6 +52,14 @@ if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL
         window.location.href = "logout.php";
     }
 </script>
+<style>
+        .custom-back-button {
+            margin-right: 10px;
+            background-color: #5ac1bc;
+            color: #fff;
+            border-color: #007bff;
+        }
+    </style>
 </body>
 <br><br><br><br><br><br><br><br>
 <div class="container">
@@ -59,17 +69,20 @@ if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL
 					<div class="card">
 						<div class="card-body">
 							<div class="d-flex flex-column align-items-center text-center">
-								<img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
-								<div class="mt-3">
+								
+							<!-- <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110"> -->
+							<img src="<?php echo $photo; ?>" alt="Admin" class="rounded-circle p-1 bg-primary" width="110"> 	
+							<div class="mt-3">
 									<h4><?php echo $name; ?></h4>
 									<!-- <p class="text-secondary mb-1">Full Stack Developer</p>
 									<p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p> -->
                                     <!-- <button class="btn btn-outline-primary">Back</button>  -->
-                                    <form action="sponsor_sidebar.php" method="post">
-                                   <button class="btn btn-outline-primary" type="submit">Back</button>
+                                    <form action="sponsor_sidebar.php" method="POST">
+                                   <!-- <button class="btn btn-outline-primary" type="submit">Back</button> -->
+								   <button class="btn btn-outline-primary custom-back-button" type="submit">Back</button>
                                     </form>
-                                    
-									<button class="btn btn-primary" onclick="logout()">logout</button>
+                                    <br>
+									<button class="btn btn-primary" style="background-color: #5ac1bc;" onclick="logout()">logout</button>
 									
 								</div>
 							</div>
@@ -87,6 +100,16 @@ if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<input type="text" class="form-control" value="<?php echo $name; ?>">
+
+
+						
+
+
+
+
+
+									
+
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -132,7 +155,7 @@ if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL
 							</div>
 							<div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0">Marital</h6>
+									<h6 class="mb-0">Marital Status</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<input type="text" class="form-control" value="<?php echo $marital; ?>">
@@ -141,7 +164,7 @@ if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
-									<input type="button" class="btn btn-primary px-4" value="Save Changes">
+									<input type="button" class="btn btn-primary px-4" style="background-color: #5ac1bc;" value="Save Changes">
 								</div>
 							</div>
 						</div>
@@ -158,3 +181,8 @@ if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL
     <?php
 // include "footer.php"
 ?>
+
+
+
+
+

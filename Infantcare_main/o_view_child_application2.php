@@ -103,7 +103,7 @@ if (isset($_SESSION['username'])) {
 				</a>
 			</li>
 			<li>
-				<a href="view_profile.php">
+				<a href="orphanage_dashboard.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Profile</span>
 				</a>
@@ -195,10 +195,8 @@ if (isset($_SESSION['username'])) {
 					use PHPMailer\PHPMailer\SMTP;
 					use PHPMailer\PHPMailer\Exception;
 
-					function send_password_reset($get_email, $pswd) {
+					function send_password_reset($get_email) {
 						$mail = new PHPMailer();
-						// Example code around line 201
-						// $mail = new PHPMailer();
 
 						try {
 							$mail->isSMTP();
@@ -214,9 +212,8 @@ if (isset($_SESSION['username'])) {
 							$mail->isHTML(true);
 							$mail->Subject = 'Your credential';
 							$email_template = "
-								<h2>Your volunteer application is approved . Use this username and password to login </h2>
+								<h2>Your  application is approved . click the below link to view student details </h2>
 								<h5>Username : $get_email</h5>
-								<h5>Password : $pswd</h5>
 								<br><br>
 								<a href='http://localhost/Infantcare_main/login.php?email=$get_email'>Click me</a>";
 							$mail->Body = $email_template;
@@ -231,40 +228,21 @@ if (isset($_SESSION['username'])) {
 					?>
 				<?php
                 require_once 'config.php';
+			
 				$result = mysqli_query($con, "SELECT * FROM `c` ") or die("error");
-                // $result = mysqli_query($con, "SELECT * FROM `volunteer`") or die("error");
 				 if (isset($_POST["add"])){
-				$id= $_POST["app_id"];
+					$id= $_POST["app_id"];
 				 	echo $id;
 				 	mysqli_query($con, "UPDATE `c` SET `status`='approved' WHERE `s_sponsor_id`=$id") or die("error");
-				// }
+					// send mail when user is approved
 
+					$result1=mysqli_query($con, "SELECT `s_email` FROM `c` WHERE `s_sponsor_id` =$id");
+						$row = $result1->fetch_assoc();
+					
+						$get_email = $row['s_email'];
+						send_password_reset($get_email);
 
-				// $result = mysqli_query($con, "SELECT * FROM `volunteer`") or die("error");
-				// 	 if (isset($_POST['add'])) {
-				// 	 	$id = $_POST['app_id'];
-				//  		$result1=mysqli_query($con, "SELECT `email` FROM `sponsor` WHERE `id` = $id");
-				// 		$row = $result1->fetch_assoc();
-				// // 		// 
-				//  		$get_email = $row['email'];
-			   	// // 	    // Send the approval email
-				// 	$subject = "Your application has been approved";
-				// 	$message = "Dear applicant,\n\nYour application has been approved. Thank you for your interest in our program.";
-
-				// 	// Additional headers
-				// 	$headers = "From: infantcare123@gmail.com";
-
-				// 	// Send the email
-				// 	$success = mail($get_email, $subject, $message, $headers);
-
-				// 	if ($success) {
-				// 		echo "Email sent successfully.";
-				// 	} else {
-				// 		echo "Error sending email.";
-				// 	}
-				// }
-
-
+					// mail end ############################################
 
 					 } elseif (isset($_POST['reject'])) {
 					 	$id = $_POST['app_id'];
@@ -297,14 +275,7 @@ if (isset($_SESSION['username'])) {
                         <?php
 						     $c=0;
                             while ($row = $result->fetch_assoc()) {
-                                // $fname=$row["fname"];
-								// $lname=$row["lname"];
-                                // $email=$row["email"];
-                                // $pphone=$row["pphone"];
-                                // $aaadhar=$row["aaadhar"];
-                                // $district=$row["district"];
-								// $address=$row["address"];
-
+                                
 
                              
                                 $s_name =$row['s_name'];
@@ -392,4 +363,49 @@ if (isset($_SESSION['username'])) {
 </body>
 
 </html>
+<?php
+    $entriesPerPage = 10; // Number of entries to display per page
+    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+    $start = ($currentPage - 1) * $entriesPerPage;
 
+    $result = mysqli_query($con, "SELECT * FROM `c` LIMIT $start, $entriesPerPage") or die("error");
+
+    $totalEntries = mysqli_query($con, "SELECT COUNT(*) as total FROM `c`") or die("error");
+    $totalEntries = mysqli_fetch_assoc($totalEntries)['total'];
+    $totalPages = ceil($totalEntries / $entriesPerPage);
+?>
+
+<div class="table-data">
+    <div class="order">
+        <!-- ... Your existing code ... -->
+
+        <table id="myTable">
+            <thead>
+                <!-- ... Your existing code ... -->
+            </thead>
+            <tbody>
+                <?php
+                    $c = 0;
+                    while ($row = $result->fetch_assoc()) {
+                        // Your existing code for displaying table rows
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Pagination buttons -->
+<div class="pagination">
+    <?php if ($currentPage > 1): ?>
+        <a href="?page=<?php echo $currentPage - 1; ?>">Previous</a>
+    <?php endif; ?>
+
+    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+        <a href="?page=<?php echo $i; ?>" <?php echo ($i == $currentPage) ? 'class="active"' : ''; ?>><?php echo $i; ?></a>
+    <?php endfor; ?>
+
+    <?php if ($currentPage < $totalPages): ?>
+        <a href="?page=<?php echo $currentPage + 1; ?>">Next</a>
+    <?php endif; ?>
+</div>

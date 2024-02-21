@@ -67,6 +67,12 @@ if (isset($_SESSION['username'])) {
 				</a>
 			</li>
 			<li>
+				<a href="orph_change_pswrd.php">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Change password</span>
+				</a>
+			</li>
+			<li>
 				<a href="add_student3.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Add Student</span>

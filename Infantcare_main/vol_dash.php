@@ -92,7 +92,7 @@ if (isset($_SESSION['username'])) {
 				</a>
 			</li>
 			<li>
-				<a href="view_profile.php">
+				<a href="orphanage_dashboard.php">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Profile</span>
 				</a>
