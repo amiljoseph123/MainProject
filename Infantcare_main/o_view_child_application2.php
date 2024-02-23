@@ -195,7 +195,7 @@ if (isset($_SESSION['username'])) {
 					use PHPMailer\PHPMailer\SMTP;
 					use PHPMailer\PHPMailer\Exception;
 
-					function send_password_reset($get_email) {
+					function send_password_reset($get_email,$approvalLink) {
 						$mail = new PHPMailer();
 
 						try {
@@ -215,7 +215,7 @@ if (isset($_SESSION['username'])) {
 								<h2>Your  application is approved . click the below link to view student details </h2>
 								<h5>Username : $get_email</h5>
 								<br><br>
-								<a href='http://localhost/Infantcare_main/login.php?email=$get_email'>Click me</a>";
+								<a href='$approvalLink'>Click me</a>";
 							$mail->Body = $email_template;
 							$mail->send();
 
@@ -233,14 +233,21 @@ if (isset($_SESSION['username'])) {
 				 if (isset($_POST["add"])){
 					$id= $_POST["app_id"];
 				 	echo $id;
+					 $q1 = "UPDATE `sponsor_permission` SET is_approved = true WHERE `sponsor_id`='$id'";
+					 mysqli_query($con,$q1);
 				 	mysqli_query($con, "UPDATE `c` SET `status`='approved' WHERE `s_sponsor_id`=$id") or die("error");
 					// send mail when user is approved
 
 					$result1=mysqli_query($con, "SELECT `s_email` FROM `c` WHERE `s_sponsor_id` =$id");
 						$row = $result1->fetch_assoc();
-					
 						$get_email = $row['s_email'];
-						send_password_reset($get_email);
+						// get Details From Sponsor Permission 
+					$result2=mysqli_query($con, "SELECT * FROM `sponsor_permission` WHERE `sponsor_id`=$id");
+					$row2 = $result2->fetch_assoc();
+					
+						$token = $row2['token'];
+						$approvalLink = "http://localhost/Infantcare_main/sponsor_student_view.php";	
+						send_password_reset($get_email,$approvalLink);
 
 					// mail end ############################################
 

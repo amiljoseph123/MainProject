@@ -26,11 +26,15 @@ if (isset($_SESSION['username'])) {
         $id = $row['o_govtid'];
         $name = $row['o_name'];
         $date = $row['o_edate'];
-        $email = $row['o_email'];
+        $oemail = $row['o_email'];
         $phone = $row['o_phone'];
         $district = $row['o_district'];
-        $city = $row['o_city'];
-        $pincode = $row['o_pincode'];
+        $ocity = $row['o_city'];
+        $opincode = $row['o_pincode'];
+    
+
+
+
     } else {
         echo "Orphanage not found.";
         $con->close();
@@ -59,7 +63,7 @@ if (isset($_POST['update'])) {
                         o_district = '$district',
                         o_city = '$city',
                         o_pincode = '$pincode'
-                    WHERE o_email = '$email'";
+                    WHERE o_email = '$oemail'";
 
     $result = $con->query($update_query);
 
@@ -74,30 +78,6 @@ if (isset($_POST['update'])) {
     }
 }
 ?>
-
-<!-- HTML Form -->
-<!-- <form action="" method="post"> -->
-    <!-- Input fields for updating data -->
-    <!-- <label for="orphanage_name">Orphanage Name:</label>
-    <input type="text" name="orphanage_name" value="<?php echo $name; ?>"><br>
-
-    <label for="date">Establishment Date:</label>
-    <input type="date" name="date" value="<?php echo $date; ?>"><br>
-
-    <label for="phone">Phone:</label>
-    <input type="text" name="phone" value="<?php echo $phone; ?>"><br>
-
-    <label for="district">District:</label>
-    <input type="text" name="district" value="<?php echo $district; ?>"><br>
-
-    <label for="city">City:</label>
-    <input type="text" name="city" value="<?php echo $city; ?>"><br>
-
-    <label for="pincode">Pincode:</label>
-    <input type="text" name="pincode" value="<?php echo $pincode; ?>"><br>
-
-    <button type="submit" name="update">Update Data</button> -->
-<!-- </form> -->
 
 
 
@@ -242,7 +222,7 @@ if (isset($_POST['update'])) {
 
                     <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" name="email" class="form-control" value="<?php echo $email; ?>" required>
+                    <input type="text" name="email" class="form-control" value="<?php echo $oemail; ?>" required>
                     </div>
                     <div class="form-group">
                     <label for="phone">Phone Number</label>
@@ -257,12 +237,12 @@ if (isset($_POST['update'])) {
 
                     <div class="form-group">
                     <label for="city">city</label>
-                    <input type="text" name="aadhar" class="form-control" value="<?php echo $city; ?>" required><br>
+                    <input type="text" name="city" class="form-control" value="<?php echo $ocity; ?>" required><br>
                     </div>
 
                     <div class="form-group">
                     <label for="pincode">Pincode</label>
-                    <input type="text" name="name" class="form-control" value="<?php echo $pincode; ?>" required>
+                    <input type="text" name="pincode" class="form-control" value="<?php echo $opincode; ?>" required>
                     </div>
 
                     <!-- <div class="form-group">
@@ -275,13 +255,6 @@ if (isset($_POST['update'])) {
 
                     
                 </form>    
-
- 
-
-                
-                
-
-
                   </div>
               </div>
             </div>

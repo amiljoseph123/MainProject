@@ -16,7 +16,6 @@ if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-
         $name = $row['s_name'];
     $email = $row['s_email'];
     $phone = $row['s_phone'];
@@ -170,19 +169,49 @@ if (isset($_GET['s_sponsor_id'])) { // Check if ID is provided in the URL
                     <?php echo $marital; ?>
                 </div>
             </div>
-          
+            
             <!-- Add more details as needed -->
 
             <div class="confirm-button">
                 <button onclick="confirmApplication()">Confirm Application</button>
                 <br><br>
 
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                View Application Status
+                </button>
 
-                <!-- <div class="view-button">
-                <button onclick="viewApplication()">View status</button>
-                <br><br> -->
-           
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Application Status</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- /////////////////Application Status /////////////////////  -->
+                        <?php
+                            $sql2 = "SELECT * FROM `c` WHERE `s_sponsor_id` = $id";
+                            $result2 = $con->query($sql2);
+                            if ($result2->num_rows > 0) {
+                                $row2 = $result2->fetch_assoc();
+                                $st_app = $row2['status'];
+                                echo $st_app;
+                            }
+                        ?>
+                        
+                        <!-- /////////////////Application Status End /////////////////////  -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
             <form action="sponsor_sidebar.php" method="post">
+            <br>      <br>
                                    <button class="btn btn-outline-primary" type="submit">Back</button>
                                     </form>
                                     </div>
@@ -249,7 +278,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Data does not exist, insert into the new table 'c'
         $insertQuery = "INSERT INTO `c`(`s_sponsor_id`, `s_name`, `s_email`, `s_phone`, `s_aadhar`, `district`,`status`) VALUES ('$sponsor_id', '$s_name', '$s_email', '$s_phone', '$s_aadhar','$district','pending')";
         $insertResult = mysqli_query($con, $insertQuery);
-
+        $token = bin2hex(random_bytes(16));
+        $insertQuery2 ="INSERT INTO `sponsor_permission`(`sponsor_id`, `token`, `is_approved`) VALUES ('$sponsor_id',' $token ','0')" ;
+        $insertResult2 = mysqli_query($con, $insertQuery2);
         if ($insertResult) {
             
             // echo 'Application confirmed check your mail for further proceeding.';

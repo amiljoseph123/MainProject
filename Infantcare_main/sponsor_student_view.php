@@ -33,6 +33,29 @@ if (isset($_SESSION['username'])) {
 
 <?php
 require_once 'config.php';
+$u =$_SESSION['username'];
+$app= "SELECT `s_sponsor_id` FROM `sponsor` WHERE `s_email` ='$u'";
+$result = mysqli_query($con, $app) or die("error");
+
+$c = 0;
+while ($row = $result->fetch_assoc()) {
+    $sponsor_id = $row["s_sponsor_id"]; 
+}
+
+$query23 = "SELECT * FROM `sponsor_permission` WHERE `sponsor_id` = $sponsor_id AND `is_approved` = 1";
+$result23 = mysqli_query($con, $query23);
+
+// Check if there are any rows
+if (mysqli_num_rows($result23) > 0) {
+    // There are results, do something with them
+    while ($row = mysqli_fetch_assoc($result)) {
+        // Process each row if needed
+    }
+} else {
+    // No results, redirect to another form
+    header("Location: http://localhost/Infantcare_main/sponsor_child2.php?s_sponsor_id=$sponsor_id");
+    exit();
+}
 ?>
 
 
@@ -225,57 +248,14 @@ require_once 'config.php';
 <body>
 
 
-	<!-- SIDEBAR -->
-	<section id="sidebar">
-		<a href="#" class="brand">
-			<i class='bx bxs-smile'></i>
-			<span class="text">Welcome</span>
-			<br>
-			<span class="text"></span>
-		</a>
-		<ul class="side-menu top">
-			<li class="active">
-				<a href="orphanage_homepage.php">
-					<i class='bx bxs-dashboard' ></i>
-					<span class="text">Dashboard</span>
-				</a>
-			</li>
-			<li>
-				<a href="view_profile.php">
-					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Profile</span>
-				</a>
-			</li>
-			<li>
-				<a href="add_student3.php">
-					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">Add Student</span>
-				</a>
+
+			
+			
 			
 			<li>
-				<a href="view_student3.php">
-					<i class='bx bxs-group' ></i>
-					<span class="text">View Student</span>
-				</a>
-			</li>
-		<!-- </ul> -->
-		 <!-- <ul class="side-menu">  -->
-			 <li>
-				<a href="vol_dash.php">
-					<i class='bx bxs-cog' ></i>
-					<span class="text">volunteer application</span>
-				</a>
-			</li> 
-			<li>
-			<a href="orph_view_child_application.php">
-					<i class='bx bxs-cog' ></i>
-					<span class="text">sponsor application</span>
-				</a>
-			</li> 
-			<li>
-				<a href="logout.php" class="logout">
+				<a href="sponsor_sidebar.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
+					<span class="text">back</span>
 				</a>
 			</li>
 		</ul>
@@ -303,7 +283,7 @@ require_once 'config.php';
 			<label for="switch-mode" class="switch-mode"></label>
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
+				<span class="num">8</span>F
 			</a>
 			<a href="#" class="profile">
 				<img src="img/people.png">
@@ -319,13 +299,21 @@ require_once 'config.php';
 
 <html lang="en">
   <head>
-
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Purple Admin</title>
+    <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.ico" />
 
 
@@ -446,7 +434,15 @@ a.navbar-brand.brand-logo img {
 
   </head>
   <body>
+
+ 
+
+  <body>
+
+<!-- <button type="submit" class="btn btn-gradient-primary me-2" name="submit" id="submitButton">Submit</button> -->
+
 <script>
+// Function to handle the click event of the submit button
 document.getElementById('submitButton').addEventListener('click', function() {
   // Trigger SweetAlert2 alert
   Swal.fire({
@@ -495,7 +491,7 @@ document.getElementById('submitButton').addEventListener('click', function() {
   <label for="genderFilter">Filter by Gender:</label>
   
   <select id="genderFilter" onchange="applyFilter()">
-    <option value=""></option>
+    <option value="">All</option>
     <option value="Male">Male</option>
     <option value="Female">Female</option>
   </select>
@@ -562,7 +558,7 @@ document.getElementById('submitButton').addEventListener('click', function() {
         <td><?php echo $age; ?></td>
         <td>
           <a href="student_view2.php?id=<?php echo $student_id; ?>" class="btn btn-primary">View</a>
-          <a href="delete_student.php?id=<?php echo $student_id; ?>" class="btn btn-primary" id="deleteButton">Delete</a>
+          <!-- <a href="delete_student.php?id=<?php echo $student_id; ?>" class="btn btn-primary" id="deleteButton">Delete</a> -->
         </td>
       </tr>
     <?php
