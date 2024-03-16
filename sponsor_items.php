@@ -192,7 +192,7 @@
         </button>
       </div>
       <div class="modal-body">
-      <form id="sponsorForm" method="post">
+      <form action="volunteer_view_items.php" id="sponsorForm" method="post">
             <label for="gender">Choose Gender:</label>
             <select id="gender" name="gender">
                 <option value="gents">Boys</option>
@@ -360,7 +360,7 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal1()">&times;</span>
         <h2>Let's Sponsor</h2>
-        <form id="sponsorForm" method="post">
+        <form action="volunteer_view_items.php"id="sponsorForm" method="post">
             <label for="gender">Choose Gender:</label>
             <select id="gender" name="gender">
                 <option value="gents">Boys</option>
