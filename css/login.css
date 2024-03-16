@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #8f918d;
+  }
+  
+  #navbar {
+    overflow: hidden;
+    background-color: #5a6153;
+  }
+  
+  #navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  #navbar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  #navbar a.active
+  {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+  }
+  
+  
+  
+  .form-box
+  {
+    width:380px;
+    height:480px;
+    position:relative;
+    margin:2% auto;
+    background:white;
+
+    padding:10px;
+    margin-top: 40px;
+    overflow: hidden;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    border-radius: 10px;
+  }
+  .button-box
+  {
+    width:220px;
+    margin:35px auto;
+    position:relative;
+    box-shadow: 0 0 20px 9px #ff61241f;
+    border-radius: 30px;
+  }
+  .input-group-login
+  {
+    top: 150px;
+    position:absolute;
+    width:280px;
+    transition:.5s;
+  }
+  .input-group-register
+  {
+    top: 120px;
+    position:absolute;
+    width:280px;
+    transition:.5s;
+  }
+  .input-field
+  {
+    width: 70%;
+    padding:10px 0;
+    margin:5px 55px;
+    border-left:0;
+    border-top:0;
+    color: rgb(0, 0, 0);
+    font-size:20 ;
+    border-right:0;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    outline:none;
+    background: transparent;
+  }
+  
+  .submit-btn
+  {
+    width: 50%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: #737471;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+  }
+  .submit-btn:hover {
+    color: white;
+    background: #626361;
+  }
+  
+  /*
+  span
+  {
+    color:#777;
+    font-size:12px;
+    bottom:68px;
+    position:absolute;
+    margin-left: 20px;
+  }
+  */
+  #login
+  {
+    left:50px;
+  }
+  #login input
+  {
+    color:rgb(0, 0, 0);
+    font-size:15;
+  }
+  #register
+  {
+    left:450px;
+  }
+  #register input
+  {
+    color:rgb(0, 0, 0);
+    font-size: 15;
+  }
+  
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  .sticky + .content {
+    padding-top: 60px;
+  }
