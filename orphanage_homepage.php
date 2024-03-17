@@ -193,7 +193,7 @@ if ($con && !$con->connect_error) {
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
-						<h3><a href="">Sponsors</a></h3>
+						<h3><a href="s_items.php">Sponserd items</a></h3>
 						<!-- <p>details</p> -->
 					</span>
 

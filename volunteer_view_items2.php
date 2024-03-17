@@ -15,7 +15,7 @@
     </style>
 </head>
 <body>
-    <h2 class="text-center mt-3">Clothes</h2>
+    <h2 class="text-center mt-3">Gadgets</h2>
     <div class="container">
         <div class="row">
             <?php
@@ -23,7 +23,7 @@
             include 'config.php';
 
             // Query to fetch data from the database table
-            $sql = "SELECT * FROM cloth";
+            $sql = "SELECT * FROM gadgets";
             $result = $con->query($sql);
 
             if ($result->num_rows > 0) {
@@ -34,8 +34,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">ID: <?php echo $row["id"]; ?></h5>
-                                <p class="card-text">Age: <?php echo $row["age"]; ?></p>
-                                <p class="card-text">Gender: <?php echo $row["gender"]; ?></p>
+                                <p class="card-text">item: <?php echo $row["item"]; ?></p>
                                 <p class="card-text">Quantity: <?php echo $row["quantity"]; ?></p>
 
                                 <a href="#" class="btn btn-primary">View Location</a>
