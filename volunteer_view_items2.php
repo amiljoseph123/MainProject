@@ -33,7 +33,7 @@
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">ID: <?php echo $row["id"]; ?></h5>
+                                <h5 class="card-title"></h5>
                                 <p class="card-text">item: <?php echo $row["item"]; ?></p>
                                 <p class="card-text">Quantity: <?php echo $row["quantity"]; ?></p>
 

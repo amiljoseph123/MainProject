@@ -148,14 +148,21 @@ require 'header.php';
     document.getElementById('phone').addEventListener('input', function() {
         var phoneInput = this.value;
         var phoneError = document.getElementById('phoneError');
-        var regex = /^\d{10}$/;
+        var regex = /^(?:(?:\+|00)91)?[6789]\d{9}$/;
 
-        if (!regex.test(phoneInput)) {
-            phoneError.textContent = "Please enter a valid 10-digit mobile number.";
+        if (!regex.test(phoneInput) && phoneInput.length > 0) {
+            phoneError.textContent = "Please enter a valid Indian mobile number.";
+
+        } else if (hasRepeatedDigits(phoneInput)) {
+            phoneError.textContent = "Please enter a valid mobile number without repeating the same digit.";
         } else {
             phoneError.textContent = "";
         }
     });
+
+    function hasRepeatedDigits(input) {
+        return /(\d)\1{9}/.test(input);
+    }
 </script>
 
 <div class="form-group">
@@ -187,21 +194,51 @@ require 'header.php';
 
 </div>
 
-
-
 <script>
     document.getElementById('aadhar').addEventListener('input', function() {
         var aadharInput = this.value;
         var aadharError = document.getElementById('aadharError');
-        var regex = /^[0-9]{12}$/;
+        var regex = /^[2-9]{1}[0-9]{3}[0-9]{4}[0-9]{4}$/;
 
         if (!regex.test(aadharInput)) {
             aadharError.textContent = "Please enter a valid 12-digit Aadhar number.";
+     
+        } else if (hasRepeatedDigits(aadharInput)) {
+            aadharError.textContent = "Please enter a valid Aadhar number without repeating the same digit.";
         } else {
             aadharError.textContent = "";
         }
     });
+
+    function isValidAadharChecksum(aadhar) {
+        // Validate Aadhar checksum using Verhoeff algorithm
+        var d = aadhar.split("").map(Number);
+        var p = [
+            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+            [1, 2, 3, 4, 0, 6, 7, 8, 9, 5],
+            [2, 3, 4, 0, 1, 7, 8, 9, 5, 6],
+            [3, 4, 0, 1, 2, 8, 9, 5, 6, 7],
+            [4, 0, 1, 2, 3, 9, 5, 6, 7, 8],
+            [5, 9, 8, 7, 6, 0, 4, 3, 2, 1],
+            [6, 5, 9, 8, 7, 1, 0, 4, 3, 2],
+            [7, 6, 5, 9, 8, 2, 1, 0, 4, 3],
+            [8, 7, 6, 5, 9, 3, 2, 1, 0, 4],
+            [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+        ];
+        var inv = [0, 4, 3, 2, 1, 5, 6, 7, 8, 9];
+        var c = 0;
+        for (var i = 0; i < aadhar.length; i++) {
+            c = p[c][inv[d[i]]];
+        }
+        return c === 0;
+    }
+
+    function hasRepeatedDigits(input) {
+        return /(\d)\1{11}/.test(input);
+    }
 </script>
+
+
 
 
 
@@ -286,163 +323,9 @@ if (isset($_POST['submit'])) {
            </script>";
  }
 ?>
-
-
-
-
-
-	
 	
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-<body>
-
-
-    <html>
-
-        <script>
-        
-        function validateFullName() {
-            var fullNameInput = document.getElementById("fullName");
-            var fullNameError = document.getElementById("fullNameError");
-        
-            var fullNameValue = fullNameInput.value.trim();
-        
-            if (fullNameValue === "") {
-                fullNameError.textContent = "Full Name is required";
-            } else if (/^\d+$/.test(fullNameValue)) {
-                fullNameError.textContent = "Full Name cannot contain numbers";
-            } else {
-                fullNameError.textContent = "";
-            }
-        }
-    
-        function validateEmail() {
-            var emailInput = document.getElementById("email");
-            var emailError = document.getElementById("emailError");
-            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    
-            if (!emailPattern.test(emailInput.value)) {
-                emailError.textContent = "Invalid email format";
-            } else {
-                emailError.textContent = "";
-            }
-        }
-    
-        function validatePhone() {
-            var phoneInput = document.getElementById("phone");
-            var phoneError = document.getElementById("phoneError");
-        
-            // Remove any non-numeric characters from the input
-            var phoneNumber = phoneInput.value.replace(/\D/g, '');
-        
-            if (phoneNumber.length !== 10 || !/^\d{10}$/.test(phoneNumber)) {
-                phoneError.textContent = "Phone Number must be exactly 10 digits long and contain only numbers";
-            } else {
-                phoneError.textContent = "";
-            }
-        }
-        
-    
-        function validatePassword() {
-            var passwordInput = document.getElementById("password");
-            var passwordError = document.getElementById("passwordError");
-    
-            if (passwordInput.value.length < 6) {
-                passwordError.textContent = "Password must be at least 6 characters long";
-            } else {
-                passwordError.textContent = "";
-            }
-        }
-    
-        function validateConfirmPassword() {
-            var confirmPasswordInput = document.getElementById("confirmPassword");
-            var confirmPasswordError = document.getElementById("confirmPasswordError");
-            var passwordInput = document.getElementById("password");
-    
-            if (confirmPasswordInput.value !== passwordInput.value) {
-                confirmPasswordError.textContent = "Passwords do not match";
-            } else {
-                confirmPasswordError.textContent = "";
-            }
-        }
-        </script>
-       <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-
-        <form method="POST" action="" onsubmit="return validateForm()" style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 50%; background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-
-        <h2>Spnsor Registration</h2>                       
-            <div class="form-outline form-white mb-4">
-                <label class="form-label" for="fullName">Full Name</label>
-                <input type="text" id="fullName" name="fullName" class="form-control form-control-lg" required oninput="validateFullName();" style="border-color: #000000;">
-                <span id="fullNameError" class="error"></span>
-            </div>
-        
-            <div class="form-outline form-white mb-4">
-                <label class="form-label" for="email">Email</label>
-                <input type="email" id="email" name="email" class="form-control form-control-lg" required oninput="validateEmail();" style="border-color: #000000;">
-                <span id="emailError" class="error"></span>
-            </div>
-        
-            <div class="form-outline form-white mb-4">
-                <label class="form-label" for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" class="form-control form-control-lg" required oninput="validatePhone();" style="border-color: #000000;">
-                <span id="phoneError" class="error"></span>
-            </div>
-
-            <div class="form-outline form-white mb-4">
-                <label class="form-label" for="aadhar">aadhar Number</label>
-                <input type="tel" id="aadhar" name="aadhar" class="form-control form-control-lg" required oninput="validateaadhar();" style="border-color: #000000;">
-                <span id="aadharError" class="error"></span>
-            </div>
-        
-            <div class="form-outline form-white mb-4">
-                <label class="form-label" for="password">Password</label>
-                <input type="password" id="password" name="password" class="form-control form-control-lg" required oninput="validatePassword();" style="border-color: #000000;">
-                <span id="passwordError" class="error"></span>
-            </div>
-        
-            <div class="form-outline form-white mb-4">
-                <label class="form-label" for="confirmPassword">Confirm Password</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control form-control-lg" required oninput="validateConfirmPassword();" style="border-color: #000000;">
-                <span id="confirmPasswordError" class="error"></span>
-            
-        
-            <!-- <button class="btn btn-outline-light btn-lg px-5" type="submit" style="background-color: #000000; color: #ffffff; border: none; " >Register</button> -->
-
-            <!-- </div>
-            <button type="submit" id="submit" name="submit" class="btn btn-primary">Register</button>
-        
-        </form>
-    </div> -->
-     -->
-
-
-
-
-
-    
-
-
-<!-- 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
 
 
 

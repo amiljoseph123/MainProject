@@ -192,7 +192,7 @@
         </button>
       </div>
       <div class="modal-body">
-      <form action="volunteer_view_items.php" id="sponsorForm" method="post">
+      <form action="" id="sponsorForm" method="post">
             <label for="gender">Choose Gender:</label>
             <select id="gender" name="gender">
                 <option value="gents">Boys</option>
@@ -205,14 +205,35 @@
             <label for="quantity">Quantity:</label>
             <input type="number" id="quantity" name="quantity" min="1" required>
 
+            
+            <label for="quantity">Location:</label>
+<select id="district" name="quantity" required>
+  <option value="" disabled selected>Select a state in Kerala</option>
+  <option value="Kasaragod">Kasaragod</option>
+  <option value="Kannur">Kannur</option>
+  <option value="Wayanad">Wayanad</option>
+  <option value="Kozhikode">Kozhikode</option>
+  <option value="Malappuram">Malappuram</option>
+  <option value="Palakkad">Palakkad</option>
+  <option value="Thrissur">Thrissur</option>
+  <option value="Ernakulam">Ernakulam</option>
+  <option value="Idukki">Idukki</option>
+  <option value="Kottayam">Kottayam</option>
+  <option value="Alappuzha">Alappuzha</option>
+  <option value="Pathanamthitta">Pathanamthitta</option>
+  <option value="Kollam">Kollam</option>
+  <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+</select>
+
+
             <!-- <input type="submit" class="btn2"id="btn2" value="Submit"> -->
             <input type="submit" class="btn2" name="btn2" id="btn2" value="Submit">
 
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
     </div>
   </div>
@@ -243,13 +264,32 @@
     <label for="quantity">Quantity:</label>
     <input type="number" id="squantity" name="squantity" min="1" max="1000" required>
 
+    <label for="quantity">Location:</label>
+<select id="sdistrict" name="sdistrict" required>
+  <option value="" disabled selected>Select a state in Kerala</option>
+  <option value="Kasaragod">Kasaragod</option>
+  <option value="Kannur">Kannur</option>
+  <option value="Wayanad">Wayanad</option>
+  <option value="Kozhikode">Kozhikode</option>
+  <option value="Malappuram">Malappuram</option>
+  <option value="Palakkad">Palakkad</option>
+  <option value="Thrissur">Thrissur</option>
+  <option value="Ernakulam">Ernakulam</option>
+  <option value="Idukki">Idukki</option>
+  <option value="Kottayam">Kottayam</option>
+  <option value="Alappuzha">Alappuzha</option>
+  <option value="Pathanamthitta">Pathanamthitta</option>
+  <option value="Kollam">Kollam</option>
+  <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+</select>
+
     <input type="submit" class="btn2" name="btn2" id="btn2" value="Submit">
 </form>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
     </div>
   </div>
@@ -279,14 +319,33 @@
     <label for="quantity">Quantity:</label>
     <input type="number" id="quantity" name="quantity" min="1" max="1000" required>
 
+    <label for="district">Location:</label>
+<select id="district" name="district" required>
+  <option value="" disabled selected>Select a state in Kerala</option>
+  <option value="Kasaragod">Kasaragod</option>
+  <option value="Kannur">Kannur</option>
+  <option value="Wayanad">Wayanad</option>
+  <option value="Kozhikode">Kozhikode</option>
+  <option value="Malappuram">Malappuram</option>
+  <option value="Palakkad">Palakkad</option>
+  <option value="Thrissur">Thrissur</option>
+  <option value="Ernakulam">Ernakulam</option>
+  <option value="Idukki">Idukki</option>
+  <option value="Kottayam">Kottayam</option>
+  <option value="Alappuzha">Alappuzha</option>
+  <option value="Pathanamthitta">Pathanamthitta</option>
+  <option value="Kollam">Kollam</option>
+  <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+</select>
+
     <input type="submit" class="btn2" name="btn2" id="btn2" value="Submit">
 </form>
 
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
     </div>
   </div>
@@ -354,119 +413,7 @@
         </div>
 </section>
   
-    
-<!-- The Modal -->
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal1()">&times;</span>
-        <h2>Let's Sponsor</h2>
-        <form action="volunteer_view_items.php"id="sponsorForm" method="post">
-            <label for="gender">Choose Gender:</label>
-            <select id="gender" name="gender">
-                <option value="gents">Boys</option>
-                <option value="ladies">Girls</option>
-            </select>
 
-            <label for="age">Age:</label>
-            <input type="number" id="age" name="age" min="1" max="100" required>
-
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="1" required>
-
-            <!-- <input type="submit" class="btn2"id="btn2" value="Submit"> -->
-            <input type="submit" class="btn2" name="btn2" id="btn2" value="Submit">
-
-        </form>
-    </div>
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<!-- 
-
-
-
-<?php
-include "config.php";
-if (isset($_POST['btn2'])) {
-    $gender = $_POST['gender'];
-    $age = $_POST['age'];
-    $quantity = $_POST['quantity'];
-    $query = "INSERT INTO `cloth`(`gender`, `age`, `quantity`) VALUES ('$gender','$age','$quantity')";
-    mysqli_query($con, $query);
-}
-
-?>
-
-
-
-<!-- The Modal -->
-<div id="myModal2" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal2()">&times;</span>
-        <h2>Let's Sponsor</h2>
-        <!-- <form id="sponsorForm">
-            <label for="item">Item Name:</label>
-            <input type="text" id="item" name="item" required> -->
-            <form id="sponsorForm1">
-    <label for="item">Choose Gadget Item:</label>
-    <select id="item" name="item" required>
-        <option value="smartphone">Smartphone</option>
-        <option value="laptop">Laptop</option>
-        <option value="smartwatch">Smartwatch</option>
-        <option value="headphones">Headphones</option>
-        <!-- Add more gadget items as needed -->
-    </select>
-
-    
-
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="1" required>
-
-            <!-- <input type="submit" class="btn3" id = "btn3"value="Submit"> -->
-            <!-- <input type="submit" class="btn3"id="btn3" value="Submit"> -->
-            <input type="submit" class="btn3" id="btn3" value="Submit">
-            
-        </form>
-    </div>
-</div>
-
-
-
-
-
-<!-- The Modal -->
-<div id="myModal3" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal3()">&times;</span>
-        <h2>Let's Sponsor</h2>
-        
-
-            <form id="sponsorForm2">
-            <!-- <label for="item">Item:</label>
-            <input type="text" id="item" name="item" required>  -->
-
-            <select id="item" name="item">
-                <option value="stationary">Bag</option>
-                <option value="clothing">Book</option>
-                <option value="toys">Toys</option>
-            </select>
-
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="1" required>
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Sponsor Now..
-                </button>
-        </form>
-    </div>
-</div>
-
-
-
-</body>
-    <script src="js/script.js"></script>
-</body>
 
 
 
@@ -480,11 +427,12 @@ include "config.php";
         $gender = $_POST['gender'];
         $age = $_POST['age'];
         $quantity = $_POST['quantity'];
+        $district = $_POST['district'];
        
     
 
-    $query = "INSERT INTO `cloth` (`id`, `gender`, `age`, `quantity`) 
-              VALUES (default, '$gender', '$age', '$quantity')";
+    $query = "INSERT INTO `cloth` (`id`, `gender`, `age`, `quantity`,`district`) 
+              VALUES (default, '$gender', '$age', '$quantity','$district')";
 
     mysqli_query($con, $query) or die(mysqli_error($con));
     echo "Record inserted successfully!";
@@ -503,11 +451,12 @@ else {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $item = $_POST['item'];
         $quantity = $_POST['quantity'];
+        $district = $_POST['district'];
        
     
 
-    $query = "INSERT INTO gadgets (id, item,quantity) 
-              VALUES (default, '$item','$quantity')";
+    $query = "INSERT INTO gadgets (id, item,quantity,district) 
+              VALUES (default, '$item','$quantity','$district')";
 
     mysqli_query($con, $query) or die(mysqli_error($con));
     echo "Record inserted successfully!";
@@ -525,11 +474,12 @@ else {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sitem = $_POST['sitem'];
     $squantity = $_POST['squantity'];
+    $district = $_POST['sdistrict'];
    
 
 
-$query = "INSERT INTO stationary (id, sitem,squantity) 
-          VALUES (default, '$sitem','$squantity')";
+$query = "INSERT INTO stationary (id, sitem,squantity,district) 
+          VALUES (default, '$sitem','$squantity','$district')";
 
 mysqli_query($con, $query) or die(mysqli_error($con));
 echo "Record inserted successfully!";
