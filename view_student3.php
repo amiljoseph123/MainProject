@@ -565,6 +565,7 @@ document.getElementById('submitButton').addEventListener('click', function() {
             <input type="hidden" name="id_s" value=<?php echo $student_id; ?>>
             <input type="submit" value="View" name="view" class="btn btn-primary">
           </form>
+          <br>
           <a href="delete_student.php?id=<?php echo $student_id; ?>" class="btn btn-primary" id="deleteButton">Delete</a>
         </td>
       </tr>

@@ -142,7 +142,7 @@ if ($con && !$con->connect_error) {
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-						<h3><a href="">Volunteer Applications</a></h3>
+						<h3><a href="vol_dash.php">Volunteer Application</a></h3>
 						<p></p>
 					</span>
 					<?php

@@ -192,7 +192,7 @@
         </button>
       </div>
       <div class="modal-body">
-      <form action="" id="sponsorForm" method="post">
+      <form action="clothinsert.php" id="sponsorForm" method="post">
             <label for="gender">Choose Gender:</label>
             <select id="gender" name="gender">
                 <option value="gents">Boys</option>
@@ -203,11 +203,11 @@
             <input type="number" id="age" name="age" min="1" max="100" required>
 
             <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="1" required>
+            <input type="number" id="quantity2" name="quantity2" min="1" required>
 
             
-            <label for="quantity">Location:</label>
-<select id="district" name="quantity" required>
+            <label for="district">Location:</label>
+<select id="district" name="district" required>
   <option value="" disabled selected>Select a state in Kerala</option>
   <option value="Kasaragod">Kasaragod</option>
   <option value="Kannur">Kannur</option>
@@ -254,9 +254,9 @@
       <form id="sponsorForm" method="post">
     <label for="sitem">Select Item:</label>
     <select id="sitem" name="sitem">
-        <option value="pen">Pen</option>
-        <option value="pencil">Pencil</option>
-        <option value="notebook">Notebook</option>
+        <option  name="sitem" value="pen">Pen</option>
+        <option  name="sitem" value="pencil">Pencil</option>
+        <option  name="sitem" value="notebook">Notebook</option>
         <!-- Add more options as needed -->
     </select>
 
@@ -317,10 +317,10 @@
     </select>
 
     <label for="quantity">Quantity:</label>
-    <input type="number" id="quantity" name="quantity" min="1" max="1000" required>
+    <input type="number" id="quantity1" name="quantity1" min="1" max="1000" required>
 
-    <label for="district">Location:</label>
-<select id="district" name="district" required>
+    <label for="district1">Location:</label>
+<select id="district1" name="district1" required>
   <option value="" disabled selected>Select a state in Kerala</option>
   <option value="Kasaragod">Kasaragod</option>
   <option value="Kannur">Kannur</option>
@@ -419,29 +419,29 @@
 
 
 <?php
-include "config.php";
 // include "config.php";
+// // include "config.php";
 
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $gender = $_POST['gender'];
-        $age = $_POST['age'];
-        $quantity = $_POST['quantity'];
-        $district = $_POST['district'];
+//     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//         $gender = $_POST['gender'];
+//         $age = $_POST['age'];
+//         $quantity2 = $_POST['quantity2'];
+//         $district2 = $_POST['district'];
        
     
 
-    $query = "INSERT INTO `cloth` (`id`, `gender`, `age`, `quantity`,`district`) 
-              VALUES (default, '$gender', '$age', '$quantity','$district')";
+//     $query = "INSERT INTO `cloth` (`id`, `gender`, `age`, `quantity`,`district`) 
+//               VALUES (default, '$gender', '$age', '$quantity2','$district2')";
 
-    mysqli_query($con, $query) or die(mysqli_error($con));
-    echo "Record inserted successfully!";
-    // echo "Query: $query";
+//     mysqli_query($con, $query) or die(mysqli_error($con));
+//     echo "Record inserted successfully!";
+//     // echo "Query: $query";
 
-}
-else {
-    die("Error: " . mysqli_error($con));
-}
+// }
+// else {
+//     die("Error: " . mysqli_error($con));
+// }
 
 ?>  
 
@@ -450,15 +450,15 @@ else {
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $item = $_POST['item'];
-        $quantity = $_POST['quantity'];
-        $district = $_POST['district'];
+        $quantity1 = $_POST['quantity1'];
+        $district1 = $_POST['district1'];
        
     
 
-    $query = "INSERT INTO gadgets (id, item,quantity,district) 
-              VALUES (default, '$item','$quantity','$district')";
+    $query1 = "INSERT INTO gadgets (id, item,quantity,district) 
+              VALUES (default, '$item','$quantity1','$district1')";
 
-    mysqli_query($con, $query) or die(mysqli_error($con));
+    mysqli_query($con, $query1) or die(mysqli_error($con));
     echo "Record inserted successfully!";
     // echo "Query: $query";
 

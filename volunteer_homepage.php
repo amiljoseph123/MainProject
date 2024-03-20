@@ -193,7 +193,7 @@ include "volunteer_sidebar.php"
                   <div class="card-body">
                     <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
                    
-                                       <h2 class="mb-5"><a href="" style="text-decoration: none; color: #333;">Duties<br> to collect items</a></h2>
+                                       <h2 class="mb-5"><a href="http://localhost/infantcare_main/vol_duty.php" style="text-decoration: none; color: #333;">Duties<br> to collect items</a></h2>
  <h4 class="font-weight-normal mb-3"> <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                     </h4>
                     <!-- <h2 class="mb-5">45,6334</h2> -->
