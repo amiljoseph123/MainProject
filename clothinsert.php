@@ -8,11 +8,14 @@ include "config.php";
         $age = $_POST['age'];
         $quantity2 = $_POST['quantity2'];
         $district2 = $_POST['district'];
+        $pincode = $_POST['pincode'];
+        $city = $_POST['city'];
+        $place= $_POST['place'];
        
     
 
-    $query = "INSERT INTO `cloth` (`id`, `gender`, `age`, `quantity`,`district`) 
-              VALUES (default, '$gender', '$age', '$quantity2','$district2')";
+    $query = "INSERT INTO `cloth` (`id`, `gender`, `age`, `quantity`,`district`,`pin`,`city`,`place`) 
+              VALUES (default, '$gender', '$age', '$quantity2','$district2','$pincode','$city','$place')";
 
     mysqli_query($con, $query) or die(mysqli_error($con));
     echo "Record inserted successfully!";

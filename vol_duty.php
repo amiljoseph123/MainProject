@@ -89,6 +89,7 @@ include('header.php');
             <th>Gender</th>
             <th>Age</th>
             <th>Quantity</th>
+            <th>view</th>
         </tr>
     </thead>
     <tbody>
@@ -100,8 +101,9 @@ include('header.php');
                     <td><?php echo $row1["gender"]; ?></td>
                     <td><?php echo $row1["age"]; ?></td>
                     <td><?php echo $row1["quantity"]; ?></td>
-                    <td><a href="view_location.php?id=<?php echo $row1['id']; ?>" class="btn btn-primary" style="background-color: #5ac1bc;">View Location</a></td>
-                    <td><a href="collect.php?id=<?php echo $row1['id']; ?>" class="btn btn-success" style="background-color: #5ac1bc;">Collect</a></td>
+                    <td><a href="clothview.php?id=<?php echo $row1['id']; ?>" class="btn btn-primary" style="background-color: #5ac1bc;">View Location details</a></td>
+
+                    <!-- <td><a href="collect.php?id=<?php echo $row1['id']; ?>" class="btn btn-success" style="background-color: #5ac1bc;">Collect</a></td> -->
                 </tr>
         <?php
             }

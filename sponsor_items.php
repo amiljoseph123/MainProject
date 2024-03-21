@@ -1,11 +1,5 @@
 <?php
  include "sponsor_sidebar2.php";?>
- 
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -178,8 +172,6 @@
         }
     </style>
 <body>
-    <!-- <div class="fixed-top"> -->
-        <!-- Button trigger modal -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -206,7 +198,9 @@
             <input type="number" id="quantity2" name="quantity2" min="1" required>
 
             
-            <label for="district">Location:</label>
+
+            
+<label for="district">Location:</label>
 <select id="district" name="district" required>
   <option value="" disabled selected>Select a state in Kerala</option>
   <option value="Kasaragod">Kasaragod</option>
@@ -224,6 +218,72 @@
   <option value="Kollam">Kollam</option>
   <option value="Thiruvananthapuram">Thiruvananthapuram</option>
 </select>
+<!-- <form onsubmit="return validateForm()"> -->
+       
+
+        <label for="pincode">PIN Code:</label>
+        <input type="text" id="pincode" name="pincode" required pattern="[1-9][0-9]{5}" oninput="getPinDetails()"><br><br>
+
+     
+        <label for="city" >City:</label>
+        <select id="city" name="city" required>
+        <option value="">Select City</option>
+        </select><br><br>
+
+        <label for="place">Place:</label>
+        <input type="text" id="place" name="place" required><br><br>
+
+
+
+        <!-- <input type="submit" value="Submit"> -->
+    <!-- </form> -->
+<script>
+        function validateForm() {
+            var pincode = document.getElementById("pincode").value;
+            var pinRegex = /^[1-9][0-9]{5}$/;
+            if (!pinRegex.test(pincode)) {
+                alert("Please enter a valid 6-digit PIN Code.");
+                return false;
+            }
+            return true;
+        }
+
+        function getPinDetails() {
+            if (!validateForm()) return;
+
+            var pin = document.getElementById("pincode").value;
+            var url = "https://api.postalpincode.in/pincode/" + pin;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data[0].Status === "Success") {
+                        var district = data[0].PostOffice[0].District;
+                        document.getElementById("district").value = district;
+
+                        var postOffices = data[0].PostOffice;
+                        var cityDropdown = document.getElementById("city");
+                        cityDropdown.innerHTML = "<option value=''>Select City</option>";
+                        postOffices.forEach(postOffice => {
+                            var option = document.createElement("option");
+                            option.text = postOffice.Name;
+                            option.value = postOffice.Name;
+                            cityDropdown.add(option);
+                        });
+                    } else {
+                        alert("Invalid PIN Code. Please enter a valid PIN Code.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("An error occurred while fetching data.");
+                });
+        }
+    </script>
+</head>
+<body>
+  
+    
 
 
             <!-- <input type="submit" class="btn2"id="btn2" value="Submit"> -->
@@ -340,8 +400,23 @@
 
     <input type="submit" class="btn2" name="btn2" id="btn2" value="Submit">
 </form>
-
-
+<script>
+$(document).ready(function() {
+    $('#pincode').on('input', function() {
+        var pincode = $(this).val();
+        if (pincode.length === 6) { // assuming pincode is of length 6
+            $.ajax({
+                url: "https://api.postalpincode.in/pincode/" + pin; // change this to the path of your PHP script
+                type: 'POST',
+                data: {pincode: pincode},
+                success: function(response) {
+                    $('#place').html(response);
+                }
+            });
+        }
+    });
+});
+</script>
       </div>
       <div class="modal-footer">
         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
