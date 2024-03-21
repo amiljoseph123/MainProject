@@ -192,12 +192,12 @@
         </button>
       </div>
       <div class="modal-body">
-      <form action="clothinsert.php" id="sponsorForm" method="post">
+     <form action="clothinsert.php" id="sponsorForm" method="post">
             <label for="gender">Choose Gender:</label>
             <select id="gender" name="gender">
                 <option value="gents">Boys</option>
                 <option value="ladies">Girls</option>
-            </select>
+             </select>
 
             <label for="age">Age:</label>
             <input type="number" id="age" name="age" min="1" max="100" required>
