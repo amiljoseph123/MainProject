@@ -14,8 +14,8 @@ include "config.php";
        
     
 
-    $query = "INSERT INTO `cloth` (`id`, `gender`, `age`, `quantity`,`district`,`pin`,`city`,`place`) 
-              VALUES (default, '$gender', '$age', '$quantity2','$district2','$pincode','$city','$place')";
+    $query = "INSERT INTO `cloth` (`id`, `gender`, `age`, `quantity`,`district`,`pin`,`city`,`place`,`status`) 
+              VALUES (default, '$gender', '$age', '$quantity2','$district2','$pincode','$city','$place','pending')";
 
     mysqli_query($con, $query) or die(mysqli_error($con));
     echo "Record inserted successfully!";

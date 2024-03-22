@@ -82,36 +82,35 @@ include('header.php');
   <!-- Make sure to include Bootstrap CSS in your HTML -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <div class="row">
-    <div class="col-6">
-<table id="example" class="table table-striped">
+<div class="col-6">
+  <table id="example" class="table table-striped table-lg">
     <thead>
-        <tr>
-            <th>Gender</th>
-            <th>Age</th>
-            <th>Quantity</th>
-            <th>view</th>
-        </tr>
+      <tr>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Quantity</th>
+        <th>View</th>
+      </tr>
     </thead>
     <tbody>
-        <?php
-        if ($result1->num_rows > 0) {
-            while ($row1 = $result1->fetch_assoc()) {
-                ?>
-                <tr>
-                    <td><?php echo $row1["gender"]; ?></td>
-                    <td><?php echo $row1["age"]; ?></td>
-                    <td><?php echo $row1["quantity"]; ?></td>
-                    <td><a href="clothview.php?id=<?php echo $row1['id']; ?>" class="btn btn-primary" style="background-color: #5ac1bc;">View Location details</a></td>
-
-                    <!-- <td><a href="collect.php?id=<?php echo $row1['id']; ?>" class="btn btn-success" style="background-color: #5ac1bc;">Collect</a></td> -->
-                </tr>
-        <?php
-            }
+      <?php
+      if ($result1->num_rows > 0) {
+        while ($row1 = $result1->fetch_assoc()) {
+          ?>
+          <tr>
+            <td><?php echo $row1["gender"]; ?></td>
+            <td><?php echo $row1["age"]; ?></td>
+            <td><?php echo $row1["quantity"]; ?></td>
+            <td><a href="clothview.php?id=<?php echo $row1['id']; ?>" class="btn btn-primary" style="background-color: #5ac1bc;">View Location Details</a></td>
+          </tr>
+          <?php
         }
-        ?>
+      }
+      ?>
     </tbody>
-</table>
-    </div>
+  </table>
+</div>
+
     
         <?php
         if ($result1->num_rows > 0) {
