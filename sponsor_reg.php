@@ -365,6 +365,7 @@ if (isset($_POST['submit'])) {
             // mysqli_query($con,"INSERT INTO `sponsor`(`s_sponsor_id`, `s_name`, `s_email`, `s_phone`, `s_aadhar`, `district`, `gender`, `marital`, `photo`) VALUES (default,'$name','$email',$sphone,'$aadhar','$district','$gender','$marital','$photopath')")or die(mysqli_error($con));
             
             mysqli_query($con,"INSERT INTO `sponsor`(`s_sponsor_id`, `s_name`, `s_email`, `s_phone`, `s_aadhar`, `district`, `gender`, `marital`, `photo`) VALUES (default,'$name','$email',$sphone,'$aadhar','$district','$gender','$marital','$photoPath')")or die(mysqli_error($con));
+          
 
             // echo '<script>alert("Registration is successful");</script>';
             echo "<script>
