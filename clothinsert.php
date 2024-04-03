@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $place = $_POST['place'];
     
     // Assuming you have the sponsor ID available in a session variable
-    $sponsor_id = $_SESSION['s_sponsor_id']; // Adjust this according to your session variable name
+    $user = $_SESSION['username']; // Adjust this according to your session variable name
     
     // Debugging: Output the value of sponsor ID to check if it's set correctly
     var_dump($sponsor_id);

@@ -143,7 +143,9 @@ if (isset($_GET['id'])) {
           <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
           <button type="submit" name="collect" class="btn btn-primary" style="background-color: #5ac1bc;"><?php echo ($row['status'] == 'on collect') ? 'On Collect' : 'Collect'; ?></button>
           <a href="vol_duty.php" class="btn btn-secondary">Back</a>
-          <a href="" class="btn btn-primary">contact sponsor</a>
+          <!-- <a href="" class="btn btn-primary">contact sponsor</a> -->
+          <a href="generate_qr.php?sponsor_id=<?php echo $sponsorId; ?>" class="btn btn-primary">Contact Sponsor</a>
+
           
       
 

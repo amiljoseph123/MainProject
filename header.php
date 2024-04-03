@@ -65,7 +65,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                     </p>
                 </div>
 
-                <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
+                <!-- <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
                     <ul class="social-icon">
                         <li class="social-icon-item">
                             <a href="#" class="social-icon-link bi-twitter"></a>
@@ -90,7 +90,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                 </div>
 
             </div>
-        </div>
+        </div> -->
     </header>
 
     <nav class="navbar navbar-expand-lg bg-light shadow-lg header-navbar">
