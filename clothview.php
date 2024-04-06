@@ -22,6 +22,8 @@ if(isset($_GET['id'])) {
     if ($result->num_rows > 0) {
         // Display the details of the item
         $row = $result->fetch_assoc();
+        $id =$row['sponsor_id'];
+     echo $id;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -144,7 +146,8 @@ if (isset($_GET['id'])) {
           <button type="submit" name="collect" class="btn btn-primary" style="background-color: #5ac1bc;"><?php echo ($row['status'] == 'on collect') ? 'On Collect' : 'Collect'; ?></button>
           <a href="vol_duty.php" class="btn btn-secondary">Back</a>
           <!-- <a href="" class="btn btn-primary">contact sponsor</a> -->
-          <a href="generate_qr.php?sponsor_id=<?php echo $sponsorId; ?>" class="btn btn-primary">Contact Sponsor</a>
+          
+          <a href="view_sponsor.php?sponsor_id=<?php echo $row['sponsor_id']; ?>" class="btn btn-primary">Contact Sponsor</a>
 
           
       
