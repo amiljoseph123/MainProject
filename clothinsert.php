@@ -55,11 +55,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     var_dump($sponsor_id);
 
     // Insert data into the cloth table including the sponsor ID
-    $query = "INSERT INTO `cloth` (`id`, `sponsor_id`, `gender`, `age`, `quantity`, `district`, `pin`, `city`, `place`, `status`) 
-              VALUES (default, '$s_sponsor_id', '$gender', '$age', '$quantity2', '$district2', '$pincode', '$city', '$place', 'pending')";
+//     $query = "INSERT INTO `cloth` (`id`, `sponsor_id`, `gender`, `age`, `quantity`, `district`, `pin`, `city`, `place`, `status`) 
+//               VALUES (default, '$s_sponsor_id', '$gender', '$age', '$quantity2', '$district2', '$pincode', '$city', '$place', 'pending')";
+// $query = "INSERT INTO `sponsor_history` (`id`, `sponsor_id`, `gender`, `age`, `quantity`, `district`, `pin`, `city`, `place`) 
+// VALUES (default, '$s_sponsor_id', '$gender', '$age', '$quantity2', '$district2', '$pincode', '$city', '$place')";
 
     // Execute the query
-    mysqli_query($con, $query) or die(mysqli_error($con));
+    // mysqli_query($con, $query) or die(mysqli_error($con));
+
+    $query1 = "INSERT INTO `cloth` (`id`, `sponsor_id`, `gender`, `age`, `quantity`, `district`, `pin`, `city`, `place`, `status`) 
+          VALUES (default, '$s_sponsor_id', '$gender', '$age', '$quantity2', '$district2', '$pincode', '$city', '$place', 'pending')";
+$query2 = "INSERT INTO `sponsor_history` (`id`, `sponsor_id`, `gender`, `age`, `quantity`, `district`, `pin`, `city`, `place`) 
+VALUES (default, '$s_sponsor_id', '$gender', '$age', '$quantity2', '$district2', '$pincode', '$city', '$place')";
+
+// Execute the queries separately
+mysqli_query($con, $query1);
+mysqli_query($con, $query2);
+
 
     // Redirect to a different page after insertion
     header("Location: sponsor_items.php");

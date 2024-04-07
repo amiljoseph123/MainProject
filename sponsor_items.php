@@ -457,8 +457,12 @@ $(document).ready(function() {
     <section class="don-sec" id="donation">
         <div class="container">
             <div class="heading">
-                <h2>&nbsp;Sponsor...</h2>
+                <!-- <h2>&nbsp;Sponsor...</h2> -->
                 
+                <h2>&nbsp; <a href="./qrcode/index.php">Sponsor...</a></h2>
+
+
+                 
             </div>
             <div class="container d-flex justify-content-center">
     <div class="row">
