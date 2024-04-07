@@ -171,6 +171,26 @@
             background-color: #0056b3;
         }
     </style>
+    <style>
+  /* CSS for placing two fields in the same line */
+  .modal-body form label {
+    display: inline-block;
+    width: 45%; /* Adjust width as needed */
+    margin-right: 5%;
+  }
+
+  .modal-body form input,
+  .modal-body form select {
+    display: inline-block;
+    width: 45%; /* Adjust width as needed */
+  }
+
+  .modal-body form br {
+    display: none; /* Hide line breaks */
+  }
+</style>
+
+
 <body>
 
 <!-- Modal -->
