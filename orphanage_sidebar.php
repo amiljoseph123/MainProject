@@ -102,6 +102,12 @@ if (isset($_SESSION['username'])) {
 				</a>
 			</li> 
 			<li>
+				<a href="http://localhost:8501/">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">compare image</span>
+				</a>
+			</li> 
+			<li>
 				<a href="logout.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
