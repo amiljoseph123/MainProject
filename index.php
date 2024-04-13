@@ -298,8 +298,17 @@ https://templatemo.com/tm-581-kind-heart-charity
                 </div>
             </div>
         </section>
+        <center><h1 style="color: #5ac1bc;">Our Events</h1></center>
 
-        <section class="section-padding section-bg" id="section_2">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/PoRC2dCvBp4" frameborder="0" allowfullscreen></iframe>
+&nbsp;
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PoRC2dCvBp4" frameborder="0" allowfullscreen></iframe>
+&nbsp;
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PoRC2dCvBp4" frameborder="0" allowfullscreen></iframe>
+
+    
+    <section class="section-padding section-bg" id="section_2">
             <div class="container">
                 <div class="row">
 
