@@ -71,7 +71,8 @@
             $imgW = $w + 2*$outerFrame;
             $imgH = $h + 2*$outerFrame;
             
-            $base_image =Imagecreate($imgW, $imgH);
+            // $base_image =imagecreate($imgW, $imgH);
+            $base_image =ImageCreate($imgW, $imgH);
             
             $col[0] = ImageColorAllocate($base_image,255,255,255);
             $col[1] = ImageColorAllocate($base_image,0,0,0);

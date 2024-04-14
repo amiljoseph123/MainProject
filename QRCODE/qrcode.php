@@ -1,8 +1,9 @@
 <?php
+session_start(); // Start the session
 require_once 'config.php';
 require_once 'phpqrcode/qrlib.php';
 
-$path = 'images/';
+$path = '../QRCODE/images/'; // Adjusted path with correct directory separator
 $qrimage = time() . ".png";
 
 if (isset($_POST['sbt-btn'])) {
@@ -20,8 +21,12 @@ if (isset($_POST['sbt-btn'])) {
         // Debugging: Output the value of sponsor ID to check if it's set correctly
         var_dump($s_sponsor_id);
 
+        // Generate QR code data including sponsor details
+        $sponsor_details = "Sponsor ID: $s_sponsor_id\n";
+        $qr_data = "$sponsor_details Category: $category\nItem: $item\nDistrict: $district";
+
         // Add error handling
-        $query = mysqli_query($con, "INSERT INTO sponsored_itemsqr (s_sponsor_id, category, item,district ,qrimage) VALUES ('$s_sponsor_id', '$category', '$item','$district', '$qrimage')");
+        $query = mysqli_query($con, "INSERT INTO sponsored_itemsqr (s_sponsor_id, category, item, district, qrimage) VALUES ('$s_sponsor_id', '$category', '$item', '$district', '$qrimage')");
 
         if ($query) {
             echo "<script>alert('Data saved successfully');</script>";
@@ -34,6 +39,32 @@ if (isset($_POST['sbt-btn'])) {
     }
 }
 
-QRcode::png($qrimage, $path . $qrimage, 'H', 4, 4);
-echo "<img src='" . $path . $qrimage . "'>";
+// Assuming you've already connected to your database
+$id = 50; // Assuming $id is an integer
+// Fetch the qrimage data
+$query = "SELECT qrimage FROM sponsored_itemsqr WHERE id = $id";
+$result = $con->query($query);
+
+if ($result) {
+    // Check if the query was successful
+    $row = $result->fetch_assoc(); // Fetch a row as an associative array
+    $qrimageData = $row['qrimage']; // Access the 'qrimage' column from the row
+    // Output the qrimage data within an <img> tag
+    echo '<img src="' . $qrimageData . '" />';
+} else {
+    // Handle the case where the query failed
+    echo "Error: " . $con->error;
+}
+
+
+
+
+// // Fetch the qrimage data
+// $qrimageData = $stmt->fetchColumn();
+
+// // Output the qrimage data within an <img> tag
+// echo '<img src="' . $qrimageData . '" />';
+// // Generate and display QR code
+// QRcode::png($qr_data, $path . $qrimage, 'H', 4, 4);
+// echo "<img src='" . $path . $qrimage . "'>";
 ?>

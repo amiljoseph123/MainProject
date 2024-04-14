@@ -5,8 +5,8 @@ include('config.php');
 include('header.php');
 
 // Check if sponsor ID is provided in the URL
-if (isset($_GET['sponsor_id'])) {
-    $s_sponsor_id = $_GET['sponsor_id'];
+if (isset($_GET['s_sponsor_id'])) {
+    $s_sponsor_id = $_GET['s_sponsor_id'];
 echo $s_sponsor_id;
     // Retrieve sponsor details from the database
     $sql = "SELECT * FROM sponsor WHERE s_sponsor_id  = '$s_sponsor_id'";
