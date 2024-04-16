@@ -3,7 +3,7 @@ session_start(); // Start the session
 require_once 'config.php';
 require_once 'phpqrcode/qrlib.php';
 
-$path = '../QRCODE/images/'; // Adjusted path with correct directory separator
+$path = '../qrcode/images/'; // Adjusted path with correct directory separator
 $qrimage = time() . ".png";
 
 if (isset($_POST['sbt-btn'])) {
@@ -13,7 +13,8 @@ if (isset($_POST['sbt-btn'])) {
 
     // Check if "username" session variable is set
     if (isset($_SESSION['username'])) {
-        $user = $_SESSION['username']; // Adjust according to your session variable name
+        // $user = $_SESSION['usernamImagereatee']; // Adjust according to your session variable name
+        $user = $_SESSION['username'];
         $sqlqw = "SELECT `s_sponsor_id` FROM `sponsor` WHERE `s_email` = '$user'";
         $resultqw = mysqli_query($con, $sqlqw);
         $rowqw = mysqli_fetch_assoc($resultqw);
@@ -62,9 +63,9 @@ if ($result) {
 // // Fetch the qrimage data
 // $qrimageData = $stmt->fetchColumn();
 
-// // Output the qrimage data within an <img> tag
-// echo '<img src="' . $qrimageData . '" />';
-// // Generate and display QR code
-// QRcode::png($qr_data, $path . $qrimage, 'H', 4, 4);
-// echo "<img src='" . $path . $qrimage . "'>";
+// Output the qrimage data within an <img> tag
+echo '<img src="' . $qrimageData . '" />';
+// Generate and display QR code
+QRcode::png($qr_data, $path . $qrimage, 'H', 4, 4);
+echo "<img src='" . $path . $qrimage . "'>";
 ?>

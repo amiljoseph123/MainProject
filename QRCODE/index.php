@@ -11,6 +11,51 @@
     </style>
 </head>
 <body>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        select, input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .additional-fields {
+            display: none;
+        }
+    </style>
     <h2>Select Item</h2>
     <form method="post" action="qrcode.php" id="itemForm">
         <label for="category">Choose a category:</label>
@@ -19,7 +64,7 @@
             <option value="stationery">Stationery</option>
             <option value="gadgets">Gadgets</option>
         </select>
-        <br><br>
+        
 
         <div class="additional-fields" id="stationeryFields" style="display: none;">
             <label for="stationeryItem">Choose item:</label>
@@ -28,7 +73,7 @@
                 <option value="notebook">Notebook</option>
                 <option value="pencil">Pencil</option>
             </select>
-            <br><br>
+           
         </div>
 
         <div class="additional-fields" id="gadgetsFields" style="display: none;">
@@ -38,11 +83,11 @@
                 <option value="tablet">Tablet</option>
                 <option value="headphones">Headphones</option>
             </select>
-            <br><br>
+            
         </div>
         <label for="quantity">quantity:</label>
         <input type="text" name="quantity" id="quantity" required>
-        <br><br>
+       
         <label for="district">District:</label>
 <select name="district" id="district" required>
   <option value="" disabled selected>Select District</option>
@@ -64,16 +109,16 @@
 
         <label for="place">Place:</label>
         <input type="text" name="place" id="place" required>
-        <br><br>
+        
         <label for="date">Date:</label>
         <input type="date" name="date" id="date" required>
-        <br><br>
+        
         <label for="city">City:</label>
         <input type="text" name="city" id="city" required>
-        <br><br>
+    
         <label for="pincode">Pincode:</label>
         <input type="text" name="pincode" id="pincode" required>
-        <br><br>
+       
         <input type="submit" name="sbt-btn" value="Submit">
     </form>
 
