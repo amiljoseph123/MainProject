@@ -27,7 +27,7 @@ if (isset($_POST['sbt-btn'])) {
         $qr_data = "$sponsor_details Category: $category\nItem: $item\nDistrict: $district";
 
         // Add error handling
-        $query = mysqli_query($con, "INSERT INTO sponsored_itemsqr (s_sponsor_id, category, item, district, qrimage) VALUES ('$s_sponsor_id', '$category', '$item', '$district', '$qrimage')");
+        $query = mysqli_query($con, "INSERT INTO sponsored_itemsqr (s_sponsor_id, category, item, district, qrimage,status) VALUES ('$s_sponsor_id', '$category', '$item', '$district', '$qrimage','Pending')");
 
         if ($query) {
             echo "<script>alert('Data saved successfully');</script>";
