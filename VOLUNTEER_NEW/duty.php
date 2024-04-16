@@ -93,20 +93,23 @@ include 'a.php';
                 <table id="example" class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Category</th>
-                            <th>Item</th>
-                            <th>QR Image</th>
-                            <th>View Location</th> 
-                            <th>Contact Sponsor</th>
-                             <th>action</th>
+                            <th><h3>Category</th>
+                            <th><h3>Item</th>
+                            <th><h3>QR Image</th>
+                            <th><h3>View Location</th> 
+                            <th><h3>Contact Sponsor</th>
+                             <th><h3>action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($rows as $row) : ?>
                           <tr>
-                              <td><?php echo $row["category"]; ?></td>
-                              <td><?php echo $row["item"]; ?></td>
-                              <td><?php echo $row["qrimage"]; ?></td>
+                              <td><h3><?php echo $row["category"]; ?></h3></td>
+                              <td><h3><?php echo $row["item"]; ?><h3></td>
+                              <!-- <td><?php/
+                            //    echo $row["qrimage"]; ?></td> -->
+                              <td><?php echo '<img src="../qrcode/images/' . $row["qrimage"] . '" />'; ?></td>
+
 
                               <td>
         <button class="btn btn-success">View Location</button>
@@ -115,8 +118,23 @@ include 'a.php';
         <!-- <button class="btn btn-info">Contact Sponsor</button> -->
         <a href="sponsor_details.php?s_sponsor_id=<?php echo $row['s_sponsor_id']; ?>" class="btn btn-primary">Contact Sponsor</a>
     </td>
-    <td>
-        <button class="btn btn-warning">Collect</button>
+    <!-- <td> -->
+        <!-- <button class="btn btn-warning">Collect</button> -->
+        <!-- <td> -->
+        <td>
+    <form action="update_status.php" method="POST">
+        <input type="hidden" name="itemId" value="<?php echo $row['id']; ?>">
+        <button type="submit" name="collectButton" class="btn <?php echo ($row['status'] === 'collected') ? 'btn-success' : 'btn-warning'; ?>" <?php echo ($row['status'] === 'collected') ? 'disabled' : ''; ?>>
+            <?php echo ($row['status'] === 'collected') ? 'Collected' : 'Collect'; ?>
+        </button>
+    </form>
+</td>
+
+</td>
+
+
+</td>
+
     </td>
 </tr>
                              
@@ -143,6 +161,46 @@ include 'a.php';
             $('#example').DataTable();
         });
     </script>
+
+    <script>
+        <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Add event listener to each Collect form
+        <?php foreach ($rows as $row): ?>
+            document.getElementById('collectForm_<?php echo $row['id']; ?>').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+                var form = this;
+                var itemId = form.querySelector('input[name="itemId"]').value;
+
+                // Debug statement
+                console.log("Button ID: ", 'collectButton_<?php echo $row['id']; ?>');
+
+                // Send AJAX request to update status
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'update_status.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        if (xhr.responseText === 'success') {
+                            // Debug statement
+                            console.log("Status updated successfully");
+
+                            // Update button text and disable it
+                            document.getElementById('collectButton_<?php echo $row['id']; ?>').innerText = 'Collected';
+                            document.getElementById('collectButton_<?php echo $row['id']; ?>').disabled = true;
+                        } else {
+                            alert('Error updating status.');
+                        }
+                    }
+                };
+                xhr.send('itemId=' + encodeURIComponent(itemId));
+            });
+        <?php endforeach; ?>
+    });
+</script>
+
+
+        </script>
 </body>
 
 </html>
