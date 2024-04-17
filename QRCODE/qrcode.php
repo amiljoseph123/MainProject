@@ -8,8 +8,14 @@ $qrimage = time() . ".png";
 
 if (isset($_POST['sbt-btn'])) {
     $category = $_POST['category'];
-    $item = $_POST['stationeryItem'];
+    $item1 = $_POST['stationeryItem'];
+    $item2 = $_POST['gadgetsItem'];
+
+    $quantity = $_POST['quantity'];
     $district = $_POST['district'];
+    $place = $_POST['place'];
+    $city = $_POST['city'];
+    $pincode = $_POST['pincode'];
 
     // Check if "username" session variable is set
     if (isset($_SESSION['username'])) {
@@ -24,11 +30,11 @@ if (isset($_POST['sbt-btn'])) {
 
         // Generate QR code data including sponsor details
         $sponsor_details = "Sponsor ID: $s_sponsor_id\n";
-        $qr_data = "$sponsor_details Category: $category\nItem: $item\nDistrict: $district";
+        $qr_data = " Item Detiails\n ..Please Collect..\n\n Category: $category\nItem: $item1\nItem2: $item2\nquantity: $quantity\nDistrict: $district\ncity: $city\nplace: $place\npincode: $pincode";
         
 
         // Add error handling
-        $query = mysqli_query($con, "INSERT INTO sponsored_itemsqr (s_sponsor_id, category, item, district, qrimage,status) VALUES ('$s_sponsor_id', '$category', '$item', '$district', '$qrimage','Pending')");
+        $query = mysqli_query($con, "INSERT INTO sponsored_itemsqr (s_sponsor_id, category, item,item2,quantity, district,place,city,pincode, qrimage,status) VALUES ('$s_sponsor_id', '$category', '$item1','$item2', '$quantity','$district','$place','$city','$pincode', '$qrimage','Pending')");
 
         if ($query) {
             echo "<script>alert('Data saved successfully');</script>";

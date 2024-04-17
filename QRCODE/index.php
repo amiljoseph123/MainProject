@@ -118,6 +118,7 @@
     
         <label for="pincode">Pincode:</label>
         <input type="text" name="pincode" id="pincode" required>
+        
        
         <!-- <input type="submit" name="sbt-btn" value="Submit"> -->
         <input type="submit"name="sbt-btn" id="submitBtn" value="Submit">
