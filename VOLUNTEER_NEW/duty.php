@@ -93,10 +93,10 @@ include 'a.php';
                 <table id="example" class="table table-striped">
                     <thead>
                         <tr>
-                            <th><h3>Category</th>
+                            <!-- <th><h3>Category</th> -->
                             <th><h3>Item</th>
                             <th><h3>QR Image</th>
-                            <th><h3>View Location</th> 
+                            <!-- <th><h3>View Location</th>  -->
                             <th><h3>Contact Sponsor</th>
                              <th><h3>action</th>
                         </tr>
@@ -104,16 +104,17 @@ include 'a.php';
                     <tbody>
                         <?php foreach ($rows as $row) : ?>
                           <tr>
-                              <td><h3><?php echo $row["category"]; ?></h3></td>
+                              <!-- <td><h3><?php
+                            //    echo $row["category"]; ?></h3></td> -->
                               <td><h3><?php echo $row["item"]; ?><h3></td>
                               <!-- <td><?php/
                             //    echo $row["qrimage"]; ?></td> -->
                               <td><?php echo '<img src="../qrcode/images/' . $row["qrimage"] . '" />'; ?></td>
 
 
-                              <td>
-        <button class="btn btn-success">View Location</button>
-    </td>
+                              <!-- <td> -->
+        <!-- <button class="btn btn-success">View Location</button> -->
+    <!-- </td> -->
     <td>
         <!-- <button class="btn btn-info">Contact Sponsor</button> -->
         <a href="sponsor_details.php?s_sponsor_id=<?php echo $row['s_sponsor_id']; ?>" class="btn btn-primary">Contact Sponsor</a>

@@ -53,25 +53,18 @@ $id = 50; // Assuming $id is an integer
 $query = "SELECT qrimage FROM sponsored_itemsqr WHERE id = $id";
 $result = $con->query($query);
 
-if ($result) {
-    // Check if the query was successful
+if ($result && $result->num_rows > 0) {
+    // Check if the query was successful and if there are rows returned
     $row = $result->fetch_assoc(); // Fetch a row as an associative array
     $qrimageData = $row['qrimage']; // Access the 'qrimage' column from the row
+
     // Output the qrimage data within an <img> tag
     echo '<img src="' . $qrimageData . '" />';
 } else {
-    // Handle the case where the query failed
-    echo "Error: " . $con->error;
+    // Handle the case where the query failed or no rows were returned
+    // echo "Error: QR image data not found.";
 }
 
-
-
-
-// // Fetch the qrimage data
-// $qrimageData = $stmt->fetchColumn();
-
-// Output the qrimage data within an <img> tag
-echo '<img src="' . $qrimageData . '" />';
 // Generate and display QR code
 QRcode::png($qr_data, $path . $qrimage, 'H', 4, 4);
 echo "<img src='" . $path . $qrimage . "'>";
