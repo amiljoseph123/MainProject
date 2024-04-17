@@ -446,10 +446,6 @@ $(document).ready(function() {
   </div>
 </div>
 
-
-
-
-
         <header>
                 </div>
   
@@ -471,10 +467,10 @@ $(document).ready(function() {
                 <img src="donation_img/don/clothing.png" alt="Clothes">
                 <h3>Clothes</h3>
                 <p>"Wear kindness, sponsor bright tomorrows,help to create better future"</p>
-                <!-- <a href="#contact" class="btn1">Sponsor Now</a> -->
+                 <a href="./qrcode/index.php" class="btn1">Sponsor Now</a> 
                 
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Sponsor Now..
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> -->
+                    <!-- Sponsor Now.. -->
                 </button>
             </div>
         </div>
@@ -488,8 +484,9 @@ $(document).ready(function() {
                 <p>"Gift gadgets, empower young souls,help to create better future"</p>
                 <!-- <a href="#contact" class="btn1">Sponsor Now</a> -->
                 <!-- <a href="#" class="btn2" onclick="openModal2()">Sponsor Now</a> -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModa3">
-                    Sponsor Now..
+                <a href="./qrcode/index.php" class="btn1">Sponsor Now</a> 
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModa3"> -->
+                    <!-- Sponsor Now.. -->
                 </button>
             </div>
         </div>
@@ -501,9 +498,10 @@ $(document).ready(function() {
                 <p>"Sponsor hope, gift the magic of stationery,help to create better future"</p>
                 <!-- <a href="#contact" class="btn1">Sponsor Now</a> -->
                 <!-- <a href="#" class="btn2" onclick="openModal3()">Sponsor Now</a> -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModa2">
+                <a href="./qrcode/index.php" class="btn1">Sponsor Now</a> 
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModa2">
                     Sponsor Now..
-                </button>
+                </button> -->
 
             </div>
         </div>

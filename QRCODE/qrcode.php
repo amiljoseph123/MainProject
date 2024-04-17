@@ -25,6 +25,7 @@ if (isset($_POST['sbt-btn'])) {
         // Generate QR code data including sponsor details
         $sponsor_details = "Sponsor ID: $s_sponsor_id\n";
         $qr_data = "$sponsor_details Category: $category\nItem: $item\nDistrict: $district";
+        
 
         // Add error handling
         $query = mysqli_query($con, "INSERT INTO sponsored_itemsqr (s_sponsor_id, category, item, district, qrimage,status) VALUES ('$s_sponsor_id', '$category', '$item', '$district', '$qrimage','Pending')");

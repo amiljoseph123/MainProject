@@ -119,8 +119,23 @@
         <label for="pincode">Pincode:</label>
         <input type="text" name="pincode" id="pincode" required>
        
-        <input type="submit" name="sbt-btn" value="Submit">
+        <!-- <input type="submit" name="sbt-btn" value="Submit"> -->
+        <input type="submit"name="sbt-btn" id="submitBtn" value="Submit">
     </form>
+
+    <script>
+document.getElementById('myForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+  
+  // Display SweetAlert
+  Swal.fire({
+    title: 'Submit Button Clicked!',
+    text: 'You clicked the submit button.',
+    icon: 'success',
+    confirmButtonText: 'OK'
+  });
+});
+</script>
 
     <script>
         document.getElementById("category").addEventListener("change", function() {
